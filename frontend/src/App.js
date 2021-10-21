@@ -1,13 +1,13 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Home from './components/Home';
-import Footer from './components/layout/footer/Footer';
-import Header from './components/layout/header/Header';
-import Forgotpass from './components/user/forgotpass/Forgotpass';
-import Login from './components/user/login/Login';
-import Profile from './components/user/profile/Profile';
-import Register from './components/user/register/Register';
-import Resetpass from './components/user/resetpass/Resetpass';
+import Home from './Components/Home';
+import Footer from './Components/Source-layout/Footer/Footer';
+import Header from './Components/Source-layout/Header/Header';
+import Forgotpass from './Components/User/Forgotpass/Forgotpass';
+import Login from './Components/User/Login/Login';
+import Profile from './Components/User/Profile/Profile';
+import Register from './Components/User/Register/Register';
+import Resetpass from './Components/User/Resetpass/Resetpass';
 
 function App() {
     return (

@@ -8,12 +8,11 @@ const Group = new Schema(
         image: { type: String },    
         created_date: { type: String },
         public: { type: String },
-        id_link: {type: Array},
-        id_user: {type: String},
-        id_cat: {type: Array},
-        id_members: {type: Array},
+        id_links: {type: [{ id: Number }] },
+        id_members: {type: [{ id: Number }] },
         color_text: { type: String }, 
-        color_background: { type: String }
+        color_background: { type: String },
+        id_author: {type: [{ id: Number }] }
     }, 
     {
         timestamps: true,

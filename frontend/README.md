@@ -78,5 +78,5 @@ Tổng hợp các API của frontend:
 To be continued...
 
 ## Công nghệ sử dụng
-- Frontend: ReactJS, SCSS, Bootstrap, Splide Slider, Axios
+- Frontend: ReactJS, Redux, SCSS, Bootstrap, Splide Slider, Axios
 - Backend: NodeJS, ExpressJS, MongoDB, Socket.IO, Google Drive API, JWT (Auth, Authorization)

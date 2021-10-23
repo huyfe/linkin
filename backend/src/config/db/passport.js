@@ -28,11 +28,11 @@ function(req,email,password, done){
         }
         const newUser = new User();
         newUser.name = req.body.name;
-        newUser.address = req.body.address;
-        newUser.sothich = req.body.sothich;
         newUser.email = email;
+        newUser.birthday = req.body.birthday;
+        newUser.created_date = req.body.created_date;
         newUser.token = req.body._csrf;
-        newUser.sdt = req.body.sdt;
+        newUser.image = req.body.image;
         newUser.role = req.body.role;
         newUser.password = newUser.encryptPassword(password);
         /* newUser.address = address; */

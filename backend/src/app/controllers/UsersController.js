@@ -1,10 +1,11 @@
 const { mutipleMongooseToObject } = require('../../util/mongoose');
 const { mongooseToObject } = require('../../util/mongoose');
 const Users = require('../models/UsersModel');
+const bcrypt = require('bcrypt-nodejs');
 
-class UsersController {
-    // Hiển thị tất cả tài khoản
-    ShowAllUsers(req, res, next){
+module.exports = {
+    // Show all accounts
+    ShowAllUsers: function(req, res, next){
         Users.find({})
             .then(users => {
                 res.json({ 
@@ -12,19 +13,19 @@ class UsersController {
                 });
             })
             .catch(next);
-    }
+    },
 
-    // Hiển thị chi tiết của 1 sản phẩm
-    ShowUserBySlug(req, res, next) {
-        Users.findOne({ slug: req.params.slug }) //chi tiet san pham
+    // Show details of a product
+    ShowUserBySlug: function(req, res, next) {
+        Users.findOne({ slug: req.params.slug })
             .then(users => {
                 res.json({ users: mongooseToObject(users) });
             })
             .catch(next);       
-    }
+    },
 
-    // Hiển thị tất cả tài khoản đã bị khóa
-    TrashUser(req, res, next){
+    // Show all locked accounts
+    TrashUser: function(req, res, next){
         Users.findDeleted({})
             .then(users => {
                 res.json({ 
@@ -32,45 +33,41 @@ class UsersController {
                 });
             })
             .catch(next); 
-    }
+    },
 
-    // Thêm tài khản
-    Registers(req, res, next) {
+    // Add the account
+    Registers: function(req, res, next) {
         const users = new Users(req.body);
-        users.save()
-            .then(() => res.send('Thêm tài khoản thành công!'))
-            .catch(error => {
-
-            });
-    }
+        users.save(users.password = bcrypt.hashSync(req.body.password, bcrypt.genSaltSync(11), null))
+            .then(() => res.send('Add account successfully!'))
+            .catch(error => {});
+    },
     
-    // Sửa tài khoản
-    UpdateUser(req, res, next) {
+    // Edit the account
+    UpdateUser: function(req, res, next) {
         Users.updateOne({ _id: req.params.id }, req.body)
-            .then(() => res.send('Sửa tài khoản thành công!'))
+            .then(() => res.send('Edit account successfully!'))
             .catch(next);
-    }
+    },
 
-    // Xóa tài khoản
-    DeleteUser(req, res, next) {
+    // Delete the account
+    DeleteUser: function(req, res, next) {
         Users.deleteOne({ _id: req.params.id })
-            .then(() => res.send('!Xóa tài khoản thành công!'))
+            .then(() => res.send('Account deleted successfully!'))
             .catch(next); // bắt lỗi
-    }
+    },
 
-    // Khóa tài khoản tạm thời
-    LockUser(req, res, next) { 
+    // Temporarily lock your account
+    LockUser: function(req, res, next) { 
         Users.delete({ _id: req.params.id })
-            .then(() => res.send('Khóa tài khoản thành công!'))
+            .then(() => res.send('Account locked successfully!'))
             .catch(next); 
-    }
+    },
 
-    // Bỏ khóa tài khoản
-    RestoreUser(req, res, next) { // PUT
+    // Unblock the account
+    RestoreUser: function(req, res, next) { // PUT
         Users.restore({ _id: req.params.id })
-            .then(() => res.send('Tài khoản của bạn đã hết khóa!'))
+            .then(() => res.send('Your account has been unblock!'))
             .catch(next);
     }
 }
-
-module.exports = new UsersController();

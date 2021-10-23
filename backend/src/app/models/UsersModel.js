@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 const slug = require('mongoose-slug-generator');
 const mongoosedelete = require('mongoose-delete');
 const AutoIncrement = require('mongoose-sequence')(mongoose);
+
 const Schema = mongoose.Schema;
 
 mongoose.plugin(slug);
@@ -33,5 +34,7 @@ User.plugin(mongoosedelete, {
     deletedAt : true,
     overrideMethods: 'all' 
 });
+
+// bcrypt.compareSync(password, this.password); 
 
 module.exports = mongoose.model('User', User);

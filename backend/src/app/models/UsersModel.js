@@ -8,12 +8,11 @@ mongoose.plugin(slug);
 const User = new Schema(
     {
         _id: { type: Number },
-        id: { type: Number },
         name: { type: String},       
         email: { type: String },      
         password: { type: String }, 
-        birthday: { type: String },
-        created_date: { type: String },
+        birthday: { type: Date },
+        created_date: { type: Date },
         image: { type: String },
         public: { type: String },
         follower: {type: [{id: Number, name:String, avatar:String}]},

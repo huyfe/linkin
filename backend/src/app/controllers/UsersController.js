@@ -3,7 +3,6 @@ const { mongooseToObject } = require('../../util/mongoose');
 const Users = require('../models/UsersModel');
 
 class UsersController {
-
     // Hiển thị tất cả tài khoản
     ShowAllUsers(req, res, next){
         Users.find({})

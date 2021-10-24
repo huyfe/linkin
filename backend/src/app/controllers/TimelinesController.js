@@ -2,7 +2,7 @@ const { mutipleMongooseToObject } = require('../../util/mongoose');
 const Timelines = require('../models/TimelineModel');
 
 class TimelinesController {
-    // Show all post from timeline
+    // Show all post 
     ShowwAllTimeline(req, res, next){
         Timelines.find({})
             .then(timelines => {
@@ -11,6 +11,14 @@ class TimelinesController {
                 });
             })
             .catch(next);
+    }
+    // Show detail post 
+    ShowDetailTimeline(req, res, next) {
+        Timelines.findOne({ slug: req.params.slug })
+            .then(timelines => {
+                res.json({ timelines: mongooseToObject(timelines) });
+            })
+            .catch(next);       
     }
 }
 

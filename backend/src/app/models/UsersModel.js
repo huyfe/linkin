@@ -19,8 +19,7 @@ const User = new Schema(
         follower: {type: [{id: Number, name:String, avatar:String}]},
         following: {type: [{id: Number, name:String, avatar:String}]},
         role: {type: String},
-        slug: { type: String, slug: 'name', unique: true },
-        inhabitant_number: { type: Number }
+        slug: { type: String, slug: 'name', unique: true }
     }, 
     {
         _id: false,

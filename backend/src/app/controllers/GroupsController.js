@@ -1,12 +1,10 @@
 const { mutipleMongooseToObject } = require('../../util/mongoose');
-const passport = require('passport');
+const { mongooseToObject } = require('../../util/mongoose');
+// Nhúng model group
+
 const Groups = require('../models/GroupsModel');
-
-passport.serializeUser(function(Group, cb){
-    cb(null, Group.id);
-})
-
 class GroupsController {
+    // Hiển thị tất cả group
     ShowAllGroups(req, res, next){
         Groups.find({})
             .then(groups => {
@@ -15,6 +13,15 @@ class GroupsController {
                 });
             })
             .catch(next);
+    }
+
+
+
+     // Xóa group
+    DeleteGroup(req, res, next) {
+        Groups.delete({ _id: req.params.id })
+            .then(() => res.send('!Xóa group thành công!'))
+            .catch(next); // bắt lỗi
     }
 }
 

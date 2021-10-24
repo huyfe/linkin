@@ -19,7 +19,8 @@ const User = new Schema(
         follower: {type: [{id: Number, name:String, avatar:String}]},
         following: {type: [{id: Number, name:String, avatar:String}]},
         role: {type: String},
-        slug: { type: String, slug: 'name', unique: true }
+        slug: { type: String, slug: 'name', unique: true },
+        inhabitant_number: { type: Number }
     }, 
     {
         _id: false,
@@ -27,7 +28,7 @@ const User = new Schema(
     }
 );
 
-User.plugin(AutoIncrement);
+User.plugin(AutoIncrement, {collection_name: 'counter_users' });
 
 // mongoose delete plugin
 User.plugin(mongoosedelete, { 

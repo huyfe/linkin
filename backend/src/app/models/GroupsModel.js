@@ -15,7 +15,7 @@ const Group = new Schema(
         id_members: {type: [{ id: Number }] },
         color_text: { type: String }, 
         color_background: { type: String },
-        id_author: {type: [{ id: Number }] }
+        id_author: {type: Number }
     }, 
     {
         _id: false,
@@ -25,7 +25,7 @@ const Group = new Schema(
 
 
 // // Tự động tăng id khi thêm link vào database
-Group.plugin(AutoIncrement,  {collection_name: 'counter_groups' });//tạo thêm collection
+Group.plugin(AutoIncrement, {id: 'id_cate', collection_name: 'counter_groups'});//tạo thêm collection
 
 // mongoose delete plugin
 Group.plugin(mongoosedelete, {

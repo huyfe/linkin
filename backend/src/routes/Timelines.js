@@ -5,7 +5,13 @@ const timelineController = require('../app/controllers/TimelinesController');
 // CRUD
 router.get('/', timelineController.ShowwAllTimeline);
 router.post('/add-post', timelineController.CreateTimeline);
+router.get('/detail-post/:id', timelineController.DetalTimeline);
 router.put('/edit-post/:id', timelineController.UpdateTimeline);
 router.delete('/delete-post/:id', timelineController.DeleteTimeline)
+
+// ẨN & HIỆN 
+router.get('/showhide-post', timelineController.ShowHideTimeline)
+router.delete('/hide-post/:id', timelineController.HideTimeline);
+router.patch('/unhide-post/:id', timelineController.UnhideTimeline);
 
 module.exports = router;

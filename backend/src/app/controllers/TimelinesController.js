@@ -13,6 +13,16 @@ module.exports = {
             })
             .catch(next);
     },
+    // Hiện chi tiết một bài viết 
+    DetalTimeline: function(req, res, next) {
+        TimelineLinkin.findOne({ _id: req.params.id})
+            .then(timeline => {
+                res.json({
+                    timeline: mongooseToObject(timeline)
+                });
+            })
+            .catch(next)
+    },
     // Tạo mới một bài viết 
     CreateTimeline: function(req, res, next) {
         const timeline = new TimelineLinkin(req.body);
@@ -31,5 +41,27 @@ module.exports = {
         TimelineLinkin.deleteOne({ _id: req.params.id }, req.body)
             .then(() => res.send('Xóa bài viết thành công 🐦'))
             .catch(next);
+    },
+    // Ẩn bài viết
+    HideTimeline: function(req, res, next) {
+        TimelineLinkin.delete({ _id: req.params.id })
+            .then(() => res.send("Ẩn bài viết thành công 👻"))
+            .catch(next)
+    },
+    // Hiện bài viết
+    UnhideTimeline: function(req, res, next) {
+        TimelineLinkin.restore({ _id: req.params.id })
+            .then(() => res.send("Đã bỏ ẩn bài viết 👻"))
+            .catch(next)
+    },
+    // Hiện tất cả bài viết bị ẩn
+    ShowHideTimeline: function(req, res, next) {
+        TimelineLinkin.findDeleted({})
+            .then(timeline => {
+                res.json({ 
+                    timeline: mutipleMongooseToObject(timeline) 
+                });
+            })
+            .catch(next); 
     }
 }

@@ -1,25 +1,67 @@
 const { mutipleMongooseToObject } = require('../../util/mongoose');
-const Timelines = require('../models/TimelineModel');
+const { mongooseToObject } = require('../../util/mongoose');
+const TimelineLinkin = require('../models/TimelineModel');
 
-class TimelinesController {
-    // Show all post 
-    ShowwAllTimeline(req, res, next){
-        Timelines.find({})
-            .then(timelines => {
+module.exports = {
+    // Hiển thị tất cả bài viết
+    ShowwAllTimeline: function(req, res, next) {
+        TimelineLinkin.find({})
+            .then(timeline => {
                 res.json({ 
-                    timelines: mutipleMongooseToObject(timelines)
+                    timeline: mutipleMongooseToObject(timeline)
                 });
             })
             .catch(next);
-    }
-    // Show detail post 
-    ShowDetailTimeline(req, res, next) {
-        Timelines.findOne({ slug: req.params.slug })
-            .then(timelines => {
-                res.json({ timelines: mongooseToObject(timelines) });
+    },
+    // Hiện chi tiết một bài viết 
+    DetalTimeline: function(req, res, next) {
+        TimelineLinkin.findOne({ _id: req.params.id})
+            .then(timeline => {
+                res.json({
+                    timeline: mongooseToObject(timeline)
+                });
             })
-            .catch(next);       
+            .catch(next)
+    },
+    // Tạo mới một bài viết 
+    CreateTimeline: function(req, res, next) {
+        const timeline = new TimelineLinkin(req.body);
+        timeline.save()
+            .then(() => res.send('Thêm bài viết mới thành công 🐦'))
+            .catch(next);
+    },
+    // Sửa một bài viết
+    UpdateTimeline: function(req, res, next) {
+        TimelineLinkin.updateOne({ _id: req.params.id }, req.body)
+            .then(() => res.send('Sửa bài viết thành công 🐦'))
+            .catch(next); 
+    },
+    // Xóa một bài viết
+    DeleteTimeline: function(req, res, next) {
+        TimelineLinkin.deleteOne({ _id: req.params.id }, req.body)
+            .then(() => res.send('Xóa bài viết thành công 🐦'))
+            .catch(next);
+    },
+    // Ẩn bài viết
+    HideTimeline: function(req, res, next) {
+        TimelineLinkin.delete({ _id: req.params.id })
+            .then(() => res.send("Ẩn bài viết thành công 👻"))
+            .catch(next)
+    },
+    // Hiện bài viết
+    UnhideTimeline: function(req, res, next) {
+        TimelineLinkin.restore({ _id: req.params.id })
+            .then(() => res.send("Đã bỏ ẩn bài viết 👻"))
+            .catch(next)
+    },
+    // Hiện tất cả bài viết bị ẩn
+    ShowHideTimeline: function(req, res, next) {
+        TimelineLinkin.findDeleted({})
+            .then(timeline => {
+                res.json({ 
+                    timeline: mutipleMongooseToObject(timeline) 
+                });
+            })
+            .catch(next); 
     }
 }
-
-module.exports = new TimelinesController();

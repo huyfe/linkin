@@ -3,12 +3,25 @@ const router = express.Router();
 const groupController = require('../app/controllers/GroupsController');
 
 
-// Show all api table group
-router.get('/', groupController.ShowAllGroups);
-// Tạo group
+// Tạo group mới -> [POST]/create-group
 router.post('/create-group', groupController.CreateGroup);
 
-// Xóa group
+// Cập nhật group  -> [PUT]/update-group/:id
+router.put('/update-group/:id', groupController.UpdateGroup);
+
+// Xóa group tạm thời  -> [DELETE]/trash-group/:id
+router.delete('/trash-group/:id', groupController.TrashGroup);
+
+// Khôi phục group đã xóa tạm thời -> [PATCH]/restore-group/:id
+router.patch('/restore-group/:id', groupController.RestoreGroup);
+
+//Hiện các group đã xóa tạm thời -> [GET]/show-trash
+router.get('/show-trash', groupController.ShowTrash);
+
+// Xóa vĩnh viễn group -> [DELETE]/trash-group/:id
 router.delete('/delete-group/:id', groupController.DeleteGroup);
+
+// Show tất cả group
+router.get('/', groupController.ShowAllGroups);
 
 module.exports = router;

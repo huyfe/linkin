@@ -27,7 +27,7 @@ const User = new Schema(
     }
 );
 
-User.plugin(AutoIncrement, {collection_name: 'counter_users' });
+User.plugin(AutoIncrement, {id: 'id_users' });
 
 // mongoose delete plugin
 User.plugin(mongoosedelete, { 

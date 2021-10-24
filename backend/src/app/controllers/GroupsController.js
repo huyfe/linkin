@@ -20,7 +20,7 @@ module.exports = {
     CreateGroup: function(req, res, next) {
         const groups = new Groups(req.body);
         groups.save()
-            .then(() => res.send('Add group successfully!'))
+            .then(() => res.send('Tạo group thành công!'))
             .catch(next);
     },
 

@@ -15,7 +15,7 @@ const Group = new Schema(
         id_members: {type: [{ id: Number }] },
         color_text: { type: String }, 
         color_background: { type: String },
-        id_author: {type: [{ id: Number }] }
+        id_author: {type: Number }
     }, 
     {
         _id: false,

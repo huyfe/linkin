@@ -1,13 +1,10 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Home from './Component/Home';
-import Footer from './Component/Source-layout/Footer/Footer';
-import Header from './Component/Source-layout/Header/Header';
-import Forgotpass from './Component/Users/Forgotpassword/Forgotpass';
-import Login from './Component/Users/LoginUser/Login';
-import Profile from './Component/Users/ProfileUser/Profile';
-import Register from './Component/Users/RegisterUser/Register';
-import Resetpass from './Component/Users/Resetpassword/Resetpass';
+import Home from './components/Home/index';
+import Footer from './components/Footer/index';
+import Header from './components/Header/index';
+import Register from './components/User/Register/index';
+import Login from './components/User/Login';
 
 function App() {
     return (
@@ -16,11 +13,8 @@ function App() {
                 <Header />
                 <Routes>
                     <Route path="/" element={<Home />} />
-                    <Route path="login" element={<Login />} />
                     <Route path="register" element={<Register />} />
-                    <Route path="reset-pass" element={<Resetpass />} />
-                    <Route path="forgot-pass" element={<Forgotpass />} />
-                    <Route path="profile" element={<Profile />} />
+                    <Route path="login" element={<Login />} />
                 </Routes>
                 <Footer />
             </Router>

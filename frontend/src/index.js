@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import { DataLinkin } from './Component/DataLinkin';
+import { DataLinkin } from './DataLinkin';
 // import { Provider } from "react-redux";
 // import store from './redux/store';
 

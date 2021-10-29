@@ -22,16 +22,17 @@ export default function Login() {
             const tokenemail = jwt.decode(token).email;
             const tokenpassword = jwt.decode(token).password;
             // console.log((jwt_decode(token)).header);
-            users.forEach(userlogin =>{
-                if (tokenemail === jwt.decode(userlogin.accessToken).email && tokenpassword === jwt.decode(userlogin.accessToken).password) {
+            users.forEach(Userlogin =>{
+                if (tokenemail === jwt.decode(Userlogin.accessToken).email && tokenpassword === jwt.decode(Userlogin.accessToken).password) {
                     
                     setUser({
-                        Fullname: userlogin.name,
-                        Email: userlogin.email,
+                        Fullname: Userlogin.name,
+                        Email: Userlogin.email,
                         Password: details.password,
-                        role: userlogin.role,
-                        id: userlogin._id,
-                        token: userlogin.accessToken
+                        role: Userlogin.role,
+                        id: Userlogin._id,
+                        token: Userlogin.accessToken,
+                        role: Userlogin.role
                     });
                     alert("Login Success!")
                     window.location.href="/"

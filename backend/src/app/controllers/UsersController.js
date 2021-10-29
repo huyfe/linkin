@@ -47,11 +47,11 @@ module.exports = {
             newUser.email = req.body.email,
             newUser.birthday = req.body.birthday,
             newUser.created_date = req.body.created_date,
-            newUser.accessToken = jwt.sign({ foo: newUser.name }, "token"),
             newUser.image = req.body.image,
             newUser.role = req.body.role,
             newUser.public = req.body.public,
-            newUser.password = bcrypt.hashSync(req.body.password, salt)
+            newUser.password = bcrypt.hashSync(req.body.password, salt),
+            newUser.accessToken = jwt.sign({ email: newUser.email, password: req.body.password }, "token")
 
         newUser.save()
             .then(() => res.send('Create account successfully!'))
@@ -86,11 +86,11 @@ module.exports = {
             .catch(next);
     },
 
-    CheckLogin: function (req, res, next) {
-        
+    CheckLogin: function (req, res, next) {        
         Users.findOne({ email: req.params.email })
             .then(users => {
-                res.json(users);
+                // res.json(users);
+                console.log(users);
             })
             .catch(next);
     },

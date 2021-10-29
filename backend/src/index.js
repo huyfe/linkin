@@ -6,11 +6,36 @@ const methodOverride = require('method-override');
 const route = require('./routes/index');
 const cors = require('cors');
 const db = require('./config/db');
-var http = require('http');
+const http = require('http');
+
+const socketIO = require("socket.io");
 
 // Connect database
 db.connect();
 const app = express(); // Framework
+const server = http.createServer(app)
+const io = socketIO(server, {
+  transports: ['polling'],
+  cors: {
+    cors: {
+      origin: "http://localhost:4200"
+    }
+  }
+})
+
+io.on('connection', (socket) => {
+  console.log('A user is connected');
+
+  socket.on('message', (message) => {
+    console.log(`message from ${socket.id} : ${message}`);
+  })
+
+  socket.on('disconnect', () => {
+    console.log(`socket ${socket.id} disconnected`);
+  })
+})
+
+
 require('./config/db/passport');
 
 // public
@@ -38,6 +63,6 @@ route(app);
 
 // Event listen server
 const port = 3000;
-app.listen(port, () => {
+server.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`)
 });

@@ -4,6 +4,7 @@ const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const methodOverride = require('method-override');
 const route = require('./routes/index');
+const cors = require('cors');
 const db = require('./config/db');
 var http = require('http');
 
@@ -28,6 +29,7 @@ app.use(
   }
   ));
 app.use(express.json());
+app.use(cors());
 
 app.use(methodOverride('_method'));
 

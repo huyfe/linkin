@@ -2,6 +2,8 @@ const mongoose = require('mongoose');
 const slug = require('mongoose-slug-generator');
 const mongoosedelete = require('mongoose-delete');
 const AutoIncrement = require('mongoose-sequence')(mongoose);
+const bcrypt = require('bcrypt-nodejs');
+
 
 const Schema = mongoose.Schema;
 
@@ -19,7 +21,8 @@ const User = new Schema(
         follower: {type: [{id: Number, name:String, avatar:String}]},
         following: {type: [{id: Number, name:String, avatar:String}]},
         role: {type: String},
-        slug: { type: String, slug: 'name', unique: true }
+        slug: { type: String, slug: 'name', unique: true },
+        accessToken: {type:String}
     }, 
     {
         _id: false,
@@ -28,6 +31,15 @@ const User = new Schema(
 );
 
 User.plugin(AutoIncrement, {id: 'id_users' });
+
+User.methods.encryptPassword = function(password) {
+    return bcrypt.hashSync(password, bcrypt.genSaltSync(11), null);
+};
+
+User.methods.validPassword = function(password) {
+    return bcrypt.compareSync(password, this.password);
+};
+
 
 // mongoose delete plugin
 User.plugin(mongoosedelete, { 

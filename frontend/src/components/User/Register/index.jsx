@@ -28,7 +28,6 @@ export default function Register() {
                     alert("email or name already used!")
                 }
                 if (details.email !== user.email && details.name !== user.name) {
-                    
                     axios.post(`http://localhost:3000/users/create-user`, details)
                     .then(res=>{
                         alert('Sign Up Success!');

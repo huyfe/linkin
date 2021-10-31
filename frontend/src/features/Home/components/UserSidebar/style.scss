@@ -14,6 +14,13 @@ section#user-sidebar {
         font-weight: 500;
         font-size: 20px;
     }
+    .heading-user {
+        span {
+            font-weight: 500;
+            font-size: 16px;
+            color: #B1AED9;
+        }
+    }
     .box-content {
         padding: 0;
         li {
@@ -32,7 +39,14 @@ section#user-sidebar {
             }
         }
     }
-
+    .group-box {
+        &-content {
+            margin-left: 7%;
+            .box-img {
+                margin-right: 10px;
+            }
+        }
+    }
     .user__info-box {
         margin-bottom: 15px;
         p {

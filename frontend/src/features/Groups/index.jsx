@@ -7,13 +7,15 @@ import './style.scss';
 
 export default function Groups() {
     return (
-        <div className="container-fluid">
-            <div className="row">
-                <SidebarGroupsJoin />
+        <div className="container-fluid p-0">
+            <div className="wrapper">
+                <div className="row">
+                    <SidebarGroupsJoin />
                     <section id="groupsPage" className="col-lg-6 d-flex justify-content-center">
                         <h1 className="title">Đây là trang group</h1>
                     </section>
-                <SidebarGroups />
+                    <SidebarGroups />
+                </div>
             </div>
 
         </div>

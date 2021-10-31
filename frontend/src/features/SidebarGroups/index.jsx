@@ -29,6 +29,39 @@ export default function SidebarGroupsJoin() {
                         </li>
                     </ul>
                     <button className="item__button">Tạo nhóm mới<i class="far fa-plus"></i></button>
+                    <hr className="border__hr" />
+                </div>
+                <div className="group__manager">
+                    <div className="box__title">
+                        <h4 className="title">Nhóm bạn tham gia</h4>
+                    </div>
+                    <ul className="list__item_group">
+                        <li className="item__group">
+                            <img src="images/Groups/image_group_four.png" alt="image_group_one" />
+                            <a href="#">Cộng đồng Reactjs</a>
+                        </li>
+                        <li className="item__group">
+                            <img src="images/Groups/image_group_five.png" alt="image_group_one" />
+                            <a href="#">Cộng đồng Backend</a>
+
+                        </li>
+                        <li className="item__group">
+                            <img src="images/Groups/image_group_six.png" alt="image_group_one" />
+                            <a href="#">Cộng đồng Front-end</a>
+                        </li>
+                        <li className="item__group">
+                            <img src="images/Groups/image_group_seven.png" alt="image_group_one" />
+                            <a href="#">Cộng đồng J2team</a>
+                        </li>
+                        <li className="item__group">
+                            <img src="images/Groups/image_group_eight.png" alt="image_group_one" />
+                            <a href="#">Cộng đồng Angular</a>
+                        </li>
+                        <li className="item__group">
+                            <img src="images/Groups/image_group_night.png" alt="image_group_one" />
+                            <a href="#">Cộng đồng Front-end</a>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </section>

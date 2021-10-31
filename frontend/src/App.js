@@ -6,7 +6,11 @@ import Header from './components/Header/index';
 import Register from './components/User/Register/index';
 import Login from './components/User/Login';
 import AnotherLogin from './components/User/Login/AnotherLogin';
+import ResetPassword from './components/User/ResetPassword/index';
+import Groups from './features/Groups';
+
 import { io } from "socket.io-client";
+
 
 function App() {
     useEffect(() => {
@@ -35,6 +39,8 @@ function App() {
                     <Route path="register" element={<Register />} />
                     <Route path="login" element={<Login />} />
                     <Route path="another-login" element={<AnotherLogin />} />
+                    <Route path="reset-password" element={<ResetPassword />} />
+                    <Route path="/groups" element={<Groups />} />
                 </Routes>
                 <Footer />
             </Router>

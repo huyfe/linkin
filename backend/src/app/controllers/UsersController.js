@@ -60,7 +60,12 @@ module.exports = {
 
     // Edit the account
     UpdateUser: function (req, res, next) {
-        Users.updateOne({ _id: req.params.id }, req.body)
+        const newUser = new Users(req.body);
+        const salt = bcrypt.genSaltSync(saltRounds);
+            newUser.email = req.body.email,
+            newUser.password = bcrypt.hashSync(req.body.password, salt),
+            newUser.accessToken = jwt.sign({ email: newUser.email, password: req.body.password }, "token")
+        Users.updateOne({ _id: req.params.id }, newUser)
             .then(() => res.send('Edit account successfully!'))
             .catch(next);
     },
@@ -84,14 +89,5 @@ module.exports = {
         Users.restore({ _id: req.params.id })
             .then(() => res.send('Your account has been unblock!'))
             .catch(next);
-    },
-
-    CheckLogin: function (req, res, next) {        
-        Users.findOne({ email: req.params.email })
-            .then(users => {
-                // res.json(users);
-                console.log(users);
-            })
-            .catch(next);
-    },
+    }
 }

@@ -44,8 +44,11 @@
     
             form {
                 margin-top: 32px;
-                width: 46%;
+                width: 30%;
                 height: 100%;
+                @media (max-width:1440px) {
+                    width: 46%;
+                }
                 .form-group {
                     input {
                         background: #fdfdfd;

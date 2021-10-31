@@ -25,7 +25,7 @@ const Link = new Schema(
 );
 
 // Tự động tăng id khi thêm link vào database
-Link.plugin(AutoIncrement);
+Link.plugin(AutoIncrement, { id: "id_link" });
 
 // mongoose delete plugin
 Link.plugin(mongoosedelete, {

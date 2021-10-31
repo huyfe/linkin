@@ -5,6 +5,11 @@ $text-white: #FFFFFF;
 $text-dark:#000000;
 
 section#sidebarGroups {
+    .reset-btn {
+        border: none;
+        outline: none;
+    }
+
     .box__group {
         margin-left: 20px;
 
@@ -16,11 +21,42 @@ section#sidebarGroups {
 
         }
 
+        .input-search {
+            position: relative;
+
+            input {
+                width: 100%;
+                padding: 10px 40px 10px 25px;
+                font-style: normal;
+                font-weight: normal;
+                font-size: 16px;
+                line-height: 19px;
+                background: $bg-light-gray;
+                border-radius: 10px;
+            }
+
+            label.icon__search {
+                cursor: pointer;
+                position: absolute;
+                top: 0;
+                left: 0;
+                bottom: 0;
+                display: flex;
+                align-items: center;
+                margin-bottom: 0;
+                width: 40px;
+
+                i {
+                    font-size: 20px;
+                }
+            }
+        }
+
         .list__item_group,
         .item__group {
             list-style: none;
             padding: 0;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
 
             a {
                 font-style: normal;
@@ -30,6 +66,7 @@ section#sidebarGroups {
                 color: $text-dark;
                 text-decoration: none;
                 margin-left: 10px;
+
                 &:hover {
                     color: $bg-primary;
                     transition: 0.3s;
@@ -46,22 +83,18 @@ section#sidebarGroups {
             align-items: center;
             justify-content: space-between;
             border: 1px solid $bg-primary;
+            color: $text-white;
+            padding: 0 15px;
 
             &:hover {
                 background-color: transparent;
                 transition: 0.3s;
+                color: $bg-primary;
             }
 
-            a {
-                color: $text-white;
-                text-decoration: none;
-                font-weight: normal;
-                font-size: 16px;
-                line-height: 19px;
-                &:hover {
-                    color: $bg-primary;
-                }
-            }
+        }
+        .group__manager {
+            margin-top: 20px;
         }
     }
 }

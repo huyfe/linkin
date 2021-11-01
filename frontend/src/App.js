@@ -5,6 +5,7 @@ import { io } from "socket.io-client";
 import HomeFeature from './features/Home';
 import UserFeature from './features/User';
 import GroupFeature from './features/Group';
+import CategoryFeature from './features/Category';
 
 function App() {
     useEffect(() => {
@@ -31,6 +32,7 @@ function App() {
                 <HomeFeature />
                 <UserFeature />
                 <GroupFeature />
+                <CategoryFeature />
                 {/* <Routes>
                     <Route path="register" element={<Register />} />
                     <Route path="login" element={<Login />} />

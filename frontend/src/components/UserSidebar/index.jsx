@@ -3,7 +3,7 @@ import './style.scss';
 
 function UserSideBarComponent() {
     return (
-        <section id="user-sidebar" className="col-lg-3">
+        <section id="user-sidebar">
             <div className="group-box p-3 box-sd">
                 <div className="user__info-box d-flex justify-content-start align-items-center">
                     <div className="avatar">
@@ -15,7 +15,7 @@ function UserSideBarComponent() {
                 <ul className="group-box-content box-content">
                     <li>
                         <a href="/">
-                        <span class="icon-home"></span>Link của tôi
+                            <span class="icon-home"></span>Link của tôi
                         </a>
                     </li>
                     <li>

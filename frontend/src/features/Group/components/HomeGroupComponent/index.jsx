@@ -1,9 +1,6 @@
 import React from 'react';
 import HeadingComponent from '../HeadingGroupComponent';
 import SidebarGroups from '../SidebarGroupComponent';
-import SidebarGroupsJoin from '../SidebarGroupJoinComponent';
-import TimelineGroup from '../TimelineComponent';
-
 
 function MainGroup(props) {
     return (

@@ -1,7 +1,7 @@
 import React from 'react';
 import SidebarGroupLink from '../SidebarGroupLink';
 import './style.scss';
-
+import TimelineGroup from '../TimelineComponent';
 
 function HeadingComponent(props) {
     return (
@@ -32,8 +32,8 @@ function HeadingComponent(props) {
                             <div>
                                 <span> Nhóm công khai - 10.5k thành viên</span>
                             </div>
-
                         </div>
+                        <TimelineGroup />
                     </div>
                     <div className="col-lg-3">
                         <SidebarGroupLink />

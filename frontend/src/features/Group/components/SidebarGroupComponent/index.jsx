@@ -6,7 +6,7 @@ import './style.scss';
  function SidebarGroups() {
     return (
 
-        <section id="sidebarGroups" className="col-lg-3" >
+        <section id="sidebarGroups" >
             <div className="box__group">
                 <div class="input-search">
                     <input type="search" name="" id="input-search" placeholder="Tìm kiếm nhóm" class="reset-btn" />

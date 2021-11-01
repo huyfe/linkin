@@ -4,7 +4,7 @@ import './style.scss';
 
 export default function SidebarGroupsJoin() {
     return (
-        <section id="sidebarGroups" className="col-lg-3" >
+        <section id="sidebarGroups">
             <div className="box__follow">
                 <h4 className="title">Đề xuất theo dõi</h4>
                 <div class="card">

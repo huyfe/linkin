@@ -1,14 +1,20 @@
 import React from 'react';
+import HeadingComponent from '../HeadingGroupComponent';
 import SidebarGroups from '../SidebarGroupComponent';
-import SidebarGroupsJoin from '../SidebarGroupJoinComponent';
-
 
 function MainGroup(props) {
     return (
-        <div className="container-fluid">
-            <div className="row">
-                <SidebarGroups />
-                <SidebarGroupsJoin />
+
+        <div className="group">
+            <div className="wrapper">
+                <div className="row">
+                    <div className="col-lg-3">
+                        <SidebarGroups />
+                    </div>
+                    <div className="col-lg-9">
+                        <HeadingComponent />
+                    </div>
+                </div>
             </div>
         </div>
     );

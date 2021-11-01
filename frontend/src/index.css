@@ -20,7 +20,10 @@ body {
   font-style: normal;
   font-display: block;
 }
-
+.wrapper {
+  width: calc(100% - 80px);
+  margin: 0 auto;
+}
 [class^="icon-"],
 [class*=" icon-"] {
   /* use !important to prevent issues with browser extensions that change fonts */

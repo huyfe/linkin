@@ -1,16 +1,16 @@
 import React from 'react'
+import HeadingComponent from '../HeadingGroupComponent';
 import './style.scss';
 
 
- function TimelineGroup() {
+function TimelineGroup() {
     return (
-
         <section id="timelineGroup">
+            <HeadingComponent />            
             <div className="timeline__group">
-                <h1>đây là time line</h1>
+
             </div>
         </section>
-
     )
 }
 

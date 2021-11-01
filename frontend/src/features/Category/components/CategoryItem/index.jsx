@@ -2,11 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './style.scss';
 
-FilterCategory.propTypes = {
+CategoryItem.propTypes = {
     
 };
 
-function FilterCategory(props) {
+function CategoryItem(props) {
     return (
         <div>
             
@@ -14,4 +14,4 @@ function FilterCategory(props) {
     );
 }
 
-export default FilterCategory;
+export default CategoryItem;

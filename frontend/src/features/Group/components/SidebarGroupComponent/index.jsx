@@ -1,8 +1,9 @@
 import React from 'react'
-
 import './style.scss';
-// import '../../images/Groups';
-export default function SidebarGroupsJoin() {
+
+
+
+ function SidebarGroups() {
     return (
 
         <section id="sidebarGroups" className="col-lg-3" >
@@ -68,3 +69,5 @@ export default function SidebarGroupsJoin() {
 
     )
 }
+
+export default SidebarGroups;

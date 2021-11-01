@@ -4,6 +4,7 @@ import Header from './components/Header/index';
 import { io } from "socket.io-client";
 import HomeFeature from './features/Home';
 import UserFeature from './features/User';
+import GroupFeature from './features/Group';
 
 function App() {
     useEffect(() => {
@@ -29,6 +30,7 @@ function App() {
                 <Header />
                 <HomeFeature />
                 <UserFeature />
+                <GroupFeature />
                 {/* <Routes>
                     <Route path="register" element={<Register />} />
                     <Route path="login" element={<Login />} />

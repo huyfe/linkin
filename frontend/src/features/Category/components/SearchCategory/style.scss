@@ -1,0 +1,35 @@
+.searchCategory {
+  $txt-blue: #3573e2;
+  $txt-black: #222222;
+
+  margin-bottom: 50px;
+  h1 {
+    font-weight: 500;
+    font-size: 32px;
+    line-height: 37px;
+    color: $txt-blue;
+    margin-bottom: 0;
+  }
+  &__group {
+    position: relative;
+    width: 65%;
+    label{
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 50px;
+      padding-right: 10px;
+      font-size: 14px;
+      cursor: pointer;
+    }
+    input{
+      width: 100%;
+      height: 36px;
+      outline: none;
+      border: 1px solid $txt-blue;
+      border-radius: 4px;
+      padding: 5px 10px 5px 50px;
+    }
+  }
+}

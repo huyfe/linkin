@@ -1,0 +1,27 @@
+.categoryItem {
+  $txt-blue: #3573e2;
+  $txt-black: #222222;
+
+  img {
+    display: block;
+    width: calc(100% - 26px);
+    margin: 0 auto;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+    border-radius: 4px;
+    margin-bottom: 10px;
+  }
+  a {
+    display: block;
+    text-decoration: none;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 19px;
+    text-align: center;
+    transition: 0.5s;
+    color: $txt-black;
+    &:hover {
+      color: $txt-blue;
+    }
+  }
+}

@@ -1,0 +1,38 @@
+section#timelineGroup {
+    .box-share {
+        border-radius: 5px;
+        border: 1px solid #3573E2;
+        padding: 25px;
+        .avatar {
+            width: 64px;
+            height: 64px;
+            img {
+                width: 100%;
+                height: 100%;
+                border-radius: 30px;
+                object-fit: cover;
+            }
+        }
+        .input-group {
+            width: 85%;
+            input {
+                background-color: #E7EDF4;
+                &:focus {
+                    box-shadow: none;
+                }
+            }
+        }
+    }
+    .box-post {
+        .avatar {
+            width: 64px;
+            height: 64px;
+            img {
+                width: 100%;
+                height: 100%;
+                border-radius: 30px;
+                object-fit: cover;
+            }
+        } 
+    }
+}

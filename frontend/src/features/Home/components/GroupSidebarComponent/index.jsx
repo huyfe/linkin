@@ -8,7 +8,7 @@ function GroupSideBarComponent() {
                 <p className="heading">Nhóm</p>
                 <ul className="group-box-content box-content">
                     <li>
-                        <a href="#">
+                        <a href="/">
                             <div className="box-img d-inline-block">
                                 <img src="/images/Timeline/sr1.png" alt="" />
                             </div>
@@ -16,7 +16,7 @@ function GroupSideBarComponent() {
                         </a>
                     </li>
                     <li>
-                        <a href="#">
+                        <a href="/">
                             <div className="box-img d-inline-block">
                                 <img src="/images/Timeline/sr1.png" alt="" />
                             </div>
@@ -24,7 +24,7 @@ function GroupSideBarComponent() {
                         </a>
                     </li>
                     <li>
-                        <a href="#">
+                        <a href="/">
                             <div className="box-img d-inline-block">
                                 <img src="/images/Timeline/sr1.png" alt="" />
                             </div>
@@ -45,7 +45,7 @@ function GroupSideBarComponent() {
                             <div className="box-img">
                                 <img src="/images/Timeline/r1.png" alt="" />
                             </div>
-                            <a href="#">Cộng đồng frontend</a>
+                            <a href="/">Cộng đồng frontend</a>
                         </div>
                     </li>
                     <li>
@@ -53,7 +53,7 @@ function GroupSideBarComponent() {
                             <div className="box-img">
                                 <img src="/images/Timeline/r2.png" alt="" />
                             </div>
-                            <a href="#">Cộng đồng UI/UX</a>
+                            <a href="/">Cộng đồng UI/UX</a>
                         </div>
                     </li>
                     <li>
@@ -61,7 +61,7 @@ function GroupSideBarComponent() {
                             <div className="box-img">
                                 <img src="/images/Timeline/r3.png" alt="" />
                             </div>
-                            <a href="#">VSBG</a>
+                            <a href="/">VSBG</a>
                         </div>
                     </li>
                 </ul>
@@ -75,7 +75,7 @@ function GroupSideBarComponent() {
                             <div className="box-img">
                                 <img src="/images/Timeline/huythanhxuan.jpg" alt="" />
                             </div>
-                            <a href="#">Trần Quốc Huy</a>
+                            <a href="/">Trần Quốc Huy</a>
                         </div>
                     </li>
                     <li>
@@ -83,7 +83,7 @@ function GroupSideBarComponent() {
                             <div className="box-img">
                                 <img src="/images/Timeline/huythanhxuan.jpg" alt="" />
                             </div>
-                            <a href="#">Đỗ Bá Đạt</a>
+                            <a href="/">Đỗ Bá Đạt</a>
                         </div>
                     </li>
                     <li>
@@ -91,7 +91,7 @@ function GroupSideBarComponent() {
                             <div className="box-img">
                                 <img src="/images/Timeline/huythanhxuan.jpg" alt="" />
                             </div>
-                            <a href="#">Võ Ngọc Hải</a>
+                            <a href="/">Võ Ngọc Hải</a>
                         </div>
                     </li>
                     <li>
@@ -99,7 +99,7 @@ function GroupSideBarComponent() {
                             <div className="box-img">
                                 <img src="/images/Timeline/huythanhxuan.jpg" alt="" />
                             </div>
-                            <a href="#">Lê Quốc Lập Dồn</a>
+                            <a href="/">Lê Quốc Lập Dồn</a>
                         </div>
                     </li>
                     <li>
@@ -107,7 +107,7 @@ function GroupSideBarComponent() {
                             <div className="box-img">
                                 <img src="/images/Timeline/huythanhxuan.jpg" alt="" />
                             </div>
-                            <a href="#">Nguyễn Võ Thanh Lam</a>
+                            <a href="/">Nguyễn Võ Thanh Lam</a>
                         </div>
                     </li>
                 </ul>
@@ -116,4 +116,4 @@ function GroupSideBarComponent() {
     );
 }
 
-export default GroupSideBarComponent();
+export default GroupSideBarComponent;

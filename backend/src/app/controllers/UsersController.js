@@ -4,6 +4,7 @@ const Users = require('../models/UsersModel');
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
 const jwt = require('jsonwebtoken');
+const secret = 'mysecretsshhh';
 
 module.exports = {
 
@@ -50,19 +51,34 @@ module.exports = {
             newUser.image = req.body.image,
             newUser.role = req.body.role,
             newUser.public = req.body.public,
-            newUser.password = bcrypt.hashSync(req.body.password, salt),
-            newUser.accessToken = jwt.sign({ email: newUser.email, password: req.body.password }, "token")
+            newUser.password = bcrypt.hashSync(req.body.password, salt)
 
         newUser.save()
             .then(() => res.send('Create account successfully!'))
             .catch(next);
     },
 
+    // login the account
+    Logins: async function (req, res, next) { // users.password = bcrypt.hashSync(req.body.password, bcrypt.genSaltSync(11), null)
+        const {email, password} = req.body;
+        try{
+            const existingUser = await Users.findOne({ email });
+            if(!existingUser) return res.status(404).json({ message: "Email không tồn tại" });
+            const isPasswordCorrect = await bcrypt.compare(password, existingUser.password);
+            if(!isPasswordCorrect) return res.status(404).json({ message: "Thông tin không hợp lệ" });
+
+            const Token = jwt.sign({ email: existingUser.email, id: existingUser._id }, "token", { expiresIn: "1h" }); 
+            res.status(200).json({ result: existingUser, Token });
+        }catch(error){
+            res.status(500).json({ message: 'có gì đó không ổn!' });
+        }
+    },
+
     // Edit the account
     UpdateUser: function (req, res, next) {
         const newUser = new Users(req.body);
         const salt = bcrypt.genSaltSync(saltRounds);
-            newUser.email = req.body.email,
+        newUser.email = req.body.email,
             newUser.password = bcrypt.hashSync(req.body.password, salt),
             newUser.accessToken = jwt.sign({ email: newUser.email, password: req.body.password }, "token")
         Users.updateOne({ _id: req.params.id }, newUser)

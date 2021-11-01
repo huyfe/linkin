@@ -14,18 +14,18 @@ function UserSideBarComponent() {
 
                 <ul className="group-box-content box-content">
                     <li>
-                        <a href="#">
-                            <i class="fal fa-link"></i>Link của tôi
+                        <a href="/">
+                            <i className="fal fa-link"></i>Link của tôi
                         </a>
                     </li>
                     <li>
-                        <a href="#">
-                            <i class="fal fa-history"></i>Lịch sử hoạt động
+                        <a href="/">
+                            <i className="fal fa-history"></i>Lịch sử hoạt động
                         </a>
                     </li>
                     <li>
-                        <a href="#">
-                            <i class="fal fa-users"></i>Đang theo dõi
+                        <a href="/">
+                            <i className="fal fa-users"></i>Đang theo dõi
                         </a>
                     </li>
                 </ul>
@@ -34,11 +34,11 @@ function UserSideBarComponent() {
             <div className="group-box p-3 box-sd">
                 <p className="heading-user d-flex align-items-center justify-content-between">
                     <span>Nhóm</span>
-                    <i class="fal fa-thumbtack"></i>
+                    <i className="fal fa-thumbtack"></i>
                 </p>
                 <ul className="group-box-content box-content">
                     <li>
-                        <a href="#">
+                        <a href="/">
                             <div className="box-img d-inline-block">
                                 <img src="/images/Timeline/sample.png" alt="" />
                             </div>
@@ -46,7 +46,7 @@ function UserSideBarComponent() {
                         </a>
                     </li>
                     <li>
-                        <a href="#">
+                        <a href="/">
                             <div className="box-img d-inline-block">
                                 <img src="/images/Timeline/sample.png" alt="" />
                             </div>
@@ -54,7 +54,7 @@ function UserSideBarComponent() {
                         </a>
                     </li>
                     <li>
-                        <a href="#">
+                        <a href="/">
                             <div className="box-img d-inline-block">
                                 <img src="/images/Timeline/sample.png" alt="" />
                             </div>
@@ -70,7 +70,7 @@ function UserSideBarComponent() {
                 </p>
                 <ul className="group-box-content box-content">
                     <li>
-                        <a href="#">
+                        <a href="/">
                             <div className="item d-flex justify-content-between">
                                 <div className="item-name">
                                     <div className="box-img d-inline-block">
@@ -86,7 +86,7 @@ function UserSideBarComponent() {
 
                     </li>
                     <li>
-                        <a href="#">
+                        <a href="/">
                             <div className="item d-flex justify-content-between">
                                 <div className="item-name">
                                     <div className="box-img d-inline-block">
@@ -101,7 +101,7 @@ function UserSideBarComponent() {
                         </a>
                     </li>
                     <li>
-                        <a href="#">
+                        <a href="/">
                             <div className="item d-flex justify-content-between">
                                 <div className="item-name">
                                     <div className="box-img d-inline-block">
@@ -116,7 +116,7 @@ function UserSideBarComponent() {
                         </a>
                     </li>
                     <li>
-                        <a href="#">
+                        <a href="/">
                             <div className="item d-flex justify-content-between">
                                 <div className="item-name">
                                     <div className="box-img d-inline-block">
@@ -139,7 +139,7 @@ function UserSideBarComponent() {
                 </p>
                 <ul className="group-box-content box-content">
                     <li>
-                        <a href="#">
+                        <a href="/">
                             <div className="item d-flex justify-content-between">
                                 <div className="item-name">
                                     <div className="box-img d-inline-block">
@@ -155,7 +155,7 @@ function UserSideBarComponent() {
 
                     </li>
                     <li>
-                        <a href="#">
+                        <a href="/">
                             <div className="item d-flex justify-content-between">
                                 <div className="item-name">
                                     <div className="box-img d-inline-block">
@@ -170,7 +170,7 @@ function UserSideBarComponent() {
                         </a>
                     </li>
                     <li>
-                        <a href="#">
+                        <a href="/">
                             <div className="item d-flex justify-content-between">
                                 <div className="item-name">
                                     <div className="box-img d-inline-block">
@@ -185,7 +185,7 @@ function UserSideBarComponent() {
                         </a>
                     </li>
                     <li>
-                        <a href="#">
+                        <a href="/">
                             <div className="item d-flex justify-content-between">
                                 <div className="item-name">
                                     <div className="box-img d-inline-block">
@@ -208,7 +208,7 @@ function UserSideBarComponent() {
                 </p>
                 <ul className="group-box-content box-content">
                     <li>
-                        <a href="#">
+                        <a href="/">
                             <div className="item d-flex justify-content-between">
                                 <div className="item-name">
                                     <div className="box-img d-inline-block">
@@ -228,4 +228,4 @@ function UserSideBarComponent() {
         </section>
     );
 }
-export default UserSideBarComponent();
+export default UserSideBarComponent;

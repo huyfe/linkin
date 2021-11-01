@@ -5,7 +5,7 @@
 
     .many-hands {
         img {
-            width: 100%;
+            width: 140%;
         }
     }
 
@@ -15,7 +15,7 @@
         align-items: center;
         flex-direction: column;
         width: 100%;
-        padding-top: 40px;
+        margin-top: 200px;
 
         h2 {
             font-family: Roboto;
@@ -59,6 +59,7 @@
                 }
             }
             button {
+                margin-left: auto;
                 margin-top: 22px;
                 width: 40%;
                 height: 54px;

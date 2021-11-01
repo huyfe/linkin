@@ -1,14 +1,12 @@
 import React from 'react';
-import HomePage from './pages/HomePage';
-import { Route, Routes } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
+import HomePages from './pages/HomePage';
+
 
 function HomeFeature() {
     return (
-
         <Routes>
-            <>
-                <Route path="/" element={<HomePage />} />
-            </>
+            <Route path="/" element={<HomePages />} />
         </Routes>
     );
 }

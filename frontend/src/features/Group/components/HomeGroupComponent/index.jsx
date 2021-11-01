@@ -15,7 +15,7 @@ function MainGroup(props) {
                     </div>
                     <div className="col-lg-9">
                         <div className="group__theme">
-                        <img src="images/Groups/image_theme.png" />
+                            <img src="images/Groups/image_theme.png" />
                         </div>
                         <div className="row">
                             <div className="col-lg-8">

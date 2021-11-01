@@ -15,16 +15,16 @@ export default function SidebarGroupsJoin() {
                     <h4 className="title">Nhóm bạn quản lí</h4>
                     <ul className="list__item_group">
                         <li className="item__group">
-                            <img src="images/Groups/image_group_one.png" alt="image_group_one" />
+                            <img src="images/Groups/image_group_one.png" />
                             <a href="#">Cộng đồng Nodejs</a>
                         </li>
                         <li className="item__group">
-                            <img src="images/Groups/image_group_two.png" alt="image_group_one" />
+                            <img src="images/Groups/image_group_two.png" />
                             <a href="#">Cộng đồng Htm/Css/Javascrpit</a>
 
                         </li>
                         <li className="item__group">
-                            <img src="images/Groups/image_group_three.png" alt="image_group_one" />
+                            <img src="images/Groups/image_group_three.png" />
                             <a href="#">Cộng đồng Front-end</a>
                         </li>
                     </ul>
@@ -37,28 +37,28 @@ export default function SidebarGroupsJoin() {
                     </div>
                     <ul className="list__item_group">
                         <li className="item__group">
-                            <img src="images/Groups/image_group_four.png" alt="image_group_one" />
+                            <img src="images/Groups/image_group_four.png" />
                             <a href="#">Cộng đồng Reactjs</a>
                         </li>
                         <li className="item__group">
-                            <img src="images/Groups/image_group_five.png" alt="image_group_one" />
+                            <img src="images/Groups/image_group_five.png" />
                             <a href="#">Cộng đồng Backend</a>
 
                         </li>
                         <li className="item__group">
-                            <img src="images/Groups/image_group_six.png" alt="image_group_one" />
+                            <img src="images/Groups/image_group_six.png" />
                             <a href="#">Cộng đồng Front-end</a>
                         </li>
                         <li className="item__group">
-                            <img src="images/Groups/image_group_seven.png" alt="image_group_one" />
+                            <img src="images/Groups/image_group_seven.png" />
                             <a href="#">Cộng đồng J2team</a>
                         </li>
                         <li className="item__group">
-                            <img src="images/Groups/image_group_eight.png" alt="image_group_one" />
+                            <img src="images/Groups/image_group_eight.png" />
                             <a href="#">Cộng đồng Angular</a>
                         </li>
                         <li className="item__group">
-                            <img src="images/Groups/image_group_night.png" alt="image_group_one" />
+                            <img src="images/Groups/image_group_night.png" />
                             <a href="#">Cộng đồng Front-end</a>
                         </li>
                     </ul>

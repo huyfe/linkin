@@ -1,14 +1,14 @@
 import React from 'react';
-import UserSideBarComponent from '../UserSidebar/index';
-import GroupSideBarComponent from '../GroupSidebarComponent/index';
+import UserSideBarComponent from '../../../../components/UserSidebar';
+import GroupSideBarComponent from '../../../../components/GroupSidebarComponent/index';
 
 
 function MainComponent(props) {
     return (
         <div className="container-fluid">
             <div className="row">
-                <UserSideBarComponent />
                 <GroupSideBarComponent />
+                <UserSideBarComponent />
             </div>
         </div>
     );

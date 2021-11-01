@@ -8,6 +8,7 @@ function HomeFeature() {
     return (
         <Routes>
             <Route path="/" element={<HomePages />} />
+            
             <Route path="/groups" element={<Groups />} />
         </Routes>
     );

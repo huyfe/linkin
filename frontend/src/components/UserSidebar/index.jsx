@@ -15,7 +15,7 @@ function UserSideBarComponent() {
                 <ul className="group-box-content box-content">
                     <li>
                         <a href="/">
-                            <i className="fal fa-link"></i>Link của tôi
+                        <span class="icon-home"></span>Link của tôi
                         </a>
                     </li>
                     <li>

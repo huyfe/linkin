@@ -8,6 +8,9 @@ function MainComponent(props) {
         <div className="container-fluid">
             <div className="row">
                 <GroupSideBarComponent />
+                <section className="col-lg-6"> 
+
+                </section>
                 <UserSideBarComponent />
             </div>
         </div>

@@ -6,9 +6,16 @@ import './style.scss';
 function TimelineGroup() {
     return (
         <section id="timelineGroup">
-            <HeadingComponent />            
+           
             <div className="timeline__group">
-
+                <div className="box-share">
+                    <div className="avatar">
+                        {/* <img src="images/Timeline/huythanhxuan.jpg" /> */}
+                    </div>
+                    <div className="input-group">
+                        <input type="text" className="form-control" placeholder="Write a comment..." />
+                    </div>
+                </div>
             </div>
         </section>
     )

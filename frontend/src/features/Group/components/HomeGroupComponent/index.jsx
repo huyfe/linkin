@@ -16,14 +16,6 @@ function MainGroup(props) {
                     </div>
                     <div className="col-lg-9">
                         <HeadingComponent />
-                        {/* <div className="row">
-                            <div className="col-lg-8">
-                                <TimelineGroup />
-                            </div>
-                            <div className="col-lg-4">
-                                <SidebarGroupsJoin />
-                            </div>
-                        </div> */}
                     </div>
                 </div>
             </div>

@@ -1,19 +1,21 @@
 import React from 'react'
+import SidebarGroupsJoin from '../SidebarGroupJoinComponent';
 import './style.scss';
 
 
-
- function SidebarGroups() {
+function SidebarGroups() {
     return (
 
         <section id="sidebarGroups" >
             <div className="box__group">
                 <div class="input-search">
                     <input type="search" name="" id="input-search" placeholder="Tìm kiếm nhóm" class="reset-btn" />
-                    <label class="icon__search" for="input-search"><i class="fal fa-search"></i></label>
+                    <label className="icon__search" htmlFor="input-search"><i class="fal fa-search"></i></label>
                 </div>
                 <div className="group__manager">
-                    <h4 className="title">Nhóm bạn quản lí</h4>
+                    <div className="box__title">
+                        <h4 className="title">Nhóm bạn quản lí</h4>
+                    </div>
                     <ul className="list__item_group">
                         <li className="item__group">
                             <img src="images/Groups/image_group_one.png" />
@@ -35,6 +37,7 @@ import './style.scss';
                 <div className="group__manager">
                     <div className="box__title">
                         <h4 className="title">Nhóm bạn tham gia</h4>
+                        <span className="icon-more-horizontal"></span>
                     </div>
                     <ul className="list__item_group">
                         <li className="item__group">
@@ -63,6 +66,9 @@ import './style.scss';
                             <a href="#">Cộng đồng Front-end</a>
                         </li>
                     </ul>
+                </div>
+                <div className="group__follower">
+                    <SidebarGroupsJoin />
                 </div>
             </div>
         </section>

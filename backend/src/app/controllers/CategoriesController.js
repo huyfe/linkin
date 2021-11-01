@@ -2,55 +2,75 @@ const Categories = require("../models/CategoriesModel");
 
 module.exports = {
   //Hiện tất cả danh mục -> [GET]/
-  async ShowAllCategories(req, res, next) {
-    await Categories.find({})
-      .then((categories) => res.json(categories))
-      .catch(next);
+  async ShowAllCategories(req, res) {
+    try {
+      const categories = await Categories.find({});
+      res.json(categories);
+    } catch (err) {
+      res.json({ error: err });
+    }
   },
 
   //Hiện các danh mục đã xóa mềm (Thùng rác) -> [GET]/show-trash
-  async ShowTrash(req, res, next) {
-    await Categories.findDeleted({})
-      .then((categories) => res.json(categories))
-      .catch(next);
+  async ShowTrash(req, res) {
+    try {
+      const categories = await Categories.findDeleted({});
+      res.json(categories);
+    } catch (err) {
+      res.json({ error: err });
+    }
   },
 
   //Hiện chi tiết danh mục theo Slug -> [GET]/:slug
-  async ShowCategoryBySlug(req, res, next) {
-    await Categories.findOne({ slug: req.params.slug })
-      .then((category) => res.json(category))
-      .catch(next);
+  async ShowCategoryBySlug(req, res) {
+    try {
+      const category = await Categories.findOne({ slug: req.params.slug });
+      res.json(category);
+    } catch (err) {
+      res.json({ error: err });
+    }
   },
 
   //Hiện chi tiết danh mục theo ID
-  async ShowCategoryByID(req, res, next) {
-    await Categories.findById(req.params.id)
-      .then((category) => res.json(category))
-      .catch(next);
+  async ShowCategoryByID(req, res) {
+    try {
+      const category = await Categories.findById(req.params.id);
+      res.json(category);
+    } catch (err) {
+      res.json({ error: err });
+    }
   },
 
   //Thêm danh mục -> [POST]/add-category
-  async AddCategory(req, res, next) {
-    const newCategory = req.body;
-    const category = new Categories(newCategory);
-    await category
-      .save()
-      .then(() => res.json(category))
-      .catch((err) => res.send(err));
+  async AddCategory(req, res) {
+    try {
+      const newCategory = req.body;
+      const category = new Categories(newCategory);
+      await category.save();
+      res.json(category);
+    } catch (err) {
+      res.json({ error: err });
+    }
   },
 
   //Cập nhật danh mục -> [PUT]/:id/update
-  async UpdateCategory(req, res, next) {
-    await Categories.updateOne({ _id: req.params.id }, req.body)
-      .then(() => res.send("Update successfully!"))
-      .catch(next);
+  async UpdateCategory(req, res) {
+    try {
+      await Categories.updateOne({ _id: req.params.id }, req.body);
+      res.send("Update successfully!");
+    } catch (err) {
+      res.json({ error: err });
+    }
   },
 
   //Xóa mềm danh mục -> [DELETE]/:id/trash
   async TrashCategory(req, res, next) {
-    await Categories.delete({ _id: req.params.id })
-      .then(() => res.send("Trash successfully!"))
-      .catch(next);
+    try {
+      await Categories.delete({ _id: req.params.id });
+      res.send("Trash successfully!");
+    } catch (err) {
+      res.json({ error: err });
+    }
   },
 
   //Lấy lại các danh mục đã xóa -> [PATCH]/:id/restore
@@ -61,9 +81,12 @@ module.exports = {
   },
 
   //Xóa vĩnh viễn danh mục -> [DELETE]/:id/destroy
-  async DestroyCategory(req, res, next){
-    await Categories.deleteOne({ _id: req.params.id })
-    .then(() => res.send("Destroy successfully!"))
-    .catch(next);
-  }
+  async DestroyCategory(req, res, next) {
+    try {
+      await Categories.deleteOne({ _id: req.params.id });
+      res.send("Destroy successfully!");
+    } catch (err) {
+      res.json({ error: err });
+    }
+  },
 };

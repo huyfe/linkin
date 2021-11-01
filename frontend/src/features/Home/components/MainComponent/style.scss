@@ -1,0 +1,8 @@
+.home-page {
+    h2 {
+        color: red;
+    }
+    > .container-fluid {
+        width: calc(100% - 80px);
+    }
+}

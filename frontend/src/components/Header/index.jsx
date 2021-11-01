@@ -1,5 +1,7 @@
 import React from 'react';
 import { GoogleLogout } from 'react-google-login';
+import { BrowserRouter, Routes, Route, Link, NavLink } from 'react-router-dom';
+import './style.scss';
 
 export default function Header() {
     const dataUser = localStorage.getItem("dataUser")
@@ -32,31 +34,38 @@ export default function Header() {
     }
 
     return (
-        <div >
-            {(dataUsers) ? (
-                <div className=" d-flex justify-content-between">
-                    <div>
-                        <button onClick={Home} style={{ width: "150px", height: "50px", fontSize: "18px" }} className="btn btn-light">Trang chủ</button>
-                    </div>
-                    <div className="col-7 d-flex align-items-center justify-content-center">
-                        <h3>Xin chào! {dataUsers.Fullname} </h3>
-                        {(dataUsers.TokenId) ? (
-                            <b style={{ marginLeft: "10px" }} ><GoogleLogout
-                                clientId="1022092216832-1rf2be1vf26lfoav4pbm5sfei8rentqk.apps.googleusercontent.com"
-                                buttonText="Đăng xuất" onLogoutSuccess={LogoutGoogle} /></b>
-                        ) : (
-                            <div>
-                                <button onClick={Logout} style={{ width: "120px", height: "50px", fontSize: "18px", marginLeft: "10px" }} className="btn btn-danger">Đăng xuất</button>
-                                <button onClick={Resetpass} style={{ width: "150px", height: "50px", fontSize: "18px", marginLeft: "10px" }} className="btn btn-info">Đổi mật khẩu</button>
+        <header className="header">
+            <nav className="header__menu">
+                <div className="row align-items-center">
+                    <div className="col-4">
+                        <div className="header__logo d-flex align-items-center">
+                            <NavLink to="/"> <img src="logo.svg" alt="Linkin" /></NavLink>
+                            <div className="header__search">
+                                {/* <span class="icon-search"></span> */}
+                                <i class="fal fa-search"></i>
+                                <input type="text" placeHolder="Tìm kiếm" />
                             </div>
-                        )}
-
-
+                        </div>
+                    </div>
+                    <div className="col-4">
+                        <ul className="header__main-menu nav d-flex align-items-center justify-content-center">
+                            <li><NavLink to="/"><i class="fas fa-home"></i></NavLink></li>
+                            <li><NavLink to="/follow"><i class="fas fa-user-friends"></i></NavLink></li>
+                            <li><NavLink to="/group"><i class="fas fa-users"></i></NavLink></li>
+                        </ul>
+                    </div>
+                    <div className="col-4">
+                        <div className="header__controls d-flex justify-content-end">
+                            <button className="btn btn-primary">Tạo Link</button>
+                            <button className="btn notification"><i class="far fa-bell"></i></button>
+                            <div className="user">
+                                <NavLink to="/user"><img src="images/Header/avatar.png" className="user__avatar"></img></NavLink>
+                                <button className="btn user__dropdown"><span className="icon-arrow-down"></span></button>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            ) : (
-                <h2><button onClick={Home} style={{ width: "150px", height: "50px", fontSize: "18px" }} className="btn btn-light">Trang chủ</button> + <button onClick={Logins} style={{ width: "150px", height: "50px", fontSize: "18px" }} className="btn btn-primary">Đăng nhập</button> or <button onClick={Register} style={{ width: "150px", height: "50px", fontSize: "18px" }} className="btn btn-primary">Đăng ký</button> </h2>
-            )}
-        </div>
+            </nav>
+        </header>
     );
 }

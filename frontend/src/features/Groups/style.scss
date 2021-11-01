@@ -1,13 +1,13 @@
-
-$background-primary: #3573E2;
-$background-gray: #F7F7F7;
-$bacground-light-gray:#E7EDF4;
+$bg-primary: #3573E2;
+$bg-gray: #F7F7F7;
+$bg-light-gray:#E7EDF4;
 $text-white: #FFFFFF;
 $text-dark:#000000;
 
 
-.title {
-    color: red;
-    font-size: 40px;
-    text-align: center;
+.container-fluid {
+    .wrapper {
+        width: calc(100% - 80px);
+        margin: 0 auto;
+    }
 }

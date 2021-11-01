@@ -1,16 +1,9 @@
 import React, { useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Home from './components/Home/index';
-import Footer from './components/Footer/index';
+import { BrowserRouter as Router } from 'react-router-dom';
 import Header from './components/Header/index';
-import Register from './components/User/Register/index';
-import Login from './components/User/Login';
-import AnotherLogin from './components/User/Login/AnotherLogin';
-import ResetPassword from './components/User/ResetPassword/index';
-import Groups from './features/Groups';
-
 import { io } from "socket.io-client";
-
+import HomeFeature from './features/Home';
+import UserFeature from './features/User';
 
 function App() {
     useEffect(() => {
@@ -34,15 +27,15 @@ function App() {
         <div className="App">
             <Router>
                 <Header />
-                <Routes>
-                    <Route path="/" element={<Home />} />
+                <HomeFeature />
+                <UserFeature />
+                {/* <Routes>
                     <Route path="register" element={<Register />} />
                     <Route path="login" element={<Login />} />
                     <Route path="another-login" element={<AnotherLogin />} />
                     <Route path="reset-password" element={<ResetPassword />} />
                     <Route path="/groups" element={<Groups />} />
-                </Routes>
-                <Footer />
+                </Routes> */}
             </Router>
         </div>
     );

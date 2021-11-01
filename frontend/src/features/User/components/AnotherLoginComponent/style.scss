@@ -1,0 +1,46 @@
+.Login-another {
+    .Login-component {
+        min-height: 555px;
+        background-color: #fdfdfd;
+        display: flex;
+
+        .many-hands {
+            img {
+                width: 140%;
+            }
+        }
+
+        .form-login {
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            width: 100%;
+            margin-top: 170px;
+
+            h2 {
+                font-family: Roboto;
+                font-style: normal;
+                font-weight: 900;
+                font-size: 48px;
+                line-height: 56px;
+                text-align: center;
+                color: #3573e2;
+            }
+
+            p {
+                font-family: Roboto;
+                font-style: normal;
+                font-weight: normal;
+                font-size: 20px;
+                line-height: 23px;
+                text-align: center;
+                color: rgb(165, 159, 159);
+
+                a {
+                    color: #3573e2;
+                    text-decoration: none;
+                }
+            }
+        }
+    }
+}

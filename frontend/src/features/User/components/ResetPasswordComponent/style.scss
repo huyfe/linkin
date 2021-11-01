@@ -1,0 +1,87 @@
+.Resetpass-component {
+    min-height: 555px;
+    background-color: #fdfdfd;
+    display: flex;
+
+    .many-hands {
+        img {
+            width: 140%;
+        }
+    }
+
+    .form-resetpass {
+        display: flex;
+        // justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        width: 100%;
+        margin-top: 200px;
+
+        h2 {
+            font-family: Roboto;
+            font-style: normal;
+            font-weight: 900;
+            font-size: 48px;
+            line-height: 56px;
+            text-align: center;
+            color: #3573e2;
+        }
+
+        p {
+            font-family: Roboto;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 20px;
+            line-height: 23px;
+            text-align: center;
+            color: rgb(165, 159, 159);
+
+            a {
+                color: #3573e2;
+            }
+        }
+
+        form {
+            margin-top: 32px;
+            height: 100%;
+            width: 30%;
+            height: 100%;
+            @media (max-width: 1440px) {
+                width: 46%;
+            }
+            .form-group {
+                input {
+                    background: #fdfdfd;
+                    border: 2px solid #3573e2;
+                    box-sizing: border-box;
+                    border-radius: 15px;
+                    height: 66px;
+                }
+            }
+            button {
+                margin-left: auto;
+                margin-top: 22px;
+                width: 40%;
+                height: 54px;
+                background: #3573e2;
+                border-radius: 15px;
+
+                font-family: Roboto;
+                font-style: normal;
+                font-weight: 500;
+                font-size: 24px;
+                line-height: 28px;
+                text-align: center;
+                color: #ffffff;
+                border: none;
+                transition: 0.3s;
+                &:hover {
+                    background-color: transparent;
+                    border: 2px solid #3573e2;
+                    transition: 0.3s;
+                    color: #3573e2;
+                }
+            }
+        }
+    }
+}

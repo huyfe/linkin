@@ -1,16 +1,19 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import { Routes, Route } from 'react-router-dom';
+import AnotherLoginPage from './pages/AnotherLoginPage';
+import LoginPage from './pages/LoginPage';
+import RegisterPage from './pages/RegisterPage';
+import ResetPassPage from './pages/ResetPassPage';
 
-index.propTypes = {
-
-};
-
-function index(props) {
+function UserFeature() {
     return (
-        <div>
-
-        </div>
+        <Routes>
+            <Route path="login" element={<LoginPage />} />
+            <Route path="another-login" element={<AnotherLoginPage />} />
+            <Route path="register" element={<RegisterPage />} />
+            <Route path="reset-password" element={<ResetPassPage />} />
+        </Routes>
     );
 }
 
-export default index;
+export default UserFeature;

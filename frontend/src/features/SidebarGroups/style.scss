@@ -1,0 +1,103 @@
+$bg-primary: #3573E2;
+$bg-gray: #F7F7F7;
+$bg-light-gray:#E7EDF4;
+$text-white: #FFFFFF;
+$text-dark:#000000;
+
+section#sidebarGroups {
+    .reset-btn {
+        border: none;
+        outline: none;
+    }
+
+    .box__group {
+
+        .title {
+            font-style: normal;
+            font-weight: 500;
+            font-size: 20px;
+            line-height: 23px;
+
+        }
+
+        .input-search {
+            position: relative;
+
+            input {
+                width: 100%;
+                padding: 10px 40px 10px 25px;
+                font-style: normal;
+                font-weight: normal;
+                font-size: 16px;
+                line-height: 19px;
+                background: $bg-light-gray;
+                border-radius: 10px;
+            }
+
+            label.icon__search {
+                cursor: pointer;
+                position: absolute;
+                top: 0;
+                left: 0;
+                bottom: 0;
+                display: flex;
+                align-items: center;
+                margin-bottom: 0;
+                width: 40px;
+
+                .fa-search {
+                    font-size: 20px;
+                }
+            }
+        }
+
+        .list__item_group,
+        .item__group {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 10px;
+
+            a {
+                font-style: normal;
+                font-weight: normal;
+                font-size: 20px;
+                line-height: 23px;
+                color: $text-dark;
+                text-decoration: none;
+                margin-left: 10px;
+
+                &:hover {
+                    color: $bg-primary;
+                    transition: 0.3s;
+                }
+            }
+        }
+
+        .item__button {
+            background-color: $bg-primary;
+            width: 170px;
+            height: 50px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border: 1px solid $bg-primary;
+            color: $text-white;
+            padding: 0 15px;
+            margin-top: 10px;
+            &:hover {
+                background-color: transparent;
+                transition: 0.3s;
+                color: $bg-primary;
+            }
+
+        }
+        .border__hr {
+            border: 1px solid $bg-primary;
+        }
+
+        .group__manager {
+            margin-top: 20px;
+        }
+    }
+}

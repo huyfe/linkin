@@ -18,7 +18,7 @@ const Category = new Schema(
     },
     public: { type: Number, default: 0 },
     id_links: { type: Array, default: [] },
-    id_user_or_group: { type: Number, default: 0 },
+    id_user_or_group: { type: Number },
     color_text: { type: String },
     color_bg: { type: String },
     role: { type: Number, default: 0 },

@@ -11,7 +11,7 @@ function HeadingComponent(props) {
                     <img src="images/Groups/image_theme.png" />
                 </div>
                 <div className="row ">
-                    <div className="timeline__heading col-lg-9 dark">
+                    <div className="timeline__heading col-lg-8 dark">
                         <div className="box__heading">
                             <div className="title d-flex justify-content-between align-items-center">
                                 <h3 className="title__heading">Cộng đồng UI/UX</h3>
@@ -35,7 +35,7 @@ function HeadingComponent(props) {
                         </div>
                         <TimelineGroup />
                     </div>
-                    <div className="col-lg-3">
+                    <div className="col-lg-4">
                         <SidebarGroupLink />
                     </div>
                 </div>

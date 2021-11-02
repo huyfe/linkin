@@ -48,7 +48,7 @@ aside#sidebarGroupLink {
 
                 &:hover {
                     color: $bg-primary;
-                    transition: 0.3s;
+                    transition: all 0.25s;
                 }
             }
         }
@@ -60,8 +60,8 @@ aside#sidebarGroupLink {
         .item__button {
             background-color: $bg-primary;
             width: 170px;
-            height: 50px;
-            border-radius: 10px;
+            height: 40px;
+            border-radius: 4px;
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -72,7 +72,7 @@ aside#sidebarGroupLink {
 
             &:hover {
                 background-color: transparent;
-                transition: 0.3s;
+                transition: all 0.25s;
                 color: $bg-primary;
             }
 
@@ -84,6 +84,7 @@ aside#sidebarGroupLink {
 
         .group__join {
             margin-top: 20px;
+
             .box__title {
                 display: flex;
                 justify-content: space-between;

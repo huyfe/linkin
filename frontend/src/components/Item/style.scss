@@ -10,6 +10,9 @@
 
         &:hover {
             background-color: #d4e4ff62;
+            .item__name {
+                color: #3573e2;
+            }
         }
     }
     &__image {

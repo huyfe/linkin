@@ -2,6 +2,7 @@ import React from 'react';
 import { GoogleLogout } from 'react-google-login';
 import { BrowserRouter, Routes, Route, Link, NavLink } from 'react-router-dom';
 import './style.scss';
+import { MDBBtn } from 'mdb-react-ui-kit';
 
 export default function Header() {
     const dataUser = localStorage.getItem("dataUser")
@@ -50,17 +51,17 @@ export default function Header() {
                     <div className="col-4">
                         <ul className="header__main-menu nav d-flex align-items-center justify-content-center">
                             <li><NavLink to="/"><i class="fas fa-home"></i></NavLink></li>
-                            <li><NavLink to="/follow"><i class="fas fa-user-friends"></i></NavLink></li>
-                            <li><NavLink to="/group"><i class="fas fa-users"></i></NavLink></li>
+                            <li><NavLink to="/follows"><i class="fas fa-user-friends"></i></NavLink></li>
+                            <li><NavLink to="/groups"><i class="fas fa-users"></i></NavLink></li>
                         </ul>
                     </div>
                     <div className="col-4">
                         <div className="header__controls d-flex justify-content-end">
-                            <button className="btn btn-primary">Tạo Link</button>
+                            <MDBBtn className="btn btn-primary">Tạo Link</MDBBtn>
                             <button className="btn notification"><i class="far fa-bell"></i></button>
                             <div className="user">
-                                <NavLink to="/user"><img src="images/Header/avatar.png" className="user__avatar"></img></NavLink>
-                                <button className="btn user__dropdown"><span className="icon-arrow-down"></span></button>
+                                <NavLink to="/users"><img src="images/Header/avatar.png" className="user__avatar"></img></NavLink>
+                                <MDBBtn className="btn user__dropdown"><span className="icon-arrow-down"></span></MDBBtn>
                             </div>
                         </div>
                     </div>

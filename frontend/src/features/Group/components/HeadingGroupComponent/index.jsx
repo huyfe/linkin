@@ -1,22 +1,33 @@
 import React from 'react';
-import SidebarGroupsJoin from '../SidebarGroupJoinComponent';
+import SidebarGroupLink from '../SidebarGroupLink';
+import './style.scss';
 import TimelineGroup from '../TimelineComponent';
 
 function HeadingComponent(props) {
     return (
         <>
-            <div className="row">
-                <div className="group__theme col-lg-12">
+            <div className="group__heading">
+                <div className="group__theme ">
                     <img src="images/Groups/image_theme.png" />
                 </div>
-                <div className="row">
+                <div className="row ">
                     <div className="timeline__heading col-lg-9 dark">
-                        <div className="box-heading mb-5">
+                        <div className="box__heading">
                             <div className="title d-flex justify-content-between align-items-center">
-                                <h1>Cộng đồng UI/UX</h1>
-                                <span className="button-function">
-                                    Đã tham gia <span class="icon-arrow-down"></span>
-                                </span>
+                                <h3 className="title__heading">Cộng đồng UI/UX</h3>
+                                <form>
+                                    <div class="input-search">
+                                        <label className="icon__search" htmlFor="input-search"><i class="fal fa-search"></i></label>
+                                    </div>
+                                    <div class="form-group">
+                                        <select class="form-control" id="sel1" name="sellist1">
+                                            <option>Đã tham gia</option>
+                                            <option>2</option>
+                                            <option>3</option>
+                                            <option>4</option>
+                                        </select>
+                                    </div>
+                                </form>
                             </div>
                             <div>
                                 <span> Nhóm công khai - 10.5k thành viên</span>
@@ -25,7 +36,7 @@ function HeadingComponent(props) {
                         <TimelineGroup />
                     </div>
                     <div className="col-lg-3">
-                        <SidebarGroupsJoin />
+                        <SidebarGroupLink />
                     </div>
                 </div>
             </div>

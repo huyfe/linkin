@@ -9,15 +9,17 @@ CategoryPage.propTypes = {};
 function CategoryPage(props) {
   return (
     <section id="categoryPage">
-      <div className="wrapper">
-        <div className="row">
+      <div className="container-fluid">
+        <div className="row no-gutters">
           <div className="col-lg-3 p-0">
             <FilterCategory />
           </div>
           <div className="col-lg-6 p-0">
             <MainCategory />
           </div>
-          <UserSideBarComponent />
+          <div className="col-lg-3 p-0">
+            <UserSideBarComponent />
+          </div>
         </div>
       </div>
     </section>

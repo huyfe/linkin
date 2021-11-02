@@ -1,5 +1,5 @@
 import React from "react";
-import UserSideBarComponent from "../../../components/UserSidebar";
+import AsideRight from "../../../components/AsideRight";
 import FilterCategory from "../components/FilterCategory";
 import MainCategory from "../components/MainCategory";
 import PropTypes from "prop-types";
@@ -18,7 +18,7 @@ function CategoryPage(props) {
             <MainCategory />
           </div>
           <div className="col-lg-3 p-0">
-            <UserSideBarComponent />
+            <AsideRight />
           </div>
         </div>
       </div>

@@ -1,5 +1,5 @@
 import React from 'react';
-import UserSideBarComponent from '../../../../components/UserSidebar';
+import AsideRight from '../../../../components/AsideRight';
 import AsideLeft from '../../../../components/AsideLeft/index';
 import './style.scss';
 
@@ -15,7 +15,7 @@ function MainComponent(props) {
 
                     </main>
                     <div className="col-lg-3">
-                        <UserSideBarComponent />
+                        <AsideRight />
                     </div>
                 </div>
             </div>

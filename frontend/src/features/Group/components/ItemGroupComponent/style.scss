@@ -4,7 +4,7 @@ $bg-light-gray:#E7EDF4;
 $text-white: #FFFFFF;
 $text-dark:#000000;
 
-section#sidebarGroups {
+section#itemGroupComponent{
     .reset-btn {
         border: none;
         outline: none;
@@ -27,6 +27,7 @@ section#sidebarGroups {
             border-radius: 10px;
             margin-bottom: 25px;
             max-height: 320px;
+           
 
             .card-body {
                 .card-title {
@@ -55,6 +56,7 @@ section#sidebarGroups {
                 .box__image_text {
                     display: flex;
                     margin: 12px 0;
+
 
                     .card-text {
                         font-family: 'Roboto', sans-serif;

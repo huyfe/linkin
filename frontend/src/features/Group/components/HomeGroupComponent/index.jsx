@@ -1,6 +1,10 @@
 import React from 'react';
 import HeadingComponent from '../HeadingGroupComponent';
-import SidebarGroups from '../SidebarGroupComponent';
+import ManagerGroupComponent from '../ManagerGroupComponent';
+import GroupJoinComponent from '../GroupJoinComponent';
+import GroupSearchComponent from '../GroupSearchComponent';
+import GroupFollowComponent from '../GroupFollowComponent';
+
 
 function MainGroup(props) {
     return (
@@ -9,7 +13,10 @@ function MainGroup(props) {
             <div className="wrapper">
                 <div className="row">
                     <div className="col-lg-3">
-                        <SidebarGroups />
+                        <GroupSearchComponent />
+                        <ManagerGroupComponent />
+                        <GroupJoinComponent />
+                        <GroupFollowComponent />
                     </div>
                     <div className="col-lg-9">
                         <HeadingComponent />

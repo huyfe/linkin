@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Abel|Abril+Fatface|Alegreya|Arima+Madurai|Dancing+Script|Dosis|Merriweather|Oleo+Script|Overlock|PT+Serif|Pacifico|Playball|Playfair+Display|Share|Unica+One|Vibur');
-.Login-form {
-    .Login-component {
+.ForgotPass-form {
+    .ForgotPass-component {
         min-height: 555px;
         background-color: #fdfdfd;
         display: flex;
@@ -11,12 +11,12 @@
             }
         }
 
-        .form-login {
+        .form-ForgotPass {
             display: flex;
             align-items: center;
             flex-direction: column;
             width: 100%;
-            margin-top: 60px;
+            margin-top: 160px;
 
             h2 {
                 font-family: Roboto;
@@ -44,7 +44,7 @@
             }
 
             .icon-login{
-                margin-top: 20px;
+                margin-top: 10px;
                 a{
                     margin-left: 12px;
                     margin-right: 12px;
@@ -68,24 +68,7 @@
                         box-sizing: border-box;
                         border-radius: 15px;
                         height: 88px;
-                    }
-                    span{
-                        position: relative;
-                        float: right;
-                        #eye {
-                            background: transparent;
-                            color: #333;
-                            margin-left: -40px;
-                            margin-top: -50px;
-                            border-radius: 0px 5px 5px 0px;
-                          
-                            position: absolute;
-                            z-index: 5;
-                            
-                            cursor: pointer;
-                        }
-                    }
-                    
+                    }   
                 }
 
                 .forgot-pass{

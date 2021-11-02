@@ -7,12 +7,11 @@ import {
   MDBDropdownLink,
   MDBBtn,
 } from "mdb-react-ui-kit";
-import PropTypes from "prop-types";
 import "./style.scss";
 
 CategoryItem.propTypes = {};
 
-function CategoryItem(props) {
+function CategoryItem() {
   return (
     <div className="categoryItem">
       <MDBDropdown dropright className="categoryItem__dropdown">

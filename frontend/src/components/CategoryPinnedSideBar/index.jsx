@@ -26,7 +26,7 @@ function CategoryPinnedSideBar(props) {
 
     return (
         <div className="category-pinned-sidebar">
-            <h3 className="d-flex justify-content-between align-items-center">Danh mục đã ghim <i class="fal fa-thumbtack"></i></h3>
+            <h3 className="d-flex justify-content-between align-items-center">Danh mục đã ghim <i className="fal fa-thumbtack"></i></h3>
             <ul>
                 {listCategoryPinned}
             </ul>

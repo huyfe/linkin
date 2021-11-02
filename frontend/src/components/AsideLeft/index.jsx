@@ -6,7 +6,7 @@ import SuggestFollowSideBar from '../SuggestFollowSideBar';
 
 function AsideLeft() {
     return (
-        <aside class="aside-left">
+        <aside className="aside-left">
             <GroupSideBar></GroupSideBar>
 
             <SuggestGroupSideBar></SuggestGroupSideBar>

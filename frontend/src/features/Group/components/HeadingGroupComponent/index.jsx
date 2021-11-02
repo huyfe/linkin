@@ -16,11 +16,11 @@ function HeadingComponent(props) {
                             <div className="title d-flex justify-content-between align-items-center">
                                 <h3 className="title__heading">Cộng đồng UI/UX</h3>
                                 <form>
-                                    <div class="input-search">
+                                    <div className="input-search">
                                         <label className="icon__search" htmlFor="input-search"><i class="fal fa-search"></i></label>
                                     </div>
-                                    <div class="form-group">
-                                        <select class="form-control" id="sel1" name="sellist1">
+                                    <div className="form-group">
+                                        <select className="form-control" id="sel1" name="sellist1">
                                             <option>Đã tham gia</option>
                                             <option>2</option>
                                             <option>3</option>

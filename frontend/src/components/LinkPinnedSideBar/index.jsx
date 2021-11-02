@@ -26,7 +26,7 @@ function LinkPinnedSideBar(props) {
 
     return (
         <div className="link-pinned-sidebar">
-            <h3 className="d-flex justify-content-between align-items-center">Link đã ghim <i class="fal fa-thumbtack"></i></h3>
+            <h3 className="d-flex justify-content-between align-items-center">Link đã ghim <i className="fal fa-thumbtack"></i></h3>
             <ul>
                 {listLinkPinned}
             </ul>

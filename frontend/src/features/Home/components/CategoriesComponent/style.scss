@@ -1,0 +1,23 @@
+.categories {
+    margin-top: 40px;
+    .category-create {
+        height: 200px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        border: 1px solid #d4e7f6;
+        box-sizing: border-box;
+        border-radius: 20px;
+    }
+
+    .splide__arrow {
+        transition: all 0.2s;
+        &:disabled {
+            opacity: 0;
+            visibility: hidden;
+        }
+    }
+}

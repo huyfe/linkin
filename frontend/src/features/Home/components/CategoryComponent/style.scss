@@ -1,0 +1,37 @@
+.category {
+    &__background {
+        height: 200px;
+        display: flex;
+        justify-content: center;
+        align-items: flex-end;
+        padding: 15px;
+
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+
+        border: 1px solid #d4e7f6;
+        border-radius: 20px;
+
+        transition: all 0.3s;
+
+        &:hover {
+            filter: brightness(80%);
+        }
+
+        h3 {
+            font-family: "Roboto", sans-serif;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 16px;
+            line-height: 19px;
+            text-align: center;
+
+            color: #222222;
+
+            padding: 10px;
+            background: linear-gradient(0deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)), #3cc13b;
+            border-radius: 4px;
+        }
+    }
+}

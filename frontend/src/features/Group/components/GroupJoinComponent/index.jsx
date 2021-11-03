@@ -29,8 +29,6 @@ function GroupJoinComponent(props) {
             <ul>
                 {listGroupJoin}
             </ul>
-            <div className="btn-create">
-            </div>
         </div>
     );
 }

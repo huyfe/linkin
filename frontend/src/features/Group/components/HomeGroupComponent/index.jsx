@@ -1,9 +1,9 @@
 import React from 'react';
-import HeadingComponent from '../HeadingGroupComponent';
 import ManagerGroupComponent from '../ManagerGroupComponent';
 import GroupJoinComponent from '../GroupJoinComponent';
 import GroupSearchComponent from '../GroupSearchComponent';
 import GroupFollowComponent from '../GroupFollowComponent';
+import HeadingGroupComponent from '../HeadingGroupComponent';
 
 
 function MainGroup(props) {
@@ -19,7 +19,7 @@ function MainGroup(props) {
                         <GroupFollowComponent />
                     </div>
                     <div className="col-lg-9">
-                        <HeadingComponent />
+                        <HeadingGroupComponent />
                     </div>
                 </div>
             </div>

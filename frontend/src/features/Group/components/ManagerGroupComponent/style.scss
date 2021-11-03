@@ -8,6 +8,7 @@ $text-dark:#000000;
     border-bottom: 1px solid #3574e26e;
     padding-bottom: 35px;
     margin-top: 40px;
+
     h3 {
         font-family: "Roboto", sans-serif;
         font-style: normal;
@@ -17,28 +18,38 @@ $text-dark:#000000;
         margin-bottom: 15px;
         color: #3573e2;
     }
+
     ul {
         padding: 0;
     }
+
     .btn__join {
         .item__button {
             background-color: $bg-primary;
             width: 170px;
             height: 40px;
             border-radius: 4px;
+            font-size: 16px;
+            line-height: 19px;
             display: flex;
             align-items: center;
             justify-content: space-between;
             border: 1px solid $bg-primary;
             color: $text-white;
             padding: 0 15px;
+            text-transform: initial;
+
+            i.fa-plus {
+                font-size: 13px;
+            }
+
             &:hover {
                 background-color: transparent;
                 transition: all 0.25s;
                 color: $bg-primary;
             }
-    
+
         }
     }
-    
+
 }

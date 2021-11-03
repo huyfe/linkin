@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import './style.scss';
-import ItemGroupComponent from '../ItemGroupComponent/index';
+import ItemGroupFollowComponent from '../ItemGroupFollowComponent/index';
 
 GroupFollowComponent.propTypes = {
 
@@ -11,7 +11,7 @@ function GroupFollowComponent(props) {
 
     const listGroupFollowData = [
         {
-            image: 'images/Groups/image_group_join.png', href: "/",
+            image: 'images/Groups/image_group_join.png',
             title: "Cộng Đồng Front-End",
             numbers: "5100",
             countLink: "8500",
@@ -32,12 +32,12 @@ function GroupFollowComponent(props) {
     const iconPlus = "icon-plus";
     const listGroupFollow = listGroupFollowData.map(group => {
         return (
-            <ItemGroupComponent image={group.image} title={group.title} numbers={group.numbers} countLink={group.countLink} href={group.href} iconPlus={iconPlus}></ItemGroupComponent>
+            <ItemGroupFollowComponent image={group.image} title={group.title} numbers={group.numbers} countLink={group.countLink} href={group.href} iconPlus={iconPlus}></ItemGroupFollowComponent>
         );
     });
 
     return (
-        <div className="suggest-group-sidebar">
+        <div className="group-sidebar-follow">
             <h3>Đề xuất theo dõi</h3>
             <ul>
                 {listGroupFollow}

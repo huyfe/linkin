@@ -8,15 +8,31 @@ import RegisterPage from './pages/RegisterPage';
 import ResetPassPage from './pages/ResetPassPage';
 
 function UserFeature() {
+    const dataUser = localStorage.getItem("dataUser")
+    const dataUsers = JSON.parse(dataUser)
+
     return (
-        <Routes>
-            <Route path="login" element={<LoginPage />} />
-            <Route path="another-login" element={<AnotherLoginPage />} />
-            <Route path="register" element={<RegisterPage />} />
-            <Route path="reset-password" element={<ResetPassPage />} />
-            <Route path="forgot-password" element={<ForgotPassPage />} />
-            <Route path="history" element={<ActivityHistoryPage />} />
-        </Routes>
+        (dataUsers) ? (
+            <Routes>
+                <Route path="login" element={<LoginPage />} />
+                <Route path="another-login" element={<AnotherLoginPage />} />
+                <Route path="register" element={<RegisterPage />} />
+                <Route path="reset-password" element={<ResetPassPage />} />
+                <Route path="forgot-password" element={<ForgotPassPage />} />
+                <Route path="history" element={<ActivityHistoryPage />} />
+            </Routes>
+
+        ) : (
+            <Routes>
+                <Route path="login" element={<LoginPage />} />
+                <Route path="another-login" element={<AnotherLoginPage />} />
+                <Route path="register" element={<RegisterPage />} />
+                <Route path="reset-password" element={<LoginPage />} />
+                <Route path="forgot-password" element={<ForgotPassPage />} />
+                <Route path="history" element={<ActivityHistoryPage />} />
+            </Routes>
+        )
+
     );
 }
 

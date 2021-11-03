@@ -1,11 +1,13 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import FormLogin from './FormLogin';
 import './style.scss';
 
 export default function Login() {
     // const dataUser = localStorage.getItem("dataUser")
     // const dataUsers = JSON.parse(dataUser)
+    const navigate = useNavigate();
 
     const [user, setUser] = useState(null);
 
@@ -34,7 +36,7 @@ export default function Login() {
                                 AccessToken: res.data.Token
                             });
                             alert("Đăng nhập thành công!")
-                            window.location.href = "/";
+                            navigate('/');
                         }
                     } else {
                         const error = new Error(res.error);

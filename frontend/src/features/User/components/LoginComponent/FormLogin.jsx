@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-
-
+import { Link } from 'react-router-dom';
 
 export default function FormLogin({ Login }) {
 
@@ -25,8 +24,6 @@ export default function FormLogin({ Login }) {
             this.classList.toggle('fa-eye-slash');
         });
     }
-    
-
 
     return (
         <div className="Login-component">
@@ -35,12 +32,12 @@ export default function FormLogin({ Login }) {
             </div>
             <div className="form-login">
                 <h2>Đăng nhập</h2>
-                <p>Chưa có tài khoản? &nbsp; <a href="/register">Đăng ký ngay!</a></p>
+                <p>Chưa có tài khoản? &nbsp; <Link to="/register">Đăng ký ngay!</Link></p>
                 <div className="icon-login">
-                    <a href="/another-login"><img src="images/Users/icon_chrome.png" alt="" /></a>
-                    <a href="/login" className="fb-icons"><img src="images/Users/fb.png" alt="" /></a>
-                    <a href="/login"><img src="images/Users/twitter.png" alt="" /></a>
-                    <a href="/login"><img src="images/Users/icon_linkin.png" alt="" /></a>
+                    <Link to="/another-login"><img src="images/Users/icon_chrome.png" alt="" /></Link>
+                    <Link to="/login" className="fb-icons"><img src="images/Users/fb.png" alt="" /></Link>
+                    <Link to="/login"><img src="images/Users/twitter.png" alt="" /></Link>
+                    <Link to="/login"><img src="images/Users/icon_linkin.png" alt="" /></Link>
                 </div>
                 <form className="form d-flex flex-column" onSubmit={submitHandlers}>
                     <div className="form-group">
@@ -53,7 +50,7 @@ export default function FormLogin({ Login }) {
                         </span>
                     </div>
                     <div className="forgot-pass d-flex justify-content-end">
-                        <a href="/forgot-password">Quên mật khẩu</a>
+                        <Link to="/forgot-password">Quên mật khẩu</Link>
                     </div>
                     <button type="submit" className="pull-right">Đăng nhập</button>
                 </form>

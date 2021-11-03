@@ -1,11 +1,14 @@
 import React, { useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { DataContext } from '../../../../DataLinkin';
 import FormResetPass from './FormResetPass';
 import './style.scss';
 import axios from 'axios';
 const jwt = require('jsonwebtoken');
 
+
 export default function ResetPassword() {
+    const navigate = useNavigate();
     const value = useContext(DataContext)
     const [{ users }] = value.users
     const dataUser = localStorage.getItem("dataUser")
@@ -25,7 +28,7 @@ export default function ResetPassword() {
                         axios.patch(`http://localhost:3000/users/edit-user/` + dataUsers.Id, details)
                             .then(res => {
                                 alert('Đổi mật khẩu thành công!');
-                                window.location.href = "/"
+                                navigate('/');
                             })
                             .catch(err => {
                                 console.log(err);

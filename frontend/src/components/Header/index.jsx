@@ -1,36 +1,26 @@
 import React from 'react';
 import { GoogleLogout } from 'react-google-login';
-import { BrowserRouter, Routes, Route, Link, NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import './style.scss';
-import { MDBBtn, MDBBadge } from 'mdb-react-ui-kit';
+import { MDBBtn } from 'mdb-react-ui-kit';
 
 export default function Header() {
     const dataUser = localStorage.getItem("dataUser")
     const dataUsers = JSON.parse(dataUser)
+    const navigate = useNavigate();
 
     const Logout = () => {
-        localStorage.removeItem("dataUser")
-    }
-
-    const Home = () => {
-        window.location.href = "/";
-    }
-
-    const Resetpass = () => {
-        window.location.href = "/reset-password"
+        localStorage.removeItem("dataUser");
+        navigate('/login');
     }
 
     const Logins = () => {
-        window.location.href = "/login"
-    }
-
-    const Register = () => {
-        window.location.href = "/register"
+        navigate('/login');
     }
 
     const LogoutGoogle = () => {
         localStorage.removeItem("dataUser")
-        window.location.href = "/another-login";
+        navigate('/another-login');
     }
 
     return (
@@ -58,14 +48,14 @@ export default function Header() {
                         <div className="header__controls d-flex justify-content-end">
                             {(dataUsers) ? (
                                 (dataUsers.TokenId) ? (
-                                    <button className="notification2"><GoogleLogout
+                                    <MDBBtn className="notification2"><GoogleLogout
                                         clientId="1022092216832-1rf2be1vf26lfoav4pbm5sfei8rentqk.apps.googleusercontent.com"
-                                        buttonText="Đăng xuất" onLogoutSuccess={LogoutGoogle} /></button>
+                                        buttonText="Đăng xuất" onLogoutSuccess={LogoutGoogle} /></MDBBtn>
                                 ) : (
-                                    <Link to="/" onClick={Logout} className="btn btn-light notification">Đăng xuất</Link>
+                                    <MDBBtn onClick={Logout} className="btn btn-light notification">Đăng xuất</MDBBtn>
                                 )
                             ) : (
-                                <Link to="/login" className="btn btn-primary notification">Đăng nhập</Link>
+                                <MDBBtn onClick={Logins} className="btn btn-primary notification">Đăng nhập</MDBBtn>
                             )}
 
                             <MDBBtn className="btn btn-primary">Tạo Link</MDBBtn>

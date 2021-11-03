@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import './style.scss';
 import { GoogleLogin } from 'react-google-login';
+import { useNavigate } from 'react-router-dom';
 
 
 export default function AnotherLoginComponent() {
-
+    const navigate = useNavigate();
     const [user, setUser] = useState(null);
     
 
@@ -23,7 +24,7 @@ export default function AnotherLoginComponent() {
             TokenId: response.tokenId
         });
         alert("Đăng nhập Google thành công!");
-        window.location.href = "/"
+        navigate('/');
     }
 
     const ErrorLogin = (response) => {

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 
 export default function FormRegister({ Register }) {
@@ -30,7 +31,7 @@ export default function FormRegister({ Register }) {
             </div>
             <div className="form-register">
                 <h2>Đăng ký</h2>
-                <p>Đã có tài khoản? &nbsp; <a href="/login">Đăng nhập ngay!</a></p>
+                <p>Đã có tài khoản? &nbsp; <Link to="/login">Đăng nhập ngay!</Link></p>
                 <form className="form d-flex flex-column" onSubmit={submitHandlers}>
                     <div className="form-group">
                         <input className="form-control" type="text" placeholder="Họ và tên" name="Name" id="Name" onChange={e => setDetails({ ...details, name: e.target.value })} value={details.name} />

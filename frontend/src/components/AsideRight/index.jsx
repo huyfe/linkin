@@ -1,6 +1,6 @@
 import React from 'react';
 import './style.scss';
-import UserSideBar from '../UserSideBar/index';
+import UserSideBar from '../UserSidebar/index';
 import RecentSideBar from '../RecentSideBar/index';
 import CategoryPinnedSideBar from '../CategoryPinnedSideBar/index';
 import LinkPinnedSideBar from '../LinkPinnedSideBar/index';

@@ -3,13 +3,14 @@ import { DataContext } from '../../../../DataLinkin';
 import FormRegister from './FormRegister';
 import './style.scss';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 export default function Register() {
     const value = useContext(DataContext)
     const [{ users }] = value.users
-    console.log(users);
+    const navigate = useNavigate();
+
     const Register = details => {
-        // console.log(details);
         if (details.name === "") {
             alert("Vui lòng nhập tên!")
         } else if (details.email === "") {
@@ -31,7 +32,7 @@ export default function Register() {
                     axios.post(`http://localhost:3000/users/create-user`, details)
                         .then(res => {
                             alert('Đăng ký thành công!');
-                            window.location.href = "/login"
+                            navigate('/login');
                         })
                         .catch(err => {
                             console.log(err);

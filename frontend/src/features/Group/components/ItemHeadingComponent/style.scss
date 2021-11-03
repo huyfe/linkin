@@ -1,0 +1,73 @@
+$bg-primary: #3573E2;
+$bg-gray: #F7F7F7;
+$bg-light-gray:#E7EDF4;
+$text-white: #FFFFFF;
+$text-dark:#000000;
+$text-gray: #222222;
+
+.group {
+    .wrapper {
+        .group__heading {
+            .group__theme {
+                margin-right: -40px;
+
+                img.img__thumbail {
+                    width: 100%;
+                    min-height: 200px;
+                    object-fit: cover;
+                }
+            }
+
+            .timeline__heading {
+                .box__heading {
+                    .title {
+                        margin-top: 15px;
+
+                        .title__heading {
+                            font-family: 'Roboto', sans-serif;
+                            font-style: normal;
+                            font-weight: 500;
+                            font-size: 32px;
+                            line-height: 37px;
+                            color: $text-dark;
+                            margin-bottom: 10px;
+                        }
+                        .item__heading {
+                            .subTitle__heading {
+                                font-family: "Roboto", sans-serif;
+                                font-style: normal;
+                                font-weight: normal;
+                                font-size: 20px;
+                                line-height: 23px;
+                                color: $text-gray;
+    
+                                span.icon-earth {
+                                    font-size: 15px;
+                                    margin-right: 10px;
+                                }
+                            }
+    
+                            .member__title {
+                                font-family: "Roboto", sans-serif;
+                                font-style: normal;
+                                font-weight: normal;
+                                font-size: 20px;
+                                line-height: 23px;
+                                color: $text-gray;
+    
+                            }
+                        }
+
+
+                        form {
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                        }
+                    }
+                }
+            }
+        }
+
+    }
+}

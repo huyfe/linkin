@@ -28,7 +28,7 @@ function ManagerGroupComponent(props) {
                 {listGroupManager}
             </ul>
             <div className="btn__join">
-                <button className="btn item__button">Tham gia nhóm<i class="far fa-plus"></i></button>
+                <button className="btn item__button">Tạo nhóm mới<i className="far fa-plus"></i></button>
             </div>
         </div>
     );

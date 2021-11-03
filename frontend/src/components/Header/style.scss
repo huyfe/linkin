@@ -2,7 +2,7 @@ $blue: #3573e2;
 $white: #ffffff;
 .header {
     overflow: hidden;
-    padding: 15px 0;
+    padding: 10px 0;
     border-bottom: 1px solid #3574e215;
     position: sticky;
     top: 0;
@@ -43,7 +43,7 @@ $white: #ffffff;
     &__main-menu {
         li {
             a {
-                padding: 30px;
+                padding: 30px 50px;
                 font-size: 26px;
 
                 color: #222222;
@@ -55,8 +55,10 @@ $white: #ffffff;
         }
     }
     &__controls {
-        .notification {
+        .btn-notification {
             margin: 0 10px;
+
+            color: #222222;
         }
         .notification2 {
             margin: 0 10px;

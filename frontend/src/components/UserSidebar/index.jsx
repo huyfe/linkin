@@ -38,7 +38,12 @@ function UserSideBar() {
                         <i class="fal fa-link"></i>Link của tôi
                     </Link>
                 </li>
-                <li className="item">
+                <li class="item">
+                    <Link to="/categories">
+                        <i class="fal fa-folders"></i>Danh mục của tôi
+                    </Link>
+                </li>
+                <li class="item">
                     <Link to="/history">
                         <i className="fal fa-history"></i>Lịch sử hoạt động
                     </Link>

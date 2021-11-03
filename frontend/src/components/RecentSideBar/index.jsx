@@ -23,7 +23,7 @@ function RecentSideBar(props) {
 
     return (
         <div className="recent-sidebar">
-            <h3 className="d-flex justify-content-between align-items-center">Gần đây <i class="fal fa-calendar-minus"></i></h3>
+            <h3 className="d-flex justify-content-between align-items-center">Gần đây <i className="fal fa-calendar-minus"></i></h3>
             <ul>
                 {listRecent}
             </ul>

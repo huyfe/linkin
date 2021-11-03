@@ -60,15 +60,21 @@ $white: #ffffff;
 
             color: #222222;
         }
-        .avatar {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            object-fit: contain;
+        .notification2 {
+            margin: 0 10px;
+            border: none;
         }
-        .user-dropdown {
-            font-size: 6px;
-            margin-left: 10px;
+        .user {
+            &__avatar {
+                width: 50px;
+                height: 50px;
+                border-radius: 50%;
+                object-fit: contain;
+            }
+            &__dropdown {
+                font-size: 6px;
+                margin-left: 10px;
+            }
         }
     }
 }

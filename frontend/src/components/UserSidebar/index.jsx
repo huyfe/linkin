@@ -1,29 +1,39 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import './style.scss';
-import Item from '../Item/index';
+// import Item from '../Item/index';
 import { Link } from 'react-router-dom';
 
-UserSideBar.propTypes = {
+function UserSideBar() {
+    const dataUser = localStorage.getItem("dataUser")
+    const dataUsers = JSON.parse(dataUser)
 
-};
-
-function UserSideBar(props) {
+    // Email: huytran@gmail.com  
+    // Mật khẩu: huytran0123456
     const userInfo = {
-        name: "Quốc Huy",
+        name: "Không Tên",
         avatar: "images/Timeline/huythanhxuan.jpg",
+        avatar2: "images/Users/avatar.png",
     }
     return (
         <div className="user-sidebar">
-            <div className="user__info d-flex justify-content-start align-items-center">
-                <div className="avatar">
-                    <Link to="/users" ><img className="img-fuild" src={userInfo.avatar} alt="" /></Link>
+            {(dataUsers) ? (
+                <div className="user__info d-flex justify-content-start align-items-center">
+                    <div className="avatar">
+                        <Link to="/users" ><img className="img-fuild" src={userInfo.avatar} alt="" /></Link>
+                    </div>
+                    <Link to="/users" className="name">{dataUsers.Fullname}</Link>
                 </div>
-                <Link to="/users" className="name">{userInfo.name}</Link>
-            </div>
+            ) : (
+                <div className="user__info d-flex justify-content-start align-items-center">
+                    <div className="avatar">
+                        <Link to="/users" ><img className="img-fuild" src={userInfo.avatar2} alt="" /></Link>
+                    </div>
+                    <Link to="/users" className="name">{userInfo.name}</Link>
+                </div>
+            )}
 
             <ul>
-                <li class="item">
+                <li className="item">
                     <Link to="/links">
                         <i class="fal fa-link"></i>Link của tôi
                     </Link>
@@ -38,7 +48,7 @@ function UserSideBar(props) {
                         <i className="fal fa-history"></i>Lịch sử hoạt động
                     </Link>
                 </li>
-                <li class="item">
+                <li className="item">
                     <Link to="/following">
                         <i className="fal fa-users"></i>Đang theo dõi
                     </Link>

@@ -1,14 +1,14 @@
 import React from 'react';
 import './style.scss';
-import UserSideBar from '../UserSideBar';
-import RecentSideBar from '../RecentSideBar';
-import CategoryPinnedSideBar from '../CategoryPinnedSideBar';
-import LinkPinnedSideBar from '../LinkPinnedSideBar';
-import OnlineUserListSideBar from '../OnlineUserListSideBar';
+import UserSideBar from '../UserSidebar/index';
+import RecentSideBar from '../RecentSideBar/index';
+import CategoryPinnedSideBar from '../CategoryPinnedSideBar/index';
+import LinkPinnedSideBar from '../LinkPinnedSideBar/index';
+import OnlineUserListSideBar from '../OnlineUserListSideBar/index';
 
 function AsideRight() {
     return (
-        <aside class="aside-right">
+        <aside className="aside-right">
             <UserSideBar></UserSideBar>
             <RecentSideBar></RecentSideBar>
             <CategoryPinnedSideBar></CategoryPinnedSideBar>

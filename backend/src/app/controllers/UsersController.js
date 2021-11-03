@@ -63,9 +63,9 @@ module.exports = {
         const {email, password} = req.body;
         try{
             const existingUser = await Users.findOne({ email });
-            if(!existingUser) return res.status(404).json({ message: "Email không tồn tại" });
+            if(!existingUser) return res.status(200).json({ message: "Email error" });
             const isPasswordCorrect = await bcrypt.compare(password, existingUser.password);
-            if(!isPasswordCorrect) return res.status(404).json({ message: "Thông tin không hợp lệ" });
+            if(!isPasswordCorrect) return res.status(200).json({ message: "Pass error" });
 
             const Token = jwt.sign({ email: existingUser.email, id: existingUser._id }, "token", { expiresIn: "1h" }); 
             res.status(200).json({ result: existingUser, Token });

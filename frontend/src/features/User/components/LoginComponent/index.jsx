@@ -18,26 +18,32 @@ export default function Login() {
             axios.post('http://localhost:3000/users/checklogin', details)
                 .then(res => {
                     if (res.status === 200) {
-                        setUser({
-                            Id: res.data.result._id,
-                            Fullname: res.data.result.name,
-                            Email: res.data.result.email,
-                            Role: res.data.result.role,
-                            Slug: res.data.result.slug,
-                            Public: res.data.result.public,
-                            Image: res.data.result.image,
-                            AccessToken: res.data.Token
-                        });
-                        alert("Đăng nhập thành công!")
-                        window.location.href = "/";
+                        if(res.data.message === "Email error"){
+                            alert("Email không tồn tại!");
+                        }else if (res.data.message === "Pass error"){
+                            alert("Mật khẩu không đúng!")
+                        }else{
+                            setUser({
+                                Id: res.data.result._id,
+                                Fullname: res.data.result.name,
+                                Email: res.data.result.email,
+                                Role: res.data.result.role,
+                                Slug: res.data.result.slug,
+                                Public: res.data.result.public,
+                                Image: res.data.result.image,
+                                AccessToken: res.data.Token
+                            });
+                            alert("Đăng nhập thành công!")
+                            window.location.href = "/";
+                        }
                     } else {
                         const error = new Error(res.error);
                         throw error;
                     }
                 })
                 .catch(err => {
-                    console.error(err);
-                    alert('Error logging in please try again');
+                    console.error(err.data);
+                    // alert('Error logging in please try again');
                 });
         }
     }

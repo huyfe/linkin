@@ -5,9 +5,9 @@ import {
   MDBDropdownToggle,
   MDBDropdownItem,
   MDBDropdownLink,
-  MDBBtn,
 } from "mdb-react-ui-kit";
 import "./style.scss";
+import { Link } from "react-router-dom";
 
 CategoryItem.propTypes = {};
 
@@ -20,24 +20,36 @@ function CategoryItem() {
         </MDBDropdownToggle>
         <MDBDropdownMenu className="categoryItem__dropdown--menu">
           <MDBDropdownItem>
-            <MDBDropdownLink className="categoryItem__link" href="#"><span className="icon-edit-basic"></span> Sửa</MDBDropdownLink>
+            <MDBDropdownLink className="categoryItem__link" href="#">
+              <span className="icon-edit-basic"></span> Sửa
+            </MDBDropdownLink>
           </MDBDropdownItem>
           <MDBDropdownItem>
-            <MDBDropdownLink className="categoryItem__link" href="#"><i className="fal fa-trash-alt"></i> Xóa</MDBDropdownLink>
+            <MDBDropdownLink className="categoryItem__link" href="#">
+              <i className="fal fa-trash-alt"></i> Xóa
+            </MDBDropdownLink>
           </MDBDropdownItem>
           <MDBDropdownItem>
-            <MDBDropdownLink className="categoryItem__link" href="#"><span className="icon-earth"></span> Công khai</MDBDropdownLink>
+            <MDBDropdownLink className="categoryItem__link" href="#">
+              <span className="icon-earth"></span> Công khai
+            </MDBDropdownLink>
           </MDBDropdownItem>
           <MDBDropdownItem>
-            <MDBDropdownLink className="categoryItem__link" href="#"><span className="icon-lock"></span> Riêng tư</MDBDropdownLink>
+            <MDBDropdownLink className="categoryItem__link" href="#">
+              <span className="icon-lock"></span> Riêng tư
+            </MDBDropdownLink>
           </MDBDropdownItem>
           <MDBDropdownItem>
-            <MDBDropdownLink className="categoryItem__link" href="#"><span className="icon-pin"></span> Ghim</MDBDropdownLink>
+            <MDBDropdownLink className="categoryItem__link" href="#">
+              <span className="icon-pin"></span> Ghim
+            </MDBDropdownLink>
           </MDBDropdownItem>
         </MDBDropdownMenu>
       </MDBDropdown>
-      <img src="images/Categories/ux-ui.jpg" />
-      <a href="#">Nguyên tắc thiết kế</a>
+      <div className="categoryItem__img">
+        <Link to="/categories/1"><img src="images/Categories/ux-ui.jpg" /></Link>
+      </div>
+      <Link to="/categories/1">Nguyên tắc thiết kế</Link>
     </div>
   );
 }

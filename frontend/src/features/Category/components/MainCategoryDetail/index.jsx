@@ -2,20 +2,20 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './style.scss';
 import SearchCategory from '../SearchCategory';
-import ListCategory from '../ListCategory';
+import ListCategoryLink from '../ListCategoryLink';
 
-MainCategory.propTypes = {
+MainCategoryDetail.propTypes = {
     
 };
 
-function MainCategory(props) {
+function MainCategoryDetail(props) {
     return (
         <main className="mainCategory">
             {/* Truyền title cho component SearchCategory */}
-            <SearchCategory title={"Danh mục"} />
-            <ListCategory />
+            <SearchCategory title={"Link"}/>
+            <ListCategoryLink />
         </main>
     );
 }
 
-export default MainCategory;
+export default MainCategoryDetail;

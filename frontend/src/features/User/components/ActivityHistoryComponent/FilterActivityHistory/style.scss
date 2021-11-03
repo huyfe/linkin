@@ -1,0 +1,31 @@
+aside.filterActivityHistory {
+    $txt-blue: #3573e2;
+    $txt-black: #222222;
+  
+    padding-top: 30px !important;
+    h2 {
+      font-weight: 500;
+      font-size: 32px;
+      line-height: 37px;
+      margin-bottom: 30px;
+      color: $txt-blue;
+    }
+    .filterActivityHistory__list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      li a {
+        display: inline-block;
+        text-decoration: none;
+        font-weight: 500;
+        font-size: 20px;
+        line-height: 23px;
+        color: $txt-black;
+        margin-bottom: 25px;
+        transition: .5s;
+        &:hover{
+            font-weight: 700;
+        }
+      }
+    }
+  }

@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './style.scss';
 import SearchCategory from '../SearchCategory';
-import ListCategory from '../ListCategory'
+import ListCategory from '../ListCategory';
 
 MainCategory.propTypes = {
     
@@ -11,7 +11,8 @@ MainCategory.propTypes = {
 function MainCategory(props) {
     return (
         <main className="mainCategory">
-            <SearchCategory />
+            {/* Truyền title cho component SearchCategory */}
+            <SearchCategory title={"Danh mục"} />
             <ListCategory />
         </main>
     );

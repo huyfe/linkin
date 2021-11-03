@@ -16,7 +16,7 @@ function SuggestFollowSideBar(props) {
         { image: 'https://scontent.fsgn5-3.fna.fbcdn.net/v/t1.6435-9/160223436_547744709535524_8079204025404928960_n.jpg?_nc_cat=104&ccb=1-5&_nc_sid=09cbfe&_nc_ohc=Hp_o9BTfmLIAX-zm3KF&_nc_ht=scontent.fsgn5-3.fna&oh=e033ebe4982efc404b9f2d9e11bc907f&oe=61A4911E', href: "/", name: "Võ Ngọc Hải" },
         { image: 'https://scontent.fsgn5-5.fna.fbcdn.net/v/t1.6435-9/107042410_274741177194243_2485314233832927801_n.jpg?_nc_cat=102&ccb=1-5&_nc_sid=09cbfe&_nc_ohc=-vhX2MvYL_sAX9tqXZo&_nc_ht=scontent.fsgn5-5.fna&oh=0db927f18842e2110631fe82f381bbe0&oe=61A75B9E', href: "/", name: "Lê Quốc Lập" }
     ];
-    const iconUserVoice = "icon-user-voice";
+    const iconUserVoice = "fal fa-plus-circle";
     const listUser = listUserData.map(group => {
         return (
             <Item image={group.image} name={group.name} href={group.href} icon={iconUserVoice}></Item>

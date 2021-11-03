@@ -46,7 +46,7 @@ export default function AnotherLoginComponent() {
                     <img src="images/Users/many-hands.png" alt="" />
                 </div>
                 <div className="form-login">
-                    <h2>Đăng nhập Goole</h2>
+                    <h2>Đăng nhập Google</h2>
                     <b className="google-login">
                         <GoogleLogin
                             clientId="1022092216832-1rf2be1vf26lfoav4pbm5sfei8rentqk.apps.googleusercontent.com"

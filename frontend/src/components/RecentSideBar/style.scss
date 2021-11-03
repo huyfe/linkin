@@ -1,0 +1,25 @@
+.recent-sidebar {
+    margin-top: 30px;
+    h3 {
+        font-family: "Roboto", sans-serif;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 20px;
+        line-height: 23px;
+        margin-bottom: 15px;
+
+        color: #b1aed9;
+    }
+    ul {
+        padding: 0;
+    }
+    .btn-create {
+        button {
+            transition: all 0.25s !important;
+            &:hover {
+                color: #fff !important;
+                background-color: #3573e2 !important;
+            }
+        }
+    }
+}

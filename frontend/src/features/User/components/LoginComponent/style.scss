@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css?family=Abel|Abril+Fatface|Alegreya|Arima+Madurai|Dancing+Script|Dosis|Merriweather|Oleo+Script|Overlock|PT+Serif|Pacifico|Playball|Playfair+Display|Share|Unica+One|Vibur');
 .Login-form {
     .Login-component {
         min-height: 555px;
@@ -6,7 +7,7 @@
 
         .many-hands {
             img {
-                width: 140%;
+                width: 120%;
             }
         }
 
@@ -15,7 +16,7 @@
             align-items: center;
             flex-direction: column;
             width: 100%;
-            margin-top: 170px;
+            margin-top: 60px;
 
             h2 {
                 font-family: Roboto;
@@ -35,34 +36,66 @@
                 line-height: 23px;
                 text-align: center;
                 color: rgb(165, 159, 159);
-
+                margin-top: 16px;
                 a {
                     color: #3573e2;
                     text-decoration: none;
                 }
             }
 
-            form {
-                margin-top: 32px;
-                width: 30%;
-                height: 100%;
-                @media (max-width: 1440px) {
-                    width: 46%;
+            .icon-login{
+                margin-top: 20px;
+                a{
+                    margin-left: 12px;
+                    margin-right: 12px;
+                    &.fb-icons{
+                        img{
+                            max-width: 50px;
+                        }
+                    }
                 }
+            }
+
+            form {
+                margin-top: 40px;
+                width: 50.42%;
+                height: 100%;
+
                 .form-group {
                     input {
                         background: #fdfdfd;
                         border: 2px solid #3573e2;
                         box-sizing: border-box;
                         border-radius: 15px;
-                        height: 66px;
+                        height: 88px;
                     }
+                    span{
+                        position: relative;
+                        float: right;
+                        #eye {
+                            background: transparent;
+                            color: #333;
+                            margin-left: -40px;
+                            margin-top: -50px;
+                            border-radius: 0px 5px 5px 0px;
+                          
+                            position: absolute;
+                            z-index: 5;
+                            
+                            cursor: pointer;
+                        }
+                    }
+                    
+                }
+
+                .forgot-pass{
+                    margin-top: 30px;
                 }
                 button {
                     margin-top: 22px;
                     margin-left: auto;
-                    width: 36%;
-                    height: 54px;
+                    width: 50%;
+                    height: 66px;
                     background: #3573e2;
                     border-radius: 15px;
 

@@ -1,17 +1,23 @@
 .categoryItem {
   $txt-blue: #3573e2;
   $txt-black: #222222;
+  $white: #fff;
 
-  img {
-    display: block;
+  position: relative;
+  &__img {
     width: calc(100% - 26px);
+    overflow: hidden;
     margin: 0 auto;
-    aspect-ratio: 1/1;
-    object-fit: cover;
     border-radius: 4px;
     margin-bottom: 10px;
+    img{
+      width: 100%;
+      aspect-ratio: 1/1;
+      object-fit: cover;
+      transition: .5s;
+    }
   }
-  a {
+  >a {
     display: block;
     text-decoration: none;
     font-weight: normal;
@@ -22,6 +28,54 @@
     color: $txt-black;
     &:hover {
       color: $txt-blue;
+    }
+  }
+  .dropend .dropdown-toggle::after {
+    display: none;
+  }
+  &__btn {
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50% !important;
+    padding: 2px !important;
+    box-shadow: none !important;
+    background-color: transparent !important;
+    color: $white !important;
+    font-size: 20px !important;
+    margin: 2px;
+    margin-right: 5px;
+    transition: 0.5s;
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.5) !important;
+    }
+    span {
+      text-shadow: 0px 0px 3px $white !important;
+    }
+  }
+  &__dropdown {
+    position: absolute !important;
+    top: 0;
+    right: 13px;
+    &--menu {
+      min-width: initial !important;
+      border-radius: 0px !important;
+      padding: 4px 0 !important;
+      > li {
+        border-radius: 0px !important;
+      }
+    }
+  }
+  &__link {
+    padding: 8px 10px !important;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 18px;
+    color: $txt-black;
+    i,
+    [class^="icon"] {
+      color: $txt-blue;
+      margin-right: 8px;
     }
   }
 }

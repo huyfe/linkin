@@ -6,13 +6,13 @@ import SuggestFollowSideBar from '../SuggestFollowSideBar';
 
 function AsideLeft() {
     return (
-        <section id="group-sidebar">
+        <aside className="aside-left">
             <GroupSideBar></GroupSideBar>
 
             <SuggestGroupSideBar></SuggestGroupSideBar>
 
             <SuggestFollowSideBar></SuggestFollowSideBar>
-        </section>
+        </aside>
     );
 }
 

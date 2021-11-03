@@ -1,12 +1,12 @@
 import React from 'react';
-import UserSideBarComponent from '../../../../components/UserSidebar';
+import AsideRight from '../../../../components/AsideRight';
 import AsideLeft from '../../../../components/AsideLeft/index';
 import './style.scss';
 
 function MainComponent(props) {
     return (
         <div className="home-page">
-            <div className="container-fluid">
+            <div className="container-fluid p-0">
                 <div className="row no-gutters">
                     <div className="col-lg-3">
                         <AsideLeft />
@@ -15,7 +15,7 @@ function MainComponent(props) {
 
                     </main>
                     <div className="col-lg-3">
-                        <UserSideBarComponent />
+                        <AsideRight />
                     </div>
                 </div>
             </div>

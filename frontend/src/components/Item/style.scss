@@ -3,13 +3,18 @@
     a {
         display: block;
         margin-left: -10px;
+        margin-right: -10px;
         padding: 10px;
         transition: all 0.25s;
         border-radius: 8px;
         text-decoration: none;
+        color: #222222;
 
         &:hover {
             background-color: #d4e4ff62;
+            .item__name {
+                color: #3573e2;
+            }
         }
     }
     &__image {
@@ -28,8 +33,7 @@
         font-weight: 500;
         font-size: 16px;
         line-height: 20px;
-        color: #000000;
-
+        color: #222222;
         .icon {
             font-size: 24px;
         }

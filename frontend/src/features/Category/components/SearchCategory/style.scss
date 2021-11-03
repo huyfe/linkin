@@ -3,12 +3,28 @@
   $txt-black: #222222;
 
   margin-bottom: 50px;
+  >button{
+    outline: none;
+    border: none;
+    background-color: transparent;
+    padding: 2px;
+    margin-right: 10px;
+    span{
+      font-size: 20px;
+      color: $txt-blue;
+      transition: .5s;
+    }
+    &:hover span{
+      color: $txt-black;
+    }
+  }
   h1 {
     font-weight: 500;
     font-size: 32px;
     line-height: 37px;
     color: $txt-blue;
     margin-bottom: 0;
+    margin-right: auto;
   }
   &__group {
     position: relative;

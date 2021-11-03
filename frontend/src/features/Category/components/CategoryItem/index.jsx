@@ -47,9 +47,9 @@ function CategoryItem() {
         </MDBDropdownMenu>
       </MDBDropdown>
       <div className="categoryItem__img">
-        <Link to="/categories/1"><img src="images/Categories/ux-ui.jpg" /></Link>
+        <Link to="slug"><img src="images/Categories/ux-ui.jpg" /></Link>
       </div>
-      <Link to="/categories/1">Nguyên tắc thiết kế</Link>
+      <Link to="slug">Nguyên tắc thiết kế</Link>
     </div>
   );
 }

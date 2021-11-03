@@ -12,7 +12,7 @@ function MainCategoryDetail(props) {
     return (
         <main className="mainCategory">
             {/* Truyền title cho component SearchCategory */}
-            <SearchCategory title={"Link"}/>
+            <SearchCategory title={"Link"} showBtnBack />
             <ListCategoryLink />
         </main>
     );

@@ -3,8 +3,8 @@ import AsideRight from "../../../components/AsideRight";
 import FilterCategory from "../components/FilterCategory";
 import MainCategory from "../components/MainCategory";
 import PropTypes from "prop-types";
-import { Switch } from "react-router-dom";
 import MainCategoryDetail from "../components/MainCategoryDetail";
+import { Route, Routes } from "react-router-dom";
 
 CategoryPage.propTypes = {};
 
@@ -17,9 +17,10 @@ function CategoryPage(props) {
             <FilterCategory />
           </div>
           <div className="col-lg-6 p-0">
-            {/* <Switch></Switch> */}
-            <MainCategory />
-            <MainCategoryDetail/>
+            <Routes>
+              <Route path="/" element={<MainCategory />} />
+              <Route path="/*" element={<MainCategoryDetail/>} />
+            </Routes>
           </div>
           <div className="col-lg-3 p-0">
             <AsideRight />

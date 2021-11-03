@@ -5,7 +5,7 @@ import CategoryPage from './pages/CategoryPage';
 function CategoryFeature() {
     return (
         <Routes>
-            <Route path="/categories" element={<CategoryPage />} />
+            <Route path="categories/*" element={<CategoryPage />} />
         </Routes>
     );
 }

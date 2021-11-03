@@ -2,7 +2,7 @@ import React from 'react';
 import { GoogleLogout } from 'react-google-login';
 import { BrowserRouter, Routes, Route, Link, NavLink } from 'react-router-dom';
 import './style.scss';
-import { MDBBtn } from 'mdb-react-ui-kit';
+import { MDBBtn, MDBBadge } from 'mdb-react-ui-kit';
 
 export default function Header() {
     const dataUser = localStorage.getItem("dataUser")
@@ -10,7 +10,6 @@ export default function Header() {
 
     const Logout = () => {
         localStorage.removeItem("dataUser")
-        window.location.href = "/";
     }
 
     const Home = () => {
@@ -63,12 +62,12 @@ export default function Header() {
                                         clientId="1022092216832-1rf2be1vf26lfoav4pbm5sfei8rentqk.apps.googleusercontent.com"
                                         buttonText="Đăng xuất" onLogoutSuccess={LogoutGoogle} /></button>
                                 ) : (
-                                    <button onClick={Logout} className="btn btn-light notification">Đăng xuất</button>
+                                    <Link to="/" onClick={Logout} className="btn btn-light notification">Đăng xuất</Link>
                                 )
                             ) : (
-                                <button onClick={Logins} className="btn btn-primary notification">Đăng nhập</button>
+                                <Link to="/login" className="btn btn-primary notification">Đăng nhập</Link>
                             )}
-                            
+
                             <MDBBtn className="btn btn-primary">Tạo Link</MDBBtn>
                             <button className="btn notification"><i className="far fa-bell"></i></button>
                             <div className="user">

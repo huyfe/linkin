@@ -11,7 +11,9 @@ export default function Header() {
 
     const Logout = () => {
         localStorage.removeItem("dataUser");
-        navigate('/login');
+        // navigate('/');
+        // Nếu đăng xuất mà không reload trang thì sẽ bị 404
+        window.location.href="/"
     }
 
     const Logins = () => {
@@ -61,7 +63,7 @@ export default function Header() {
                             <MDBBtn className="btn btn-primary">Tạo Link</MDBBtn>
                             <button className="btn notification"><i className="far fa-bell"></i></button>
                             <div className="user">
-                                <NavLink to="/users"><img src="images/Header/avatar.png" className="user__avatar"></img></NavLink>
+                                <NavLink to="/profile/tran-quoc-huy"><img src="/images/Header/avatar.png" className="user__avatar"></img></NavLink>
                                 <MDBBtn className="btn user__dropdown"><span className="icon-arrow-down"></span></MDBBtn>
                             </div>
                         </div>

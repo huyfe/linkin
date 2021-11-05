@@ -3,7 +3,7 @@ $white: #ffffff;
 .header {
     overflow: hidden;
     padding: 10px 0;
-    border-bottom: 1px solid #3574e215;
+    border-bottom: 1px solid $blue;
     position: sticky;
     top: 0;
     z-index: 99999;

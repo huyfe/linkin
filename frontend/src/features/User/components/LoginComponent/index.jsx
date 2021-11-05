@@ -20,11 +20,11 @@ export default function Login() {
             axios.post('http://localhost:3000/users/checklogin', details)
                 .then(res => {
                     if (res.status === 200) {
-                        if(res.data.message === "Email error"){
+                        if (res.data.message === "Email error") {
                             alert("Email không tồn tại!");
-                        }else if (res.data.message === "Pass error"){
+                        } else if (res.data.message === "Pass error") {
                             alert("Mật khẩu không đúng!")
-                        }else{
+                        } else {
                             setUser({
                                 Id: res.data.result._id,
                                 Fullname: res.data.result.name,
@@ -58,10 +58,13 @@ export default function Login() {
         localStorage.setItem('dataUser', JSON.stringify(user))
     }, [user])
 
+    function Checkdata(){
+        navigate('/');
+    }
+
     return (
         <div className="Login-form">
             <FormLogin Login={Login} />
-
         </div>
     );
 }

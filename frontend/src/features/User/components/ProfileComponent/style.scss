@@ -1,0 +1,94 @@
+section#Profile-component {
+    $color_blue: #3573e2;
+    $color_black: #222222;
+    background-color: white;
+    margin: 0 68px;
+    margin-top: 18px;
+
+    .img-profile {
+        margin-bottom: 40px;
+
+        img {
+            width: 100%;
+            object-fit: cover;
+            height: auto;
+            max-height: 200px;
+        }
+        .avatar-name {
+            margin: 0 98px;
+            margin-top: -76px;
+            img {
+                width: 100%;
+                max-width: 150px;
+                height: 100%;
+                max-height: 150px;
+                border-radius: 50%;
+                object-fit: contain;
+            }
+            h2 {
+                font-family: Roboto;
+                font-style: normal;
+                font-weight: 500;
+                font-size: 32px;
+                line-height: 37px;
+                color: $color_blue;
+                margin-left: 16px;
+                margin-top: 60px;
+            }
+        }
+    }
+
+    .detail-profile {
+
+        .col-8{
+            width: 60% !important;
+        }
+
+        .col-4{
+            width: 40% !important;
+        }
+
+        .left-tab-menu {
+            .nav {
+                .nav-item {
+                    margin: 0 48px;
+
+                    .nav-link {
+                        padding: 0;
+                        font-family: Roboto;
+                        font-style: normal;
+                        font-weight: normal;
+                        font-size: 20px;
+                        line-height: 23px;
+                        color: $color_black;
+                    }
+                    &:first-child{
+                        margin-left: 0;
+                    }
+                    & .active{
+                        font-weight: bold;
+                    }
+                }
+            }
+        }
+        
+        .right-information{
+            .category-imformation{
+                width: 100%;
+                height: 34.927%;
+                // height: 72.75%;
+                margin-bottom: 16px;
+            }
+
+            .link-imformation{
+                width: 100%;
+                height: 34.472%;
+                margin-bottom: 16px;
+            }
+            .group-imformation{
+                width: 100%;
+                height: 47.232%;
+            }
+        }
+    }
+}

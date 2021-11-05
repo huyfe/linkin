@@ -1,0 +1,54 @@
+.LinkTitle {
+    $txt-blue: #3573e2;
+    $txt-black: #222222;
+
+    margin-bottom: 16px;
+    > button {
+        outline: none;
+        border: none;
+        background-color: transparent;
+        padding: 2px;
+        margin-right: 10px;
+        span {
+            font-size: 20px;
+            color: $txt-blue;
+            transition: 0.5s;
+        }
+        &:hover span {
+            color: $txt-black;
+        }
+    }
+    h1 {
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 20px;
+        line-height: 23px;
+        text-align: center;
+        color: $txt-blue;
+        margin-right: auto;
+    }
+    &__group {
+        position: relative;
+        width: 43.144%;
+        margin-top: -5px;
+        label {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            // width: 11.2px;
+            font-size: 14px;
+            cursor: pointer;
+            margin-left: 8px;
+        }
+        input {
+            width: 100%;
+            height: 20px;
+            outline: none;
+            border: 1px solid $txt-blue;
+            border-radius: 4px;
+            padding: 5px 10px 5px 30px;
+        }
+    }
+}

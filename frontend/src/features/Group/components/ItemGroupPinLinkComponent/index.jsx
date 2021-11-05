@@ -11,10 +11,10 @@ function ItemGroupPinLinkComponent(props) {
     return (
         <li className="item__group__link">
             <div className="item__icon">
-                <div className="item__name m-0 d-flex justify-content-between align-items-center" >
+                <div className="item__name">
+                    <button className="item__pin">{props.iconCoppy && <span className={"icon " + props.iconCoppy}></span>}</button>
                   <Link to={props.href}>
-                    {props.iconCoppy && <span className={"icon " + props.iconCoppy}></span>}
-                    <h6 className="item__title">{props.name}</h6> 
+                    <span className="item__title">{props.name}</span> 
                   </Link>
                 </div>
             </div>

@@ -3,11 +3,7 @@ $bg-gray: #F7F7F7;
 $bg-light-gray:#E7EDF4;
 $text-white: #FFFFFF;
 $text-dark:#000000;
-
-.group-sidebar-follow {
-    margin-top: 30px;
-    padding-bottom: 35px;
-
+.list-my-group {
     h3 {
         font-family: "Roboto", sans-serif;
         font-style: normal;
@@ -16,9 +12,5 @@ $text-dark:#000000;
         line-height: 23px;
         margin-bottom: 30px;
         color: $bg-primary;
-    }
-
-    ul {
-        padding: 0;
     }
 }

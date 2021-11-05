@@ -123,12 +123,13 @@
                     color: #ffffff;
                     border: none;
                     transition: 0.3s;
-                    &:hover {
-                        background-color: transparent;
-                        border: 2px solid #3573e2;
-                        transition: 0.3s;
-                        color: #3573e2;
-                    }
+                    text-transform: none;
+                    // &:hover {
+                    //     background-color: transparent;
+                    //     border: 2px solid #3573e2;
+                    //     transition: 0.3s;
+                    //     color: #3573e2;
+                    // }
                 }
             }
 

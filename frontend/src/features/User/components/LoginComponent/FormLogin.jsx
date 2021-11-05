@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { MDBBtn } from 'mdb-react-ui-kit';
 
 export default function FormLogin({ Login }) {
 
@@ -52,7 +53,7 @@ export default function FormLogin({ Login }) {
                     <div className="forgot-pass d-flex justify-content-end">
                         <Link to="/forgot-password">Quên mật khẩu</Link>
                     </div>
-                    <button type="submit" className="pull-right">Đăng nhập</button>
+                    <MDBBtn type="submit" className="pull-right">Đăng nhập</MDBBtn>
                 </form>
             </div>
         </div>

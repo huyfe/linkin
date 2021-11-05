@@ -1,11 +1,28 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import {
+    MDBTabs,
+    MDBTabsItem,
+    MDBTabsLink,
+    MDBTabsContent,
+    MDBTabsPane
+} from 'mdb-react-ui-kit';
 import CategoryProfile from './CategoryProfile';
 import GroupProfile from './GroupProfile';
 import LinkProFile from './LinkProfile';
+
 import './style.scss';
 
 function ProfileComponent(props) {
+    const [basicActive, setBasicActive] = useState('tab1');
+
+    const handleBasicClick = (value) => {
+        if (value === basicActive) {
+            return;
+        }
+
+        setBasicActive(value);
+    };
     return (
         <section id="Profile-component">
             <div className="container-fluid">
@@ -20,20 +37,34 @@ function ProfileComponent(props) {
                         </div>
                         <div className="detail-profile row">
                             <div className="left-tab-menu col-8">
-                                <ul className="nav justify-content-start">
-                                    <li className="nav-item">
-                                        <Link className="nav-link active" aria-current="page" to="/">Bài viết</Link>
-                                    </li>
-                                    <li className="nav-item">
-                                        <Link className="nav-link" to="/">Giới thiệu</Link>
-                                    </li>
-                                    <li className="nav-item">
-                                        <Link className="nav-link" to="/">Đang theo dõi</Link>
-                                    </li>
-                                    <li className="nav-item">
-                                        <Link className="nav-link" to="/">Người theo dõi</Link>
-                                    </li>
-                                </ul>
+                                <MDBTabs className='mb-3'>
+                                    <MDBTabsItem>
+                                        <MDBTabsLink onClick={() => handleBasicClick('tab1')} active={basicActive === 'tab1'}>
+                                            Bài viết
+                                        </MDBTabsLink>
+                                    </MDBTabsItem>
+                                    <MDBTabsItem>
+                                        <MDBTabsLink onClick={() => handleBasicClick('tab2')} active={basicActive === 'tab2'}>
+                                            Giới thiệu
+                                        </MDBTabsLink>
+                                    </MDBTabsItem>
+                                    <MDBTabsItem>
+                                        <MDBTabsLink onClick={() => handleBasicClick('tab3')} active={basicActive === 'tab3'}>
+                                            Đang theo dõi
+                                        </MDBTabsLink>
+                                    </MDBTabsItem>
+                                    <MDBTabsItem>
+                                        <MDBTabsLink onClick={() => handleBasicClick('tab4')} active={basicActive === 'tab4'}>
+                                            Người theo dõi
+                                        </MDBTabsLink>
+                                    </MDBTabsItem>
+                                </MDBTabs>
+                                <MDBTabsContent>
+                                    <MDBTabsPane show={basicActive === 'tab1'}>Tab 1 content</MDBTabsPane>
+                                    <MDBTabsPane show={basicActive === 'tab2'}>Tab 2 content</MDBTabsPane>
+                                    <MDBTabsPane show={basicActive === 'tab3'}>Tab 3 content</MDBTabsPane>
+                                    <MDBTabsPane show={basicActive === 'tab4'}>Tab 4 content</MDBTabsPane>
+                                </MDBTabsContent>
                             </div>
                             <div className="right-information col-4">
                                 <div className="category-imformation">

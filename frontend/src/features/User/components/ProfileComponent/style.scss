@@ -61,12 +61,14 @@ section#Profile-component {
                         font-size: 20px;
                         line-height: 23px;
                         color: $color_black;
+                        text-transform: none;
                     }
                     &:first-child{
                         margin-left: 0;
                     }
                     & .active{
                         font-weight: bold;
+                        border:none;
                     }
                 }
             }

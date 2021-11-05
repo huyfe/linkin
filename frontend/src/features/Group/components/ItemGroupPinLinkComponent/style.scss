@@ -3,10 +3,11 @@ $bg-gray: #F7F7F7;
 $bg-light-gray:#E7EDF4;
 $text-white: #FFFFFF;
 $text-dark:#000000;
+
 .group-pin-link {
     margin-top: 30px;
     padding-bottom: 25px;
-    
+
     h3 {
         font-family: "Roboto", sans-serif;
         font-style: normal;
@@ -16,7 +17,48 @@ $text-dark:#000000;
         margin-bottom: 30px;
         color: $bg-primary;
     }
+
     ul {
         padding: 0;
+
+        .item__group__link {
+            .item__icon {
+                .item__name {
+                    display: flex;
+                    align-items: center;
+                    margin: 15px 0;
+
+                    .item__pin {
+                        outline: none;
+                        border: none;
+                        background-color: transparent;
+                        color: #222222;
+                        font-size: 18px;
+                        transition: all 0.25s;
+                        margin-right: 10px;
+
+                        &:hover {
+                            color: $bg-primary;
+                            transition: all 0.25s;
+                        }
+                    }
+
+                    a {
+                        font-family: "Roboto", sans-serif;
+                        font-style: normal;
+                        font-weight: normal;
+                        font-size: 20px;
+                        line-height: 23px;
+                        color: $text-dark;
+                        padding: 10px 0;
+
+                        &:hover {
+                            color: $bg-primary;
+                            transition: all 0.25s;
+                        }
+                    }
+                }
+            }
+        }
     }
 }

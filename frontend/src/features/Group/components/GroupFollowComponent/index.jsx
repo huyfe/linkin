@@ -27,6 +27,39 @@ function GroupFollowComponent(props) {
                 }
             ]
         },
+        {
+            image: 'images/Groups/image_group_join.png',
+            title: "Cộng Đồng Front-End",
+            numbers: "5100",
+            countLink: "8500",
+            href: "/",
+            friendMembers: [
+                {
+                    name: "Thai Loan",
+                    userImage: "images/Groups/image_box_follow.png"
+                },
+                {
+                    name: "Ngọc Hải",
+                    userImage: "images/Groups/image_box_follow.png"
+                }
+            ]
+        },{
+            image: 'images/Groups/image_group_join.png',
+            title: "Cộng Đồng Front-End",
+            numbers: "5100",
+            countLink: "8500",
+            href: "/",
+            friendMembers: [
+                {
+                    name: "Thai Loan",
+                    userImage: "images/Groups/image_box_follow.png"
+                },
+                {
+                    name: "Ngọc Hải",
+                    userImage: "images/Groups/image_box_follow.png"
+                }
+            ]
+        }
 
     ];
     const iconPlus = "icon-plus";

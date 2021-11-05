@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './style.scss';
 
-function TimelineComponentUser(props) {
+function TimelineUserComponent(props) {
     return (
         <section id="timelineUser">
             <div className="box-item mb-4">
@@ -133,4 +133,4 @@ function TimelineComponentUser(props) {
     );
 }
 
-export default TimelineComponentUser
+export default TimelineUserComponent

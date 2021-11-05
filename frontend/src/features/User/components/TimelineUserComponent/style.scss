@@ -31,6 +31,8 @@ section#timelineUser {
 				.client-name {
                     margin-bottom: 15px;
 					a {
+						display: flex;
+						align-items: center;
 						text-decoration: none;
 						@include text(#000000, 20px, 400, 18px);
 						&:hover {

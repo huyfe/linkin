@@ -4,7 +4,7 @@ import TimelineGroup from '../TimelineComponent';
 import PropTypes from 'prop-types';
 import './style.scss';
 import { Link } from 'react-router-dom';
-
+import { MDBDropdown, MDBDropdownMenu, MDBDropdownToggle, MDBDropdownItem, MDBDropdownLink } from 'mdb-react-ui-kit';
 ItemHeadingComponent.propTypes = {
 
 };
@@ -30,15 +30,18 @@ function ItemHeadingComponent(props) {
                         </div>
                         <div className="search__heading">
                             <form>
-                                <div className="input-search">
-                                    <label className="icon__search" htmlFor="input-search"><i className="fal fa-search"></i></label>
-                                </div>
-                                <div className="form-group">
-                                    <select className="form-control" id="sel1" name="sellist1">
-                                        <option>Đã tham gia</option>
-                                        <option>2</option>
-                                        <option>3</option>
-                                        <option>4</option>
+                                <div className="item__search">
+                                    <div className="input-search">
+                                        <button className="icon__search  btn"><i className="fal fa-search"></i></button>
+                                    </div>
+                                    <select class="mdb-select md-form" searchable="Search here..">
+                                        <option value="" disabled selected>Đã tham gia</option>
+                                        <option value="1">Cộng đồng design</option>
+                                        <option value="2">Cộng đồng fron-end</option>
+                                        <option value="4">Cộng đồng back-end</option>
+                                        <option value="5">Cộng đồng design</option>
+                                        <option value="6">Cộng đồng fron-end</option>
+                                        <option value="7">Cộng đồng back-end</option>
                                     </select>
                                 </div>
                             </form>

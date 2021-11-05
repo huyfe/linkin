@@ -10,7 +10,7 @@ ul {
 
 body {
   font-family: "Roboto", sans-serif;
-  background-color: #f9f9f9;
+  background-color: #f9f9f9 !important;
 }
 
 @font-face {

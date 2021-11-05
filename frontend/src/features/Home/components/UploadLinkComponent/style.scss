@@ -1,0 +1,156 @@
+.mb-15 {
+    margin-bottom: 15px;
+}
+.box-upload-link {
+    margin-top: 35px;
+    .wrap-upload-link {
+        padding: 30px 15px;
+        display: flex;
+        align-items: center;
+
+        background: #ffffff;
+
+        border: 1px solid #3573e2;
+        box-sizing: border-box;
+        border-radius: 4px;
+    }
+    .avatar {
+        margin-right: 15px;
+        img {
+            width: 65px;
+            height: 65px;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+    }
+
+    .user-info {
+        padding: 20px 15px;
+        .name {
+            h3 {
+                font-weight: normal;
+                font-size: 20px;
+                line-height: 23px;
+                text-align: left;
+
+                /* Tone / Dark grey */
+
+                color: #222222;
+            }
+            .public {
+                .btn-public {
+                    background-color: transparent;
+                    border: none;
+                    i {
+                        margin-right: 10px;
+                    }
+                }
+                .dropdown-toggle {
+                    &::after {
+                        margin-left: 15px;
+                    }
+                }
+            }
+        }
+    }
+
+    .button-show-modal {
+        flex: 1;
+        width: 100%;
+        button {
+            width: 100%;
+            padding: 25px 15px;
+            background: #e7edf4;
+            border-radius: 4px;
+
+            font-style: normal;
+            font-weight: normal;
+            font-size: 18px;
+            line-height: 20px;
+            text-align: left;
+            text-transform: none;
+
+            color: #222222;
+            box-shadow: none;
+        }
+    }
+    .modal-upload-link {
+        .modal-title {
+            flex: 1;
+        }
+        &-dialog {
+            max-width: 750px;
+            .modal-content {
+                background: #e7edf4;
+                border: 1px solid #b1aed9;
+                box-sizing: border-box;
+                border-radius: 4px;
+                .modal-body {
+                    padding: 0px 15px;
+                }
+            }
+
+            .form-upload-link {
+                .form-group-image {
+                    .image-item {
+                        height: 600px;
+                        position: relative;
+                        img {
+                            width: 100%;
+                            height: 100%;
+                            object-fit: cover;
+                        }
+                        button {
+                            position: absolute;
+                            top: 15px;
+                            right: 15px;
+                            i {
+                                margin-right: 0;
+                            }
+                        }
+                    }
+                    button {
+                        font-weight: normal;
+                        font-size: 16px;
+                        line-height: 19px;
+                        /* identical to box height */
+
+                        text-transform: none;
+
+                        padding: 10px;
+
+                        /* Tone / Dark grey */
+
+                        color: #222222;
+                        &:hover {
+                            background-color: #45a3f01e;
+                        }
+                        &:focus {
+                            background-color: unset;
+                        }
+                        i {
+                            font-size: 22px;
+                            margin-right: 10px;
+                            color: #3573e2;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+.dropdown-public {
+    z-index: 2000 !important;
+    .dropdown-item {
+        padding-left: 0 10px;
+        margin-left: -15px;
+        font-size: 16px;
+        background-color: transparent;
+        &:hover {
+            color: #3573e2 !important;
+        }
+        i {
+            margin-right: 10px;
+        }
+    }
+}

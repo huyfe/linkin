@@ -6,7 +6,7 @@ $white: #ffffff;
     border-bottom: 1px solid $blue;
     position: sticky;
     top: 0;
-    z-index: 99999;
+    z-index: 1000;
     background-color: $white;
     &__menu {
         width: calc(100% - 80px);

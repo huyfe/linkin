@@ -14,15 +14,16 @@ function LinkComponent(props) {
                 <div className="info__box-post">
                     <div className="client-name">
                         <Link  to={{pathname: `/${props.userLink}`}} className="name"> {props.nameUser} </Link>
+                        <Link to={{ pathname: `/${props.groupLink}` }} className="name-group">
+                                <i class="fas fa-caret-right"></i>
+                                <img src={props.imageGroup} />
+                                <span>{props.nameGroup}</span>
+                            </Link>
                     </div>
                     <div className="d-flex align-items-center">
                         <p className="time-post">
                             {props.datePost} <span class="icon-earth"></span>
                         </p>
-                        <Link to={{pathname: `/${props.groupLink}`}} className="group-info">
-                            <img src={props.imageGroup}/>
-                            <span>{props.nameGroup}</span>
-                        </Link>
                     </div>
 
                 </div>

@@ -1,0 +1,190 @@
+section#timelineUser {
+	@mixin text($color, $size, $weight, $lineHeight) {
+		color: $color;
+		font-size: $size;
+		font-weight: $weight;
+		line-height: $lineHeight;
+	}
+
+	.box-item {
+		position: relative;
+		border-radius: 3px;
+		border: 1px solid #3573e2;
+		.info__box {
+			padding: 15px;
+			&-client {
+				margin-right: 20px;
+				width: 64px;
+				height: 64px;
+				.avatar {
+					img {
+						width: 100%;
+						height: 100%;
+						border-radius: 30px;
+						object-fit: cover;
+					}
+				}
+			}
+
+			&-post {
+				width: 80%;
+				.client-name {
+                    margin-bottom: 15px;
+					a {
+						text-decoration: none;
+						@include text(#000000, 20px, 400, 18px);
+						&:hover {
+							color: #3573e2;
+						}
+                        i {
+                            margin: 0 20px;
+                            font-size: 20px;
+                        }
+                        img {
+							width: 24px;
+							height: 24px;
+							border-radius: 4px;
+							margin-right: 4px;
+						}
+					}
+				}
+				.time-post {
+					@include text(#000000, 16px, 400, 18px);
+					margin-bottom: 0;
+					margin-right: 20px;
+					display: flex;
+					align-items: center;
+					span {
+						margin-left: 8px;
+					}
+				}
+			}
+		}
+		.main__content {
+			&-heading {
+				padding: 15px 15px;
+				p {
+					@include text(#000000, 20px, 400, 23px);
+				}
+				.content {
+					padding: 8px 10px;
+					border: 1px solid #3573e2;
+					border-radius: 3px;
+					@include text(#000000, 16px, 400, 18px);
+				}
+				.icon {
+					span {
+						font-size: 20px;
+						cursor: pointer;
+						&:hover {
+							color: #3573e2;
+						}
+					}
+				}
+			}
+			&-image {
+				img {
+					width: 100%;
+				}
+			}
+			&-function {
+				.item {
+					i {
+						margin-right: 15px;
+					}
+					&:hover {
+						.fa-heart {
+							color: red;
+						}
+						.fa-comment-alt-lines,
+						.fa-share {
+							color: #3573e2;
+						}
+					}
+				}
+			}
+		}
+
+		.option-post {
+			border: none;
+			outline: none;
+			background: none;
+			position: absolute;
+			right: 0;
+			top: 0;
+			margin: 15px;
+		}
+	}
+	.comment__container {
+		padding: 15px;
+		.comment__box {
+			padding: 0px 15px;
+			&-load {
+				border: none;
+				outline: none;
+				box-shadow: none;
+				background: none;
+				@include text(gray, 16px, 400, 18px);
+			}
+			&-item {
+				margin-top: 15px;
+				.avatar {
+					width: 40px;
+					height: 40px;
+					margin-right: 20px;
+					img {
+						width: 100%;
+						height: 100%;
+						border-radius: 30px;
+						object-fit: cover;
+					}
+				}
+				.content {
+					border-radius: 10px;
+					padding: 8px 15px;
+					width: 100%;
+					background-color: #e7edf4;
+					p {
+						margin: 0;
+					}
+				}
+			}
+
+			.react {
+				padding-left: 63px;
+				li {
+					margin-right: 20px;
+					display: inline-block;
+					list-style: none;
+					a {
+						@include text(#000000, 12px, 400, 14px);
+						text-decoration: none;
+					}
+				}
+			}
+		}
+
+		.your-comment {
+			.avatar {
+				margin-right: 15px;
+				img {
+					border-radius: 50%;
+					width: 40px;
+					height: 40px;
+					object-fit: cover;
+				}
+			}
+			.input-group {
+				input {
+					border-radius: 10px;
+					padding: 8px 15px;
+					width: 100%;
+					background-color: #e7edf4;
+					&::placeholder {
+						color: gray;
+					}
+				}
+			}
+		}
+	}
+}

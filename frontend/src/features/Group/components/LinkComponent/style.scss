@@ -9,12 +9,6 @@
 	position: relative;
 	border-radius: 3px;
 	border: 1px solid #3573e2;
-	.w20 {
-		width: 10%;
-	}
-	.w80 {
-		width: 80%;
-	}
 	.info__box {
 		padding: 15px;
 		&-client {
@@ -33,25 +27,38 @@
 
 		&-post {
 			width: 80%;
-			.group-info {
-				img {
-					width: 24px;
-					height: 24px;
-					border-radius: 4px;
-					margin-right: 4px;
-				}
-				@include text(#000000, 16px, 400, 18px);
-				text-decoration: none;
-				&:hover {
-					color: #3573e2;
-				}
-			}
+			// .group-info {
+			// 	img {
+			// 		width: 24px;
+			// 		height: 24px;
+			// 		border-radius: 4px;
+			// 		margin-right: 4px;
+			// 	}
+			// 	@include text(#000000, 16px, 400, 18px);
+			// 	text-decoration: none;
+			// 	&:hover {
+			// 		color: #3573e2;
+			// 	}
+			// }
 			.client-name {
+				margin-bottom: 20px;
 				a {
 					text-decoration: none;
 					@include text(#000000, 20px, 400, 18px);
 					&:hover {
 						color: #3573e2;
+					}
+
+					i {
+						font-size: 20px;
+						margin: 0 15px;
+					}
+
+					img {
+						width: 24px;
+						height: 24px;
+						border-radius: 4px;
+						margin-right: 4px;
 					}
 				}
 			}
@@ -62,7 +69,7 @@
 				display: flex;
 				align-items: center;
 				span {
-					margin-left: 4px;
+					margin-left: 8px;
 				}
 			}
 		}

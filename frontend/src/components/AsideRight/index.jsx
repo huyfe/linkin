@@ -4,7 +4,7 @@ import RecentSideBar from '../RecentSideBar/index';
 import CategoryPinnedSideBar from '../CategoryPinnedSideBar/index';
 import LinkPinnedSideBar from '../LinkPinnedSideBar/index';
 import OnlineUserListSideBar from '../OnlineUserListSideBar/index';
-import UserSideBar from '../UserSideBar';
+import UserSideBar from '../UserSidebar/index';
 
 function AsideRight() {
     return (

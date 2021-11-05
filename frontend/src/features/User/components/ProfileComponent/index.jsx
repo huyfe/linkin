@@ -14,6 +14,7 @@ import "./style.scss";
 import MainFollower from "./MainFollower";
 import MainFollowing from "./MainFollowing";
 import TimelineUserComponent from "../TimelineUserComponent"
+import IntroduceProfile from "./IntroduceProfile";
 
 function ProfileComponent(props) {
   const [basicActive, setBasicActive] = useState("tab1");
@@ -27,61 +28,61 @@ function ProfileComponent(props) {
   };
 
   const Posts = [
-    {   
-        id: 1,
-        imageUser: 'https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2787&q=80',
-        userLink: "/do-ba-dat",
-        nameUser: "Bá Đạt",
-        datePost: "20/10/2019",
-        
-        groupLink: "/cong-dong-frontend-vietnam",
-        imageGroup: "/images/Timeline/group__thumb-1.png",
-        nameGroup: "Cộng đồng Frontend Việt Nam",
-        contentLink: "www.linkin.com/abcxyx",
-        contentDesc: "Các nguyên lý cơ bản của lập trình...",
-        imageLink: "/images/Timeline/post-thumb.png",
-        like: 20,
-        comment: 30,
-        hour: 40,
+    {
+      id: 1,
+      imageUser: 'https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2787&q=80',
+      userLink: "/do-ba-dat",
+      nameUser: "Bá Đạt",
+      datePost: "20/10/2019",
+
+      groupLink: "/cong-dong-frontend-vietnam",
+      imageGroup: "/images/Timeline/group__thumb-1.png",
+      nameGroup: "Cộng đồng Frontend Việt Nam",
+      contentLink: "www.linkin.com/abcxyx",
+      contentDesc: "Các nguyên lý cơ bản của lập trình...",
+      imageLink: "/images/Timeline/post-thumb.png",
+      like: 20,
+      comment: 30,
+      hour: 40,
     },
     {
-        id: 2,
-        imageUser: 'https://images.unsplash.com/photo-1604004555489-723a93d6ce74?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=987&q=80',
-        userLink: "/do-ba-dat",
-        nameUser: "Bá Đạt 2",
-        datePost: "20/10/2019",
+      id: 2,
+      imageUser: 'https://images.unsplash.com/photo-1604004555489-723a93d6ce74?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=987&q=80',
+      userLink: "/do-ba-dat",
+      nameUser: "Bá Đạt 2",
+      datePost: "20/10/2019",
 
-        groupLink: "/cong-dong-frontend-vietnam",
-        imageGroup: "/images/Timeline/group__thumb-1.png",
-        nameGroup: "Cộng đồng Frontend Việt Nam",
-        contentLink: "www.linkin.com/abcxyx",
-        contentDesc: "Các nguyên lý cơ bản của lập trình...",
-        imageLink: "/images/Timeline/post-thumb.png",
-        like: 20,
-        comment: 30,
-        hour: 40,
+      groupLink: "/cong-dong-frontend-vietnam",
+      imageGroup: "/images/Timeline/group__thumb-1.png",
+      nameGroup: "Cộng đồng Frontend Việt Nam",
+      contentLink: "www.linkin.com/abcxyx",
+      contentDesc: "Các nguyên lý cơ bản của lập trình...",
+      imageLink: "/images/Timeline/post-thumb.png",
+      like: 20,
+      comment: 30,
+      hour: 40,
     },
 
   ];
   const LinkPostProfile = Posts.map(post => {
     return (
-        <TimelineUserComponent
-            imageUser={post.imageUser}
-            userRef={post.userProfileRef}
-            nameUser={post.nameUser}
-            datePost={post.datePost}
-            groupRef={post.groupRef}
-            imageGroup={post.imageGroup}
-            nameGroup={post.nameGroup}
-            contentDesc={post.contentDesc}
-            contentLink={post.contentLink}
-            imageLink={post.imageLink}
-            like={post.like}
-            comment={post.comment}
-            hour={post.hour}
-        ></TimelineUserComponent>
+      <TimelineUserComponent
+        imageUser={post.imageUser}
+        userRef={post.userProfileRef}
+        nameUser={post.nameUser}
+        datePost={post.datePost}
+        groupRef={post.groupRef}
+        imageGroup={post.imageGroup}
+        nameGroup={post.nameGroup}
+        contentDesc={post.contentDesc}
+        contentLink={post.contentLink}
+        imageLink={post.imageLink}
+        like={post.like}
+        comment={post.comment}
+        hour={post.hour}
+      ></TimelineUserComponent>
     );
-});
+  });
 
 
   return (
@@ -98,7 +99,7 @@ function ProfileComponent(props) {
             </div>
             <div className="detail-profile row">
               <div className="left-tab-menu col-8">
-                <MDBTabs className="mb-3">
+                <MDBTabs fill className="mb-3">
                   <MDBTabsItem>
                     <MDBTabsLink
                       onClick={() => handleBasicClick("tab1")}
@@ -137,7 +138,7 @@ function ProfileComponent(props) {
                     {LinkPostProfile}
                   </MDBTabsPane>
                   <MDBTabsPane show={basicActive === "tab2"}>
-                    Tab 2 content
+                    <IntroduceProfile />
                   </MDBTabsPane>
                   <MDBTabsPane show={basicActive === "tab3"}>
                     <MainFollowing />

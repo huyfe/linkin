@@ -1,0 +1,81 @@
+.Introducesprofile {
+    width: 90%;
+    height: 100%;
+    background: transparent;
+    border: 1px solid #3573e2;
+    box-sizing: border-box;
+    border-radius: 20px;
+    padding: 16px;
+    margin-top: 24px;
+
+    .itemintroduces {
+        margin-bottom: 16px;
+        .img-title {
+            width: 100%;
+            h2 {
+                width: 40%;
+                font-family: Roboto;
+                font-style: normal;
+                font-weight: bold;
+                font-size: 16px;
+                line-height: 19px;
+                text-align: left;
+                color: #222222;
+                margin-bottom: 0 !important;
+            }
+            .title-resetpass{
+                width: 30% !important;
+            }
+            p {
+                width: 100%;
+                font-family: Roboto;
+                font-style: normal;
+                font-weight: normal;
+                font-size: 16px;
+                line-height: 19px;
+                color: #222222;
+                text-align: left;
+                margin-bottom: 0 !important;
+            }
+
+            input {
+                background: transparent;
+                border: 1px solid #3573e2;
+                box-sizing: border-box;
+                border-radius: 4px;
+                
+                &.form-control{
+                    width: 40% !important;
+                }
+            }
+        }
+
+        .services {
+            // width: 19.5%;
+            i.fa-lock {
+                font-size: 24px;
+                margin-left: 17px;
+            }
+            i.fa-pen {
+                font-size: 24px;
+                margin-left: 17px;
+            }
+            i.fa-globe-africa {
+                font-size: 24px;
+                margin-left: 17px;
+            }
+        }
+
+        button {
+            font-family: Roboto;
+            font-style: normal;
+            font-weight: 500;
+            font-size: 20px;
+            line-height: 23px;
+            color: #3573e2;
+            background: transparent;
+            border: none;
+            box-shadow: none;
+        }
+    }
+}

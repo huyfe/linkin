@@ -17,36 +17,36 @@ export default function Login() {
         } else if (details.password === "") {
             alert("Vui lòng nhập mật khẩu!")
         } else {
-            // axios.post('http://localhost:3000/users/checklogin', details)
-            //     .then(res => {
-            //         if (res.status === 200) {
-            //             if (res.data.message === "Email error") {
-            //                 alert("Email không tồn tại!");
-            //             } else if (res.data.message === "Pass error") {
-            //                 alert("Mật khẩu không đúng!")
-            //             } else {
-            //                 setUser({
-            //                     Id: res.data.result._id,
-            //                     Fullname: res.data.result.name,
-            //                     Email: res.data.result.email,
-            //                     Role: res.data.result.role,
-            //                     Slug: res.data.result.slug,
-            //                     Public: res.data.result.public,
-            //                     Image: res.data.result.image,
-            //                     AccessToken: res.data.Token
-            //                 });
-            //                 alert("Đăng nhập thành công!")
-            //                 navigate('/');
-            //             }
-            //         } else {
-            //             const error = new Error(res.error);
-            //             throw error;
-            //         }
-            //     })
-            //     .catch(err => {
-            //         console.error(err.data);
-            //         // alert('Error logging in please try again');
-            //     });
+            axios.post('http://localhost:3000/users/checklogin', details)
+                .then(res => {
+                    if (res.status === 200) {
+                        if (res.data.message === "Email error") {
+                            alert("Email không tồn tại!");
+                        } else if (res.data.message === "Pass error") {
+                            alert("Mật khẩu không đúng!")
+                        } else {
+                            setUser({
+                                Id: res.data.result._id,
+                                Fullname: res.data.result.name,
+                                Email: res.data.result.email,
+                                Role: res.data.result.role,
+                                Slug: res.data.result.slug,
+                                Public: res.data.result.public,
+                                Image: res.data.result.image,
+                                AccessToken: res.data.Token
+                            });
+                            alert("Đăng nhập thành công!")
+                            navigate('/');
+                        }
+                    } else {
+                        const error = new Error(res.error);
+                        throw error;
+                    }
+                })
+                .catch(err => {
+                    console.error(err.data);
+                    // alert('Error logging in please try again');
+                });
         }
     }
     useEffect(() => {

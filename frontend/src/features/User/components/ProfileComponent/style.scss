@@ -75,9 +75,11 @@ section#Profile-component {
         .right-information{
             .category-imformation{
                 width: 100%;
-                height: 34.927%;
-                // height: 72.75%;
+                height: 40.927%;
                 margin-bottom: 16px;
+                @media (max-width:1440px) {
+                    height: 34.927%;
+                }
             }
 
             .link-imformation{

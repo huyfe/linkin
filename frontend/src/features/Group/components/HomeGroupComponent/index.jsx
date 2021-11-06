@@ -5,6 +5,7 @@ import GroupSearchComponent from '../GroupSearchComponent';
 import GroupFollowComponent from '../GroupFollowComponent';
 import MyGroupComponent from '../MyGroupComponent';
 import './style.scss';
+import GroupNotificationComponent from '../GroupNotificationComponent';
 
 function HomeGroupComponent(props) {
     return (
@@ -19,7 +20,13 @@ function HomeGroupComponent(props) {
                     </div>
                     <div className="col-lg-6">
                         <main>
+                        <div className="row">
+                            <div className="col-12">
+                                <GroupNotificationComponent/>
+                            </div>
+                        </div>
                            <MyGroupComponent />
+
                         </main>
                     </div>
                     <div className="col-lg-3">

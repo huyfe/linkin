@@ -1,0 +1,39 @@
+.notification__group {
+    .notification__background {
+        height: 200px;
+        display: flex;
+        flex-direction: row-reverse;
+        padding: 10px;
+
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+
+        border: 1px solid #d4e7f6;
+        border-radius: 20px;
+
+        transition: all 0.3s;
+
+        &:hover {
+            filter: brightness(80%);
+        }
+
+        h3 {
+            font-family: "Roboto", sans-serif;
+            font-style: normal;
+            font-weight: normal;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #222222;
+            padding: 10px;
+            background: #F7F7F7;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            font-size: 16px;
+            line-height: 19px;
+            margin-bottom: 0;
+        }
+    }
+}

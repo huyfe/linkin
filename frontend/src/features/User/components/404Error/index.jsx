@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import './style.scss'
+import './style.scss';
 
 function Web404Error() {
     const dataUser = localStorage.getItem("dataUser")
@@ -27,7 +27,6 @@ function Web404Error() {
                                     <span className="glyphicon glyphicon-envelope" /> Liên hệ hỗ trợ
                                 </Link>
                             </div>
-
                         ) : (
                             <div className="error-actions">
                                 <Link to="/login" className="btn btn-primary btn-lg">

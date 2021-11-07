@@ -6,8 +6,10 @@
     box-sizing: border-box;
     border-radius: 20px;
     padding: 16px;
+
     .itemlink {
         margin-bottom: 16px;
+
         .img-title{
             h2 {
                 font-family: Roboto;
@@ -24,14 +26,17 @@
         }
 
         .services{
+
             span.icon-copy{
                 font-size: 24px;
                 margin-left: 6px;
             }
+
             span.icon-edit-basic{
                 font-size: 24px;
                 margin-left: 6px;
             }
+            
             svg{
                 margin-left: 6px;
                 width: 24px;

@@ -4,6 +4,7 @@
     display: flex;
 
     .many-hands {
+
         img {
             width: 154%;
         }
@@ -70,6 +71,7 @@
                     color: #222222;
                 }
             }
+
             button {
                 margin-left: auto;
                 margin-top: 20px;
@@ -88,6 +90,7 @@
                 color: #ffffff;
                 border: none;
                 transition: 0.3s;
+                
                 &:hover {
                     background-color: transparent;
                     border: 2px solid #3573e2;

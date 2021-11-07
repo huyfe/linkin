@@ -5,12 +5,14 @@
     $btn: #1D1929;
 
     position: relative;
+
     &__img {
         width: 66.67%;
         overflow: hidden;
         margin: 0 auto;
         border-radius: 4px;
         margin-bottom: 8px;
+
         img {
             width: 100%;
             aspect-ratio: 1/1;
@@ -29,13 +31,16 @@
         text-align: center;
         transition: 0.5s;
         color: $txt-black;
+
         &:hover {
             color: $txt-blue;
         }
     }
+
     .dropend .dropdown-toggle::after {
         display: none;
     }
+
     &__btn {
         display: flex !important;
         justify-content: center;
@@ -49,9 +54,11 @@
         margin: 2px;
         margin-right: 5px;
         transition: 0.5s;
+
         &:hover {
             background-color: rgba(255, 255, 255, 0.5) !important;
         }
+
         span {
             text-shadow: 0px 0px 3px $btn !important;
             color: $btn;
@@ -62,14 +69,17 @@
         position: absolute !important;
         top: 0;
         right: 18px;
+
         &--menu {
             min-width: initial !important;
             border-radius: 0px !important;
             padding: 4px 0 !important;
+
             > li {
                 border-radius: 0px !important;
             }
         }
+
         @media (max-width: 1440px) {
             right: 13px;
         }
@@ -80,6 +90,7 @@
         font-size: 16px;
         line-height: 18px;
         color: $txt-black;
+        
         i,
         [class^="icon"] {
             color: $txt-blue;

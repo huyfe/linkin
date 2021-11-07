@@ -3,21 +3,25 @@
     $txt-black: #222222;
 
     margin-bottom: 16px;
+
     > button {
         outline: none;
         border: none;
         background-color: transparent;
         padding: 2px;
         margin-right: 10px;
+
         span {
             font-size: 20px;
             color: $txt-blue;
             transition: 0.5s;
         }
+        
         &:hover span {
             color: $txt-black;
         }
     }
+    
     h1 {
         font-family: Roboto;
         font-style: normal;

@@ -14,7 +14,6 @@ function CategoryTitle() {
             </svg>
             </Link>
             </h1>
-           
             <div className="CategoryTitle__group">
                 <label
                     htmlFor="CategoryTitle"

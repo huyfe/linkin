@@ -14,9 +14,11 @@ section#Profile-component {
             height: auto;
             max-height: 200px;
         }
+
         .avatar-name {
             margin: 0 98px;
             margin-top: -76px;
+
             img {
                 width: 100%;
                 max-width: 150px;
@@ -26,6 +28,7 @@ section#Profile-component {
                 object-fit: contain;
                 border: 8px solid #FFF;
             }
+
             h2 {
                 font-family: Roboto;
                 font-style: normal;
@@ -50,6 +53,7 @@ section#Profile-component {
         }
 
         .left-tab-menu {
+
             .nav {
                 .nav-item {
                     // margin: 0 105px;
@@ -77,6 +81,7 @@ section#Profile-component {
                     }
                 }
             }
+
             .tab-content{
                 .tab-pane{
                     .Timeline-profile{
@@ -92,12 +97,14 @@ section#Profile-component {
             display: flex;
             flex-direction: column;
             align-items: end;
+
             .category-imformation{
                 width: 100%;
                 height: 40.927%;
                 max-height: 380px;
                 margin-bottom: 16px;
                 // max-width: 600px;
+                
                 @media (max-width:1440px) {
                     height: 34.927%;
                 }
@@ -110,6 +117,7 @@ section#Profile-component {
                 // max-width: 600px;
                 margin-bottom: 16px;
             }
+
             .group-information{
                 width: 100%;
                 height: 47.232%;

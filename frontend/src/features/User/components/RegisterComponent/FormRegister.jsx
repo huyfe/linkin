@@ -1,11 +1,9 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
-
 export default function FormRegister({ Register }) {
     var today = new Date();
     var date = (today.getMonth() + 1) + '-' + today.getDate() + '-' + today.getFullYear();
-
 
     const [details, setDetails] = useState({
         name: "",

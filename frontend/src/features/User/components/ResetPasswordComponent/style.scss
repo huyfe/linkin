@@ -4,6 +4,7 @@
     display: flex;
 
     .many-hands {
+
         img {
             width: 154%;
         }
@@ -52,7 +53,9 @@
             width: 50.42%;
             max-width: 507px;
             height: 100%;
+
             .form-group {
+
                 input {
                     background: #fdfdfd;
                     border: 2px solid #3573e2;
@@ -71,6 +74,7 @@
                 span {
                     position: relative;
                     float: right;
+
                     #eye {
                         background: transparent;
                         color: #333;
@@ -83,6 +87,7 @@
 
                         cursor: pointer;
                     }
+
                     #eyes {
                         background: transparent;
                         color: #333;
@@ -97,6 +102,7 @@
                     }
                 }
             }
+
             button {
                 margin-left: auto;
                 margin-top: 22px;
@@ -115,6 +121,7 @@
                 color: #ffffff;
                 border: none;
                 transition: 0.3s;
+                
                 &:hover {
                     background-color: transparent;
                     border: 2px solid #3573e2;

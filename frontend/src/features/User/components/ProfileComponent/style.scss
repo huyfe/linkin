@@ -24,6 +24,7 @@ section#Profile-component {
                 max-height: 150px;
                 border-radius: 50%;
                 object-fit: contain;
+                border: 8px solid #FFF;
             }
             h2 {
                 font-family: Roboto;
@@ -73,6 +74,15 @@ section#Profile-component {
                         font-weight: bold;
                         border:none;
                         background: transparent;
+                    }
+                }
+            }
+            .tab-content{
+                .tab-pane{
+                    .Timeline-profile{
+                        width: 90%;
+                        max-width: 890px;
+                        margin-top: 30px;
                     }
                 }
             }

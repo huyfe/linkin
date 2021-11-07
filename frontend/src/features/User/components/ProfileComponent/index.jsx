@@ -93,7 +93,7 @@ function ProfileComponent(props) {
             <div className="img-profile">
               <img src="/images/Users/anhbia.jpg" alt="" />
               <div className="avatar-name d-flex align-items-center">
-                <img src="/images/Users/avatar.jpg" alt="" />
+                <img src="/images/Users/avatar2.jpg" alt="" />
                 <h2>Quốc Huy</h2>
               </div>
             </div>
@@ -135,7 +135,10 @@ function ProfileComponent(props) {
                 </MDBTabs>
                 <MDBTabsContent>
                   <MDBTabsPane show={basicActive === "tab1"}>
+                    <div className="Timeline-profile">
                     {LinkPostProfile}
+                    </div>
+                    
                   </MDBTabsPane>
                   <MDBTabsPane show={basicActive === "tab2"}>
                     <IntroduceProfile />

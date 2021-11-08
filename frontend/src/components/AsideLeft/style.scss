@@ -1,2 +1,43 @@
-section#group-sidebar {
+aside.aside-left {
+    position: sticky;
+    top: 71px;
+    max-width: 300px;
+    height: calc(100vh - 71px);
+    overflow-y: scroll;
+    overflow-x: hidden;
+    padding-right: 10px;
+
+    color: rgba(0, 0, 0, 0);
+    transition: color 0.3s ease;
+
+    &:hover {
+        color: rgba(136, 136, 136, 0.151);
+
+        &::-webkit-scrollbar-track {
+            background: rgb(241, 241, 241);
+        }
+    }
+
+    /* width */
+    &::-webkit-scrollbar {
+        width: 10px;
+        margin-left: 10px;
+    }
+
+    /* Handle */
+    &::-webkit-scrollbar-thumb {
+        // background: rgba(136, 136, 136, 0);
+        border-radius: 10px;
+        box-shadow: inset 0 0 0 10px;
+    }
+
+    /* Handle on hover */
+    &::-webkit-scrollbar-thumb:hover {
+        // background: rgba(85, 85, 85, 0.281);
+    }
+
+    /* Track */
+    &::-webkit-scrollbar-track {
+        background: rgba(241, 241, 241, 0);
+    }
 }

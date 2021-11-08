@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import UpLoadLinkComponent from "../../../../components/UploadLinkComponent";
+import ListLinkComponent from "../ListLinkComponent";
 
 NewsFeedComponent.propTypes = {
 
@@ -16,6 +17,11 @@ function NewsFeedComponent(props) {
             <div className="row">
                 <div className="col-12">
                     <UpLoadLinkComponent avatar={userInfo.avatar} href={userInfo.href}></UpLoadLinkComponent>
+                </div>
+            </div>
+            <div className="row mt-5">
+                <div className="col-12">
+                    <ListLinkComponent></ListLinkComponent>
                 </div>
             </div>
         </div>

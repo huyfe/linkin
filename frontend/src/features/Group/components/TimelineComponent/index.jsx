@@ -1,7 +1,7 @@
 import React from 'react'
 import './style.scss';
-import { Link } from 'react-router-dom';
 import LinkComponent from '../../../../components/LinkComponent';
+import UpLoadLinkComponent from '../../../../components/UploadLinkComponent/index';
 
 function TimelineGroup() {
     const Posts = [
@@ -64,15 +64,8 @@ function TimelineGroup() {
     return (
         <section id="timelineGroup">
             <div className="timeline__group">
-                <div className="box-share d-flex justify-content-between align-items-center mb-5 mt-5">
-                    <div className="avatar">
-                        <img src="images/Timeline/huythanhxuan.jpg" />
-                    </div>
-                    <div className="input-group">
-                        <input type="text" className="form-control" placeholder="Bạn muốn chia sẻ gì nào ?" />
-                    </div>
-                </div>
-                {listPost}
+                <UpLoadLinkComponent />
+               {listPost}
             </div>
         </section>
     )

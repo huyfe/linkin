@@ -15,6 +15,7 @@ import MainFollower from "./MainFollower";
 import MainFollowing from "./MainFollowing";
 import TimelineUserComponent from "../TimelineUserComponent"
 import IntroduceProfile from "./IntroduceProfile";
+import UpLoadLinkComponent from "../../../../components/UploadLinkComponent/index";
 
 function ProfileComponent(props) {
     const [basicActive, setBasicActive] = useState("tab1");
@@ -26,6 +27,11 @@ function ProfileComponent(props) {
 
         setBasicActive(value);
     };
+
+    const [userInfo, setUserInfo] = useState({
+        avatar: "https://images.unsplash.com/photo-1517841905240-472988babdf9?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=387&q=80",
+        href: "/profile/tran-quoc-huy"
+    })
 
     const Posts = [
         {
@@ -135,7 +141,8 @@ function ProfileComponent(props) {
                                 <MDBTabsContent>
                                     <MDBTabsPane show={basicActive === "tab1"}>
                                         <div className="Timeline-profile">
-                                        {LinkPostProfile}
+                                            <UpLoadLinkComponent UpLoadLinkComponent avatar={userInfo.avatar} href={userInfo.href}></UpLoadLinkComponent>
+                                            {LinkPostProfile}
                                         </div>
                                     </MDBTabsPane>
                                     <MDBTabsPane show={basicActive === "tab2"}>

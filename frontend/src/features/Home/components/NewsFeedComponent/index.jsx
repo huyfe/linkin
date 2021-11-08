@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import UpLoadLinkComponent from "../UploadLinkComponent";
+import UpLoadLinkComponent from "../../../../components/UploadLinkComponent";
 
 NewsFeedComponent.propTypes = {
 

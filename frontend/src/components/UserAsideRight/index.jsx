@@ -3,7 +3,7 @@ import './style.scss';
 // import Item from '../Item/index';
 import { Link } from 'react-router-dom';
 
-function UserSideBar() {
+function UserAsideRight() {
     const dataUser = localStorage.getItem("dataUser")
     const dataUsers = JSON.parse(dataUser)
 
@@ -58,4 +58,4 @@ function UserSideBar() {
     );
 }
 
-export default UserSideBar;
+export default UserAsideRight;

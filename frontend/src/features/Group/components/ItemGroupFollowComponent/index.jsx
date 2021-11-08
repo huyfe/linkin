@@ -3,8 +3,11 @@ import PropTypes from 'prop-types';
 import './style.scss';
 import { Link } from 'react-router-dom';
 ItemGroupFollowComponent.propTypes = {
-
+    // friendMembers: PropTypes.String,
+    // userImage: PropTypes.String,
+    // name: PropTypes.String,
 };
+
 
 function ItemGroupFollowComponent(props) {
     return (
@@ -20,12 +23,28 @@ function ItemGroupFollowComponent(props) {
                             <h6 className="card-subtitle mb-2">{props.numbers}k Theo dõi</h6>
                             <h6 className="card-subtitle mb-2">{props.countLink}k Copy link</h6>
                         </div>
-                        <div className="box__image_text">
-                            <img className="image__follow" src="images/Groups/image_box_follow.png" />
-                            <img className="image__follow" src="images/Groups/image_box_follow.png" />
-                            <img className="image__follow" src="images/Groups/image_box_follow.png" />
-                            <p className="card-text">Thai Loan, Kieu Ninh và 10 người khác bạn theo dõi cũng tham gia nhóm này</p>
+                        <div className="item__follow">
+                            <div className="box__image">
+                                {props.friendMembers.map(friendMember => {
+                                    return (
+                                        <>
+                                            <img className="image__follow" src={friendMember.userImage} />
+
+                                        </>
+                                    )
+                                })}
+                            </div>
+                            <div className="box__content">
+                                {props.friendMembers.map(friendMember => {
+                                    return (
+                                        <>
+                                            <p className="card-text">{friendMember.name}</p>
+                                        </>
+                                    )
+                                })}
+                            </div>
                         </div>
+
                         <button className=" btn item__button">Tham gia nhóm<span>{props.name}</span> {props.iconPlus && <span className={"icon " + props.iconPlus}></span>}</button>
                     </div>
                 </div>

@@ -31,7 +31,7 @@ function UserFeature() {
                 <Route path="register" element={<RegisterPage />} />
                 <Route path="reset-password" element={<Error404Page />} />
                 <Route path="forgot-password" element={<ForgotPassPage />} />
-                <Route path="history" element={<ActivityHistoryPage />} />
+                <Route path="history" element={<Error404Page />} />
                 <Route path="profile/tran-quoc-huy" element={<ProfilePage />} />
             </Routes>
         )

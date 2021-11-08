@@ -1,24 +1,28 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './style.scss';
 
 function LinkComponent(props) {
+    const [like, setLike] = useState(false);
+    const eventLike = () => {
+        setLike(like => !like);
+    }
     return (
         <div className="box-item mb-4">
             <div className="info__box d-flex align-items-center">
                 <div className="info__box-client">
-                    <Link to={{pathname: `/${props.userLink}`}} className="avatar">
+                    <Link to={{ pathname: `/${props.userLink}` }} className="avatar">
                         <img src={props.imageUser} />
                     </Link>
                 </div>
                 <div className="info__box-post">
                     <div className="client-name">
-                        <Link  to={{pathname: `/${props.userLink}`}} className="name"> {props.nameUser} </Link>
+                        <Link to={{ pathname: `/${props.userLink}` }} className="name"> {props.nameUser} </Link>
                         <Link to={{ pathname: `/${props.groupLink}` }} className="name-group">
-                                <i class="fas fa-caret-right"></i>
-                                <img src={props.imageGroup} />
-                                <span>{props.nameGroup}</span>
-                            </Link>
+                            <i class="fas fa-caret-right"></i>
+                            <img src={props.imageGroup} />
+                            <span>{props.nameGroup}</span>
+                        </Link>
                     </div>
                     <div className="d-flex align-items-center">
                         <p className="time-post">
@@ -46,13 +50,13 @@ function LinkComponent(props) {
                 </div>
 
                 <div className="main__content-image d-flex justify-content-center">
-                    <img src={props.imageLink}/>
+                    <img src={props.imageLink} />
                 </div>
 
                 <div className="main__content-function m-3">
                     <div className="row">
                         <div className="col-lg-4 col-sm-4 d-flex align-items-center justify-content-center">
-                            <div className="item">
+                            <div onClick={eventLike} className={like ? "item liked" : "item"}>
                                 <i class="fal fa-heart"></i> <span>Thích</span>
                             </div>
                         </div>

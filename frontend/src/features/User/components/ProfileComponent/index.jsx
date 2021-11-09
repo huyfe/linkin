@@ -18,6 +18,8 @@ import IntroduceProfile from "./IntroduceProfile";
 import UpLoadLinkComponent from "../../../../components/UploadLinkComponent/index";
 
 function ProfileComponent(props) {
+    const dataUser = localStorage.getItem("dataUser")
+    const dataUsers = JSON.parse(dataUser)
     const [basicActive, setBasicActive] = useState("tab1");
 
     const handleBasicClick = (value) => {
@@ -97,10 +99,14 @@ function ProfileComponent(props) {
                     <div className="col-12">
                         <div className="img-profile">
                             <img src="/images/Users/anhbia.jpg" alt="" />
-                            <div className="avatar-name d-flex align-items-center">
-                                <img src="/images/Users/avatar2.jpg" alt="" />
-                                <h2>Quốc Huy</h2>
-                            </div>
+                            {(dataUsers) ? (
+                                <div className="avatar-name d-flex align-items-center">
+                                    <img src="/images/Users/avatar2.jpg" alt="" />
+                                    <h2>{dataUsers.Fullname}</h2>
+                                    {/* <button>Kết bạn</button> */}
+                                </div>
+                            ) : ("")} 
+                            
                         </div>
                         <div className="detail-profile row">
                             <div className="left-tab-menu col-8">

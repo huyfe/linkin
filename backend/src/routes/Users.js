@@ -8,6 +8,7 @@ router.get('/:slug', userController.ShowUserBySlug);
 router.post('/create-user', userController.Registers);
 router.post('/checklogin', userController.Logins);
 router.patch('/edit-user/:id', userController.UpdateUser);
+router.patch('/edit-users/:id', userController.EditUser);
 router.delete('/lock-user/:id', userController.LockUser);
 router.delete('/delete-user/:id', userController.DeleteUser);
 router.patch('/restore-user/:id', userController.RestoreUser);

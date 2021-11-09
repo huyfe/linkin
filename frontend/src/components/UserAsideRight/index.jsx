@@ -3,7 +3,7 @@ import './style.scss';
 // import Item from '../Item/index';
 import { Link } from 'react-router-dom';
 
-function UserSideBar() {
+function UserAsideRight() {
     const dataUser = localStorage.getItem("dataUser")
     const dataUsers = JSON.parse(dataUser)
 
@@ -19,16 +19,16 @@ function UserSideBar() {
             {(dataUsers) ? (
                 <div className="user__info d-flex justify-content-start align-items-center">
                     <div className="avatar">
-                        <Link to="/profile/tran-quoc-huy" ><img className="img-fuild" src={userInfo.avatar} alt="" /></Link>
+                        <Link to={`/profile/${dataUsers.Slug}`} ><img className="img-fuild" src={userInfo.avatar} alt="" /></Link>
                     </div>
-                    <Link to="/profile/tran-quoc-huy" className="name">{dataUsers.Fullname}</Link>
+                    <Link to={`/profile/${dataUsers.Slug}`} className="name">{dataUsers.Fullname}</Link>
                 </div>
             ) : (
                 <div className="user__info d-flex justify-content-start align-items-center">
                     <div className="avatar">
-                        <Link to="/profile/tran-quoc-huy" ><img className="img-fuild" src={userInfo.avatar2} alt="" /></Link>
+                        <Link to="/login" ><img className="img-fuild" src={userInfo.avatar2} alt="" /></Link>
                     </div>
-                    <Link to="/profile/tran-quoc-huy" className="name">{userInfo.name}</Link>
+                    <Link to="/login" className="name">{userInfo.name}</Link>
                 </div>
             )}
 
@@ -58,4 +58,4 @@ function UserSideBar() {
     );
 }
 
-export default UserSideBar;
+export default UserAsideRight;

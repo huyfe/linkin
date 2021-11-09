@@ -54,57 +54,70 @@ section#itemGroupComponent {
                     }
                 }
 
-                .box__image_text {
+                .item__follow {
                     display: flex;
-                    margin: 12px 0;
-
-
-                    .card-text {
-                        font-family: 'Roboto', sans-serif;
-                        font-style: normal;
-                        font-weight: normal;
-                        font-size: 12px;
-                        line-height: 15px;
-                        color: $text-dark;
-                        opacity: 0.5;
-                        margin-left: 12px;
+                    .box__image {
+                        margin: 12px 0;
+    
+    
+                        .card-text {
+                            font-family: 'Roboto', sans-serif;
+                            font-style: normal;
+                            font-weight: normal;
+                            font-size: 12px;
+                            line-height: 15px;
+                            color: $text-dark;
+                            opacity: 0.5;
+                            margin-left: 12px;
+                        }
+    
+                        .image__follow {
+                            width: 24px;
+                            height: 24px;
+                            object-fit: cover;
+                            margin-left: -8px;
+                        }
+    
                     }
-
-                    .image__follow {
-                        width: 24px;
-                        height: 24px;
-                        object-fit: cover;
-                        margin-left: -8px;
+    
+                    .box__content {
+                        display: flex;
+                        align-items: center;
+                        margin-left: 10px;
+                        p {
+                            margin-bottom: 0;
+                        }
                     }
-
                 }
             }
         }
+    }
 
 
-        .item__button {
-            background-color: $bg-primary;
-            width: 170px;
-            height: 40px;
-            border-radius: 4px;
-            font-size: 16px;
-            line-height: 19px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            border: 1px solid $bg-primary;
-            color: $text-white;
-            padding: 0 15px;
-            text-transform: initial;
-            span.icon-plus {
-                font-size: 13px;
-            }
-            &:hover {
-                background-color: transparent;
-                transition: 0.3s;
-                color: $bg-primary;
-            }
+    .item__button {
+        background-color: $bg-primary;
+        width: 170px;
+        height: 40px;
+        border-radius: 4px;
+        font-size: 16px;
+        line-height: 19px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border: 1px solid $bg-primary;
+        color: $text-white;
+        padding: 0 15px;
+        text-transform: initial;
 
+        span.icon-plus {
+            font-size: 13px;
         }
+
+        &:hover {
+            background-color: transparent;
+            transition: 0.3s;
+            color: $bg-primary;
+        }
+
     }
 }

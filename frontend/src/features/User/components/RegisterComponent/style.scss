@@ -4,13 +4,14 @@
     display: flex;
 
     .many-hands {
+
         img {
             width: 154%;
         }
 
         @media (max-width: 1440px) {
             img {
-                width: 120%;
+                width: 130%;
             }
         }
     }
@@ -33,7 +34,7 @@
         }
 
         p {
-            margin-top: 16px;
+            margin-top: 14px;
             font-family: Roboto;
             font-style: normal;
             font-weight: normal;
@@ -49,7 +50,7 @@
         }
 
         form {
-            margin-top: 30px;
+            margin-top: 20px;
             width: 50.42%;
             max-width: 507px;
             height: 100%;
@@ -60,7 +61,7 @@
                     border: 2px solid #3573e2;
                     box-sizing: border-box;
                     border-radius: 15px;
-                    height: 88px;
+                    height: 66px;
                     padding-left: 30px;
                     font-family: Roboto;
                     font-style: normal;
@@ -70,6 +71,7 @@
                     color: #222222;
                 }
             }
+
             button {
                 margin-left: auto;
                 margin-top: 20px;
@@ -88,6 +90,7 @@
                 color: #ffffff;
                 border: none;
                 transition: 0.3s;
+                
                 &:hover {
                     background-color: transparent;
                     border: 2px solid #3573e2;
@@ -98,14 +101,18 @@
         }
 
         @media (max-width:1440px) {
-            margin-top: 60px;
+            margin-top: 30px;
+
+            p{
+                margin-top: 6px;
+            }
 
             form{
                 width: 46%;
 
                 .form-group{
                     input{
-                        height: 82px;
+                        // height: 82px;
                         font-size: 22px;
                         line-height: 28px;
                     }

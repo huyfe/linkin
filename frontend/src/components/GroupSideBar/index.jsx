@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './style.scss';
 import Item from '../Item/index';
+import { MDBBtn } from 'mdb-react-ui-kit';
 
 GroupSideBar.propTypes = {
 
@@ -27,7 +28,7 @@ function GroupSideBar(props) {
                 {listGroup}
             </ul>
             <div className="btn-create">
-                <button className="btn btn-primary bg-white text-primary">Tạo nhóm</button>
+                <MDBBtn outline className="btn btn-primary shadow-0 bg-white text-primary">Tạo nhóm</MDBBtn>
             </div>
         </div>
     );

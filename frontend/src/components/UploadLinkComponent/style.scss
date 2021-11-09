@@ -88,9 +88,42 @@
                 .modal-body {
                     padding: 0px 15px;
                 }
+                .modal-footer {
+                    .btn {
+                        font-style: normal;
+                        font-weight: 500;
+                        font-size: 16px;
+                        line-height: 19px;
+                        /* identical to box height */
+
+                        text-align: center;
+
+                        /* Tone / White */
+
+                        color: #ffffff;
+                    }
+                }
             }
 
             .form-upload-link {
+                .form-group {
+                    .form-control {
+                        padding: 10px 15px;
+                        font-style: normal;
+                        font-weight: normal;
+                        font-size: 16px;
+                        line-height: 19px;
+
+                        color: #222222;
+                        border: none;
+                        &::placeholder {
+                            font-size: 16px;
+                            line-height: 19px;
+
+                            color: #222222;
+                        }
+                    }
+                }
                 .form-group-image {
                     .image-item {
                         height: 600px;

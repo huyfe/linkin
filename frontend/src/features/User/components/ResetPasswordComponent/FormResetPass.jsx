@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 
-
 export default function FormResetPass({ ResetPass }) {
     const dataUser = localStorage.getItem("dataUser")
     const dataUsers = JSON.parse(dataUser)

@@ -9,6 +9,7 @@
 	position: relative;
 	border-radius: 3px;
 	border: 1px solid #3573e2;
+	background-color: #fff;
 	.info__box {
 		padding: 15px;
 		&-client {
@@ -103,12 +104,31 @@
 		}
 		&-function {
 			.item {
+				width: 100%;
+				cursor: pointer;
+				background-color: transparent;
+				border-radius: 5px;
+				padding: 8px 30px;
+				text-align: center;
+				transition: all 0.25s;
+
+				-webkit-user-select: none;
+				-moz-user-select: none;
+				-ms-user-select: none;
+				-o-user-select: none;
+				user-select: none;
+
+				&.liked {
+					color: red;
+				}
+
 				i {
 					margin-right: 15px;
 				}
 				&:hover {
+					background-color: rgba(127, 196, 241, 0.165);
 					.fa-heart {
-						color: red;
+						// color: rgb(255, 0, 0);
 					}
 					.fa-comment-alt-lines,
 					.fa-share {

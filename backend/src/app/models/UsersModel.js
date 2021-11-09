@@ -12,7 +12,10 @@ const User = new Schema(
     {
         _id: { type: Number },
         name: { type: String},       
-        email: { type: String },      
+        email: { type: String },  
+        address: { type: String },  
+        hometown: {type: String},
+        phone: { type: String },    
         password: { type: String }, 
         birthday: { type: Date },
         created_date: { type: Date },

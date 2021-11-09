@@ -63,7 +63,9 @@ export default function Header() {
                             <MDBBtn className="btn btn-primary">Tạo Link</MDBBtn>
                             <button className="btn notification"><i className="far fa-bell"></i></button>
                             <div className="user">
-                                <NavLink to="/profile/tran-quoc-huy"><img src="/images/Header/avatar.png" className="user__avatar"></img></NavLink>
+                                {(dataUsers) ? (
+                                    <NavLink to={`/profile/${dataUsers.Slug}`}><img src="/images/Header/avatar.png" className="user__avatar"></img></NavLink>
+                                ) : ("")}  
                                 <MDBBtn className="btn user__dropdown"><span className="icon-arrow-down"></span></MDBBtn>
                             </div>
                         </div>

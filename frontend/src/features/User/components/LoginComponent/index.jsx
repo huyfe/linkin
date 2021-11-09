@@ -29,6 +29,10 @@ export default function Login() {
                                 Id: res.data.result._id,
                                 Fullname: res.data.result.name,
                                 Email: res.data.result.email,
+                                Address: res.data.result.address,
+                                Hometown: res.data.result.hometown,
+                                Date: res.data.result.birthday,
+                                Phone: res.data.result.phone,
                                 Role: res.data.result.role,
                                 Slug: res.data.result.slug,
                                 Public: res.data.result.public,
@@ -49,6 +53,7 @@ export default function Login() {
                 });
         }
     }
+    
     useEffect(() => {
         const dataUser = JSON.parse(localStorage.getItem('dataUser'))
         if (dataUser) setUser(dataUser)

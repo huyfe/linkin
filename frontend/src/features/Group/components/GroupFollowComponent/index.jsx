@@ -35,12 +35,12 @@ function GroupFollowComponent(props) {
             href: "/",
             friendMembers: [
                 {
-                    name: "Thai Loan",
-                    userImage: "images/Groups/image_box_follow.png"
+                    name: "Bá Đạt",
+                    userImage: "images/Groups/image_follow_three.png"
                 },
                 {
                     name: "Ngọc Hải",
-                    userImage: "images/Groups/image_box_follow.png"
+                    userImage: "images/Groups/image_follow_four.png"
                 }
             ]
         },{
@@ -51,12 +51,12 @@ function GroupFollowComponent(props) {
             href: "/",
             friendMembers: [
                 {
-                    name: "Thai Loan",
-                    userImage: "images/Groups/image_box_follow.png"
+                    name: "Quốc Huy",
+                    userImage: "images/Groups/image_follow_two.png"
                 },
                 {
                     name: "Ngọc Hải",
-                    userImage: "images/Groups/image_box_follow.png"
+                    userImage: "images/Groups/image_follow_four.png"
                 }
             ]
         }
@@ -65,7 +65,7 @@ function GroupFollowComponent(props) {
     const iconPlus = "icon-plus";
     const listGroupFollow = listGroupFollowData.map(group => {
         return (
-            <ItemGroupFollowComponent image={group.image} title={group.title} numbers={group.numbers} countLink={group.countLink} href={group.href} iconPlus={iconPlus}></ItemGroupFollowComponent>
+            <ItemGroupFollowComponent image={group.image} title={group.title} friendMembers={group.friendMembers} numbers={group.numbers} countLink={group.countLink} href={group.href} iconPlus={iconPlus}></ItemGroupFollowComponent>
         );
     });
 

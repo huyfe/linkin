@@ -46,6 +46,9 @@ module.exports = {
 
         newUser.name = req.body.name,
             newUser.email = req.body.email,
+            newUser.address = req.body.address,
+            newUser.hometown = req.body.hometown,
+            newUser.phone = req.body.phone,
             newUser.birthday = req.body.birthday,
             newUser.created_date = req.body.created_date,
             newUser.image = req.body.image,
@@ -60,30 +63,43 @@ module.exports = {
 
     // login the account
     Logins: async function (req, res, next) { // users.password = bcrypt.hashSync(req.body.password, bcrypt.genSaltSync(11), null)
-        const {email, password} = req.body;
-        try{
+        const { email, password } = req.body;
+        try {
             const existingUser = await Users.findOne({ email });
-            if(!existingUser) return res.status(200).json({ message: "Email error" });
+            if (!existingUser) return res.status(200).json({ message: "Email error" });
             const isPasswordCorrect = await bcrypt.compare(password, existingUser.password);
-            if(!isPasswordCorrect) return res.status(200).json({ message: "Pass error" });
+            if (!isPasswordCorrect) return res.status(200).json({ message: "Pass error" });
 
-            const Token = jwt.sign({ email: existingUser.email, id: existingUser._id }, "token", { expiresIn: "1h" }); 
+            const Token = jwt.sign({ email: existingUser.email, id: existingUser._id }, "token", { expiresIn: "1h" });
             res.status(200).json({ result: existingUser, Token });
-        }catch(error){
+        } catch (error) {
             res.status(500).json({ message: 'có gì đó không ổn!' });
         }
     },
 
     // Edit the account
-    UpdateUser: function (req, res, next) {
+    UpdateUser: async function (req, res, next) {
+        const newUser = req.body;
+        try {
+            const existingUsers = await Users.findOne({ _id: req.params.id });
+            const isPasswordCorrect = await bcrypt.compare(newUser.oldpassword, existingUsers.password);
+            if (isPasswordCorrect) {
+                return res.status(200).json({ message: "password OK!" });
+            } else {
+                return res.status(200).json({ message: "password error!" });
+            }
+        } catch (error) {
+            res.status(500).json({ message: 'có gì đó không ổn!' });
+        }
+    },
+
+    EditUser: async function (req, res, next) {
         const newUser = new Users(req.body);
         const salt = bcrypt.genSaltSync(saltRounds);
-        newUser.email = req.body.email,
-            newUser.password = bcrypt.hashSync(req.body.password, salt),
-            newUser.accessToken = jwt.sign({ email: newUser.email, password: req.body.password }, "token")
-        Users.updateOne({ _id: req.params.id }, newUser)
-            .then(() => res.send('Edit account successfully!'))
-            .catch(next);
+        newUser.password = bcrypt.hashSync(req.body.newpassword, salt),
+            Users.updateOne({ _id: req.params.id }, newUser)
+                .then(() => res.send('Edit account successfully!'))
+                .catch(next);
     },
 
     // Delete the account

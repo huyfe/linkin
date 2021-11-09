@@ -5,10 +5,9 @@ $text-white: #FFFFFF;
 $text-dark:#000000;
 
 .group-sidebar-join {
-    // border-bottom: 1px solid #3574e26e;
     padding-bottom: 20px;
     margin-top: 30px;
-
+    max-width: 280px;
     .box__title {
         display: flex;
         justify-content: space-between;

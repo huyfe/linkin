@@ -6,7 +6,6 @@ import './style.scss';
 import axios from 'axios';
 const jwt = require('jsonwebtoken');
 
-
 export default function ResetPassword() {
     const navigate = useNavigate();
     const value = useContext(DataContext)

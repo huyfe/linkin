@@ -3,11 +3,9 @@ import './style.scss';
 import { GoogleLogin } from 'react-google-login';
 import { useNavigate } from 'react-router-dom';
 
-
 export default function AnotherLoginComponent() {
     const navigate = useNavigate();
     const [user, setUser] = useState(null);
-    
 
     const SuccessLogin = (response) => {
         // console.log("Login Successfully!", response);

@@ -15,6 +15,10 @@ export default function Register() {
             alert("Vui lòng nhập tên!")
         } else if (details.email === "") {
             alert("Vui lòng nhập email!")
+        } else if (details.address === "") {
+            alert("Vui lòng nhập địa chỉ!")
+        } else if (details.phone === "") {
+            alert("Vui lòng nhập số điện thoại!")
         } else if (details.birthday === "") {
             alert("Vui lòng nhập ngày tháng năm sinh!")
         } else if (details.password === "") {
@@ -28,7 +32,10 @@ export default function Register() {
                 if (details.email === user.email && details.name === user.name) {
                     alert("Email hoặc tên người dùng này đã có người sử dụng!")
                 }
-                if (details.email !== user.email && details.name !== user.name) {
+                else if(details.phone === user.phone){
+                    alert("Số điện thoại đã có người sử dụng!")
+                }
+                if (details.email !== user.email && details.name !== user.name && details.phone !== user.phone) {
                     axios.post(`http://localhost:3000/users/create-user`, details)
                         .then(res => {
                             alert('Đăng ký thành công!');

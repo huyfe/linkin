@@ -1,11 +1,14 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useParams } from 'react-router-dom';
 import {
+    MDBBtn,
     MDBTabs,
     MDBTabsItem,
     MDBTabsLink,
     MDBTabsContent,
     MDBTabsPane,
 } from "mdb-react-ui-kit";
+import axios from 'axios';
 import CategoryProfile from "./CategoryProfile";
 import GroupProfile from "./GroupProfile";
 import LinkProFile from "./LinkProfile";
@@ -18,17 +21,26 @@ import IntroduceProfile from "./IntroduceProfile";
 import UpLoadLinkComponent from "../../../../components/UploadLinkComponent/index";
 
 function ProfileComponent(props) {
+    const { slug } = useParams();
+    const [Profile, setProfile] = useState([])
     const dataUser = localStorage.getItem("dataUser")
     const dataUsers = JSON.parse(dataUser)
     const [basicActive, setBasicActive] = useState("tab1");
 
     const handleBasicClick = (value) => {
         if (value === basicActive) {
-          return;
+            return;
         }
 
         setBasicActive(value);
     };
+
+    useEffect(() => {
+        axios.get(`http://localhost:3000/users/${slug}`)
+            .then(res => {
+                setProfile(res.data.users)
+            })
+    }, [slug]);
 
     const [userInfo, setUserInfo] = useState({
         avatar: "https://images.unsplash.com/photo-1517841905240-472988babdf9?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=387&q=80",
@@ -94,19 +106,25 @@ function ProfileComponent(props) {
 
     return (
         <section id="Profile-component">
+
             <div className="container-fluid">
                 <div className="row">
                     <div className="col-12">
                         <div className="img-profile">
                             <img src="/images/Users/anhbia.jpg" alt="" />
-                            {(dataUsers) ? (
-                                <div className="avatar-name d-flex align-items-center">
+                            <div className="avatar-name d-flex align-items-center justify-content-between">
+                                <div className="d-flex align-items-center">
                                     <img src="/images/Users/avatar2.jpg" alt="" />
-                                    <h2>{dataUsers.Fullname}</h2>
-                                    {/* <button>Kết bạn</button> */}
+                                    <h2>{Profile.name}</h2>
                                 </div>
-                            ) : ("")} 
-                            
+                                {(dataUsers) ? (
+                                    (dataUsers.Slug) !== Profile.slug ? (
+                                        <MDBBtn outline className="button">
+                                            Theo dõi
+                                        </MDBBtn>
+                                    ) : ("")
+                                ) : ("")}
+                            </div>
                         </div>
                         <div className="detail-profile row">
                             <div className="left-tab-menu col-8">
@@ -119,30 +137,30 @@ function ProfileComponent(props) {
                                             Bài viết
                                         </MDBTabsLink>
                                     </MDBTabsItem>
-                                  <MDBTabsItem>
-                                      <MDBTabsLink
-                                          onClick={() => handleBasicClick("tab2")}
-                                          active={basicActive === "tab2"}
-                                      >
-                                          Giới thiệu
-                                      </MDBTabsLink>
-                                  </MDBTabsItem>
-                                  <MDBTabsItem>
-                                      <MDBTabsLink
-                                          onClick={() => handleBasicClick("tab3")}
-                                          active={basicActive === "tab3"}
-                                      >
-                                          Đang theo dõi
-                                      </MDBTabsLink>
-                                  </MDBTabsItem>
-                                  <MDBTabsItem>
-                                      <MDBTabsLink
-                                          onClick={() => handleBasicClick("tab4")}
-                                          active={basicActive === "tab4"}
-                                      >
-                                          Người theo dõi
-                                      </MDBTabsLink>
-                                  </MDBTabsItem>
+                                    <MDBTabsItem>
+                                        <MDBTabsLink
+                                            onClick={() => handleBasicClick("tab2")}
+                                            active={basicActive === "tab2"}
+                                        >
+                                            Giới thiệu
+                                        </MDBTabsLink>
+                                    </MDBTabsItem>
+                                    <MDBTabsItem>
+                                        <MDBTabsLink
+                                            onClick={() => handleBasicClick("tab3")}
+                                            active={basicActive === "tab3"}
+                                        >
+                                            Đang theo dõi
+                                        </MDBTabsLink>
+                                    </MDBTabsItem>
+                                    <MDBTabsItem>
+                                        <MDBTabsLink
+                                            onClick={() => handleBasicClick("tab4")}
+                                            active={basicActive === "tab4"}
+                                        >
+                                            Người theo dõi
+                                        </MDBTabsLink>
+                                    </MDBTabsItem>
                                 </MDBTabs>
                                 <MDBTabsContent>
                                     <MDBTabsPane show={basicActive === "tab1"}>

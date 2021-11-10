@@ -28,6 +28,14 @@ module.exports = {
             .catch(next);
     },
 
+    ShowUserByEmail: function (req, res, next) {
+        Users.findOne({ email: req.params.email })
+            .then(users => {
+                res.json({ users: mongooseToObject(users) });
+            })
+            .catch(next);
+    },
+
     // Show all locked accounts
     TrashUser: function (req, res, next) {
         Users.findDeleted({})

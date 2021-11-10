@@ -34,7 +34,7 @@ function ItemHeadingComponent(props) {
                                     <div className="input-search">
                                         <button className="icon__search  btn"><i className="fal fa-search"></i></button>
                                     </div>
-                                    <select class="mdb-select md-form" searchable="Search here..">
+                                    <select className="mdb-select md-form" searchable="Search here..">
                                         <option value="" disabled selected>Đã tham gia</option>
                                         <option value="1">Cộng đồng design</option>
                                         <option value="2">Cộng đồng fron-end</option>

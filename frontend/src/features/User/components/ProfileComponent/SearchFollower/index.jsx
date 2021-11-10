@@ -13,7 +13,7 @@ function SearchFollower(props) {
                     htmlFor="searchFollower"
                     className="d-flex justify-content-end align-items-center"
                 >
-                    <i class="fal fa-search"></i>
+                    <i className="fal fa-search"></i>
                 </label>
                 <input id="searchFollower" type="search" />
             </div>

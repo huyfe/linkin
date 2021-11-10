@@ -13,7 +13,7 @@ export default function Header() {
         localStorage.removeItem("dataUser");
         // navigate('/');
         // Nếu đăng xuất mà không reload trang thì sẽ bị 404
-        window.location.href="/"
+        window.location.href = "/"
     }
 
     const Logins = () => {
@@ -35,7 +35,7 @@ export default function Header() {
                             <div className="header__search">
                                 {/* <span className="icon-search"></span> */}
                                 <i className="fal fa-search"></i>
-                                <input type="text" placeHolder="Tìm kiếm" />
+                                <input type="text" placeholder="Tìm kiếm" />
                             </div>
                         </div>
                     </div>
@@ -65,7 +65,7 @@ export default function Header() {
                             <div className="user">
                                 {(dataUsers) ? (
                                     <NavLink to={`/profile/${dataUsers.Slug}`}><img src="/images/Header/avatar.png" className="user__avatar"></img></NavLink>
-                                ) : ("")}  
+                                ) : ("")}
                                 <MDBBtn className="btn user__dropdown"><span className="icon-arrow-down"></span></MDBBtn>
                             </div>
                         </div>

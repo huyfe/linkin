@@ -35,15 +35,15 @@ function UserAsideRight() {
             <ul>
                 <li className="item">
                     <Link to="/links">
-                        <i class="fal fa-link"></i>Link của tôi
+                        <i className="fal fa-link"></i>Link của tôi
                     </Link>
                 </li>
-                <li class="item">
+                <li className="item">
                     <Link to="/categories">
-                        <i class="fal fa-folders"></i>Danh mục của tôi
+                        <i className="fal fa-folders"></i>Danh mục của tôi
                     </Link>
                 </li>
-                <li class="item">
+                <li className="item">
                     <Link to="/history">
                         <i className="fal fa-history"></i>Lịch sử hoạt động
                     </Link>

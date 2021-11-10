@@ -17,7 +17,7 @@ function SearchCategory(props) {
 
   return (
     <div className="d-flex align-items-center searchCategory">
-      {props.showBtnBack ? <button onClick={ () => navigate(-1)}><span className="icon-back"></span></button> : ""}
+      {props.showBtnBack ? <button onClick={() => navigate(-1)}><span className="icon-back"></span></button> : ""}
       {/* title được truyền ở MainCategory và MainCategoryDetail */}
       <h1>{props.title}</h1>
       <div className="searchCategory__group">
@@ -25,7 +25,7 @@ function SearchCategory(props) {
           htmlFor="searchCategory"
           className="d-flex justify-content-end align-items-center"
         >
-          <i class="fal fa-search"></i>
+          <i className="fal fa-search"></i>
         </label>
         <input id="searchCategory" type="search" />
       </div>

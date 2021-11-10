@@ -11,7 +11,7 @@ ItemNotificationGroup.propTypes = {
 
 function ItemNotificationGroup(props) {
     return (
-        <div class="notification__group">
+        <div className="notification__group">
             <Link to={props.href} style={{ backgroundImage: `url("${props.image}")` }} className="notification__background">
                 <h3>{props.numbers}</h3>
             </Link>

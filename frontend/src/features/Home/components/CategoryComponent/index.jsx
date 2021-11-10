@@ -11,7 +11,7 @@ Category.propTypes = {
 
 function Category(props) {
     return (
-        <div class="category">
+        <div className="category">
             <Link to={props.href} style={{ backgroundImage: `url("${props.image}")` }} className="category__background">
                 <h3>{props.name}</h3>
             </Link>

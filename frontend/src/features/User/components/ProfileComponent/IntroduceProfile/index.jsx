@@ -72,9 +72,9 @@ function IntroduceProfile() {
                     </div>
                     <div className="services d-flex">
 
-                        <i class="fal fa-pen"></i>
-                        <i class="far fa-globe-africa"></i>
-                        <i class="fas fa-lock"></i>
+                        <i className="fal fa-pen"></i>
+                        <i className="far fa-globe-africa"></i>
+                        <i className="fas fa-lock"></i>
                     </div>
                 </div>
                 <div className="itemintroduces d-flex justify-content-between">
@@ -84,9 +84,9 @@ function IntroduceProfile() {
                     </div>
                     <div className="services d-flex">
 
-                        <i class="fal fa-pen"></i>
-                        <i class="far fa-globe-africa"></i>
-                        <i class="fas fa-lock"></i>
+                        <i className="fal fa-pen"></i>
+                        <i className="far fa-globe-africa"></i>
+                        <i className="fas fa-lock"></i>
                     </div>
                 </div>
                 <div className="itemintroduces d-flex justify-content-between">
@@ -96,9 +96,9 @@ function IntroduceProfile() {
                     </div>
                     <div className="services d-flex">
 
-                        <i class="fal fa-pen"></i>
-                        <i class="far fa-globe-africa"></i>
-                        <i class="fas fa-lock"></i>
+                        <i className="fal fa-pen"></i>
+                        <i className="far fa-globe-africa"></i>
+                        <i className="fas fa-lock"></i>
                     </div>
                 </div>
                 <div className="itemintroduces d-flex justify-content-between">
@@ -108,9 +108,9 @@ function IntroduceProfile() {
                     </div>
                     <div className="services d-flex">
 
-                        <i class="fal fa-pen"></i>
-                        <i class="far fa-globe-africa"></i>
-                        <i class="fas fa-lock"></i>
+                        <i className="fal fa-pen"></i>
+                        <i className="far fa-globe-africa"></i>
+                        <i className="fas fa-lock"></i>
                     </div>
                 </div>
                 <div className="itemintroduces d-flex justify-content-between">
@@ -120,9 +120,9 @@ function IntroduceProfile() {
                     </div>
                     <div className="services d-flex">
 
-                        <i class="fal fa-pen"></i>
-                        <i class="far fa-globe-africa"></i>
-                        <i class="fas fa-lock"></i>
+                        <i className="fal fa-pen"></i>
+                        <i className="far fa-globe-africa"></i>
+                        <i className="fas fa-lock"></i>
                     </div>
                 </div>
                 <div className="itemintroduces d-flex justify-content-between">
@@ -132,9 +132,9 @@ function IntroduceProfile() {
                     </div>
                     <div className="services d-flex">
 
-                        <i class="fal fa-pen"></i>
-                        <i class="far fa-globe-africa"></i>
-                        <i class="fas fa-lock"></i>
+                        <i className="fal fa-pen"></i>
+                        <i className="far fa-globe-africa"></i>
+                        <i className="fas fa-lock"></i>
                     </div>
                 </div>
                 <div className="itemintroduces d-flex justify-content-center align-items-center">

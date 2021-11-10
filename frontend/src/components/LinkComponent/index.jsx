@@ -19,14 +19,14 @@ function LinkComponent(props) {
                     <div className="client-name">
                         <Link to={{ pathname: `/${props.userLink}` }} className="name"> {props.nameUser} </Link>
                         <Link to={{ pathname: `/${props.groupLink}` }} className="name-group">
-                            <i class="fas fa-caret-right"></i>
+                            <i className="fas fa-caret-right"></i>
                             <img src={props.imageGroup} />
                             <span>{props.nameGroup}</span>
                         </Link>
                     </div>
                     <div className="d-flex align-items-center">
                         <p className="time-post">
-                            {props.datePost} <span class="icon-earth"></span>
+                            {props.datePost} <span className="icon-earth"></span>
                         </p>
                     </div>
 
@@ -43,8 +43,8 @@ function LinkComponent(props) {
                             </p>
                         </div>
                         <div className="col-lg-2 icon d-flex justify-content-around">
-                            <span class="icon-copy"></span>
-                            <span class="icon-plus"></span>
+                            <span className="icon-copy"></span>
+                            <span className="icon-plus"></span>
                         </div>
                     </div>
                 </div>
@@ -57,17 +57,17 @@ function LinkComponent(props) {
                     <div className="row">
                         <div className="col-lg-4 col-sm-4 d-flex align-items-center justify-content-center">
                             <div onClick={eventLike} className={like ? "item liked" : "item"}>
-                                <i class="fal fa-heart"></i> <span>Thích</span>
+                                <i className="fal fa-heart"></i> <span>Thích</span>
                             </div>
                         </div>
                         <div className="col-lg-4 col-sm-4 d-flex align-items-center justify-content-center">
                             <div className="item">
-                                <i class="fal fa-comment-alt-lines"></i> <span>Bình luận</span>
+                                <i className="fal fa-comment-alt-lines"></i> <span>Bình luận</span>
                             </div>
                         </div>
                         <div className="col-lg-4 col-sm-4 d-flex align-items-center justify-content-center">
                             <div className="item">
-                                <i class="fal fa-share"></i> <span>Chia sẻ</span>
+                                <i className="fal fa-share"></i> <span>Chia sẻ</span>
                             </div>
                         </div>
                     </div>
@@ -129,8 +129,8 @@ function LinkComponent(props) {
                     <div className="avatar">
                         <img src="images/Timeline/huythanhxuan.jpg" alt="" />
                     </div>
-                    <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Hãy nhập bình luận của bạn..." />
+                    <div className="input-group">
+                        <input type="text" className="form-control" placeholder="Hãy nhập bình luận của bạn..." />
                     </div>
                 </div>
             </div>

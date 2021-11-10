@@ -61,10 +61,10 @@ function UpLoadLinkComponent(props) {
                                     <h3>Quốc Huy</h3>
                                     <div className="public">
                                         <MDBDropdown>
-                                            <MDBDropdownToggle color='none' className="btn-public"><i class="fas fa-lock"></i> Riêng tư</MDBDropdownToggle>
+                                            <MDBDropdownToggle color='none' className="btn-public"><i className="fas fa-lock"></i> Riêng tư</MDBDropdownToggle>
                                             <MDBDropdownMenu className="dropdown-public">
                                                 <MDBDropdownItem>
-                                                    <MDBDropdownLink className="pl-0" href="#"><i class="far fa-globe-europe"></i> Công khai</MDBDropdownLink>
+                                                    <MDBDropdownLink className="pl-0" href="#"><i className="far fa-globe-europe"></i> Công khai</MDBDropdownLink>
                                                 </MDBDropdownItem>
                                             </MDBDropdownMenu>
                                         </MDBDropdown>
@@ -75,13 +75,13 @@ function UpLoadLinkComponent(props) {
 
                                 <form action="#" className="form-upload-link">
                                     <div className="form-group mb-15">
-                                        <input type="text" className="form-control" name="linkTitle" placeHolder="Tiêu đề của link" />
+                                        <input type="text" className="form-control" name="linkTitle" placeholder="Tiêu đề của link" />
                                     </div>
                                     <div className="form-group mb-15">
-                                        <input type="text" className="form-control" name="linkUrl" placeHolder="Nhập url" />
+                                        <input type="text" className="form-control" name="linkUrl" placeholder="Nhập url" />
                                     </div>
                                     <div className="form-group mb-15">
-                                        <input type="text" className="form-control" name="linkUrl" placeHolder="Danh mục" />
+                                        <input type="text" className="form-control" name="linkUrl" placeholder="Danh mục" />
                                     </div>
                                     <div className="form-group form-group-image mb-15">
                                         <ImageUploading
@@ -107,7 +107,7 @@ function UpLoadLinkComponent(props) {
                                                         onClick={onImageUpload}
                                                         {...dragProps}
                                                     >
-                                                        <i class="fas fa-images"></i>
+                                                        <i className="fas fa-images"></i>
                                                         Ảnh
                                                     </MDBBtn>
                                                     &nbsp;
@@ -115,7 +115,7 @@ function UpLoadLinkComponent(props) {
                                                         <div key={index} className="image-item">
                                                             <img src={image['data_url']} alt="" width="100" />
                                                             <div className="image-item__btn-wrapper">
-                                                                <MDBBtn className="d-flex justify-content-between align-items-center" floating color='link' onClick={() => onImageRemove(index)}><i class="far fa-times"></i></MDBBtn>
+                                                                <MDBBtn className="d-flex justify-content-between align-items-center" floating color='link' onClick={() => onImageRemove(index)}><i className="far fa-times"></i></MDBBtn>
                                                             </div>
                                                         </div>
                                                     ))}
@@ -124,7 +124,7 @@ function UpLoadLinkComponent(props) {
                                         </ImageUploading>
                                     </div>
                                     {/* <div className="form-group form-box-image">
-                                        <textarea className="w-100" name="" id="" cols="30" rows="10" placeHolder="Paste image here"></textarea>
+                                        <textarea className="w-100" name="" id="" cols="30" rows="10" placeholder="Paste image here"></textarea>
                                         <Gluejar onPaste={files => console.log(files)} onError={err => console.error(err)}>
                                             {({ images }) =>
                                                 images.length > 0 &&

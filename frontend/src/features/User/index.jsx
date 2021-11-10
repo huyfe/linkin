@@ -7,6 +7,7 @@ import ForgotPassPage from './pages/ForgotPassPage';
 import LoginPage from './pages/LoginPage';
 import ProfilePage from './pages/ProfilePage';
 import RegisterPage from './pages/RegisterPage';
+import ResetPassPage from './pages/ResetPassPage';
 
 function UserFeature() {
     const dataUser = localStorage.getItem("dataUser")
@@ -19,6 +20,7 @@ function UserFeature() {
                 <Route path="another-login" element={<Error404Page />} />
                 <Route path="register" element={<Error404Page />} />
                 <Route path="forgot-password" element={<Error404Page />} />
+                <Route path="reset-password" element={<Error404Page />} />
                 <Route path="history" element={<ActivityHistoryPage />} />
                 <Route path="profile/:slug" element={<ProfilePage />} />
             </Routes>
@@ -28,6 +30,7 @@ function UserFeature() {
                 <Route path="another-login" element={<AnotherLoginPage />} />
                 <Route path="register" element={<RegisterPage />} />
                 <Route path="forgot-password" element={<ForgotPassPage />} />
+                <Route path="reset-password" element={<ResetPassPage />} />
                 <Route path="history" element={<Error404Page />} />
                 <Route path="profile/:slug" element={<ProfilePage />} />
             </Routes>

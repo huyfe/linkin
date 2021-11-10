@@ -11,14 +11,14 @@ function GroupFollowComponent(props) {
 
     const listGroupFollowData = [
         {
-            image: 'images/Groups/image_group_join.png',
+            image: 'https://tse1.mm.bing.net/th?id=OIP.zxsXjH_A-_E15udTopQdVAHaHa&pid=Api&P=0&w=300&h=300',
             title: "Cộng Đồng Front-End",
             numbers: "5100",
             countLink: "8500",
             href: "/",
             friendMembers: [
                 {
-                    name: "Thai Loan",
+                    name: "Thanh Lam",
                     userImage: "images/Groups/image_box_follow.png"
                 },
                 {
@@ -28,19 +28,19 @@ function GroupFollowComponent(props) {
             ]
         },
         {
-            image: 'images/Groups/image_group_join.png',
-            title: "Cộng Đồng Front-End",
+            image: 'https://codegym.vn/wp-content/uploads/2021/07/3-cach-lua-chon-nganh-nghe-phu-hop-danh-cho-ban-4.png',
+            title: "Cộng Đồng Code Gym",
             numbers: "5100",
             countLink: "8500",
             href: "/",
             friendMembers: [
                 {
                     name: "Bá Đạt",
-                    userImage: "images/Groups/image_follow_three.png"
+                    userImage: "/images/Groups/image_follow_three.png"
                 },
                 {
                     name: "Ngọc Hải",
-                    userImage: "images/Groups/image_follow_four.png"
+                    userImage: "/images/Groups/image_follow_four.png"
                 }
             ]
         },{
@@ -52,11 +52,11 @@ function GroupFollowComponent(props) {
             friendMembers: [
                 {
                     name: "Quốc Huy",
-                    userImage: "images/Groups/image_follow_two.png"
+                    userImage: "/images/Groups/image_follow_two.png"
                 },
                 {
                     name: "Ngọc Hải",
-                    userImage: "images/Groups/image_follow_four.png"
+                    userImage: "/images/Groups/image_follow_four.png"
                 }
             ]
         }
@@ -71,10 +71,12 @@ function GroupFollowComponent(props) {
 
     return (
         <div className="group-sidebar-follow">
-            <h3>Đề xuất theo dõi</h3>
-            <ul>
-                {listGroupFollow}
-            </ul>
+            <div className="box__sidebar__home">
+                <h3>Đề xuất theo dõi</h3>
+                <ul>
+                    {listGroupFollow}
+                </ul>
+            </div>
         </div>
     );
 }

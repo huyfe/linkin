@@ -1,10 +1,13 @@
 import React from 'react';
-import SidebarGroupLink from '../SidebarGroupLinkComponent';
 import TimelineGroup from '../TimelineComponent';
 import PropTypes from 'prop-types';
 import './style.scss';
 import { Link } from 'react-router-dom';
 import { MDBDropdown, MDBDropdownMenu, MDBDropdownToggle, MDBDropdownItem, MDBDropdownLink } from 'mdb-react-ui-kit';
+import SidebarGroupLinkComponent from '../SidebarGroupLinkComponent';
+
+
+
 ItemHeadingComponent.propTypes = {
 
 };
@@ -46,14 +49,13 @@ function ItemHeadingComponent(props) {
                                 </div>
                             </form>
                         </div>
-
                     </div>
                     <div className="timeLine__group">
-                        <TimelineGroup />
+                        {/* <TimelineGroup /> */}
                     </div>
                 </div>
                 <div className="col-lg-4">
-                    <SidebarGroupLink />
+                    <SidebarGroupLinkComponent />
                 </div>
             </div>
         </div>

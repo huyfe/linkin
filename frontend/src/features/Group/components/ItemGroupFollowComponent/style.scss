@@ -27,7 +27,13 @@ section#itemGroupComponent {
             border-radius: 10px;
             margin-bottom: 25px;
             max-height: 320px;
-
+             a {
+                 img {
+                     width: 100%;
+                     height: 88px;
+                     object-fit: cover;
+                 }
+             }
 
             .card-body {
                 .card-title {
@@ -60,16 +66,7 @@ section#itemGroupComponent {
                         margin: 12px 0;
     
     
-                        .card-text {
-                            font-family: 'Roboto', sans-serif;
-                            font-style: normal;
-                            font-weight: normal;
-                            font-size: 12px;
-                            line-height: 15px;
-                            color: $text-dark;
-                            opacity: 0.5;
-                            margin-left: 12px;
-                        }
+                       
     
                         .image__follow {
                             width: 24px;
@@ -84,6 +81,18 @@ section#itemGroupComponent {
                         display: flex;
                         align-items: center;
                         margin-left: 10px;
+                        .card-text {
+                            font-family: 'Roboto', sans-serif;
+                            font-style: normal;
+                            font-weight: normal;
+                            font-size: 12px;
+                            line-height: 15px;
+                            color: $text-dark;
+                            opacity: 0.5;
+                            &:first-child {
+                                margin-left: 12px;
+                            }
+                        }
                         p {
                             margin-bottom: 0;
                         }

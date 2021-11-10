@@ -12,7 +12,7 @@ function HeadingGroupComponent(props) {
 
     const GroupHeadingData = [
         {
-            imageThumbnail: 'images/Groups/image_theme.png',
+            imageThumbnail: '/images/Groups/image_theme.png',
             titleHeading: "Cộng Đồng Front-End",
             subTitleHeading: "Nhóm công khai",
             members: "1500",
@@ -23,7 +23,7 @@ function HeadingGroupComponent(props) {
     const iconEarth = "icon-earth";
     const GroupHeading = GroupHeadingData.map(group => {
         return (
-            <ItemHeadingComponent   imageThumbnail={group.imageThumbnail} titleHeading={group.titleHeading} subTitleHeading={group.subTitleHeading} members={group.members}  href={group.href} iconEarth={iconEarth}></ItemHeadingComponent>
+            <ItemHeadingComponent imageThumbnail={group.imageThumbnail} titleHeading={group.titleHeading} subTitleHeading={group.subTitleHeading} members={group.members} href={group.href} iconEarth={iconEarth}></ItemHeadingComponent>
         );
     });
 

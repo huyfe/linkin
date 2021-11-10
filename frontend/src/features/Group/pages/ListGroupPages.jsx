@@ -3,7 +3,6 @@ import HomeGroupComponent from '../components/HomeGroupComponent';
 
 function ListGroupPages() {
     return (
-        
         <HomeGroupComponent />
     );
 }

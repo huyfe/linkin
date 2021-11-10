@@ -3,9 +3,7 @@ import PropTypes from 'prop-types';
 import './style.scss';
 import { Link } from 'react-router-dom';
 ItemGroupFollowComponent.propTypes = {
-    // friendMembers: PropTypes.String,
-    // userImage: PropTypes.String,
-    // name: PropTypes.String,
+
 };
 
 
@@ -38,14 +36,14 @@ function ItemGroupFollowComponent(props) {
                                 {props.friendMembers.map(friendMember => {
                                     return (
                                         <>
-                                            <p className="card-text">{friendMember.name}</p>
+                                            <p className="card-text">{friendMember.name} </p>
                                         </>
                                     )
                                 })}
                             </div>
                         </div>
 
-                        <button className=" btn item__button">Tham gia nhóm<span>{props.name}</span> {props.iconPlus && <span className={"icon " + props.iconPlus}></span>}</button>
+                        <button className="btn item__button">Tham gia nhóm<span>{props.name}</span> {props.iconPlus && <span className={"icon " + props.iconPlus}></span>}</button>
                     </div>
                 </div>
             </div>

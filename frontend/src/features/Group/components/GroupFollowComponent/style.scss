@@ -5,10 +5,12 @@ $text-white: #FFFFFF;
 $text-dark:#000000;
 
 .group-sidebar-follow {
-    margin-top: 40px;
     padding-bottom: 35px;
-    max-width: 280px;
-    margin-left: auto;
+
+    .box__sidebar__home {
+        margin-top: 40px;
+        max-width: 280px;
+    }
 
     h3 {
         font-family: "Roboto", sans-serif;

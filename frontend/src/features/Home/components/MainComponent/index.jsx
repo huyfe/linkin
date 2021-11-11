@@ -9,8 +9,8 @@ import './style.scss';
 function MainComponent(props) {
     return (
         <div className="home-page">
-            <div className="container-fluid p-0">
-                <div className="row no-gutters">
+            <div className="container-fluid">
+                <div className="row gx-0">
                     <div className="col-lg-3">
                         <AsideLeft />
                     </div>

@@ -41,6 +41,7 @@ $white: #ffffff;
         }
     }
     &__main-menu {
+        flex-wrap: nowrap !important;
         li {
             a {
                 padding: 30px 50px;
@@ -55,18 +56,34 @@ $white: #ffffff;
         }
     }
     &__controls {
+        button {
+            font-weight: normal;
+            font-size: 16px;
+            line-height: 19px;
+            text-transform: none;
+        }
+        .btn-login,
+        .btn-create-link {
+            width: 170px;
+            padding-top: 15px;
+            padding-bottom: 15px;
+        }
         .btn-notification {
-            margin: 0 10px;
-
+            margin: 0 30px;
+            width: 37px;
+            font-size: 18px;
             color: #222222;
+            background-color: transparent;
+            &:focus {
+                color: #222222;
+                background-color: transparent;
+            }
+            &:hover {
+                color: #222222;
+                background-color: #3574e231;
+            }
         }
-        .notification {
-            margin: 0 10px;
-        }
-        .notification2 {
-            margin: 0 10px;
-            border: none;
-        }
+
         .user {
             &__avatar {
                 width: 50px;
@@ -75,9 +92,35 @@ $white: #ffffff;
                 object-fit: contain;
             }
             &__dropdown {
-                font-size: 6px;
+                font-size: 10px;
                 margin-left: 10px;
+                color: #222222;
+                background-color: transparent;
+                &:after {
+                    display: none;
+                }
+                &:focus {
+                    color: #222222;
+                    background-color: transparent;
+                }
+                &:hover {
+                    color: #222222;
+                    background-color: #3574e231;
+                }
+                span {
+                    line-height: 38px;
+                }
             }
         }
+    }
+}
+.dropdown-menu-user {
+    width: 300px;
+    margin-top: 20px !important;
+    padding: 10px !important;
+    .dropdown-item {
+        font-size: 18px !important;
+        border-radius: 5px !important;
+        padding: 15px !important;
     }
 }

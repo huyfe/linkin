@@ -2,7 +2,9 @@ import React from 'react';
 import { GoogleLogout } from 'react-google-login';
 import { NavLink, useNavigate } from 'react-router-dom';
 import './style.scss';
-import { MDBBtn } from 'mdb-react-ui-kit';
+import { MDBBtn, MDBDropdownLink, MDBDropdown, MDBDropdownToggle, MDBDropdownMenu, MDBDropdownItem } from 'mdb-react-ui-kit';
+import { Link } from 'react-router-dom';
+
 
 export default function Header() {
     const dataUser = localStorage.getItem("dataUser")
@@ -47,26 +49,60 @@ export default function Header() {
                         </ul>
                     </div>
                     <div className="col-4">
-                        <div className="header__controls d-flex justify-content-end">
-                            {(dataUsers) ? (
-                                (dataUsers.TokenId) ? (
-                                    <MDBBtn className="notification2"><GoogleLogout
-                                        clientId="1022092216832-1rf2be1vf26lfoav4pbm5sfei8rentqk.apps.googleusercontent.com"
-                                        buttonText="Đăng xuất" onLogoutSuccess={LogoutGoogle} /></MDBBtn>
-                                ) : (
-                                    <MDBBtn onClick={Logout} className="btn btn-light notification">Đăng xuất</MDBBtn>
-                                )
-                            ) : (
-                                <MDBBtn onClick={Logins} className="btn btn-primary notification">Đăng nhập</MDBBtn>
-                            )}
-
-                            <MDBBtn className="btn btn-primary">Tạo Link</MDBBtn>
-                            <button className="btn notification"><i className="far fa-bell"></i></button>
-                            <div className="user">
+                        <div className="header__controls d-flex justify-content-end align-items-center">
+                            <MDBBtn className="btn btn-primary btn-create-link shadow-0">Tạo Link</MDBBtn>
+                            <MDBBtn floating className="btn btn-notification shadow-0"><i className="fal fa-bell"></i></MDBBtn>
+                            <div className="user d-flex align-items-center">
                                 {(dataUsers) ? (
-                                    <NavLink to={`/profile/${dataUsers.Slug}`}><img src="/images/Header/avatar.png" className="user__avatar"></img></NavLink>
+                                    <NavLink to={`/profile/${dataUsers.Slug}`}><img src="/images/Header/avatar.png" className="user__avatar" /></NavLink>
                                 ) : ("")}
-                                <MDBBtn className="btn user__dropdown"><span className="icon-arrow-down"></span></MDBBtn>
+                                <NavLink to={`/profile/1`}><img src="/images/Header/avatar.png" className="user__avatar" /></NavLink>
+
+                                <MDBDropdown>
+                                    <MDBDropdownToggle floating className="shadow-0 user__dropdown">
+                                        <span className="icon-arrow-down"></span>
+                                    </MDBDropdownToggle>
+                                    <MDBDropdownMenu className="dropdown-menu-user">
+                                        <MDBDropdownItem>
+                                            <Link className="dropdown-item linkItem__dropdown--link" to={(dataUsers) ? `/profile/${dataUsers.Slug}` : '/'} >
+                                                <span className="icon-lock"></span> Trang cá nhân của bạn
+                                            </Link>
+                                        </MDBDropdownItem>
+
+                                        <MDBDropdownItem>
+                                            <MDBDropdownLink className="linkItem__dropdown--link" href="#" >
+                                                <i className="fal fa-trash-alt"></i> Đổi mật khẩu
+                                            </MDBDropdownLink>
+                                        </MDBDropdownItem>
+
+                                        <MDBDropdownItem>
+                                            {(dataUsers) ? (
+                                                (dataUsers.TokenId) ? (
+                                                    <MDBBtn className="border-0"><GoogleLogout
+                                                        clientId="1022092216832-1rf2be1vf26lfoav4pbm5sfei8rentqk.apps.googleusercontent.com"
+                                                        buttonText="Đăng xuất" onLogoutSuccess={LogoutGoogle} /></MDBBtn>
+                                                ) : (
+                                                    <MDBDropdownLink onClick={Logout}
+                                                        className="linkItem__dropdown--link"
+                                                        href="#"
+                                                    >
+                                                        <span className="icon-earth"></span> Đăng xuất
+                                                    </MDBDropdownLink>
+                                                    // <MDBBtn onClick={Logout} className="btn btn-light btn-logout">Đăng xuất</MDBBtn>
+                                                )
+                                            ) : (
+                                                <Link to="/login"
+                                                    className="dropdown-item linkItem__dropdown--link"
+                                                    href="#"
+                                                >
+                                                    <span className="icon-earth"></span> Đăng nhập
+                                                </Link>
+                                            )}
+                                        </MDBDropdownItem>
+
+
+                                    </MDBDropdownMenu>
+                                </MDBDropdown>
                             </div>
                         </div>
                     </div>

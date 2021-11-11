@@ -3,6 +3,7 @@
         color: red;
     }
     > .container-fluid {
-        width: calc(100% - 80px);
+        padding-left: 40px;
+        padding-right: 5px;
     }
 }

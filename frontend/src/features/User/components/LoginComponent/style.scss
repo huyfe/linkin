@@ -1,18 +1,20 @@
 @import url("https://fonts.googleapis.com/css?family=Abel|Abril+Fatface|Alegreya|Arima+Madurai|Dancing+Script|Dosis|Merriweather|Oleo+Script|Overlock|PT+Serif|Pacifico|Playball|Playfair+Display|Share|Unica+One|Vibur");
 .Login-form {
+    height: calc(100vh - 71px);
     .Login-component {
-        min-height: 555px;
+        height: 100%;
         background-color: #fdfdfd;
         display: flex;
 
         .many-hands {
-
             img {
-                width: 154%;
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
             }
 
-            @media (max-width:1440px) {
-                img{
+            @media (max-width: 1440px) {
+                img {
                     width: 120%;
                 }
             }
@@ -23,7 +25,6 @@
             align-items: center;
             flex-direction: column;
             width: 100%;
-            margin-top: 180px;
 
             h2 {
                 font-family: Roboto;
@@ -44,7 +45,7 @@
                 text-align: center;
                 color: rgb(165, 159, 159);
                 margin-top: 16px;
-                
+
                 a {
                     color: #3573e2;
                     text-decoration: none;
@@ -67,13 +68,10 @@
             }
 
             form {
-                margin-top: 40px;
                 width: 50.42%;
                 max-width: 507px;
-                height: 100%;
-
+                margin-top: 50px;
                 .form-group {
-                    
                     input {
                         background: #fdfdfd;
                         border: 2px solid #3573e2;
@@ -110,7 +108,7 @@
                 .forgot-pass {
                     margin-top: 30px;
                 }
-                
+
                 button {
                     margin-top: 22px;
                     margin-left: auto;
@@ -139,14 +137,11 @@
                 }
             }
 
-            @media (max-width:1440px) {
-                margin-top: 60px;
-
-                form{
+            @media (max-width: 1440px) {
+                form {
                     width: 46%;
-
-                    .form-group{
-                        input{
+                    .form-group {
+                        input {
                             height: 82px;
                             font-size: 26px;
                             line-height: 28px;

@@ -16,7 +16,7 @@ export default function FormLogin({ Login }) {
 
     const Clickeye = e => {
         const togglePassword = document.getElementById('eye');
-    const password = document.getElementById('id_password');
+        const password = document.getElementById('id_password');
         togglePassword.addEventListener('click', function (e) {
             // toggle the type attribute
             const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
@@ -31,7 +31,7 @@ export default function FormLogin({ Login }) {
             <div className="many-hands">
                 <img src="images/Users/many-hands.png" alt="" />
             </div>
-            <div className="form-login">
+            <div className="form-login justify-content-center">
                 <h2>Đăng nhập</h2>
                 <p>Chưa có tài khoản? &nbsp; <Link to="/register">Đăng ký ngay!</Link></p>
                 <div className="icon-login">

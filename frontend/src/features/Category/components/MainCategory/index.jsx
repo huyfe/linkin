@@ -4,6 +4,7 @@ import "./style.scss";
 import FilterCategory from "../FilterCategory";
 import SearchCategory from "../SearchCategory";
 import ListCategory from "../ListCategory";
+import ModalAddCategory from "../ModalAddCategory";
 
 MainCategory.propTypes = {};
 
@@ -15,6 +16,7 @@ function MainCategory(props) {
       </div>
       <div className="col-lg-6 p-0">
         <main className="mainCategory">
+          <ModalAddCategory />
           {/* Truyền title cho component SearchCategory */}
           <SearchCategory title={"Danh mục"} />
           <ListCategory />

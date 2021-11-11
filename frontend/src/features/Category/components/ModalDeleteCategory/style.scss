@@ -1,0 +1,45 @@
+.modalDelete {
+  $txt-blue: #3573e2;
+  $txt-black: #222222;
+  $bg-white: #f9f9f9;
+  $modal-border: #b1aed9;
+
+  max-width: 400px !important;
+  &__content {
+    background-color: $bg-white !important;
+    border: 1px solid $modal-border !important;
+    border-radius: 4px !important;
+  }
+  &__header {
+    padding: 15px !important;
+    padding-bottom: 0 !important;
+    border: none !important;
+    h5 {
+      font-weight: normal;
+      font-size: 20px;
+      line-height: 23px;
+      color: $txt-black;
+    }
+  }
+  &__footer {
+    justify-content: space-evenly !important;
+    padding: 15px !important;
+    border: none !important;
+    button {
+      text-transform: none;
+      background-color: transparent;
+      box-shadow: none;
+      font-weight: normal;
+      font-size: 20px;
+      line-height: 23px;
+      color: $txt-black;
+      transition: 0.3s;
+      padding: 0 5px;
+      &:hover {
+        background-color: transparent;
+        box-shadow: none;
+        color: $txt-blue;
+      }
+    }
+  }
+}

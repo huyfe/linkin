@@ -1,0 +1,84 @@
+.modalAdd {
+  $txt-blue: #3573e2;
+  $txt-black: #222222;
+  $bg-white: #f9f9f9;
+  $modal-border: #b1aed9;
+
+  max-width: 470px !important;
+  &__content {
+    background-color: $bg-white !important;
+    border: 1px solid $modal-border !important;
+    border-radius: 4px !important;
+  }
+  &__body {
+    padding: 15px 30px !important;
+    padding-bottom: 0px !important;
+    border: none !important;
+    .formAddCategory {
+      input {
+        border-color: $txt-blue;
+        padding: 10px;
+        font-weight: normal;
+        font-size: 16px;
+        line-height: 19px;
+        color: $txt-black;
+        border-radius: 4px;
+        margin-bottom: 20px;
+      }
+      &__radio {
+        display: flex;
+        justify-content: space-around;
+        margin-bottom: 10px;
+        label {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          width: 130px;
+          padding: 5px 20px;
+          font-weight: normal;
+          font-size: 13px;
+          line-height: 15px;
+          background-color: $bg-white;
+          border-radius: 4px;
+          border: 1px solid $txt-blue;
+          cursor: pointer;
+          transition: 0.3s;
+          span {
+            font-size: 15px;
+          }
+          &:hover {
+            color: $txt-blue;
+          }
+        }
+        input[type="radio"] {
+          display: none;
+          &:checked + label {
+            background-color: $txt-blue;
+            color: $bg-white;
+          }
+        }
+      }
+    }
+  }
+  &__footer {
+    justify-content: space-around !important;
+    padding: 15px 30px !important;
+    border: none !important;
+    button {
+      text-transform: none;
+      background-color: transparent;
+      box-shadow: none;
+      font-weight: normal;
+      font-size: 16px;
+      line-height: 19px;
+      color: $txt-blue;
+      transition: 0.3s;
+      padding: 0 5px;
+      &:hover {
+        background-color: transparent;
+        box-shadow: none;
+        color: $txt-black;
+      }
+    }
+  }
+}

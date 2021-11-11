@@ -35,7 +35,7 @@ function CategoryLinkItem(props) {
               <MDBDropdownItem>
                 <MDBDropdownLink
                   className="categoryLinkItem__dropdown--link"
-                  href="#"
+                  tag='button' type='button'
                 >
                   <span className="icon-edit-basic"></span> Sửa
                 </MDBDropdownLink>
@@ -43,7 +43,7 @@ function CategoryLinkItem(props) {
               <MDBDropdownItem>
                 <MDBDropdownLink
                   className="categoryLinkItem__dropdown--link"
-                  href="#"
+                  tag='button' type='button'
                 >
                   <i className="fal fa-trash-alt"></i> Xóa
                 </MDBDropdownLink>
@@ -51,7 +51,7 @@ function CategoryLinkItem(props) {
               <MDBDropdownItem>
                 <MDBDropdownLink
                   className="categoryLinkItem__dropdown--link"
-                  href="#"
+                  tag='button' type='button'
                 >
                   <span className="icon-earth"></span> Công khai
                 </MDBDropdownLink>
@@ -59,7 +59,7 @@ function CategoryLinkItem(props) {
               <MDBDropdownItem>
                 <MDBDropdownLink
                   className="categoryLinkItem__dropdown--link"
-                  href="#"
+                  tag='button' type='button'
                 >
                   <span className="icon-lock"></span> Riêng tư
                 </MDBDropdownLink>

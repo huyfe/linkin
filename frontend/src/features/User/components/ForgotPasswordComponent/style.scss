@@ -1,29 +1,25 @@
-@import url('https://fonts.googleapis.com/css?family=Abel|Abril+Fatface|Alegreya|Arima+Madurai|Dancing+Script|Dosis|Merriweather|Oleo+Script|Overlock|PT+Serif|Pacifico|Playball|Playfair+Display|Share|Unica+One|Vibur');
+@import url("https://fonts.googleapis.com/css?family=Abel|Abril+Fatface|Alegreya|Arima+Madurai|Dancing+Script|Dosis|Merriweather|Oleo+Script|Overlock|PT+Serif|Pacifico|Playball|Playfair+Display|Share|Unica+One|Vibur");
 .ForgotPass-form {
     .ForgotPass-component {
-        min-height: 555px;
+        height: calc(100vh - 71px);
         background-color: #fdfdfd;
         display: flex;
+        align-items: center;
 
         .many-hands {
-
             img {
-                width: 154%;
-            }
-
-            @media (max-width:1440px) {
-                img{
-                    width: 120%;
-                }
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
             }
         }
 
         .form-ForgotPass {
             display: flex;
             align-items: center;
+            justify-content: center;
             flex-direction: column;
             width: 100%;
-            margin-top: 160px;
 
             h2 {
                 font-family: Roboto;
@@ -51,7 +47,7 @@
                 }
             }
 
-            .icon-login{
+            .icon-login {
                 margin-top: 10px;
 
                 a {
@@ -85,13 +81,13 @@
                         font-size: 28px;
                         line-height: 33px;
                         color: #222222;
-                    }   
+                    }
                 }
 
-                .forgot-pass{
+                .forgot-pass {
                     margin-top: 30px;
                 }
-                
+
                 button {
                     margin-top: 22px;
                     margin-left: auto;
@@ -120,14 +116,11 @@
                 }
             }
 
-            @media (max-width:1440px) {
-                margin-top: 60px;
-
-                form{
+            @media (max-width: 1440px) {
+                form {
                     width: 46%;
-
-                    .form-group{
-                        input{
+                    .form-group {
+                        input {
                             height: 82px;
                             font-size: 26px;
                             line-height: 28px;

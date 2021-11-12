@@ -13,24 +13,6 @@ function ListCategory(props) {
             <div className="listCategory__item">
                 <CategoryItem />
             </div>
-            <div className="listCategory__item">
-                <CategoryItem />
-            </div>
-            <div className="listCategory__item">
-                <CategoryItem />
-            </div>
-            <div className="listCategory__item">
-                <CategoryItem />
-            </div>
-            <div className="listCategory__item">
-                <CategoryItem />
-            </div>
-            <div className="listCategory__item">
-                <CategoryItem />
-            </div>
-            <div className="listCategory__item">
-                <CategoryItem />
-            </div>
         </div>
     );
 }

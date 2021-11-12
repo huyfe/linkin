@@ -9,11 +9,13 @@ import {
 import "./style.scss";
 import { Link } from "react-router-dom";
 import ModalDeleteCategory from "../ModalDeleteCategory";
+import ModalEditCategory from "../ModalEditCategory";
 
 CategoryItem.propTypes = {};
 
 function CategoryItem() {
   const [showModal, setShowModal] = useState(false);
+  const [showModalEdit, setShowModalEdit] = useState(false);
   const [idCategoryDelete, setIdCategoryDelete] = useState();
 
   function handleShowModal(idCategory){
@@ -30,7 +32,7 @@ function CategoryItem() {
         </MDBDropdownToggle>
         <MDBDropdownMenu className="categoryItem__dropdown--menu">
           <MDBDropdownItem>
-            <MDBDropdownLink className="categoryItem__link" tag='button' type='button'>
+            <MDBDropdownLink className="categoryItem__link" tag='button' type='button' onClick={() => setShowModalEdit(!showModalEdit)}>
               <span className="icon-edit-basic"></span> Sửa
             </MDBDropdownLink>
           </MDBDropdownItem>
@@ -63,6 +65,7 @@ function CategoryItem() {
       </div>
       <Link to="slug">Nguyên tắc thiết kế</Link>
       <ModalDeleteCategory showModal={showModal} setShowModal={setShowModal} idDelete={idCategoryDelete} />
+      <ModalEditCategory showModalEdit={showModalEdit} setShowModalEdit={setShowModalEdit} />
     </div>
   );
 }

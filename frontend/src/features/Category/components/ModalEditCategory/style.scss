@@ -1,4 +1,4 @@
-.modalAdd {
+.modalEdit{
   $txt-blue: #3573e2;
   $txt-black: #222222;
   $bg-white: #f9f9f9;
@@ -15,7 +15,7 @@
     padding: 15px 30px !important;
     padding-bottom: 0px !important;
     border: none !important;
-    .formAddCategory {
+    .formEditCategory {
       input {
         border-color: $txt-blue;
         padding: 10px;

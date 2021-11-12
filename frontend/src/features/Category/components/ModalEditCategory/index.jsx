@@ -10,17 +10,17 @@ import {
   MDBModalFooter,
 } from "mdb-react-ui-kit";
 
-ModalAddCategory.propTypes = {
-  showModalAdd: PropTypes.bool,
-  setShowModalAdd: PropTypes.func,
+ModalEditCategory.propTypes = {
+  showModalEdit: PropTypes.bool,
+  setShowModalEdit: PropTypes.func,
 };
 
-ModalAddCategory.defaultProps = {
-  showModalAdd: false,
-  setShowModalAdd: null,
+ModalEditCategory.defaultProps = {
+  showModalEdit: false,
+  setShowModalEdit: null,
 }
 
-function ModalAddCategory({showModalAdd, setShowModalAdd}) {
+function ModalEditCategory({showModalEdit, setShowModalEdit}) {
   const [imageUpload, setImageUpload] = useState("");
   const [isImageUpload, setIsImageUpload] = useState(false);
 
@@ -51,14 +51,14 @@ function ModalAddCategory({showModalAdd, setShowModalAdd}) {
 
       <MDBModal
         tabIndex="-1"
-        show={showModalAdd}
+        show={showModalEdit}
         // Code mẫu của mdbootstrap
         // getOpenState={(e) => setCentredModal(e)}
       >
-        <MDBModalDialog className="modalAdd" centered>
-          <MDBModalContent className="modalAdd__content">
-            <MDBModalBody className="modalAdd__body">
-              <form action="#" className="formAddCategory">
+        <MDBModalDialog className="modalEdit" centered>
+          <MDBModalContent className="modalEdit__content">
+            <MDBModalBody className="modalEdit__body">
+              <form action="#" className="formEditCategory">
                 <div className="form-group">
                   <input
                     type="text"
@@ -67,11 +67,11 @@ function ModalAddCategory({showModalAdd, setShowModalAdd}) {
                     placeholder="Điền tên"
                   />
                 </div>
-                <div className="form-group formAddCategory__upload">
-                  <div className="d-flex align-items-center formAddCategory__upload--btn">
+                <div className="form-group formEditCategory__upload">
+                  <div className="d-flex align-items-center formEditCategory__upload--btn">
                     <h3>Chọn hình</h3>
                     <label
-                      htmlFor="img-uploadAdd"
+                      htmlFor="img-uploadEdit"
                       className="d-flex justify-content-center align-items-center"
                     >
                       <i class="far fa-plus"></i>
@@ -80,12 +80,12 @@ function ModalAddCategory({showModalAdd, setShowModalAdd}) {
                   <input
                     type="file"
                     name="image"
-                    id="img-uploadAdd"
+                    id="img-uploadEdit"
                     accept=".jpg,.jpeg,.png"
                     onChange={handleImageUploadChange}
                   />
                   {isImageUpload && (
-                    <div className="formAddCategory__img-uploaded">
+                    <div className="formEditCategory__img-uploaded">
                       <button
                         onClick={() => {
                           setIsImageUpload(false);
@@ -102,7 +102,7 @@ function ModalAddCategory({showModalAdd, setShowModalAdd}) {
                     </div>
                   )}
                 </div>
-                <div className="form-group formAddCategory__radio">
+                <div className="form-group formEditCategory__radio">
                   <input
                     type="radio"
                     id="public"
@@ -126,8 +126,8 @@ function ModalAddCategory({showModalAdd, setShowModalAdd}) {
                 <input type="hidden" name="role" defaultValue="0" />
               </form>
             </MDBModalBody>
-            <MDBModalFooter className="modalAdd__footer">
-              <MDBBtn onClick={() => setShowModalAdd(!showModalAdd)}>Hủy</MDBBtn>
+            <MDBModalFooter className="modalEdit__footer">
+              <MDBBtn onClick={() => setShowModalEdit(!showModalEdit)}>Hủy</MDBBtn>
               <MDBBtn>Đồng ý</MDBBtn>
             </MDBModalFooter>
           </MDBModalContent>
@@ -137,4 +137,4 @@ function ModalAddCategory({showModalAdd, setShowModalAdd}) {
   );
 }
 
-export default ModalAddCategory;
+export default ModalEditCategory;

@@ -32,7 +32,7 @@ export default function Header() {
                 <div className="row align-items-center">
                     <div className="col-4">
                         <div className="header__logo d-flex align-items-center">
-                            <NavLink to="/"> <img src="logo.svg" alt="Linkin" /></NavLink>
+                            <NavLink to="/"> <img src="/logo.svg" alt="Linkin" /></NavLink>
                             <div className="header__search">
                                 {/* <span className="icon-search"></span> */}
                                 <i className="fal fa-search"></i>
@@ -61,12 +61,13 @@ export default function Header() {
                                         <span className="icon-arrow-down"></span>
                                     </MDBDropdownToggle>
                                     <MDBDropdownMenu className="dropdown-menu-user">
-                                        <MDBDropdownItem>
-                                            <Link className="dropdown-item linkItem__dropdown--link" to={(dataUsers) ? `/profile/${dataUsers.Slug}` : '/'} >
-                                                <span className="icon-lock"></span> Trang cá nhân của bạn
-                                            </Link>
-                                        </MDBDropdownItem>
-
+                                        {(dataUsers) ? (
+                                            <MDBDropdownItem>
+                                                <Link className="dropdown-item linkItem__dropdown--link" to={`/profile/${dataUsers.Slug}`} >
+                                                    <span className="icon-lock"></span> Trang cá nhân của bạn
+                                                </Link>
+                                            </MDBDropdownItem>
+                                        ) : ("")}
                                         <MDBDropdownItem>
                                             <MDBDropdownLink className="linkItem__dropdown--link" href="#" >
                                                 <i className="fal fa-trash-alt"></i> Đổi mật khẩu

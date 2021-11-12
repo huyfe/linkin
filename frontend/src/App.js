@@ -7,6 +7,7 @@ import UserFeature from './features/User';
 import GroupFeature from './features/Group';
 import CategoryFeature from './features/Category';
 import LinkFeature from './features/Link';
+import AdminFeature from './features/Admin';
 
 function App() {
     useEffect(() => {
@@ -25,7 +26,6 @@ function App() {
         })
 
     }, []);
-    
 
     return (
         <div className="App">
@@ -36,15 +36,7 @@ function App() {
                 <GroupFeature />
                 <CategoryFeature />
                 <LinkFeature />
-
-                {/* <Routes>
-                    <Route path="register" element={<Register />} />
-                    <Route path="login" element={<Login />} />
-                    <Route path="another-login" element={<AnotherLogin />} />
-                    <Route path="reset-password" element={<ResetPassword />} />
-                    <Route path="/groups" element={<Groups />} />
-                </Routes> */}
-
+                <AdminFeature />
             </Router>
         </div>
     );

@@ -2,12 +2,17 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { MDBBtn } from 'mdb-react-ui-kit';
 
-export default function FormLogin({ Login }) {
+export default function FormLogin({ Login, errors, result }) {
 
     const [details, setDetails] = useState({
         email: "",
         password: ""
     });
+    const Result = () => {
+        return (
+            <span className="checkin">{errors}</span>
+        )
+    }
 
     const submitHandlers = e => {
         e.preventDefault();
@@ -27,35 +32,22 @@ export default function FormLogin({ Login }) {
     }
 
     return (
-        <div className="Login-component">
-            <div className="many-hands">
-                <img src="images/Users/many-hands.png" alt="" />
+        <form className="form d-flex flex-column" onSubmit={submitHandlers}>
+            <div className="form-group">
+                <input className="form-control" type="email" placeholder="Email" name="Email" id="Email" onChange={e => setDetails({ ...details, email: e.target.value })} value={details.email} />
+            </div> <br />
+            <div className="form-group">
+                <input className="form-control" type="password" placeholder="Mật khẩu" name="password" id="id_password" onChange={e => setDetails({ ...details, password: e.target.value })} value={details.password} />
+                <span>
+                    <i className="fa fa-eye" aria-hidden="true" type="button" id="eye" onClick={Clickeye} ></i>
+                </span>
             </div>
-            <div className="form-login justify-content-center">
-                <h2>Đăng nhập</h2>
-                <p>Chưa có tài khoản? &nbsp; <Link to="/register">Đăng ký ngay!</Link></p>
-                <div className="icon-login">
-                    <Link to="/another-login"><img src="images/Users/icon_chrome.png" alt="" /></Link>
-                    <Link to="/login" className="fb-icons"><img src="images/Users/fb.png" alt="" /></Link>
-                    <Link to="/login"><img src="images/Users/twitter.png" alt="" /></Link>
-                    <Link to="/login"><img src="images/Users/icon_linkin.png" alt="" /></Link>
-                </div>
-                <form className="form d-flex flex-column" onSubmit={submitHandlers}>
-                    <div className="form-group">
-                        <input className="form-control" type="email" placeholder="Email" name="Email" id="Email" onChange={e => setDetails({ ...details, email: e.target.value })} value={details.email} />
-                    </div> <br />
-                    <div className="form-group">
-                        <input className="form-control" type="password" placeholder="Mật khẩu" name="password" id="id_password" onChange={e => setDetails({ ...details, password: e.target.value })} value={details.password} />
-                        <span>
-                            <i className="fa fa-eye" aria-hidden="true" type="button" id="eye" onClick={Clickeye} ></i>
-                        </span>
-                    </div>
-                    <div className="forgot-pass d-flex justify-content-end">
-                        <Link to="/forgot-password">Quên mật khẩu</Link>
-                    </div>
-                    <MDBBtn type="submit" className="pull-right">Đăng nhập</MDBBtn>
-                </form>
+            
+            <div className="forgot-pass d-flex justify-content-between">
+                <div >{result ? <Result /> : null}</div>
+                <Link to="/forgot-password">Quên mật khẩu</Link>
             </div>
-        </div>
+            <MDBBtn type="submit" className="pull-right">Đăng nhập</MDBBtn>
+        </form>
     );
 }

@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import FormLogin from './FormLogin';
 import './style.scss';
@@ -10,20 +11,30 @@ export default function Login() {
     const navigate = useNavigate();
 
     const [user, setUser] = useState(null);
+    const [result, showResult] = useState(false);
+    const [errors, showErrors] = useState(null);
 
     const Login = details => {
         if (details.email === "") {
-            alert("Vui lòng nhập email!")
+            const errorEmail = "Vui lòng nhập email";
+            showErrors(errorEmail);
+            showResult(true);
         } else if (details.password === "") {
-            alert("Vui lòng nhập mật khẩu!")
+            const errorPassword = "Vui lòng nhập mật khẩu";
+            showErrors(errorPassword);
+            showResult(true);
         } else {
             axios.post('http://localhost:3000/users/checklogin', details)
                 .then(res => {
                     if (res.status === 200) {
                         if (res.data.message === "Email error") {
-                            alert("Email không tồn tại!");
+                            const errorEmail = "Email không đúng";
+                            showErrors(errorEmail);
+                            showResult(true);
                         } else if (res.data.message === "Pass error") {
-                            alert("Mật khẩu không đúng!")
+                            const errorPassword = "Mật khẩu không đúng";
+                            showErrors(errorPassword);
+                            showResult(true);
                         } else {
                             setUser({
                                 Id: res.data.result._id,
@@ -53,7 +64,12 @@ export default function Login() {
                 });
         }
     }
-    
+
+    const google = () => {
+        // returnUrl = window.location.protocol + "//" + window.location.host + Path
+        window.open("/another-login", "_self")
+    }
+
     useEffect(() => {
         const dataUser = JSON.parse(localStorage.getItem('dataUser'))
         if (dataUser) setUser(dataUser)
@@ -63,13 +79,28 @@ export default function Login() {
         localStorage.setItem('dataUser', JSON.stringify(user))
     }, [user])
 
-    function Checkdata(){
+    function Checkdata() {
         navigate('/');
     }
 
     return (
         <div className="Login-form">
-            <FormLogin Login={Login} />
+            <div className="Login-component">
+                <div className="many-hands">
+                    <img src="images/Users/many-hands.png" alt="" />
+                </div>
+                <div className="form-login justify-content-center">
+                    <h2>Đăng nhập</h2>
+                    <p>Chưa có tài khoản? &nbsp; <Link to="/register">Đăng ký ngay!</Link></p>
+                    <div className="icon-login">
+                        <img src="images/Users/icon_chrome.png" alt="" onClick={google} />
+                        <img src="images/Users/fb.png" alt=""  className="fb-icons"/>
+                        <img src="images/Users/twitter.png" alt="" />
+                        <img src="images/Users/icon_linkin.png" alt="" />
+                    </div>
+                    <FormLogin Login={Login} errors={errors} result={result} />
+                </div>
+            </div>
         </div>
     );
 }

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
-export default function FormRegister({ Register }) {
+export default function FormRegister({ Register, errors, result }) {
     var today = new Date();
     var date = (today.getMonth() + 1) + '-' + today.getDate() + '-' + today.getFullYear();
 
@@ -19,6 +19,12 @@ export default function FormRegister({ Register }) {
         Password: "",
         role: 1
     });
+
+    const Result = () => {
+        return (
+            <span className="checkin">{errors}</span>
+        )
+    }
 
     const submitHandlers = e => {
         e.preventDefault();
@@ -59,6 +65,7 @@ export default function FormRegister({ Register }) {
                         <input className="form-control" type="password" placeholder="Xác nhận mật khẩu" name="Password" id="Password" onChange={e => setDetails({ ...details, Password: e.target.value })} value={details.Password} />
                     </div><br />
                     <input type="hidden" name="_csrf" defaultValue="{{csrfToken}}" />
+                    <div >{result ? <Result /> : null}</div>
                     <button type="submit" className="pull-right">Đăng ký</button>
                 </form>
             </div>

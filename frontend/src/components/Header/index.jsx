@@ -5,7 +5,6 @@ import './style.scss';
 import { MDBBtn, MDBDropdownLink, MDBDropdown, MDBDropdownToggle, MDBDropdownMenu, MDBDropdownItem } from 'mdb-react-ui-kit';
 import { Link } from 'react-router-dom';
 
-
 export default function Header() {
     const dataUser = localStorage.getItem("dataUser")
     const dataUsers = JSON.parse(dataUser)
@@ -50,13 +49,12 @@ export default function Header() {
                     </div>
                     <div className="col-4">
                         <div className="header__controls d-flex justify-content-end align-items-center">
-                            <MDBBtn className="btn btn-primary btn-create-link shadow-0">Tạo Link</MDBBtn>
+                            <MDBBtn className="btn btn-primary btn-create-link shadow-0" >Tạo Link</MDBBtn>
                             <MDBBtn floating className="btn btn-notification shadow-0"><i className="fal fa-bell"></i></MDBBtn>
                             <div className="user d-flex align-items-center">
                                 {(dataUsers) ? (
                                     <NavLink to={`/profile/${dataUsers.Slug}`}><img src="/images/Header/avatar.png" className="user__avatar" /></NavLink>
                                 ) : ("")}
-                                <NavLink to={`/profile/1`}><img src="/images/Header/avatar.png" className="user__avatar" /></NavLink>
 
                                 <MDBDropdown>
                                     <MDBDropdownToggle floating className="shadow-0 user__dropdown">

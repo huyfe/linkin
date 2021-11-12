@@ -49,14 +49,13 @@
             .icon-login {
                 margin-top: 10px;
 
-                a {
+                img {
                     margin-left: 8px;
                     margin-right: 8px;
+                    cursor: pointer;
 
                     &.fb-icons {
-                        img {
-                            max-width: 50px;
-                        }
+                        max-width: 50px;
                     }
                 }
             }
@@ -101,6 +100,14 @@
 
                 .forgot-pass {
                     margin-top: 30px;
+                    .checkin {
+                        font-family: Roboto;
+                        font-style: normal;
+                        font-weight: normal;
+                        font-size: 20px;
+                        line-height: 23px;
+                        color: #f03738;
+                    }
                 }
 
                 button {

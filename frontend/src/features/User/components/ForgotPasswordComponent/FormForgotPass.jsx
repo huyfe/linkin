@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import emailjs from 'emailjs-com';
 import axios from 'axios';
 
@@ -61,13 +61,13 @@ export default function FormForgotPass({ ForgotPass }) {
             </div>
             <div className="form-ForgotPass">
                 <h2>Quên mật khẩu</h2>
-                <p>Bạn có thể đăng nhập bằng các hình thưc bên dưới!</p>
-                <div className="icon-login">
+                <p>Vui lòng ghi đúng email để xác thực!</p>
+                {/* <div className="icon-login">
                     <Link to="/another-login"><img src="images/Users/icon_chrome.png" alt="" /></Link>
                     <Link to="/login" className="fb-icons"><img src="images/Users/fb.png" alt="" /></Link>
                     <Link to="/login"><img src="images/Users/twitter.png" alt="" /></Link>
                     <Link to="/login"><img src="images/Users/icon_linkin.png" alt="" /></Link>
-                </div>
+                </div> */}
                 <form className="form d-flex flex-column" ref={form} onSubmit={sendEmail}>
                     <div className="form-group">
                         <input className="form-control" type="email" placeholder="Email" name="email" id="email" />

@@ -14,6 +14,10 @@ export default function AnotherLoginComponent() {
             Id: response.profileObj.googleId,
             Fullname: response.profileObj.name,
             Email: response.profileObj.email,
+            Address: "",
+            Hometown: "",
+            Date: "",
+            Phone: "",
             Role: 0,
             Slug: response.profileObj.googleId,
             Public: 1,
@@ -48,7 +52,7 @@ export default function AnotherLoginComponent() {
                     <h2>Đăng nhập Google</h2>
                     <b className="google-login">
                         <GoogleLogin
-                            clientId="1022092216832-1rf2be1vf26lfoav4pbm5sfei8rentqk.apps.googleusercontent.com"
+                            clientId="1022092216832-1lvitselar5rlit7j0u9400bblvf0vhj.apps.googleusercontent.com"
                             buttonText="Đăng nhập"
                             onSuccess={SuccessLogin} onFailure={ErrorLogin}
                             cookiePolicy={'single_host_origin'} isSignedIn={true}

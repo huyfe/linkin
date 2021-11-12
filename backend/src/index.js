@@ -23,6 +23,7 @@ const io = socketIO(server, {
   }
 })
 
+
 io.on('connection', (socket) => {
   console.log('A user is connected');
 
@@ -35,8 +36,6 @@ io.on('connection', (socket) => {
   })
 })
 
-
-require('./config/db/passport');
 
 // public
 app.use(bodyParser.json());
@@ -55,6 +54,7 @@ app.use(
   ));
 app.use(express.json());
 app.use(cors());
+
 
 app.use(methodOverride('_method'));
 

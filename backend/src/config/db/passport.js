@@ -1,101 +1,26 @@
+const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const passport = require('passport');
-const User = require('../../app/models/UsersModel');
-const LocalStrategy = require('passport-local').Strategy;
 
-passport.serializeUser(function(user, done) {
-    done(null, user.id);
+const GOOGLE_CLIENT_ID = "1022092216832-1lvitselar5rlit7j0u9400bblvf0vhj.apps.googleusercontent.com";
+const GOOGLE_CLIENT_SECRET = "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";
+
+passport.use('google',
+    new GoogleStrategy(
+        {
+            clientID: GOOGLE_CLIENT_ID,
+            clientSecret: GOOGLE_CLIENT_SECRET,
+            callbackURL: "/auth/google/callback",
+        },
+        function (accessToken, refreshToken, profile, done) {
+            done(null, profile);
+        }
+    )
+);
+
+passport.serializeUser((usersss, done) => {
+    done(null, usersss);
 });
 
-passport.deserializeUser(function(id, done){
-    User.findById(id, function(err, user){
-        done(err, user);
-    });
+passport.deserializeUser((usersss, done) => {
+    done(null, usersss);
 });
-
-// Đăng ký
-passport.use('local.signup', new LocalStrategy({
-    usernameField: 'email',
-    passwordField: 'password',
-    passReqToCallback: true
-}, 
-function(req,email,password, done){  
-    User.findOne({'email': email}, function(err, user){
-        if(err){
-            return done(err);
-        }
-        if(user){
-            return done(null, false, {message: 'Email đã tồn tại!'});
-        }
-        const newUser = new User();
-        newUser.name = req.body.name;
-        newUser.email = email;
-        newUser.birthday = req.body.birthday;
-        newUser.created_date = req.body.created_date;
-        newUser.token = req.body._csrf;
-        newUser.image = req.body.image;
-        newUser.role = req.body.role;
-        newUser.password = newUser.encryptPassword(password);
-        /* newUser.address = address; */
-        newUser.save(function(err, result){
-            if(err){
-                return done(err);
-            }
-            return done(null, newUser);
-        });
-    }
-    
-    );
-}
-
-));
-
-// Đăng nhập
-passport.use('local.signin', new LocalStrategy({
-    usernameField: 'email',
-    passwordField: 'password',
-    passReqToCallback: true
-},
-function(req, email, password, done){
-    User.findOne({'email': email}, function(err, user){
-        if(err){
-            return done(err);
-        }
-        if(!user){
-            return done(null, false, {message: 'Email Không tồn tại hoặc sai!'});
-        }
-        if(!user.validPassword(password)){
-            return done(null, false, {message: 'Mật khẩu Không tồn tại hoặc sai!'});
-        }
-        req.session.user = email;
-        return done(null, user);
-    });
-}));
-/* passport.serializeUser((user, done) => { })
-passport.deserializeUser((id, done) => { }) */
-
-// Đổi mật khẩu
-/* passport.use('local.reset', new LocalStrategy({
-    usernameField: 'email',
-    passwordField: 'password',
-    passReqToCallback: true
-}, 
-function(req,email,password, done){  
-    User.findOne({'email': email}, function(err, user){
-        if(err){
-            return done(err);
-        }
-        const newUser = new User();     
-        newUser.password = newUser.encryptPassword(password);
-        newUser.save(function(err, result){
-            if(err){
-                return done(err);
-            }
-            return done(null, User);
-        });
-    }
-    
-    );
-}
-
-));
- */

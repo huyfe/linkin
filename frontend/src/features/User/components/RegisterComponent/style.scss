@@ -4,7 +4,6 @@
     display: flex;
 
     .many-hands {
-
         img {
             width: 154%;
         }
@@ -72,6 +71,15 @@
                 }
             }
 
+            .checkin {
+                font-family: Roboto;
+                font-style: normal;
+                font-weight: normal;
+                font-size: 20px;
+                line-height: 23px;
+                color: #f03738;
+            }
+
             button {
                 margin-left: auto;
                 margin-top: 20px;
@@ -90,7 +98,7 @@
                 color: #ffffff;
                 border: none;
                 transition: 0.3s;
-                
+
                 &:hover {
                     background-color: transparent;
                     border: 2px solid #3573e2;
@@ -100,18 +108,18 @@
             }
         }
 
-        @media (max-width:1440px) {
+        @media (max-width: 1440px) {
             margin-top: 30px;
 
-            p{
+            p {
                 margin-top: 6px;
             }
 
-            form{
+            form {
                 width: 46%;
 
-                .form-group{
-                    input{
+                .form-group {
+                    input {
                         // height: 82px;
                         font-size: 22px;
                         line-height: 28px;

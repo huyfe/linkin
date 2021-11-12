@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { DataContext } from '../../../../DataLinkin';
 import FormRegister from './FormRegister';
 import './style.scss';
@@ -10,30 +10,53 @@ export default function Register() {
     const [{ users }] = value.users
     const navigate = useNavigate();
 
+    const [result, showResult] = useState(false);
+    const [errors, showErrors] = useState(null);
+
     const Register = details => {
         if (details.name === "") {
-            alert("Vui lòng nhập tên!")
+            const errorss = "Vui lòng nhập tên";
+            showErrors(errorss);
+            showResult(true);
         } else if (details.email === "") {
-            alert("Vui lòng nhập email!")
+            const errorss = "Vui lòng nhập email";
+            showErrors(errorss);
+            showResult(true);
         } else if (details.address === "") {
-            alert("Vui lòng nhập địa chỉ!")
+            const errorss = "Vui lòng nhập địa chỉ";
+            showErrors(errorss);
+            showResult(true);
         } else if (details.phone === "") {
-            alert("Vui lòng nhập số điện thoại!")
+            const errorss = "Vui lòng nhập số điện thoại";
+            showErrors(errorss);
+            showResult(true);
         } else if (details.birthday === "") {
-            alert("Vui lòng nhập ngày tháng năm sinh!")
+            const errorss = "Vui lòng nhập ngày tháng năm sinh";
+            showErrors(errorss);
+            showResult(true);
         } else if (details.password === "") {
-            alert("Vui lòng nhập mật khẩu!")
+            const errorss = "Vui lòng nhập mật khẩu";
+            showErrors(errorss);
+            showResult(true);
         } else if (details.Password === "") {
-            alert("Vui lòng xác nhận mật khẩu!")
+            const errorss = "Vui lòng xác nhận mật khẩu";
+            showErrors(errorss);
+            showResult(true);
         } else if (details.password !== details.Password) {
-            alert("Mật khẩu và xác nhận mật khẩu không khớp!")
+            const errorss = "Mật khẩu và xác nhận mật khẩu không khớp";
+            showErrors(errorss);
+            showResult(true);
         } else {
             users.forEach(user => {
                 if (details.email === user.email && details.name === user.name) {
-                    alert("Email hoặc tên người dùng này đã có người sử dụng!")
+                    const errorss = "Email hoặc tên người dùng này đã có người sử dụng";
+                    showErrors(errorss);
+                    showResult(true);
                 }
-                else if(details.phone === user.phone){
-                    alert("Số điện thoại đã có người sử dụng!")
+                else if (details.phone === user.phone) {
+                    const errorss = "Số điện thoại đã có người sử dụng";
+                    showErrors(errorss);
+                    showResult(true);
                 }
                 if (details.email !== user.email && details.name !== user.name && details.phone !== user.phone) {
                     axios.post(`http://localhost:3000/users/create-user`, details)
@@ -51,7 +74,7 @@ export default function Register() {
 
     return (
         <div>
-            <FormRegister Register={Register} />
+            <FormRegister Register={Register} errors={errors} result={result} />
         </div>
     );
 }

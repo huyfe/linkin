@@ -9,33 +9,51 @@ import {
   MDBModalBody,
   MDBModalFooter,
 } from "mdb-react-ui-kit";
-import ImageUploading from "react-images-uploading";
 
-ModalAddCategory.propTypes = {};
+ModalAddCategory.propTypes = {
+  showModalAdd: PropTypes.bool,
+  setShowModalAdd: PropTypes.func,
+};
 
-function ModalAddCategory(props) {
-  const [centredModal, setCentredModal] = useState(false);
+ModalAddCategory.defaultProps = {
+  showModalAdd: false,
+  setShowModalAdd: null,
+}
 
-  const toggleShow = () => setCentredModal(!centredModal);
+function ModalAddCategory({showModalAdd, setShowModalAdd}) {
+  const [imageUpload, setImageUpload] = useState("");
+  const [isImageUpload, setIsImageUpload] = useState(false);
 
-  // Uploading image
-  const [images, setImages] = useState([]);
-  const maxNumber = 1;
+  // Code mẫu của mdbootstrap
+  // const [centredModal, setCentredModal] = useState(false);
 
-  const onChangeImage = (imageList, addUpdateIndex) => {
-    // data for submit
-    console.log(imageList, addUpdateIndex);
-    setImages(imageList);
-  };
+  // const toggleShow = () => setCentredModal(!centredModal);
+
+  function handleImageUploadChange(e) {
+    if (e.target.files && e.target.files[0]) {
+      let reader = new FileReader();
+      // Sử dụng FileReader để đọc file vừa chọn
+
+      reader.onload = function (e) {
+        // Sau khi xử lý quá trình đọc file hoàn thành
+        setImageUpload(e.target.result);
+        setIsImageUpload(true);
+      };
+
+      reader.readAsDataURL(e.target.files[0]);
+    }
+  }
 
   return (
     <>
-      <MDBBtn onClick={toggleShow}>Vertically centered modal</MDBBtn>
+      {/* Code mẫu của mdbootstrap */}
+      {/* <MDBBtn onClick={toggleShow}>Vertically centered modal</MDBBtn> */}
 
       <MDBModal
         tabIndex="-1"
-        show={centredModal}
-        getOpenState={(e) => setCentredModal(e)}
+        show={showModalAdd}
+        // Code mẫu của mdbootstrap
+        // getOpenState={(e) => setCentredModal(e)}
       >
         <MDBModalDialog className="modalAdd" centered>
           <MDBModalContent className="modalAdd__content">
@@ -49,54 +67,41 @@ function ModalAddCategory(props) {
                     placeholder="Điền tên"
                   />
                 </div>
-                {/* <div className="form-group formAddCategory__image">
-                  <ImageUploading
-                    multiple
-                    value={images}
-                    onChange={onChangeImage}
-                    maxNumber={maxNumber}
-                    dataURLKey="data_url"
-                  >
-                    {({
-                      imageList,
-                      onImageUpload,
-                      onImageRemoveAll,
-                      onImageUpdate,
-                      onImageRemove,
-                      isDragging,
-                      dragProps,
-                    }) => (
-                      // write your building UI
-                      <div className="upload__image-wrapper">
-                        <MDBBtn
-                          color="link"
-                          style={isDragging ? { color: "red" } : undefined}
-                          onClick={onImageUpload}
-                          {...dragProps}
-                        >
-                          <i className="fas fa-images"></i>
-                          Ảnh
-                        </MDBBtn>
-                        &nbsp;
-                        {imageList.map((image, index) => (
-                          <div key={index} className="image-item">
-                            <img src={image["data_url"]} alt="" width="100" />
-                            <div className="image-item__btn-wrapper">
-                              <MDBBtn
-                                className="d-flex justify-content-between align-items-center"
-                                floating
-                                color="link"
-                                onClick={() => onImageRemove(index)}
-                              >
-                                <i className="far fa-times"></i>
-                              </MDBBtn>
-                            </div>
-                          </div>
-                        ))}
-                      </div>
-                    )}
-                  </ImageUploading>
-                </div> */}
+                <div className="form-group formAddCategory__upload">
+                  <div className="d-flex align-items-center formAddCategory__upload--btn">
+                    <h3>Chọn hình</h3>
+                    <label
+                      htmlFor="img-upload"
+                      className="d-flex justify-content-center align-items-center"
+                    >
+                      <i class="far fa-plus"></i>
+                    </label>
+                  </div>
+                  <input
+                    type="file"
+                    name="image"
+                    id="img-upload"
+                    accept=".jpg,.jpeg,.png"
+                    onChange={handleImageUploadChange}
+                  />
+                  {isImageUpload && (
+                    <div className="formAddCategory__img-uploaded">
+                      <button
+                        onClick={() => {
+                          setIsImageUpload(false);
+                          setImageUpload(null);
+                        }}
+                      >
+                        <i className="fad fa-times-circle"></i>
+                      </button>
+                      <img
+                        src={imageUpload}
+                        draggable={false}
+                        alt="img-uploaded"
+                      />
+                    </div>
+                  )}
+                </div>
                 <div className="form-group formAddCategory__radio">
                   <input
                     type="radio"
@@ -122,7 +127,7 @@ function ModalAddCategory(props) {
               </form>
             </MDBModalBody>
             <MDBModalFooter className="modalAdd__footer">
-              <MDBBtn onClick={toggleShow}>Hủy</MDBBtn>
+              <MDBBtn onClick={() => setShowModalAdd(!showModalAdd)}>Hủy</MDBBtn>
               <MDBBtn>Đồng ý</MDBBtn>
             </MDBModalFooter>
           </MDBModalContent>

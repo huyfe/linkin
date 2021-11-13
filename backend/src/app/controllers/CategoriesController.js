@@ -11,6 +11,26 @@ module.exports = {
     }
   },
 
+  //Hiện tất cả danh mục của User -> [GET]/categories-user/:id
+  async ShowAllByUser(req, res) {
+    try {
+      const categories = await Categories.find({id_user_or_group: req.params.id, role: 0});
+      res.json(categories);
+    } catch (err) {
+      res.json({ error: err });
+    }
+  },
+
+  //Hiện tất cả danh mục của Group -> [GET]/categories-group/:id
+  async ShowAllByGroup(req, res) {
+    try {
+      const categories = await Categories.find({id_user_or_group: req.params.id, role: 1});
+      res.json(categories);
+    } catch (err) {
+      res.json({ error: err });
+    }
+  },
+
   //Hiện các danh mục đã xóa mềm (Thùng rác) -> [GET]/show-trash
   async ShowTrash(req, res) {
     try {

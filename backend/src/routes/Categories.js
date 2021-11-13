@@ -4,6 +4,8 @@ const categoryController = require('../app/controllers/CategoriesController');
 
 router.get('/show-trash', categoryController.ShowTrash);
 router.get('/:slug', categoryController.ShowCategoryBySlug);
+router.get('/categories-user/:id', categoryController.ShowAllByUser);
+router.get('/categories-group/:id', categoryController.ShowAllByGroup);
 // router.get('/:id/edit', categoryController.ShowCategoryByID);
 router.post('/add-category', categoryController.AddCategory);
 router.put('/:id/update', categoryController.UpdateCategory);

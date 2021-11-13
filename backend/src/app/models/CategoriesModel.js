@@ -9,7 +9,6 @@ const Category = new Schema(
   {
     _id: { type: Number },
     title: { type: String },
-    desc: { type: String },
     image: { type: String,},
     public: { type: Number, default: 0 },
     id_links: { type: Array, default: [] },

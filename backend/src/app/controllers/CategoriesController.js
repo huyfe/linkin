@@ -109,4 +109,16 @@ module.exports = {
       res.json({ error: err });
     }
   },
+
+  //Cập nhật Ghim cho danh mục
+  async UpdatePin(req, res, next) {
+    try {
+      const category = await Categories.findById(req.params.id);
+      const updatePin = await Categories.findByIdAndUpdate(req.params.id, {pin: !category.pin});
+      res.json(updatePin);
+    } catch (err) {
+      res.json({ error: err });
+    }
+  },
+
 };

@@ -18,9 +18,9 @@ ModalAddCategory.propTypes = {
 ModalAddCategory.defaultProps = {
   showModalAdd: false,
   setShowModalAdd: null,
-}
+};
 
-function ModalAddCategory({showModalAdd, setShowModalAdd}) {
+function ModalAddCategory({ showModalAdd, setShowModalAdd }) {
   const [imageUpload, setImageUpload] = useState("");
   const [isImageUpload, setIsImageUpload] = useState(false);
 
@@ -107,7 +107,7 @@ function ModalAddCategory({showModalAdd, setShowModalAdd}) {
                     type="radio"
                     id="public"
                     name="public"
-                    defaultValue="0"
+                    defaultValue="true"
                   />
                   <label htmlFor="public">
                     <span className="icon-earth"></span> Công khai
@@ -116,7 +116,7 @@ function ModalAddCategory({showModalAdd, setShowModalAdd}) {
                     type="radio"
                     id="private"
                     name="public"
-                    defaultValue="1"
+                    defaultValue="false"
                   />
                   <label htmlFor="private">
                     <span className="icon-lock"></span> Riêng tư
@@ -124,12 +124,14 @@ function ModalAddCategory({showModalAdd, setShowModalAdd}) {
                 </div>
                 <input type="hidden" name="id_user_or_group" defaultValue="1" />
                 <input type="hidden" name="role" defaultValue="0" />
+                <MDBModalFooter className="modalAdd__footer">
+                  <MDBBtn onClick={() => setShowModalAdd(!showModalAdd)}>
+                    Hủy
+                  </MDBBtn>
+                  <MDBBtn>Đồng ý</MDBBtn>
+                </MDBModalFooter>
               </form>
             </MDBModalBody>
-            <MDBModalFooter className="modalAdd__footer">
-              <MDBBtn onClick={() => setShowModalAdd(!showModalAdd)}>Hủy</MDBBtn>
-              <MDBBtn>Đồng ý</MDBBtn>
-            </MDBModalFooter>
           </MDBModalContent>
         </MDBModalDialog>
       </MDBModal>

@@ -11,7 +11,8 @@ router.post('/add-category', categoryController.AddCategory);
 router.put('/:id/update', categoryController.UpdateCategory);
 router.delete('/:id/trash', categoryController.TrashCategory);
 router.patch('/:id/restore', categoryController.RestoreCategory);
-router.delete('/:id/destroy', categoryController.DestroyCategory)
+router.delete('/:id/destroy', categoryController.DestroyCategory);
+router.patch('/:id/pin', categoryController.UpdatePin);
 router.get('/', categoryController.ShowAllCategories);
 
 module.exports = router;

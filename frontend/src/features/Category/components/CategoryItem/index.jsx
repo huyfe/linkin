@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import PropTypes from 'prop-types';
 import {
   MDBDropdown,
   MDBDropdownMenu,
@@ -11,9 +12,11 @@ import { Link } from "react-router-dom";
 import ModalDeleteCategory from "../ModalDeleteCategory";
 import ModalEditCategory from "../ModalEditCategory";
 
-CategoryItem.propTypes = {};
+CategoryItem.propTypes = {
+  categoryItem: PropTypes.object.isRequired,
+};
 
-function CategoryItem() {
+function CategoryItem({categoryItem}) {
   const [showModal, setShowModal] = useState(false);
   const [showModalEdit, setShowModalEdit] = useState(false);
   const [idCategoryDelete, setIdCategoryDelete] = useState();
@@ -37,18 +40,8 @@ function CategoryItem() {
             </MDBDropdownLink>
           </MDBDropdownItem>
           <MDBDropdownItem>
-            <MDBDropdownLink className="categoryItem__link" tag='button' type='button' onClick={ () => handleShowModal(1) } >
+            <MDBDropdownLink className="categoryItem__link" tag='button' type='button' onClick={ () => handleShowModal(categoryItem._id) } >
               <i className="fal fa-trash-alt"></i> Xóa
-            </MDBDropdownLink>
-          </MDBDropdownItem>
-          <MDBDropdownItem>
-            <MDBDropdownLink className="categoryItem__link" tag='button' type='button'>
-              <span className="icon-earth"></span> Công khai
-            </MDBDropdownLink>
-          </MDBDropdownItem>
-          <MDBDropdownItem>
-            <MDBDropdownLink className="categoryItem__link" tag='button' type='button'>
-              <span className="icon-lock"></span> Riêng tư
             </MDBDropdownLink>
           </MDBDropdownItem>
           <MDBDropdownItem>
@@ -59,13 +52,13 @@ function CategoryItem() {
         </MDBDropdownMenu>
       </MDBDropdown>
       <div className="categoryItem__img">
-        <Link to="slug">
-          <img src="./images/Categories/ux-ui.jpg" />
+        <Link to={categoryItem.slug}>
+          <img src={`./images/Categories/${categoryItem.image}`} />
         </Link>
       </div>
-      <Link to="slug">Nguyên tắc thiết kế</Link>
+      <Link to={categoryItem.slug}>{categoryItem.title}</Link>
       <ModalDeleteCategory showModal={showModal} setShowModal={setShowModal} idDelete={idCategoryDelete} />
-      <ModalEditCategory showModalEdit={showModalEdit} setShowModalEdit={setShowModalEdit} />
+      <ModalEditCategory showModalEdit={showModalEdit} setShowModalEdit={setShowModalEdit} categoryEdit={categoryItem} />
     </div>
   );
 }

@@ -1,20 +1,26 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import './style.scss';
-import CategoryItem from '../CategoryItem';
+import React from "react";
+import PropTypes from "prop-types";
+import "./style.scss";
+import CategoryItem from "../CategoryItem";
 
 ListCategory.propTypes = {
-    
+  listCategories: PropTypes.array,
 };
 
-function ListCategory(props) {
-    return (
-        <div className="listCategory">
-            <div className="listCategory__item">
-                <CategoryItem />
-            </div>
+ListCategory.defaultProps = {
+  listCategories: [],
+};
+
+function ListCategory({ listCategories }) {
+  return (
+    <div className="listCategory">
+      {listCategories.map((category) => (
+        <div className="listCategory__item" key={category._id} >
+          <CategoryItem categoryItem={category} />
         </div>
-    );
+      ))}
+    </div>
+  );
 }
 
 export default ListCategory;

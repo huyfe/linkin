@@ -13,16 +13,19 @@ import {
 ModalEditCategory.propTypes = {
   showModalEdit: PropTypes.bool,
   setShowModalEdit: PropTypes.func,
+  categoryEdit: PropTypes.object,
 };
 
 ModalEditCategory.defaultProps = {
   showModalEdit: false,
   setShowModalEdit: null,
-}
+};
 
-function ModalEditCategory({showModalEdit, setShowModalEdit}) {
-  const [imageUpload, setImageUpload] = useState("");
-  const [isImageUpload, setIsImageUpload] = useState(false);
+function ModalEditCategory({ showModalEdit, setShowModalEdit, categoryEdit }) {
+  const [imageUpload, setImageUpload] = useState(
+    `./images/Categories/${categoryEdit.image}`
+  );
+  const [isImageUpload, setIsImageUpload] = useState(true);
 
   // Code mẫu của mdbootstrap
   // const [centredModal, setCentredModal] = useState(false);
@@ -65,13 +68,14 @@ function ModalEditCategory({showModalEdit, setShowModalEdit}) {
                     className="form-control"
                     name="title"
                     placeholder="Điền tên"
+                    defaultValue={categoryEdit.title}
                   />
                 </div>
                 <div className="form-group formEditCategory__upload">
                   <div className="d-flex align-items-center formEditCategory__upload--btn">
                     <h3>Chọn hình</h3>
                     <label
-                      htmlFor="img-uploadEdit"
+                      htmlFor={`img-uploadEdit-${categoryEdit._id}`}
                       className="d-flex justify-content-center align-items-center"
                     >
                       <i class="far fa-plus"></i>
@@ -80,7 +84,7 @@ function ModalEditCategory({showModalEdit, setShowModalEdit}) {
                   <input
                     type="file"
                     name="image"
-                    id="img-uploadEdit"
+                    id={`img-uploadEdit-${categoryEdit._id}`}
                     accept=".jpg,.jpeg,.png"
                     onChange={handleImageUploadChange}
                   />
@@ -105,31 +109,43 @@ function ModalEditCategory({showModalEdit, setShowModalEdit}) {
                 <div className="form-group formEditCategory__radio">
                   <input
                     type="radio"
-                    id="public"
+                    id={`public-${categoryEdit._id}`}
                     name="public"
-                    defaultValue="0"
+                    defaultValue="true"
+                    checked={categoryEdit.public ? true : false}
                   />
-                  <label htmlFor="public">
+                  <label htmlFor={`public-${categoryEdit._id}`}>
                     <span className="icon-earth"></span> Công khai
                   </label>
                   <input
                     type="radio"
-                    id="private"
+                    id={`private-${categoryEdit._id}`}
                     name="public"
-                    defaultValue="1"
+                    defaultValue="false"
+                    checked={!categoryEdit.public ? true : false}
                   />
-                  <label htmlFor="private">
+                  <label htmlFor={`private-${categoryEdit._id}`}>
                     <span className="icon-lock"></span> Riêng tư
                   </label>
                 </div>
-                <input type="hidden" name="id_user_or_group" defaultValue="1" />
-                <input type="hidden" name="role" defaultValue="0" />
+                <input
+                  type="hidden"
+                  name="id_user_or_group"
+                  defaultValue={categoryEdit.id_user_or_group}
+                />
+                <input
+                  type="hidden"
+                  name="role"
+                  defaultValue={categoryEdit.role}
+                />
+                <MDBModalFooter className="modalEdit__footer">
+                  <MDBBtn onClick={() => setShowModalEdit(!showModalEdit)}>
+                    Hủy
+                  </MDBBtn>
+                  <MDBBtn>Đồng ý</MDBBtn>
+                </MDBModalFooter>
               </form>
             </MDBModalBody>
-            <MDBModalFooter className="modalEdit__footer">
-              <MDBBtn onClick={() => setShowModalEdit(!showModalEdit)}>Hủy</MDBBtn>
-              <MDBBtn>Đồng ý</MDBBtn>
-            </MDBModalFooter>
           </MDBModalContent>
         </MDBModalDialog>
       </MDBModal>

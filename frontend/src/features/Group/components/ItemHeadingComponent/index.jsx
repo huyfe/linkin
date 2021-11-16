@@ -51,7 +51,7 @@ function ItemHeadingComponent(props) {
                         </div>
                     </div>
                     <div className="timeLine__group">
-                        {/* <TimelineGroup /> */}
+                        <TimelineGroup />
                     </div>
                 </div>
                 <div className="col-lg-4">

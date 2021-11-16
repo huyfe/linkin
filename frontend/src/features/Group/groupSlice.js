@@ -3,7 +3,7 @@ import groupApi from './../../api/groupApi';
 const { createSlice } = require('@reduxjs/toolkit');
 const groupSlice = createSlice({
     name: 'group',
-    initialState: [],
+    initialState: [], // giá trị khởi tạo: [], {}, "" , number...
     reducers: {
         update(state, action) {
             const data = action.payload;
@@ -16,3 +16,5 @@ const groupSlice = createSlice({
 const { actions, reducer } = groupSlice;
 export const { update } = actions; // Named export
 export default reducer;
+
+

@@ -10,18 +10,18 @@ const groupApi = {
         const url = `/groups/${id}`;
         return axiosClient.get(url);
     },
-    add(data) {
-        const url = '/groups';
-        return axiosClient.post(url, { data });
-    },
-    update(data) {
-        const url = `/groups/${data.id}`;
-        return axiosClient.patch(url, { data });
-    },
-    remove(id) {
-        const url = `/groups/${id}`;
-        return axiosClient.delete(url);
-    }
+    // add(data) {
+    //     const url = '/groups';
+    //     return axiosClient.post(url, { data });
+    // },
+    // update(data) {
+    //     const url = `/groups/${data.id}`;
+    //     return axiosClient.patch(url, { data });
+    // },
+    // remove(id) {
+    //     const url = `/groups/${id}`;
+    //     return axiosClient.delete(url);
+    // }
 };
 
 export default groupApi;

@@ -4,7 +4,7 @@ const linkController = require('../app/controllers/LinksController');
 
 router.get('/show-trash', linkController.ShowTrash);
 router.get('/:id/', linkController.ShowLinkByID);
-router.post('/add-link', linkController.AddLink);
+router.post('/', linkController.AddLink);
 router.put('/:id/update', linkController.UpdateLink);
 router.delete('/:id/trash', linkController.TrashLink);
 router.patch('/:id/restore', linkController.RestoreLink);

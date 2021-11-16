@@ -1,13 +1,19 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import './style.scss';
 import {
     MDBBtn, MDBModal, MDBModalDialog, MDBModalContent, MDBModalBody, MDBModalFooter, MDBModalHeader, MDBModalTitle,
     MDBDropdown, MDBDropdownMenu, MDBDropdownToggle, MDBDropdownItem, MDBDropdownLink
 } from 'mdb-react-ui-kit';
+import {
+    MDBValidation,
+    MDBInput,
+    MDBCheckbox
+} from 'mdb-react-ui-kit';
 import { Link } from 'react-router-dom';
-// import { Gluejar } from '@charliewilco/gluejar';
-import ImageUploading from 'react-images-uploading';
+import linkApi from '../../api/linkApi';
+import { useDispatch } from 'react-redux';
+import { update } from '../../features/Link/linkSlice';
 
 UpLoadLinkComponent.propTypes = {
     avatar: PropTypes.string,
@@ -24,11 +30,27 @@ function UpLoadLinkComponent(props) {
     const [images, setImages] = React.useState([]);
     const maxNumber = 1;
 
-    const onChange = (imageList, addUpdateIndex) => {
-        // data for submit
-        console.log(imageList, addUpdateIndex);
-        setImages(imageList);
+    const [formValue, setFormValue] = useState({
+        title: '',
+        link: '',
+        categories: '',
+        image: '',
+    });
+
+    const dispatch = useDispatch();
+
+
+    const onChangeForm = (e) => {
+        setFormValue({ ...formValue, [e.target.name]: e.target.value });
     };
+
+    const onSubmitForm = async (data) => {
+        console.log(data);
+
+        const uploadLink = await linkApi.add(data);
+        const linkList = await linkApi.getAll();
+        dispatch(update(linkList.data));
+    }
 
     return (
         <div className="box-upload-link">
@@ -38,9 +60,7 @@ function UpLoadLinkComponent(props) {
                 </div>
                 <div className="button-show-modal">
                     <MDBBtn onClick={() => setScrollableModal(!scrollableModal)}>Bạn muốn chia sẻ gì nào?</MDBBtn>
-                    {/* <MDBBtn onClick={toggleShow}>Bạn muốn chia sẻ gì nào?</MDBBtn> */}
                 </div>
-
 
                 <MDBModal className="modal-upload-link" show={scrollableModal} getOpenState={(e) => setScrollableModal(e)} tabIndex='-1'>
                     <MDBModalDialog scrollable className="modal-upload-link-dialog">
@@ -71,71 +91,52 @@ function UpLoadLinkComponent(props) {
                                     </div>
                                 </div>
                             </div>
+
                             <MDBModalBody>
 
-                                <form action="#" className="form-upload-link">
-                                    <div className="form-group mb-15">
-                                        <input type="text" className="form-control" name="linkTitle" placeholder="Tiêu đề của link" />
+                                <MDBValidation onSubmit={() => onSubmitForm(formValue)} className='row gx-0 gy-3' noValidate>
+                                    <div className='col-12'>
+                                        <MDBInput
+                                            className='bg-light rounded-0'
+                                            value={formValue.title}
+                                            name='title'
+                                            onChange={onChangeForm}
+                                            id='validationCustom01'
+                                            required
+                                            label='Tiêu đề của link'
+                                            validation='Xin mời nhập tiêu đề!'
+                                            invalid
+                                        />
                                     </div>
-                                    <div className="form-group mb-15">
-                                        <input type="text" className="form-control" name="linkUrl" placeholder="Nhập url" />
+                                    <div className='col-12'>
+                                        <MDBInput
+                                            className='bg-light rounded-0'
+                                            value={formValue.link}
+                                            name='link'
+                                            onChange={onChangeForm}
+                                            id='validationCustom02'
+                                            required
+                                            label='Nhập link'
+                                            validation='Xin mời nhập link!'
+                                            invalid
+                                        />
                                     </div>
-                                    <div className="form-group mb-15">
-                                        <input type="text" className="form-control" name="linkUrl" placeholder="Danh mục" />
+                                    <div className='col-12'>
+                                        <MDBInput
+                                            className='bg-light rounded-0'
+                                            value={formValue.categories}
+                                            name='categories'
+                                            onChange={onChangeForm}
+                                            id='validationCustom03'
+                                            label='Danh mục'
+                                        />
                                     </div>
-                                    <div className="form-group form-group-image mb-15">
-                                        <ImageUploading
-                                            multiple
-                                            value={images}
-                                            onChange={onChange}
-                                            maxNumber={maxNumber}
-                                            dataURLKey="data_url"
-                                        >
-                                            {({
-                                                imageList,
-                                                onImageUpload,
-                                                onImageRemoveAll,
-                                                onImageUpdate,
-                                                onImageRemove,
-                                                isDragging,
-                                                dragProps,
-                                            }) => (
-                                                // write your building UI
-                                                <div className="upload__image-wrapper">
-                                                    <MDBBtn color='link'
-                                                        style={isDragging ? { color: 'red' } : undefined}
-                                                        onClick={onImageUpload}
-                                                        {...dragProps}
-                                                    >
-                                                        <i className="fas fa-images"></i>
-                                                        Ảnh
-                                                    </MDBBtn>
-                                                    &nbsp;
-                                                    {imageList.map((image, index) => (
-                                                        <div key={index} className="image-item">
-                                                            <img src={image['data_url']} alt="" width="100" />
-                                                            <div className="image-item__btn-wrapper">
-                                                                <MDBBtn className="d-flex justify-content-between align-items-center" floating color='link' onClick={() => onImageRemove(index)}><i className="far fa-times"></i></MDBBtn>
-                                                            </div>
-                                                        </div>
-                                                    ))}
-                                                </div>
-                                            )}
-                                        </ImageUploading>
+                                    <div className="col-12">
+                                        <MDBBtn type='submit' className="w-100 pt-3 pb-3">Đăng</MDBBtn>
                                     </div>
-                                    {/* <div className="form-group form-box-image">
-                                        <textarea className="w-100" name="" id="" cols="30" rows="10" placeholder="Paste image here"></textarea>
-                                        <Gluejar onPaste={files => console.log(files)} onError={err => console.error(err)}>
-                                            {({ images }) =>
-                                                images.length > 0 &&
-                                                images.map(image => <img src={image} key={image} alt={`Pasted: ${image}`} />)
-                                            }
-                                        </Gluejar>
-                                    </div> */}
-                                </form>
+                                </MDBValidation>
                             </MDBModalBody>
                             <MDBModalFooter>
-                                <MDBBtn className="w-100 pt-3 pb-3">Đăng</MDBBtn>
                             </MDBModalFooter>
                         </MDBModalContent>
                     </MDBModalDialog>

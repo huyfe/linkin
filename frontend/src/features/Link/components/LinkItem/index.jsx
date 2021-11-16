@@ -18,6 +18,12 @@ LinkItem.propTypes = {
   date: PropTypes.string,
   public: PropTypes.bool,
 };
+LinkItem.defaultProps = {
+  title: 'My link',
+  urlPost: 'https://www.facebook.com/ybx1802',
+  urlLink: 'https://www.facebook.com/ybx1802',
+  image: 'https://images.unsplash.com/photo-1514315384763-ba401779410f?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=383&q=80'
+}
 
 function LinkItem(props) {
   return (

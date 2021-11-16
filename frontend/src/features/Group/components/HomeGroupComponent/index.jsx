@@ -14,23 +14,27 @@ function HomeGroupComponent(props) {
             <div className="wrapper">
                 <div className="row">
                     <div className="col-lg-3">
-                        <GroupSearchComponent />
-                        <ManagerGroupComponent />
-                        <GroupJoinComponent />
+                        <aside className="group__aside__left">
+                            <GroupSearchComponent />
+                            <ManagerGroupComponent />
+                            <GroupJoinComponent />
+                        </aside>
                     </div>
                     <div className="col-lg-6">
                         <main>
-                        <div className="row">
-                            <div className="col-12">
-                                <GroupNotificationComponent/>
+                            <div className="row">
+                                <div className="col-12">
+                                    <GroupNotificationComponent />
+                                </div>
                             </div>
-                        </div>
-                           <MyGroupComponent />
+                            <MyGroupComponent />
 
                         </main>
                     </div>
                     <div className="col-lg-3">
-                        <GroupFollowComponent />
+                        <aside className="group__aside__right">
+                            <GroupFollowComponent />
+                        </aside>
                     </div>
                 </div>
             </div>

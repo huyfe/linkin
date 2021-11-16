@@ -13,6 +13,33 @@ module.exports = {
           res.json({ error: err });
         }
       },
+      //Hiện chi tiết nhóm theo Slug -> [GET]/:slug
+        async ShowGroupBySlug(req, res) {
+            try {
+            const group = await Groups.findOne({ slug: req.params.slug });
+            res.json(group);
+            } catch (err) {
+            res.json({ error: err });
+            }
+        },
+        //  //Hiện tất cả nhóm của Group -> [GET]/categories-group/:id
+        // async ShowAllByGroup(req, res) {
+        //     try {
+        //     const  group  = await Groups.find({id_user_or_group: req.params.id, public: 1});
+        //     res.json( group );
+        //     } catch (err) {
+        //     res.json({ error: err });
+        //     }
+        // },
+        //Hiện chi tiết nhóm theo ID
+        async ShowGroupByID(req, res) {
+            try {
+            const group = await Groups.findById(req.params.id);
+            res.json(group);
+            } catch (err) {
+            res.json({ error: err });
+            }
+        },
 
     //Thêm group
     async CreateGroup(req, res) {

@@ -26,23 +26,27 @@
         }
 
         .services{
-
-            span.icon-copy{
-                font-size: 24px;
-                margin-left: 6px;
-            }
-
-            span.icon-edit-basic{
-                font-size: 24px;
-                margin-left: 6px;
-            }
-            
-            svg{
-                margin-left: 6px;
-                width: 24px;
-                height: 24px;
-            }
+            a{
+                text-decoration: none;
+                cursor: pointer;
+                color: #000;
+                
+                span.icon-copy{
+                    font-size: 24px;
+                    margin-left: 6px;
+                }
+    
+                span.icon-edit-basic{
+                    font-size: 24px;
+                    margin-left: 6px;
+                }
+                
+                .fa-trash-alt{
+                    font-size: 24px;
+                    margin-left: 6px;
+                    color: #353434;
+                }
+            } 
         }
-        
     }
 }

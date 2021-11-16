@@ -92,12 +92,6 @@ export default function Login() {
                 <div className="form-login justify-content-center">
                     <h2>Đăng nhập</h2>
                     <p>Chưa có tài khoản? &nbsp; <Link to="/register">Đăng ký ngay!</Link></p>
-                    <div className="icon-login">
-                        <img src="images/Users/icon_chrome.png" alt="" onClick={google} />
-                        <img src="images/Users/fb.png" alt=""  className="fb-icons"/>
-                        <img src="images/Users/twitter.png" alt="" />
-                        <img src="images/Users/icon_linkin.png" alt="" />
-                    </div>
                     <FormLogin Login={Login} errors={errors} result={result} />
                 </div>
             </div>

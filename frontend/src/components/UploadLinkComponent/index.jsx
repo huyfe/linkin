@@ -19,6 +19,10 @@ UpLoadLinkComponent.propTypes = {
     avatar: PropTypes.string,
     href: PropTypes.string,
 };
+UpLoadLinkComponent.defaultProps = {
+    avatar: 'https://images.unsplash.com/photo-1604004555489-723a93d6ce74?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=987&q=80',
+    href: "/profile/user",
+}
 
 function UpLoadLinkComponent(props) {
     const [scrollableModal, setScrollableModal] = useState(false);

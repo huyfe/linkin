@@ -1,7 +1,26 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import './style.scss';
-
+LinkComponent.propTypes = {
+    imageUser: PropTypes.string,
+    userLink: PropTypes.string,
+    nameUser: PropTypes.string,
+    datePost: PropTypes.string,
+    groupLink: PropTypes.string,
+    imageGroup: PropTypes.string,
+    nameGroup: PropTypes.string,
+    contentDesc: PropTypes.string,
+    contentLink: PropTypes.string,
+    imageLink: PropTypes.string,
+    like: PropTypes.number,
+    comment: PropTypes.array,
+    hour: PropTypes.string,
+}
+LinkComponent.defaultProps = {
+    userLink: "/profile/user",
+    groupLink: "/group/group-detail",
+}
 function LinkComponent(props) {
     const [like, setLike] = useState(false);
     const eventLike = () => {

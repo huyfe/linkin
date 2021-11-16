@@ -28,38 +28,39 @@ module.exports = {
             .catch(next);
     },
 
-    //Thêm link -> [POST]/add-link
+    //Thêm link -> [POST]/
     async AddLink(req, res, next) {
-        const newLink = req.body;
-        const link = new Categories(newLink);
+        const newLink = req.body.data;
+        console.log(newLink);
+        const link = new Links(newLink);
         await link
             .save()
             .then(() => res.json(link))
             .catch((err) => res.send(err));
     },
 
-    //Cập nhật danh mục -> [PUT]/:id/update
+    //Cập nhật link -> [PUT]/:id/update
     async UpdateLink(req, res, next) {
-        await Links.updateOne({ _id: req.params.id }, req.body)
+        await Links.updateOne({ _id: req.params.id }, req.body.data)
             .then(() => res.send("Update successfully!"))
             .catch(next);
     },
 
-    //Xóa mềm danh mục -> [DELETE]/:id/trash
+    //Xóa mềm link -> [DELETE]/:id/trash
     async TrashLink(req, res, next) {
         await Links.delete({ _id: req.params.id })
             .then(() => res.send("Trash successfully!"))
             .catch(next);
     },
 
-    //Lấy lại các danh mục đã xóa -> [PATCH]/:id/restore
+    //Lấy lại các link đã xóa -> [PATCH]/:id/restore
     RestoreLink(req, res, next) {
         Links.restore({ _id: req.params.id })
             .then(() => res.send("Restore successfully!"))
             .catch(next);
     },
 
-    //Xóa vĩnh viễn danh mục -> [DELETE]/:id/destroy
+    //Xóa vĩnh viễn link -> [DELETE]/:id/destroy
     async DestroyLink(req, res, next) {
         await Links.deleteOne({ _id: req.params.id })
             .then(() => res.send("Destroy successfully!"))

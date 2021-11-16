@@ -1,4 +1,3 @@
-import { useEffect } from 'react';
 import linkApi from '../../api/linkApi';
 const { createSlice } = require('@reduxjs/toolkit');
 const linkSlice = createSlice({
@@ -9,7 +8,7 @@ const linkSlice = createSlice({
             const data = action.payload;
             state = data;
             return state;
-        }
+        },
     }
 });
 

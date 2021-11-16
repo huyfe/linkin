@@ -10,17 +10,17 @@ LinkPinnedSideBar.propTypes = {
 function LinkPinnedSideBar(props) {
 
     const listLinkPinnedData = [
-        { image: '/images/AsideRightHomePage/catpinned1.png', href: "/", name: "Trick CSS" },
-        { image: '/images/AsideRightHomePage/catpinned2.jpg', href: "/", name: "HTML" },
-        { image: '/images/AsideRightHomePage/recent3.png', href: "/", name: "JS Tips" },
-        { image: '/images/AsideRightHomePage/recent4.png', href: "/", name: "Form" }
+        { id: 0, image: '/images/AsideRightHomePage/catpinned1.png', href: "/", name: "Trick CSS" },
+        { id: 1, image: '/images/AsideRightHomePage/catpinned2.jpg', href: "/", name: "HTML" },
+        { id: 2, image: '/images/AsideRightHomePage/recent3.png', href: "/", name: "JS Tips" },
+        { id: 3, image: '/images/AsideRightHomePage/recent4.png', href: "/", name: "Form" }
     ];
 
     const pinIcon = "fal fa-ellipsis-h";
 
     const listLinkPinned = listLinkPinnedData.map(link => {
         return (
-            <Item image={link.image} name={link.name} href={link.href} icon={pinIcon}></Item>
+            <Item key={link.id} image={link.image} name={link.name} href={link.href} icon={pinIcon}></Item>
         );
     });
 

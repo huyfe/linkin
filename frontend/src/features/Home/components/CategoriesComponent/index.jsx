@@ -21,8 +21,9 @@ function Categories(props) {
 
   const listCategory = listCategoryData.map((category) => {
     return (
-      <SplideSlide>
+      <SplideSlide key={category._id} >
         <CategoryComponent
+          key={category._id}
           name={category.title}
           href={`categories/${category.slug}`}
           image={`./images/Categories/${category.image}`}

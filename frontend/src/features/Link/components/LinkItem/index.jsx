@@ -29,7 +29,11 @@ function LinkItem(props) {
       </div>
       <div className="d-flex flex-column justify-content-between linkItem__desc">
         <div className="d-flex align-items-center linkItem__title">
-          <h2> <Link to={props.urlPost} style={{ color: '#000' }}>{props.title}</Link> </h2>
+          <h2>
+            <Link to={props.urlPost} style={{ color: '#000' }}>
+              {props.title}
+            </Link>
+          </h2>
           <MDBDropdown dropright className="linkItem__dropdown">
             <MDBDropdownToggle className="linkItem__btn">
               <span className="icon-more-horizontal"></span>
@@ -70,7 +74,7 @@ function LinkItem(props) {
         <div className="d-flex align-items-center linkItem__link">
           <input
             type="text"
-            defaultValue="https://www.facebook.com/"
+            defaultValue={props.urlLink}
             readOnly
           />
           <button>

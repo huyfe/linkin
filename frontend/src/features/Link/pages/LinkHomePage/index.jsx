@@ -15,24 +15,9 @@ LinkHomePage.propTypes = {
 };
 
 function LinkHomePage(props) {
-    const dispatch = useDispatch();
 
-    useEffect(() => {
-        const fetchLink = async () => {
-            const linkList = await linkApi.getAll();
-            dispatch(update(linkList.data));
-        }
-        fetchLink();
-
-
-    }, []);
-
-    const links = useSelector(state => state.link);
-    console.log(links);
-
-    console.log("Render");
     return (
-        <main class="link-homepage">
+        <main className="link-homepage">
             <div className="container-fluid">
                 <div className="row gx-0">
                     <div className="col-lg-3">

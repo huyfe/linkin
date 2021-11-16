@@ -52,8 +52,8 @@ function ModalAddCategory({ showModalAdd, setShowModalAdd }) {
       <MDBModal
         tabIndex="-1"
         show={showModalAdd}
-        // Code mẫu của mdbootstrap
-        // getOpenState={(e) => setCentredModal(e)}
+      // Code mẫu của mdbootstrap
+      // getOpenState={(e) => setCentredModal(e)}
       >
         <MDBModalDialog className="modalAdd" centered>
           <MDBModalContent className="modalAdd__content">
@@ -74,7 +74,7 @@ function ModalAddCategory({ showModalAdd, setShowModalAdd }) {
                       htmlFor="img-uploadAdd"
                       className="d-flex justify-content-center align-items-center"
                     >
-                      <i class="far fa-plus"></i>
+                      <i className="far fa-plus"></i>
                     </label>
                   </div>
                   <input

@@ -46,24 +46,10 @@
                 }
             }
 
-            .icon-login {
-                margin-top: 10px;
-
-                img {
-                    margin-left: 8px;
-                    margin-right: 8px;
-                    cursor: pointer;
-
-                    &.fb-icons {
-                        max-width: 50px;
-                    }
-                }
-            }
-
             form {
                 width: 50.42%;
                 max-width: 507px;
-                margin-top: 50px;
+                margin-top: 30px;
                 .form-group {
                     input {
                         background: #fdfdfd;

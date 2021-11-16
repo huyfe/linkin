@@ -1,5 +1,4 @@
 import React, { useState, useRef, useEffect } from 'react';
-// import { Link } from 'react-router-dom';
 import emailjs from 'emailjs-com';
 import axios from 'axios';
 
@@ -18,7 +17,6 @@ export default function FormForgotPass({ ForgotPass }) {
     const sendEmail = (e) => {
         e.preventDefault();
         const valuegmail = document.getElementById("email").value;
-        
         axios.get(`http://localhost:3000/users/email/${valuegmail}`)
             .then(res => {
                 setDetails({ 
@@ -40,9 +38,7 @@ export default function FormForgotPass({ ForgotPass }) {
             })
         if (result === "true") {
             console.log("ok");
-
         }
-
     };
 
     useEffect(() => {
@@ -62,12 +58,6 @@ export default function FormForgotPass({ ForgotPass }) {
             <div className="form-ForgotPass">
                 <h2>Quên mật khẩu</h2>
                 <p>Vui lòng ghi đúng email để xác thực!</p>
-                {/* <div className="icon-login">
-                    <Link to="/another-login"><img src="images/Users/icon_chrome.png" alt="" /></Link>
-                    <Link to="/login" className="fb-icons"><img src="images/Users/fb.png" alt="" /></Link>
-                    <Link to="/login"><img src="images/Users/twitter.png" alt="" /></Link>
-                    <Link to="/login"><img src="images/Users/icon_linkin.png" alt="" /></Link>
-                </div> */}
                 <form className="form d-flex flex-column" ref={form} onSubmit={sendEmail}>
                     <div className="form-group">
                         <input className="form-control" type="email" placeholder="Email" name="email" id="email" />

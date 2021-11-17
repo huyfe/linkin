@@ -6,7 +6,7 @@ const linkSlice = createSlice({
     reducers: {
         update(state, action) {
             const data = action.payload;
-            state = data;
+            state = data.reverse();
             return state;
         },
     }

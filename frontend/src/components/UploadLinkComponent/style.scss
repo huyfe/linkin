@@ -3,6 +3,23 @@
 }
 .box-upload-link {
     margin-top: 35px;
+    .fade-up {
+        animation: fade-up 1s;
+        opacity: 0;
+        @keyframes fade-up {
+            0% {
+                opacity: 1;
+                transform: translateY(40px);
+            }
+            50% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(0px);
+            }
+        }
+    }
     .wrap-upload-link {
         padding: 30px 15px;
         display: flex;

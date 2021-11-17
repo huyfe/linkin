@@ -22,7 +22,6 @@ function ListLink(props) {
     }, []);
 
     const linkListData = useSelector(state => state.link);
-
     const linkList = linkListData.map(link => {
         return (
             <LinkItem key={link._id} title={link.title} urlPost={link.link} urlLink={link.link} image={link.image} date={link.created_date} public={link.public} />

@@ -6,6 +6,11 @@ const groupController = require('../app/controllers/GroupsController');
 // Tạo group mới -> [POST]/create-group
 router.post('/create-group', groupController.CreateGroup);
 
+// show group by slug
+router.get('/:slug', groupController.ShowGroupBySlug);
+// hiện chi tiết group the id
+// router.get('/group/:id', groupController.ShowGroupByID);
+
 // Cập nhật group  -> [PUT]/update-group/:id
 router.put('/update-group/:id', groupController.UpdateGroup);
 

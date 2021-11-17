@@ -55,8 +55,8 @@ function ModalEditCategory({ showModalEdit, setShowModalEdit, categoryEdit }) {
       <MDBModal
         tabIndex="-1"
         show={showModalEdit}
-        // Code mẫu của mdbootstrap
-        // getOpenState={(e) => setCentredModal(e)}
+      // Code mẫu của mdbootstrap
+      // getOpenState={(e) => setCentredModal(e)}
       >
         <MDBModalDialog className="modalEdit" centered>
           <MDBModalContent className="modalEdit__content">
@@ -78,7 +78,7 @@ function ModalEditCategory({ showModalEdit, setShowModalEdit, categoryEdit }) {
                       htmlFor={`img-uploadEdit-${categoryEdit._id}`}
                       className="d-flex justify-content-center align-items-center"
                     >
-                      <i class="far fa-plus"></i>
+                      <i className="far fa-plus"></i>
                     </label>
                   </div>
                   <input

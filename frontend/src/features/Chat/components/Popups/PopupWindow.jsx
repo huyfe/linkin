@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+// this is a function popup chat when you click the circle button message it will show presently
+
 class PopupWindow extends Component {
     componentDidMount() {
         this.scLaucher = document.querySelector('#sc-launcher');

@@ -18,6 +18,12 @@ LinkItem.propTypes = {
   date: PropTypes.string,
   public: PropTypes.bool,
 };
+LinkItem.defaultProps = {
+  title: 'My link',
+  urlPost: 'https://www.facebook.com/ybx1802',
+  urlLink: 'https://www.facebook.com/ybx1802',
+  image: 'https://images.unsplash.com/photo-1514315384763-ba401779410f?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=383&q=80'
+}
 
 function LinkItem(props) {
   return (
@@ -29,7 +35,11 @@ function LinkItem(props) {
       </div>
       <div className="d-flex flex-column justify-content-between linkItem__desc">
         <div className="d-flex align-items-center linkItem__title">
-          <h2> <Link to={props.urlPost} style={{ color: '#000' }}>{props.title}</Link> </h2>
+          <h2>
+            <Link to={props.urlPost} style={{ color: '#000' }}>
+              {props.title}
+            </Link>
+          </h2>
           <MDBDropdown dropright className="linkItem__dropdown">
             <MDBDropdownToggle className="linkItem__btn">
               <span className="icon-more-horizontal"></span>
@@ -70,7 +80,7 @@ function LinkItem(props) {
         <div className="d-flex align-items-center linkItem__link">
           <input
             type="text"
-            defaultValue="https://www.facebook.com/"
+            defaultValue={props.urlLink}
             readOnly
           />
           <button>

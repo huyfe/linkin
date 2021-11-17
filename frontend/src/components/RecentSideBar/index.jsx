@@ -10,14 +10,14 @@ RecentSideBar.propTypes = {
 function RecentSideBar(props) {
 
     const listRecentData = [
-        { image: '/images/AsideRightHomePage/recent1.png', href: "/", name: "UI/UX" },
-        { image: '/images/AsideRightHomePage/recent2.png', href: "/", name: "Nguyên lí thiết kế cơ bản" },
-        { image: '/images/AsideRightHomePage/recent3.png', href: "/", name: "UI/UX" },
-        { image: '/images/AsideRightHomePage/recent4.png', href: "/", name: "CSS" }
+        { id: 0, image: '/images/AsideRightHomePage/recent1.png', href: "/", name: "UI/UX" },
+        { id: 1, image: '/images/AsideRightHomePage/recent2.png', href: "/", name: "Nguyên lí thiết kế cơ bản" },
+        { id: 2, image: '/images/AsideRightHomePage/recent3.png', href: "/", name: "UI/UX" },
+        { id: 3, image: '/images/AsideRightHomePage/recent4.png', href: "/", name: "CSS" }
     ];
     const listRecent = listRecentData.map(item => {
         return (
-            <Item image={item.image} name={item.name} href={item.href}></Item>
+            <Item key={item.id} image={item.image} name={item.name} href={item.href}></Item>
         );
     });
 

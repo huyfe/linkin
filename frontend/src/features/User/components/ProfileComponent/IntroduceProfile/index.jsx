@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 import FormResetPasss from './FormResetPass';
 import IntroduceTitle from './IntroduceTitle';
@@ -71,10 +71,9 @@ function IntroduceProfile() {
                         <p>{Profile.name}</p>
                     </div>
                     <div className="services d-flex">
-
-                        <i className="fal fa-pen"></i>
-                        <i className="far fa-globe-africa"></i>
-                        <i className="fas fa-lock"></i>
+                        <Link to="#"><i className="fal fa-pen"></i></Link>
+                        <Link to="#"><i className="far fa-globe-africa"></i></Link>
+                        <Link to="#"><i className="fas fa-lock"></i></Link>
                     </div>
                 </div>
                 <div className="itemintroduces d-flex justify-content-between">
@@ -83,10 +82,9 @@ function IntroduceProfile() {
                         <p>{day}-{month}-{year}</p>
                     </div>
                     <div className="services d-flex">
-
-                        <i className="fal fa-pen"></i>
-                        <i className="far fa-globe-africa"></i>
-                        <i className="fas fa-lock"></i>
+                        <Link to="#"><i className="fal fa-pen"></i></Link>
+                        <Link to="#"><i className="far fa-globe-africa"></i></Link>
+                        <Link to="#"><i className="fas fa-lock"></i></Link>
                     </div>
                 </div>
                 <div className="itemintroduces d-flex justify-content-between">
@@ -95,10 +93,9 @@ function IntroduceProfile() {
                         <p>{Profile.address}</p>
                     </div>
                     <div className="services d-flex">
-
-                        <i className="fal fa-pen"></i>
-                        <i className="far fa-globe-africa"></i>
-                        <i className="fas fa-lock"></i>
+                        <Link to="#"><i className="fal fa-pen"></i></Link>
+                        <Link to="#"><i className="far fa-globe-africa"></i></Link>
+                        <Link to="#"><i className="fas fa-lock"></i></Link>
                     </div>
                 </div>
                 <div className="itemintroduces d-flex justify-content-between">
@@ -107,10 +104,9 @@ function IntroduceProfile() {
                         <p>{Profile.hometown}</p>
                     </div>
                     <div className="services d-flex">
-
-                        <i className="fal fa-pen"></i>
-                        <i className="far fa-globe-africa"></i>
-                        <i className="fas fa-lock"></i>
+                        <Link to="#"><i className="fal fa-pen"></i></Link>
+                        <Link to="#"><i className="far fa-globe-africa"></i></Link>
+                        <Link to="#"><i className="fas fa-lock"></i></Link>
                     </div>
                 </div>
                 <div className="itemintroduces d-flex justify-content-between">
@@ -119,10 +115,9 @@ function IntroduceProfile() {
                         <p>{Profile.email}</p>
                     </div>
                     <div className="services d-flex">
-
-                        <i className="fal fa-pen"></i>
-                        <i className="far fa-globe-africa"></i>
-                        <i className="fas fa-lock"></i>
+                        <Link to="#"><i className="fal fa-pen"></i></Link>
+                        <Link to="#"><i className="far fa-globe-africa"></i></Link>
+                        <Link to="#"><i className="fas fa-lock"></i></Link>
                     </div>
                 </div>
                 <div className="itemintroduces d-flex justify-content-between">
@@ -131,14 +126,13 @@ function IntroduceProfile() {
                         <p>{Profile.phone}</p>
                     </div>
                     <div className="services d-flex">
-
-                        <i className="fal fa-pen"></i>
-                        <i className="far fa-globe-africa"></i>
-                        <i className="fas fa-lock"></i>
+                        <Link to="#"><i className="fal fa-pen"></i></Link>
+                        <Link to="#"><i className="far fa-globe-africa"></i></Link>
+                        <Link to="#"><i className="fas fa-lock"></i></Link>
                     </div>
                 </div>
                 <div className="itemintroduces d-flex justify-content-center align-items-center">
-                    <button>Cập nhật thông tin</button>
+                    <Link to="#" className="button-a">Cập nhật thông tin</Link>
                 </div>
             </div>
 

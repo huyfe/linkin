@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const mongoosedelete = require('mongoose-delete');
+const slug = require("mongoose-slug-generator");
 const AutoIncrement = require('mongoose-sequence')(mongoose);
 const Schema = mongoose.Schema;
 
@@ -21,7 +22,8 @@ const Group = new Schema(
         members: {type: [{id_user: Number, status:String}]},
         color_text: { type: String }, 
         color_background: { type: String },
-        id_author: {type: Number }
+        id_author: {type: Number },
+        slug: { type: String, slug: "title", unique: true }
     }, 
     {
         _id: false,
@@ -29,6 +31,7 @@ const Group = new Schema(
     }
 );
 
+mongoose.plugin(slug);
 
 // // Tự động tăng id khi thêm link vào database
 Group.plugin(AutoIncrement, {id: 'id_groups'});//tạo các id khác nhau cho counter

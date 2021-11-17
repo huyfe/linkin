@@ -46,11 +46,12 @@ function ListLinkComponent(props) {
     const listPost = Posts.map(post => {
         return (
             <LinkComponent
+                key={post.id}
                 imageUser={post.imageUser}
-                userRef={post.userProfileRef}
+                userLink={post.userLink}
                 nameUser={post.nameUser}
                 datePost={post.datePost}
-                groupRef={post.groupRef}
+                groupLink={post.groupLink}
                 imageGroup={post.imageGroup}
                 nameGroup={post.nameGroup}
                 contentDesc={post.contentDesc}

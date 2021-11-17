@@ -11,8 +11,6 @@ LinkFeature.propTypes = {
 };
 
 function LinkFeature(props) {
-
-
     return (
         <div>
             <Routes>

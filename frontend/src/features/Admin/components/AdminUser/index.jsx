@@ -22,7 +22,7 @@ function AdminUser(props) {
 
     return (
         <section id="adminuser-page">
-            <h2>Người dùng content</h2>
+            <h2 class="text-center">Quản Trị Người Dùng</h2>
             <MDBTable>
                 <MDBTableHead>
                     <tr>

@@ -7,7 +7,9 @@ function EditUserComponent(props) {
     return (
         <div>
             <Header />
-            <h2>Cập nhật thông tin</h2>
+            <section id="EditUser-Component">
+                <h2>Cập nhật thông tin</h2>
+            </section>
         </div>
     );
 }

@@ -6,7 +6,6 @@ export const DataContext = createContext();
 // Tham số truyền vào là object DataContext.
 
 export const DataLinkin = (props) => {
-
     //user
     const [adminUser, setadminUser] = useState([])
     useEffect(()=>{

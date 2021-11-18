@@ -76,7 +76,7 @@ function TimelineUserComponent(props) {
                     <div className="comment__box">
                         <div className="comment__box-item d-flex align-items-center">
                             <div className="avatar">
-                                <img src="images/Timeline/huythanhxuan.jpg" alt="" />
+                                <img src="/images/Timeline/huythanhxuan.jpg" alt="" />
                             </div>
                             <div className="content">
                                 <p>Bạn thật tuyệt vời amazing good job !</p>
@@ -99,7 +99,7 @@ function TimelineUserComponent(props) {
                     <div className="comment__box">
                         <div className="comment__box-item d-flex align-items-center">
                             <div className="avatar">
-                                <img src="images/Timeline/huythanhxuan.jpg" alt="" />
+                                <img src="/images/Timeline/huythanhxuan.jpg" alt="" />
                             </div>
                             <div className="content">
                                 <p>Bạn thật tuyệt vời amazing good job !</p>
@@ -121,7 +121,7 @@ function TimelineUserComponent(props) {
 
                     <div className="your-comment d-flex align-items-center">
                         <div className="avatar">
-                            <img src="images/Timeline/huythanhxuan.jpg" alt="" />
+                            <img src="/images/Timeline/huythanhxuan.jpg" alt="" />
                         </div>
                         <div className="input-group">
                             <input type="text" className="form-control" placeholder="Hãy nhập bình luận của bạn..." />

@@ -5,29 +5,34 @@ import CategoriesComponent from "../CategoriesComponent/index";
 import NewsFeedComponent from "../NewsFeedComponent";
 
 import './style.scss';
+import Header from '../../../../components/Header';
 
 function MainComponent(props) {
     return (
-        <div className="home-page">
-            <div className="container-fluid">
-                <div className="row gx-0">
-                    <div className="col-lg-3">
-                        <AsideLeft />
-                    </div>
-                    <main className="col-lg-6">
-                        <div className="row">
-                            <div className="col-12">
-                                <CategoriesComponent></CategoriesComponent>
-                                <NewsFeedComponent></NewsFeedComponent>
-                            </div>
+        <div>
+            <Header />
+            <div className="home-page">
+                <div className="container-fluid">
+                    <div className="row gx-0">
+                        <div className="col-lg-3">
+                            <AsideLeft />
                         </div>
-                    </main>
-                    <div className="col-lg-3">
-                        <AsideRight />
+                        <main className="col-lg-6">
+                            <div className="row">
+                                <div className="col-12">
+                                    <CategoriesComponent></CategoriesComponent>
+                                    <NewsFeedComponent></NewsFeedComponent>
+                                </div>
+                            </div>
+                        </main>
+                        <div className="col-lg-3">
+                            <AsideRight />
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
+
     );
 }
 

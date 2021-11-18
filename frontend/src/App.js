@@ -30,7 +30,8 @@ function App() {
     return (
         <div className="App">
             <Router>
-                <Header />
+                {/* <Header /> */}
+                {/* Gắn header vào mỗi trang nha! Để trang admin không có header */}
                 <HomeFeature />
                 <UserFeature />
                 <GroupFeature />

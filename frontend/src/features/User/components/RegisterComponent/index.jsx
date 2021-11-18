@@ -4,6 +4,7 @@ import FormRegister from './FormRegister';
 import './style.scss';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import Header from '../../../../components/Header';
 
 export default function Register() {
     const value = useContext(DataContext)
@@ -74,6 +75,7 @@ export default function Register() {
 
     return (
         <div>
+            <Header />
             <FormRegister Register={Register} errors={errors} result={result} />
         </div>
     );

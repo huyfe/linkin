@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
+import Header from '../../../../components/Header';
 import FormLogin from './FormLogin';
 import './style.scss';
 
@@ -84,15 +85,18 @@ export default function Login() {
     }
 
     return (
-        <div className="Login-form">
-            <div className="Login-component">
-                <div className="many-hands">
-                    <img src="images/Users/many-hands.png" alt="" />
-                </div>
-                <div className="form-login justify-content-center">
-                    <h2>Đăng nhập</h2>
-                    <p>Chưa có tài khoản? &nbsp; <Link to="/register">Đăng ký ngay!</Link></p>
-                    <FormLogin Login={Login} errors={errors} result={result} />
+        <div>
+            <Header />
+            <div className="Login-form">
+                <div className="Login-component">
+                    <div className="many-hands">
+                        <img src="images/Users/many-hands.png" alt="" />
+                    </div>
+                    <div className="form-login justify-content-center">
+                        <h2>Đăng nhập</h2>
+                        <p>Chưa có tài khoản? &nbsp; <Link to="/register">Đăng ký ngay!</Link></p>
+                        <FormLogin Login={Login} errors={errors} result={result} />
+                    </div>
                 </div>
             </div>
         </div>

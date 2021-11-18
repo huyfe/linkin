@@ -12,7 +12,7 @@ export const DataLinkin = (props) => {
     useEffect(()=>{
         axios.get('http://localhost:3000/users')
             .then(res=>{
-                setadminUser(res.data)
+                setadminUser(res.data.users)
             })
             .catch(err =>{
                 console.log(err);

@@ -9,6 +9,9 @@ import {
   MDBModalBody,
   MDBModalFooter,
 } from "mdb-react-ui-kit";
+import categoriesApi from "../../../../api/categoriesApi";
+import { useDispatch } from "react-redux";
+import { addCatOfUser } from "../../categoriesUserSlice";
 
 ModalAddCategory.propTypes = {
   showModal: PropTypes.bool,
@@ -21,6 +24,19 @@ ModalAddCategory.defaultProps = {
 };
 
 function ModalAddCategory({ showModal, setShowModal }) {
+  const dispatch = useDispatch();
+
+  const initData = {
+    title: "",
+    image: "",
+    public: true,
+    id_user_or_group: 1, //Sau này sẽ lấy ID User đăng nhập
+    role: 0,
+  };
+  const [data, setData] = useState(initData);
+
+  const [showErr, setShowErr] = useState(false);
+
   const [imageUpload, setImageUpload] = useState("");
   const [isImageUpload, setIsImageUpload] = useState(false);
   function handleImageUploadChange(e) {
@@ -31,10 +47,31 @@ function ModalAddCategory({ showModal, setShowModal }) {
       reader.onload = function (e) {
         // Sau khi xử lý quá trình đọc file hoàn thành
         setImageUpload(e.target.result);
+        setData({ ...data, image: e.target.result });
         setIsImageUpload(true);
       };
 
       reader.readAsDataURL(e.target.files[0]);
+    }
+  }
+
+  const addCat = async (dataAdd) => {
+    let { data } = await categoriesApi.addCategory(dataAdd);
+    dispatch(addCatOfUser(data));
+  };
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    if (data.title == "" || data.image == "") {
+      setShowErr(true);
+    } else {
+      addCat(data);
+      e.target.reset();
+      setShowErr(false);
+      setImageUpload("");
+      setIsImageUpload(false);
+      setData(initData);
+      setShowModal(!showModal);
     }
   }
 
@@ -53,13 +90,17 @@ function ModalAddCategory({ showModal, setShowModal }) {
         <MDBModalDialog className="modalAdd" centered>
           <MDBModalContent className="modalAdd__content">
             <MDBModalBody className="modalAdd__body">
-              <form action="#" className="formAddCategory">
+              <form onSubmit={handleSubmit} className="formAddCategory">
                 <div className="form-group">
                   <input
                     type="text"
                     className="form-control"
                     name="title"
                     placeholder="Điền tên"
+                    value={data.title}
+                    onChange={(e) =>
+                      setData({ ...data, title: e.target.value })
+                    }
                   />
                 </div>
                 <div className="form-group formAddCategory__upload">
@@ -83,6 +124,7 @@ function ModalAddCategory({ showModal, setShowModal }) {
                   {isImageUpload && (
                     <div className="formAddCategory__img-uploaded">
                       <button
+                        className="d-none"
                         onClick={() => {
                           setIsImageUpload(false);
                           setImageUpload(null);
@@ -103,7 +145,7 @@ function ModalAddCategory({ showModal, setShowModal }) {
                     type="radio"
                     id="public"
                     name="public"
-                    defaultValue="true"
+                    onClick={() => setData({ ...data, public: true })}
                   />
                   <label htmlFor="public">
                     <span className="icon-earth"></span> Công khai
@@ -112,20 +154,25 @@ function ModalAddCategory({ showModal, setShowModal }) {
                     type="radio"
                     id="private"
                     name="public"
-                    defaultValue="false"
+                    onClick={() => setData({ ...data, public: false })}
                   />
                   <label htmlFor="private">
                     <span className="icon-lock"></span> Riêng tư
                   </label>
                 </div>
-                <input type="hidden" name="id_user_or_group" defaultValue="1" />
-                <input type="hidden" name="role" defaultValue="0" />
+                <div
+                  className={
+                    showErr ? "modalAdd__error" : "modalAdd__error d-none"
+                  }
+                >
+                  <h4>Vui lòng nhập đầy đủ thông tin</h4>
+                </div>
+                <MDBModalFooter className="modalAdd__footer">
+                  <MDBBtn onClick={() => setShowModal(!showModal)}>Hủy</MDBBtn>
+                  <MDBBtn type="submit">Đồng ý</MDBBtn>
+                </MDBModalFooter>
               </form>
             </MDBModalBody>
-            <MDBModalFooter className="modalAdd__footer">
-              <MDBBtn onClick={() => setShowModal(!showModal)}>Hủy</MDBBtn>
-              <MDBBtn>Đồng ý</MDBBtn>
-            </MDBModalFooter>
           </MDBModalContent>
         </MDBModalDialog>
       </MDBModal>

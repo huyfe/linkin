@@ -7,10 +7,13 @@ const categoriesUserSlice = createSlice({
             let data = action.payload;
             state = data;
             return state;
+        },
+        addCatOfUser(state, action){
+            state.unshift(action.payload)
         }
     }
 });
 
 const { actions, reducer } = categoriesUserSlice;
-export const { fetchCatOfUser } = actions;
+export const { fetchCatOfUser, addCatOfUser } = actions;
 export default reducer;

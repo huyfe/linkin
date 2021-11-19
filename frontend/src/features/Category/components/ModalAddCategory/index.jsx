@@ -11,24 +11,18 @@ import {
 } from "mdb-react-ui-kit";
 
 ModalAddCategory.propTypes = {
-  showModalAdd: PropTypes.bool,
-  setShowModalAdd: PropTypes.func,
+  showModal: PropTypes.bool,
+  setShowModal: PropTypes.func,
 };
 
 ModalAddCategory.defaultProps = {
-  showModalAdd: false,
-  setShowModalAdd: null,
+  showModal: false,
+  setShowModal: null,
 };
 
-function ModalAddCategory({ showModalAdd, setShowModalAdd }) {
+function ModalAddCategory({ showModal, setShowModal }) {
   const [imageUpload, setImageUpload] = useState("");
   const [isImageUpload, setIsImageUpload] = useState(false);
-
-  // Code mẫu của mdbootstrap
-  // const [centredModal, setCentredModal] = useState(false);
-
-  // const toggleShow = () => setCentredModal(!centredModal);
-
   function handleImageUploadChange(e) {
     if (e.target.files && e.target.files[0]) {
       let reader = new FileReader();
@@ -46,14 +40,15 @@ function ModalAddCategory({ showModalAdd, setShowModalAdd }) {
 
   return (
     <>
-      {/* Code mẫu của mdbootstrap */}
-      {/* <MDBBtn onClick={toggleShow}>Vertically centered modal</MDBBtn> */}
-
       <MDBModal
         tabIndex="-1"
-        show={showModalAdd}
-      // Code mẫu của mdbootstrap
-      // getOpenState={(e) => setCentredModal(e)}
+        show={showModal}
+        getOpenState={(e) => {
+          if (!setShowModal) {
+            return;
+          }
+          setShowModal(e);
+        }}
       >
         <MDBModalDialog className="modalAdd" centered>
           <MDBModalContent className="modalAdd__content">
@@ -78,6 +73,7 @@ function ModalAddCategory({ showModalAdd, setShowModalAdd }) {
                     </label>
                   </div>
                   <input
+                    // className="d-block"
                     type="file"
                     name="image"
                     id="img-uploadAdd"
@@ -124,14 +120,12 @@ function ModalAddCategory({ showModalAdd, setShowModalAdd }) {
                 </div>
                 <input type="hidden" name="id_user_or_group" defaultValue="1" />
                 <input type="hidden" name="role" defaultValue="0" />
-                <MDBModalFooter className="modalAdd__footer">
-                  <MDBBtn onClick={() => setShowModalAdd(!showModalAdd)}>
-                    Hủy
-                  </MDBBtn>
-                  <MDBBtn>Đồng ý</MDBBtn>
-                </MDBModalFooter>
               </form>
             </MDBModalBody>
+            <MDBModalFooter className="modalAdd__footer">
+              <MDBBtn onClick={() => setShowModal(!showModal)}>Hủy</MDBBtn>
+              <MDBBtn>Đồng ý</MDBBtn>
+            </MDBModalFooter>
           </MDBModalContent>
         </MDBModalDialog>
       </MDBModal>

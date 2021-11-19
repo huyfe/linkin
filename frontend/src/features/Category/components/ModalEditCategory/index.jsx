@@ -22,15 +22,8 @@ ModalEditCategory.defaultProps = {
 };
 
 function ModalEditCategory({ showModalEdit, setShowModalEdit, categoryEdit }) {
-  const [imageUpload, setImageUpload] = useState(
-    `./images/Categories/${categoryEdit.image}`
-  );
+  const [imageUpload, setImageUpload] = useState(categoryEdit.image);
   const [isImageUpload, setIsImageUpload] = useState(true);
-
-  // Code mẫu của mdbootstrap
-  // const [centredModal, setCentredModal] = useState(false);
-
-  // const toggleShow = () => setCentredModal(!centredModal);
 
   function handleImageUploadChange(e) {
     if (e.target.files && e.target.files[0]) {
@@ -49,14 +42,15 @@ function ModalEditCategory({ showModalEdit, setShowModalEdit, categoryEdit }) {
 
   return (
     <>
-      {/* Code mẫu của mdbootstrap */}
-      {/* <MDBBtn onClick={toggleShow}>Vertically centered modal</MDBBtn> */}
-
       <MDBModal
         tabIndex="-1"
         show={showModalEdit}
-      // Code mẫu của mdbootstrap
-      // getOpenState={(e) => setCentredModal(e)}
+        getOpenState={(e) => {
+          if (!setShowModalEdit) {
+            return;
+          }
+          setShowModalEdit(e);
+        }}
       >
         <MDBModalDialog className="modalEdit" centered>
           <MDBModalContent className="modalEdit__content">
@@ -138,14 +132,14 @@ function ModalEditCategory({ showModalEdit, setShowModalEdit, categoryEdit }) {
                   name="role"
                   defaultValue={categoryEdit.role}
                 />
-                <MDBModalFooter className="modalEdit__footer">
-                  <MDBBtn onClick={() => setShowModalEdit(!showModalEdit)}>
-                    Hủy
-                  </MDBBtn>
-                  <MDBBtn>Đồng ý</MDBBtn>
-                </MDBModalFooter>
               </form>
             </MDBModalBody>
+            <MDBModalFooter className="modalEdit__footer">
+              <MDBBtn onClick={() => setShowModalEdit(!showModalEdit)}>
+                Hủy
+              </MDBBtn>
+              <MDBBtn>Đồng ý</MDBBtn>
+            </MDBModalFooter>
           </MDBModalContent>
         </MDBModalDialog>
       </MDBModal>

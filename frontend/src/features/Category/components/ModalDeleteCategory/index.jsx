@@ -23,25 +23,24 @@ ModalDeleteCategory.defaultProps = {
 };
 
 function ModalDeleteCategory({ showModal, setShowModal, idDelete }) {
-  // Code mẫu của mdbootstrap
-  // const [ModalDelete, setModalDelete] = useState(false);
-
-  // const toggleShow = () => setModalDelete(!ModalDelete);
   return (
     <>
-      {/* Code mẫu của mdbootstrap */}
-      {/* <MDBBtn onClick={toggleShow}>btn</MDBBtn> */}
-
       <MDBModal
         tabIndex="-1"
         show={showModal}
-        // Code mẫu của mdbootstrap
-        // getOpenState={(e) => setModalDelete(e)}
+        getOpenState={(e) => {
+          if (!setShowModal) {
+            return;
+          }
+          setShowModal(e);
+        }}
       >
         <MDBModalDialog className="modalDelete" centered>
           <MDBModalContent className="modalDelete__content">
             <MDBModalHeader className="modalDelete__header">
-              <MDBModalTitle>Bạn có muốn xóa Category {idDelete} không?</MDBModalTitle>
+              <MDBModalTitle>
+                Bạn có muốn xóa Category {idDelete} không?
+              </MDBModalTitle>
             </MDBModalHeader>
             <MDBModalFooter className="modalDelete__footer">
               <MDBBtn onClick={() => setShowModal(!showModal)}>Không</MDBBtn>

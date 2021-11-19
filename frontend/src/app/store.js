@@ -1,12 +1,12 @@
 import linkReducer from "../features/Link/linkSlice";
 import groupReducer from "../features/Group/groupSlice";
-import categoryReducer from "../features/Category/categorySlice";
+import categoriesUserReducer from "../features/Category/categoriesUserSlice";
 const { configureStore } = require("@reduxjs/toolkit");
 
 const rootReducer = {
     link: linkReducer,
     group: groupReducer,
-    category: categoryReducer
+    categoriesUser: categoriesUserReducer
 };
 
 const store = configureStore({

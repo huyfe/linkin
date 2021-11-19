@@ -53,7 +53,7 @@ function CategoryItem({categoryItem}) {
       </MDBDropdown>
       <div className="categoryItem__img">
         <Link to={categoryItem.slug}>
-          <img src={`./images/Categories/${categoryItem.image}`} />
+          <img src={categoryItem.image} />
         </Link>
       </div>
       <Link to={categoryItem.slug}>{categoryItem.title}</Link>

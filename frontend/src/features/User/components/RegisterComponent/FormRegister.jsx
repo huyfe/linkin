@@ -17,7 +17,7 @@ export default function FormRegister({ Register, errors, result }) {
         public: 1,
         password: "",
         Password: "",
-        role: 1
+        role: 0
     });
 
     const Result = () => {

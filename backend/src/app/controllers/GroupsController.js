@@ -44,7 +44,7 @@ module.exports = {
     //Thêm group
     async CreateGroup(req, res) {
         try {
-            const newGroup = req.body
+            const newGroup = req.body.data
             const groups = new Groups(newGroup);
             await groups.save()
             res.send('Tạo group thành công!');
@@ -56,7 +56,7 @@ module.exports = {
      // Cập nhật group
     async UpdateGroup (req, res) {
         try {
-            await Groups.updateOne({ _id: req.params.id }, req.body);
+            await Groups.updateOne({ _id: req.params.id }, req.body.data);
             res.send('Sửa group thành công!');
         }catch (err) {
             res.json({ error: err });

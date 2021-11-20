@@ -10,6 +10,9 @@ import {
   MDBModalTitle,
   MDBModalFooter,
 } from "mdb-react-ui-kit";
+import categoriesApi from "../../../../api/categoriesApi";
+import { useDispatch } from "react-redux";
+import { removeCatOfUser } from "../../categoriesUserSlice";
 
 ModalDeleteCategory.propTypes = {
   showModal: PropTypes.bool,
@@ -23,6 +26,14 @@ ModalDeleteCategory.defaultProps = {
 };
 
 function ModalDeleteCategory({ showModal, setShowModal, idDelete }) {
+  const dispatch = useDispatch();
+
+  const handleRemoveCat = async (id) => {
+    await categoriesApi.removeCategory(id);
+    dispatch(removeCatOfUser(id));
+    setShowModal(false);
+  };
+
   return (
     <>
       <MDBModal
@@ -39,12 +50,12 @@ function ModalDeleteCategory({ showModal, setShowModal, idDelete }) {
           <MDBModalContent className="modalDelete__content">
             <MDBModalHeader className="modalDelete__header">
               <MDBModalTitle>
-                Bạn có muốn xóa Category {idDelete} không?
+                Bạn có muốn xóa DANH MỤC này không?
               </MDBModalTitle>
             </MDBModalHeader>
             <MDBModalFooter className="modalDelete__footer">
               <MDBBtn onClick={() => setShowModal(!showModal)}>Không</MDBBtn>
-              <MDBBtn>Có</MDBBtn>
+              <MDBBtn onClick={() => handleRemoveCat(idDelete)}>Có</MDBBtn>
             </MDBModalFooter>
           </MDBModalContent>
         </MDBModalDialog>

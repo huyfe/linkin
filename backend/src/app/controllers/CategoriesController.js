@@ -73,11 +73,12 @@ module.exports = {
     }
   },
 
-  //Cập nhật danh mục -> [PUT]/:id/update
+  //Cập nhật danh mục -> [PATCH]/:id/update
   async UpdateCategory(req, res) {
     try {
       await Categories.updateOne({ _id: req.params.id }, req.body);
-      res.send("Update successfully!");
+      const category = await Categories.findById(req.params.id);
+      res.json(category);
     } catch (err) {
       res.json({ error: err });
     }
@@ -114,8 +115,9 @@ module.exports = {
   async UpdatePin(req, res, next) {
     try {
       const category = await Categories.findById(req.params.id);
-      const updatePin = await Categories.findByIdAndUpdate(req.params.id, {pin: !category.pin});
-      res.json(updatePin);
+      await Categories.findByIdAndUpdate(req.params.id, {pin: !category.pin});
+      const categoryUpdate = await Categories.findById(req.params.id);
+      res.json(categoryUpdate);
     } catch (err) {
       res.json({ error: err });
     }

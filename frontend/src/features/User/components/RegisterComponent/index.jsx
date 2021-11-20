@@ -1,13 +1,17 @@
 import React, { useContext, useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { DataContext } from '../../../../DataLinkin';
 import FormRegister from './FormRegister';
 import './style.scss';
-import axios from 'axios';
+// import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import Header from '../../../../components/Header';
+import { RegisterUser } from '../../../../api/UserApi';
 
 export default function Register() {
     const value = useContext(DataContext)
-    const [{ users }] = value.users
+    const [users] = value.users
+    const dispatch = useDispatch();
     const navigate = useNavigate();
 
     const [result, showResult] = useState(false);
@@ -59,14 +63,15 @@ export default function Register() {
                     showResult(true);
                 }
                 if (details.email !== user.email && details.name !== user.name && details.phone !== user.phone) {
-                    axios.post(`http://localhost:3000/users/create-user`, details)
-                        .then(res => {
-                            alert('Đăng ký thành công!');
-                            navigate('/login');
-                        })
-                        .catch(err => {
-                            console.log(err);
-                        })
+                    // axios.post(`http://localhost:3000/users/create-user`, details)
+                    //     .then(res => {
+                    //         alert('Đăng ký thành công!');
+                    //         navigate('/login');
+                    //     })
+                    //     .catch(err => {
+                    //         console.log(err);
+                    //     })  
+                    dispatch(RegisterUser(details));
                 }
             })
         }
@@ -74,6 +79,7 @@ export default function Register() {
 
     return (
         <div>
+            <Header />
             <FormRegister Register={Register} errors={errors} result={result} />
         </div>
     );

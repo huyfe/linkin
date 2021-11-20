@@ -4,7 +4,7 @@ import './style.scss';
 import { MDBBtn, MDBDropdownLink, MDBDropdown, MDBDropdownToggle, MDBDropdownMenu, MDBDropdownItem } from 'mdb-react-ui-kit';
 import { Link } from 'react-router-dom';
 
-export default function Header() {
+export default function HeaderAdmin() {
     const dataUser = localStorage.getItem("dataUser")
     const dataUsers = JSON.parse(dataUser)
     const navigate = useNavigate();
@@ -21,30 +21,16 @@ export default function Header() {
     }
 
     return (
-        <header className="header">
+        <header className="header-admin">
             <nav className="header__menu">
                 <div className="row align-items-center">
-                    <div className="col-4">
+                    <div className="col-6">
                         <div className="header__logo d-flex align-items-center">
                             <NavLink to="/"> <img src="/logo.svg" alt="Linkin" /></NavLink>
-                            <div className="header__search">
-                                {/* <span className="icon-search"></span> */}
-                                <i className="fal fa-search"></i>
-                                <input type="text" placeholder="Tìm kiếm" />
-                            </div>
                         </div>
                     </div>
-                    <div className="col-4">
-                        <ul className="header__main-menu nav d-flex align-items-center justify-content-center">
-                            <li><NavLink to="/"><i className="fas fa-home"></i></NavLink></li>
-                            <li><NavLink to="/follows"><i className="fas fa-user-friends"></i></NavLink></li>
-                            <li><NavLink to="/groups"><i className="fas fa-users"></i></NavLink></li>
-                        </ul>
-                    </div>
-                    <div className="col-4">
+                    <div className="col-6">
                         <div className="header__controls d-flex justify-content-end align-items-center">
-                            <MDBBtn className="btn btn-primary btn-create-link shadow-0" >Tạo Link</MDBBtn>
-                            <MDBBtn floating className="btn btn-notification shadow-0"><i className="fal fa-bell"></i></MDBBtn>
                             <div className="user d-flex align-items-center">
                                 {(dataUsers) ? (
                                     <NavLink to={`/profile/${dataUsers.Slug}`}><img src="/images/Header/avatar.png" className="user__avatar" /></NavLink>

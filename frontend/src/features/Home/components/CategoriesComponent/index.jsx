@@ -11,13 +11,13 @@ import { useSelector } from "react-redux";
 Categories.propTypes = {};
 
 function Categories(props) {
-  const [showModalAdd, setShowModalAdd] = useState(false);
+  const [showModal, setShowModal] = useState(false);
 
   function handleShowModalAdd() {
-    setShowModalAdd(!showModalAdd);
+    setShowModal(!showModal);
   }
 
-  const listCategoryData = useSelector(state => state.category.listCatOfUser);
+  const listCategoryData = useSelector(state => state.categoriesUser);
 
   const listCategory = listCategoryData.map((category) => {
     return (
@@ -26,7 +26,7 @@ function Categories(props) {
           key={category._id}
           name={category.title}
           href={`categories/${category.slug}`}
-          image={`./images/Categories/${category.image}`}
+          image={category.image}
         ></CategoryComponent>
       </SplideSlide>
     );
@@ -66,8 +66,8 @@ function Categories(props) {
         </Splide>
       </div>
       <ModalAddCategory
-        showModalAdd={showModalAdd}
-        setShowModalAdd={setShowModalAdd}
+        showModal={showModal}
+        setShowModal={setShowModal}
       />
     </>
   );

@@ -9,7 +9,7 @@ import { useSelector } from "react-redux";
 MainCategory.propTypes = {};
 
 function MainCategory(props) {
-  const listCategoriesOfUser = useSelector(state => state.category.listCatOfUser);
+  const listCategoriesOfUser = useSelector(state => state.categoriesUser);
 
   return (
     <main className="mainCategory">

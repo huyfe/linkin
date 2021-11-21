@@ -5,7 +5,7 @@ import "./style.scss";
 function GroupTitle() {
     return (
         <div className="d-flex align-items-center GroupTitle">
-            <h1><Link to="/groups">Nhóm</Link>
+            <h1>Nhóm
                 &nbsp;
                 <Link to="/profile/tran-quoc-huy">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-plus-circle" viewBox="0 0 16 16">
@@ -14,6 +14,9 @@ function GroupTitle() {
                     </svg>
                 </Link>
             </h1>
+            <div className="GroupTitle__group d-flex justify-content-end">
+                <Link to="/groups">Xem tất cả nhóm</Link>
+            </div>
         </div>
     );
 }

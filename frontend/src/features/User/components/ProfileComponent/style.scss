@@ -38,7 +38,7 @@ section#Profile-component {
                 color: $color_blue;
                 margin-left: 16px;
                 margin-top: 60px;
-                width: 160%;
+                width: 300%;
             }
 
             .button{
@@ -73,12 +73,10 @@ section#Profile-component {
                         line-height: 23px;
                         color: $color_black;
                         text-transform: none;
-                        transition: 0.3s;
 
                         &:hover{
                             background: transparent;
                             color: #000;
-                            transition: 0.3s;
                         }
                     }
 
@@ -117,29 +115,16 @@ section#Profile-component {
 
             .category-imformation{
                 width: 100%;
-                height: 40.927%;
-                max-height: 380px;
                 margin-bottom: 16px;
-                // max-width: 600px;
-                
-                @media (max-width:1440px) {
-                    height: 34.927%;
-                }
             }
 
             .link-imformation{
                 width: 100%;
-                height: 34.472%;
-                max-height: 340px;
-                // max-width: 600px;
                 margin-bottom: 16px;
             }
 
             .group-information{
                 width: 100%;
-                height: 47.232%;
-                max-height: 200px;
-                // max-width: 600px;
             }
         }
     }

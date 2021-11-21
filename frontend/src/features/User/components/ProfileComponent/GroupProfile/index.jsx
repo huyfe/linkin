@@ -6,7 +6,6 @@ function GroupProfile() {
     return (
         <div className="Groupsprofile">
             <GroupTitle />
-            {/* <div className="icon-copy"></div> */}
             <div className="itemgroups d-flex justify-content-between">
                 <div className="img-title d-flex align-items-center justify-content-center">
                     <img src="/images/Users/link_img.png" alt="" />

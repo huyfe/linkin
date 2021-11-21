@@ -1,5 +1,5 @@
 import React from 'react';
-import CategoryItemProfile from './CategoryItemProfile';
+import { Link } from "react-router-dom";
 import CategoryTitle from './CategoryTitle';
 import './style.scss';
 
@@ -9,28 +9,84 @@ function CategoryProfile() {
             <CategoryTitle />
             <div className="listCategoryProFile">
                 <div className="listCategoryProFile__item">
-                    <CategoryItemProfile />
+                    <div className="categoryItemProfile">
+                        <div className="categoryItemProfile__img">
+                            <Link to="slug">
+                                <img src="/images/Categories/ux-ui.jpg" />
+                            </Link>
+                        </div>
+                        <Link to="slug">Thiết kế UI/ux</Link>
+                    </div>
                 </div>
                 <div className="listCategoryProFile__item">
-                    <CategoryItemProfile />
+                    <div className="categoryItemProfile">
+                        <div className="categoryItemProfile__img">
+                            <Link to="slug">
+                                <img src="/images/Categories/ux-ui.jpg" />
+                            </Link>
+                        </div>
+                        <Link to="slug">Thiết kế UI/ux</Link>
+                    </div>
                 </div>
                 <div className="listCategoryProFile__item">
-                    <CategoryItemProfile />
+                    <div className="categoryItemProfile">
+                        <div className="categoryItemProfile__img">
+                            <Link to="slug">
+                                <img src="/images/Categories/ux-ui.jpg" />
+                            </Link>
+                        </div>
+                        <Link to="slug">Thiết kế UI/ux</Link>
+                    </div>
                 </div>
                 <div className="listCategoryProFile__item">
-                    <CategoryItemProfile />
+                    <div className="categoryItemProfile">
+                        <div className="categoryItemProfile__img">
+                            <Link to="slug">
+                                <img src="/images/Categories/ux-ui.jpg" />
+                            </Link>
+                        </div>
+                        <Link to="slug">Thiết kế UI/ux</Link>
+                    </div>
                 </div>
                 <div className="listCategoryProFile__item">
-                    <CategoryItemProfile />
+                    <div className="categoryItemProfile">
+                        <div className="categoryItemProfile__img">
+                            <Link to="slug">
+                                <img src="/images/Categories/ux-ui.jpg" />
+                            </Link>
+                        </div>
+                        <Link to="slug">Thiết kế UI/ux</Link>
+                    </div>
                 </div>
                 <div className="listCategoryProFile__item">
-                    <CategoryItemProfile />
+                    <div className="categoryItemProfile">
+                        <div className="categoryItemProfile__img">
+                            <Link to="slug">
+                                <img src="/images/Categories/ux-ui.jpg" />
+                            </Link>
+                        </div>
+                        <Link to="slug">Thiết kế UI/ux</Link>
+                    </div>
                 </div>
                 <div className="listCategoryProFile__item">
-                    <CategoryItemProfile />
+                    <div className="categoryItemProfile">
+                        <div className="categoryItemProfile__img">
+                            <Link to="slug">
+                                <img src="/images/Categories/ux-ui.jpg" />
+                            </Link>
+                        </div>
+                        <Link to="slug">Thiết kế UI/ux</Link>
+                    </div>
                 </div>
                 <div className="listCategoryProFile__item">
-                    <CategoryItemProfile />
+                    <div className="categoryItemProfile">
+                        <div className="categoryItemProfile__img">
+                            <Link to="slug">
+                                <img src="/images/Categories/ux-ui.jpg" />
+                            </Link>
+                        </div>
+                        <Link to="slug">Thiết kế UI/ux</Link>
+                    </div>
                 </div>
             </div>
         </div>

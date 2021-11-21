@@ -14,6 +14,7 @@ ListCategory.defaultProps = {
 function ListCategory({ listCategories }) {
   return (
     <div className="listCategory">
+      {listCategories.length == 0 ? <p>Không có danh mục nào</p> : ""}
       {listCategories.map((category) => (
         <div className="listCategory__item" key={category._id} >
           <CategoryItem categoryItem={category} />

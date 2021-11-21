@@ -5,11 +5,13 @@ import FormResetPasss from './FormResetPass';
 import IntroduceTitle from './IntroduceTitle';
 import ResetpassTitle from './ResetpassTitle';
 import "./style.scss";
+import FormEditUser from "./FormEditUser";
 
 function IntroduceProfile() {
     const navigate = useNavigate();
     const { slug } = useParams();
     const [Profile, setProfile] = useState([])
+    const [Information, setInformation] = useState([])
     const dataUser = localStorage.getItem("dataUser")
     const dataUsers = JSON.parse(dataUser)
     useEffect(() => {
@@ -20,16 +22,16 @@ function IntroduceProfile() {
     }, [slug]);
 
     let date = new Date(Profile.birthday)
-    const [month, day, year] = [date.getMonth(), date.getDate(), date.getFullYear()];
+    const [month, day, year] = [date.getMonth()+1, date.getDate(), date.getFullYear()];
 
     const ResetPass = details => {
         console.log(details);
         if (details.oldpassword === "") {
-            alert("Vui lỏng điền mật khẩu cũ!")
+            alert("Vui lòng điền mật khẩu cũ!")
         } else if (details.newpassword === "") {
-            alert("Vui lỏng điền mật khẩu mới!")
+            alert("Vui lòng điền mật khẩu mới!")
         } else if (details.confirmpassword === "") {
-            alert("Vui lỏng xác nhận mật khẩu mới!")
+            alert("Vui lòng xác nhận mật khẩu mới!")
         } else if (details.oldpassword === details.newpassword) {
             alert("Mật khẩu mới và mật khẩu cũ giống nhau!")
         } else if (details.newpassword !== details.confirmpassword) {
@@ -61,8 +63,49 @@ function IntroduceProfile() {
         }
     }
 
+    const Updateinformation = () => {
+        const titleOne = "Return-down";
+        setInformation(titleOne);
+    }
+
+    const Returninformation = () => {
+        const titleTwo = "";
+        setInformation(titleTwo);
+    }
+
+    const KeyEdit = detailsTwo => {
+        console.log(detailsTwo);
+        if (detailsTwo.name === "") {
+            alert("Vui lòng điền tên!")
+        } else if (detailsTwo.birthday === "") {
+            alert("Vui lòng không để trống ngày sinh này!")
+        } else if (detailsTwo.address === "") {
+            alert("Vui lòng điền địa chỉ!")
+        } else if (detailsTwo.hometown === "") {
+            alert("Vui lòng điền quê quán!")
+        } else if (detailsTwo.email === "") {
+            alert("Vui lòng điền email!")
+        } else if (detailsTwo.phone === "") {
+            alert("Vui lòng điền số điện thoại!")
+        } else {
+            try {
+                axios.patch(`http://localhost:3000/users/edit-infomation-user/` + dataUsers.Id, detailsTwo)
+                    .then(res => {
+                        alert('Cập nhật thành công thành công!');
+                        // navigate('/');
+                        window.location.href=`/profile/${dataUsers.Slug}`;
+                    })
+                    .catch(err => {
+                        console.log(err);
+                    })
+            } catch (e) {
+                console.log(e);
+            }
+        }
+    }
+
     return (
-        <div>
+        <div className={`Introducesprofile-component ${Information}`}>
             <div className="Introducesprofile">
                 <IntroduceTitle />
                 <div className="itemintroduces d-flex justify-content-between">
@@ -131,20 +174,36 @@ function IntroduceProfile() {
                         <Link to="#"><i className="fas fa-lock"></i></Link>
                     </div>
                 </div>
-                <div className="itemintroduces d-flex justify-content-center align-items-center">
-                    <Link to="#" className="button-a">Cập nhật thông tin</Link>
-                </div>
+
+                {(dataUsers) ? (
+                    (dataUsers.Slug) === Profile.slug ? (
+                        <div className="itemintroduces d-flex justify-content-center align-items-center">
+                            <Link to="#" onClick={Updateinformation} className="button-a">Cập nhật thông tin</Link>
+                        </div>
+                    ) : ("")
+                ) : ("")}
+            </div>
+
+            <div className="Introducesprofile-2">
+                <IntroduceTitle />
+                <FormEditUser KeyEdit={KeyEdit} />
+                {(dataUsers) ? (
+                    (dataUsers.Slug) === Profile.slug ? (
+                        <div className="itemintroduces d-flex justify-content-center align-items-center">
+                            <Link to="#" onClick={Returninformation} className="button-a">Trở về</Link>
+                        </div>
+                    ) : ("")
+                ) : ("")}
             </div>
 
             {(dataUsers) ? (
                 (dataUsers.Slug) === Profile.slug ? (
-                    <div className="Introducesprofile">
+                    <div className="Introducesprofile-3">
                         <ResetpassTitle />
                         <FormResetPasss ResetPass={ResetPass} />
                     </div>
                 ) : ("")
             ) : ("")}
-
 
         </div>
     );

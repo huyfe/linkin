@@ -30,6 +30,11 @@ const categoriesApi = {
     const url = `/categories/${id}/pin`;
     return axiosClient.patch(url);
   },
+
+  getBySlug(slug) {
+    const url = `/categories/${slug}`;
+    return axiosClient.get(url);
+  },
 };
 
 export default categoriesApi;

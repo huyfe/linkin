@@ -5,8 +5,8 @@ import FormRegister from './FormRegister';
 import './style.scss';
 // import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import Header from '../../../../components/Header';
 import { RegisterUser } from '../../../../api/UserApi';
+import HeaderAdmin from '../../../../components/HeaderAdmin';
 
 export default function Register() {
     const value = useContext(DataContext)
@@ -79,7 +79,7 @@ export default function Register() {
 
     return (
         <div>
-            <Header />
+            <HeaderAdmin />
             <FormRegister Register={Register} errors={errors} result={result} />
         </div>
     );

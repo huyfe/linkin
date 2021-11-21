@@ -56,12 +56,14 @@ export default function HeaderAdmin() {
                                                     </Link>
                                                 </MDBDropdownItem>
                                             ) : ("")
-                                        ) : ("")}
-                                        <MDBDropdownItem>
-                                            <MDBDropdownLink className="linkItem__dropdown--link" href="#" >
-                                                <i className="fal fa-trash-alt"></i> Đổi mật khẩu
-                                            </MDBDropdownLink>
-                                        </MDBDropdownItem>
+                                        ) : (
+                                            <MDBDropdownItem>
+                                                <Link className="dropdown-item linkItem__dropdown--link" to="/forgot-password" >
+                                                    <i class="far fa-unlock-alt"></i> Quên mật khẩu
+                                                </Link>
+                                            </MDBDropdownItem>
+                                        )}
+
 
                                         <MDBDropdownItem>
                                             {(dataUsers) ? (

@@ -13,7 +13,7 @@ export default function HeaderAdmin() {
         localStorage.removeItem("dataUser");
         // navigate('/');
         // Nếu đăng xuất mà không reload trang thì sẽ bị 404
-        window.location.href = "/"
+        window.location.href = "/login"
     }
 
     const Logins = () => {
@@ -63,8 +63,6 @@ export default function HeaderAdmin() {
                                                 </Link>
                                             </MDBDropdownItem>
                                         )}
-
-
                                         <MDBDropdownItem>
                                             {(dataUsers) ? (
                                                 <MDBDropdownLink onClick={Logout}
@@ -82,8 +80,6 @@ export default function HeaderAdmin() {
                                                 </Link>
                                             )}
                                         </MDBDropdownItem>
-
-
                                     </MDBDropdownMenu>
                                 </MDBDropdown>
                             </div>

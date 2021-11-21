@@ -13,7 +13,7 @@ export default function Header() {
         localStorage.removeItem("dataUser");
         // navigate('/');
         // Nếu đăng xuất mà không reload trang thì sẽ bị 404
-        window.location.href = "/"
+        window.location.href = "/login"
     }
 
     const Logins = () => {

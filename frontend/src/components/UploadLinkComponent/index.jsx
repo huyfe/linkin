@@ -25,8 +25,6 @@ UpLoadLinkComponent.defaultProps = {
 }
 
 function UpLoadLinkComponent(props) {
-    const [modalUploadSuccess, setModalUploadSuccess] = useState(false);
-
     const [scrollableModal, setScrollableModal] = useState(false);
 
     const [centredModal, setCentredModal] = useState(false);
@@ -51,21 +49,15 @@ function UpLoadLinkComponent(props) {
     };
 
     const onSubmitForm = async (data) => {
-        if (data.title !== "" && data.link !== "") {
-            console.log(data);
-            const uploadLink = await linkApi.add(data);
-            const linkList = await linkApi.getAll();
-            dispatch(update(linkList.data));
+        console.log(data);
 
-            setModalUploadSuccess(!modalUploadSuccess);
-        }
+        const uploadLink = await linkApi.add(data);
+        const linkList = await linkApi.getAll();
+        dispatch(update(linkList.data));
     }
 
     return (
         <div className="box-upload-link">
-            {modalUploadSuccess && <div className="modal-upload-success position-fixed fade-up" style={{ top: "80px", right: "80px", zIndex: "999" }}>
-                <p className="bg-info px-3 py-2 rounded shadow-1-strong text-white">Lưu link thành công!</p>
-            </div>}
             <div className="wrap-upload-link d-flex">
                 <div className="avatar">
                     <Link to={props.href}><img className="img-fluid" src={props.avatar} alt="" /></Link>
@@ -144,7 +136,7 @@ function UpLoadLinkComponent(props) {
                                         />
                                     </div>
                                     <div className="col-12">
-                                        <MDBBtn onClick={() => setScrollableModal(!scrollableModal)} type='submit' className="w-100 pt-3 pb-3">Đăng</MDBBtn>
+                                        <MDBBtn type='submit' className="w-100 pt-3 pb-3">Đăng</MDBBtn>
                                     </div>
                                 </MDBValidation>
                             </MDBModalBody>

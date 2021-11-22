@@ -21,7 +21,7 @@ function NewsFeedComponent(props) {
             </div>
             <div className="row mt-5">
                 <div className="col-12">
-                    <ListLinkComponent />
+                    <ListLinkComponent></ListLinkComponent>
                 </div>
             </div>
         </div>

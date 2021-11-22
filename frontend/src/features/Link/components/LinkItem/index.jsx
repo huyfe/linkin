@@ -12,6 +12,7 @@ import { Link } from "react-router-dom";
 import linkApi from "../../../../api/linkApi";
 import { useDispatch } from "react-redux";
 import { update } from "../../linkSlice";
+import { update as updateLoading } from "../../../../components/LoadingComponent/loadingSlice";
 
 LinkItem.propTypes = {
   id: PropTypes.number,
@@ -35,13 +36,13 @@ function LinkItem(props) {
 
   const removeLinkItem = (id) => async (event) => {
     event.preventDefault();
+    dispatch(updateLoading(100));
     const awaitRemove = await linkApi.remove(id);
-    console.log(awaitRemove);
+    dispatch(updateLoading(101));
 
     // Update the links  
     const linkList = await linkApi.getAll();
     dispatch(update(linkList.data));
-
   }
 
 

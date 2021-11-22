@@ -1,7 +1,6 @@
 import React from "react";
 import FilterCategory from "../components/FilterCategory";
 import AsideRight from "../../../components/AsideRight";
-import Header from "../../../components/Header";
 import MainCategory from "../components/MainCategory";
 import PropTypes from "prop-types";
 import MainCategoryDetail from "../components/MainCategoryDetail";
@@ -12,7 +11,6 @@ CategoryPage.propTypes = {};
 function CategoryPage(props) {
   return (
     <>
-      <Header />
       <section id="categoryPage">
         <div className="container-fluid">
           <div className="row no-gutters">

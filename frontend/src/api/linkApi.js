@@ -1,6 +1,8 @@
 import axiosClient from "./axiosClient";
+import { useDispatch } from 'react-redux';
 
 const linkApi = {
+
     getAll(params) {
         const url = '/links';
         return axiosClient.get(url, { params });
@@ -19,12 +21,7 @@ const linkApi = {
     },
     remove(id) {
         const url = `/links/${id}/trash`;
-        return axiosClient.delete(url, {
-            onDownloadProgress: progressEvent => {
-                let percentCompleted = Math.floor(progressEvent.loaded / progressEvent.total * 100)
-                console.log('Completed: ', percentCompleted)
-            }
-        });
+        return axiosClient.delete(url);
     },
     removeReal(id) {
         const url = `/links/${id}/destroy`;

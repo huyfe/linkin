@@ -1,7 +1,7 @@
 $blue: #3573e2;
 $white: #ffffff;
 .header {
-    overflow: hidden;
+    // overflow: hidden;
     padding: 10px 0;
     border-bottom: 1px solid $blue;
     position: sticky;
@@ -123,7 +123,7 @@ $white: #ffffff;
         border-radius: 5px !important;
         padding: 15px !important;
 
-        .fa-user-shield{
+        .fa-user-shield {
             color: #3573e2;
             margin-right: 8px;
         }

@@ -18,7 +18,16 @@ const linkApi = {
         return axiosClient.patch(url, { data });
     },
     remove(id) {
-        const url = `/links/${id}`;
+        const url = `/links/${id}/trash`;
+        return axiosClient.delete(url, {
+            onDownloadProgress: progressEvent => {
+                let percentCompleted = Math.floor(progressEvent.loaded / progressEvent.total * 100)
+                console.log('Completed: ', percentCompleted)
+            }
+        });
+    },
+    removeReal(id) {
+        const url = `/links/${id}/destroy`;
         return axiosClient.delete(url);
     }
 };

@@ -18,7 +18,6 @@ function LinkHomePage(props) {
 
     return (
         <div>
-            <Header />
             <main className="link-homepage">
                 <div className="container-fluid">
                     <div className="row gx-0">

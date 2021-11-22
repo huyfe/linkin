@@ -5,12 +5,10 @@ import CategoriesComponent from "../CategoriesComponent/index";
 import NewsFeedComponent from "../NewsFeedComponent";
 
 import './style.scss';
-import Header from '../../../../components/Header';
 
 function MainComponent(props) {
     return (
         <div>
-            <Header />
             <div className="home-page">
                 <div className="container-fluid">
                     <div className="row gx-0">

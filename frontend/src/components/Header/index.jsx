@@ -3,6 +3,7 @@ import { NavLink, useNavigate } from 'react-router-dom';
 import './style.scss';
 import { MDBBtn, MDBDropdownLink, MDBDropdown, MDBDropdownToggle, MDBDropdownMenu, MDBDropdownItem } from 'mdb-react-ui-kit';
 import { Link } from 'react-router-dom';
+import LoadingComponent from '../LoadingComponent';
 
 export default function Header() {
     const dataUser = localStorage.getItem("dataUser")
@@ -103,6 +104,7 @@ export default function Header() {
                     </div>
                 </div>
             </nav>
+            <LoadingComponent />
         </header>
     );
 }

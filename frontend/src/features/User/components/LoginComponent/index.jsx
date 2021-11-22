@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import FormLogin from './FormLogin';
 import './style.scss';
@@ -84,15 +84,37 @@ export default function Login() {
     }
 
     return (
-        <div className="Login-form">
-            <div className="Login-component">
-                <div className="many-hands">
-                    <img src="images/Users/many-hands.png" alt="" />
-                </div>
-                <div className="form-login justify-content-center">
-                    <h2>Đăng nhập</h2>
-                    <p>Chưa có tài khoản? &nbsp; <Link to="/register">Đăng ký ngay!</Link></p>
-                    <FormLogin Login={Login} errors={errors} result={result} />
+        <div>
+            <header className="header-login">
+                <nav className="header-login__menu">
+                    <div className="row align-items-center">
+                        <div className="col-2">
+                            <div className="header__logo d-flex align-items-center justify-content-between">
+                                <NavLink to="/"> <img src="/logo.svg" alt="Linkin" /></NavLink>
+                                <h2>Linkin</h2>
+                            </div>
+                        </div>
+                        <div className="col-10">
+                            <div className="header-login__controls d-flex justify-content-end align-items-center">
+                                <div className="userss d-flex align-items-center">
+                                    <FormLogin Login={Login} errors={errors} result={result} />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+            </header>
+            <div className="Login-form">
+                <div className="Login-component">
+                    <div className="many-hands">
+                        <img src="/images/Users/background_user1.png" alt="" />
+                    </div>
+                    <div className="form-login">
+                        <div className="title-form">
+                            <h3 className="line-1">Chia sẻ liên kết của bạn</h3>
+                            <h3>Kết nối thế giới</h3>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

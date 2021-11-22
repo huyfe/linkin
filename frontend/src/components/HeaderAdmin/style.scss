@@ -1,6 +1,7 @@
-$blue: #3573e2;
-$white: #ffffff;
-.header {
+.header-admin {
+    $blue: #3573e2;
+    $white: #ffffff;
+    
     overflow: hidden;
     padding: 10px 0;
     border-bottom: 1px solid $blue;
@@ -11,49 +12,6 @@ $white: #ffffff;
     &__menu {
         width: calc(100% - 80px);
         margin: 0 auto;
-    }
-    &__search {
-        margin-left: 30px;
-        position: relative;
-        i {
-            line-height: 40px;
-            position: absolute;
-            padding-left: 20px;
-            cursor: pointer;
-        }
-        input {
-            padding: 10px 0;
-            padding-left: 50px;
-            border: 1px solid $blue;
-            border-radius: 4px;
-
-            font-family: "Roboto";
-            font-style: normal;
-            font-weight: 500;
-            font-size: 16px;
-            line-height: 19px;
-            display: flex;
-            align-items: center;
-
-            /* Tone / Dark grey */
-
-            color: #222222;
-        }
-    }
-    &__main-menu {
-        flex-wrap: nowrap !important;
-        li {
-            a {
-                padding: 30px 50px;
-                font-size: 26px;
-
-                color: #222222;
-                transition: all 0.25s;
-                &.active {
-                    color: $blue;
-                }
-            }
-        }
     }
     &__controls {
         button {

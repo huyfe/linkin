@@ -4,23 +4,22 @@
     display: flex;
 
     .many-hands {
-        img {
-            width: 154%;
-        }
+        display: flex;
 
-        @media (max-width: 1440px) {
-            img {
-                width: 130%;
-            }
+        img {
+            width: 100%;
+            position: absolute;
+            opacity: 0.4;
         }
     }
 
     .form-register {
+        position: relative;
         display: flex;
         align-items: center;
         flex-direction: column;
         width: 100%;
-        margin-top: 100px;
+        margin-top: 50px;
 
         h2 {
             font-family: Roboto;
@@ -40,7 +39,7 @@
             font-size: 20px;
             line-height: 23px;
             text-align: center;
-            color: rgb(165, 159, 159);
+            color: rgb(124, 119, 119);
 
             a {
                 color: #3573e2;

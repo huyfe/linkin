@@ -14,14 +14,8 @@ function LinkTitle() {
                     </svg>
                 </Link>
             </h1>
-            <div className="LinkTitle__group">
-                <label
-                    htmlFor="LinkTitle"
-                    className="d-flex justify-content-end align-items-center"
-                >
-                    <i className="fal fa-search"></i>
-                </label>
-                <input id="LinkTitle" type="search" />
+            <div className="LinkTitle__group d-flex justify-content-end">
+                <Link to="/links">Xem tất cả link</Link>
             </div>
         </div>
     );

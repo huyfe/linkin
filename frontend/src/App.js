@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
-import Header from './components/Header/index';
+// import Header from './components/Header/index';
 import { io } from "socket.io-client";
 import HomeFeature from './features/Home';
 import UserFeature from './features/User';
@@ -30,7 +30,8 @@ function App() {
     return (
         <div className="App">
             <Router>
-                <Header />
+                {/* <Header /> */}
+                {/* Gắn header vào mỗi trang nha! Để trang admin không có header */}
                 <HomeFeature />
                 <UserFeature />
                 <GroupFeature />

@@ -9,6 +9,9 @@ import {
   MDBModalBody,
   MDBModalFooter,
 } from "mdb-react-ui-kit";
+import { useDispatch } from "react-redux";
+import categoriesApi from "../../../../api/categoriesApi";
+import { updateCatOfUser } from "../../categoriesUserSlice";
 
 ModalEditCategory.propTypes = {
   showModalEdit: PropTypes.bool,
@@ -22,15 +25,14 @@ ModalEditCategory.defaultProps = {
 };
 
 function ModalEditCategory({ showModalEdit, setShowModalEdit, categoryEdit }) {
-  const [imageUpload, setImageUpload] = useState(
-    `./images/Categories/${categoryEdit.image}`
-  );
+  const dispatch = useDispatch();
+
+  const [data, setData] = useState(categoryEdit);
+
+  const [showErr, setShowErr] = useState(false);
+
+  const [imageUpload, setImageUpload] = useState(categoryEdit.image);
   const [isImageUpload, setIsImageUpload] = useState(true);
-
-  // Code mẫu của mdbootstrap
-  // const [centredModal, setCentredModal] = useState(false);
-
-  // const toggleShow = () => setCentredModal(!centredModal);
 
   function handleImageUploadChange(e) {
     if (e.target.files && e.target.files[0]) {
@@ -40,6 +42,7 @@ function ModalEditCategory({ showModalEdit, setShowModalEdit, categoryEdit }) {
       reader.onload = function (e) {
         // Sau khi xử lý quá trình đọc file hoàn thành
         setImageUpload(e.target.result);
+        setData({ ...data, image: e.target.result });
         setIsImageUpload(true);
       };
 
@@ -47,28 +50,51 @@ function ModalEditCategory({ showModalEdit, setShowModalEdit, categoryEdit }) {
     }
   }
 
+  const updateCat = async (dataUpdate) => {
+    let { data } = await categoriesApi.updateCategory(
+      dataUpdate._id,
+      dataUpdate
+    );
+    dispatch(updateCatOfUser(data));
+  };
+
+  function handleUpdate(e) {
+    e.preventDefault();
+    if (data.title == "" || data.image == "") {
+      setShowErr(true);
+    } else {
+      updateCat(data);
+      setShowErr(false);
+      setShowModalEdit(!showModalEdit);
+    }
+  }
+
   return (
     <>
-      {/* Code mẫu của mdbootstrap */}
-      {/* <MDBBtn onClick={toggleShow}>Vertically centered modal</MDBBtn> */}
-
       <MDBModal
         tabIndex="-1"
         show={showModalEdit}
-      // Code mẫu của mdbootstrap
-      // getOpenState={(e) => setCentredModal(e)}
+        getOpenState={(e) => {
+          if (!setShowModalEdit) {
+            return;
+          }
+          setShowModalEdit(e);
+        }}
       >
         <MDBModalDialog className="modalEdit" centered>
           <MDBModalContent className="modalEdit__content">
             <MDBModalBody className="modalEdit__body">
-              <form action="#" className="formEditCategory">
+              <form onSubmit={handleUpdate} className="formEditCategory">
                 <div className="form-group">
                   <input
                     type="text"
                     className="form-control"
                     name="title"
                     placeholder="Điền tên"
-                    defaultValue={categoryEdit.title}
+                    value={data.title}
+                    onChange={(e) =>
+                      setData({ ...data, title: e.target.value })
+                    }
                   />
                 </div>
                 <div className="form-group formEditCategory__upload">
@@ -91,6 +117,7 @@ function ModalEditCategory({ showModalEdit, setShowModalEdit, categoryEdit }) {
                   {isImageUpload && (
                     <div className="formEditCategory__img-uploaded">
                       <button
+                        className="d-none"
                         onClick={() => {
                           setIsImageUpload(false);
                           setImageUpload(null);
@@ -111,8 +138,8 @@ function ModalEditCategory({ showModalEdit, setShowModalEdit, categoryEdit }) {
                     type="radio"
                     id={`public-${categoryEdit._id}`}
                     name="public"
-                    defaultValue="true"
-                    checked={categoryEdit.public ? true : false}
+                    checked={data.public ? true : false}
+                    onClick={() => setData({ ...data, public: true })}
                   />
                   <label htmlFor={`public-${categoryEdit._id}`}>
                     <span className="icon-earth"></span> Công khai
@@ -120,29 +147,26 @@ function ModalEditCategory({ showModalEdit, setShowModalEdit, categoryEdit }) {
                   <input
                     type="radio"
                     id={`private-${categoryEdit._id}`}
-                    name="public"
                     defaultValue="false"
-                    checked={!categoryEdit.public ? true : false}
+                    checked={!data.public ? true : false}
+                    onClick={() => setData({ ...data, public: false })}
                   />
                   <label htmlFor={`private-${categoryEdit._id}`}>
                     <span className="icon-lock"></span> Riêng tư
                   </label>
                 </div>
-                <input
-                  type="hidden"
-                  name="id_user_or_group"
-                  defaultValue={categoryEdit.id_user_or_group}
-                />
-                <input
-                  type="hidden"
-                  name="role"
-                  defaultValue={categoryEdit.role}
-                />
+                <div
+                  className={
+                    showErr ? "modalAdd__error" : "modalAdd__error d-none"
+                  }
+                >
+                  <h4>Vui lòng nhập đầy đủ thông tin</h4>
+                </div>
                 <MDBModalFooter className="modalEdit__footer">
                   <MDBBtn onClick={() => setShowModalEdit(!showModalEdit)}>
                     Hủy
                   </MDBBtn>
-                  <MDBBtn>Đồng ý</MDBBtn>
+                  <MDBBtn type="submit">Đồng ý</MDBBtn>
                 </MDBModalFooter>
               </form>
             </MDBModalBody>

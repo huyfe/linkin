@@ -92,9 +92,11 @@ $text-dark:#000000;
                     color: $text-white;
                     padding: 0 15px;
                     text-transform: initial;
+
                     i.fa-plus {
                         font-size: 13px;
                     }
+
                     &:hover {
                         background-color: transparent;
                         transition: all 0.25s;

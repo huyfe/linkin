@@ -63,14 +63,6 @@ export default function Register() {
                     showResult(true);
                 }
                 if (details.email !== user.email && details.name !== user.name && details.phone !== user.phone) {
-                    // axios.post(`http://localhost:3000/users/create-user`, details)
-                    //     .then(res => {
-                    //         alert('Đăng ký thành công!');
-                    //         navigate('/login');
-                    //     })
-                    //     .catch(err => {
-                    //         console.log(err);
-                    //     })  
                     dispatch(RegisterUser(details));
                 }
             })

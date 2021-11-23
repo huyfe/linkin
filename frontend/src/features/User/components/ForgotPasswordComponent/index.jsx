@@ -2,7 +2,7 @@ import React from 'react';
 import emailjs from 'emailjs-com';
 import FormForgotPass from './FormForgotPass';
 import './style.scss';
-import Header from '../../../../components/Header';
+import HeaderAdmin from '../../../../components/HeaderAdmin';
 
 export default function ForgotPassword() {
 
@@ -13,7 +13,7 @@ export default function ForgotPassword() {
 
     return (
         <div>
-            <Header />
+            <HeaderAdmin />
             <div className="ForgotPass-form">
                 <FormForgotPass ForgotPass={ForgotPass} />
             </div>

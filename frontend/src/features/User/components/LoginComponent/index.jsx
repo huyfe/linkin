@@ -1,14 +1,16 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { Link, NavLink } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
+import { LoginUser } from '../../../../api/UserApi';
+import { fetchOfUser } from "../../Userslice";
 import FormLogin from './FormLogin';
 import './style.scss';
 
 export default function Login() {
-    // const dataUser = localStorage.getItem("dataUser")
-    // const dataUsers = JSON.parse(dataUser)
     const navigate = useNavigate();
+    const dispatch = useDispatch();
 
     const [user, setUser] = useState(null);
     const [result, showResult] = useState(false);
@@ -24,50 +26,43 @@ export default function Login() {
             showErrors(errorPassword);
             showResult(true);
         } else {
-            axios.post('http://localhost:3000/users/checklogin', details)
-                .then(res => {
-                    if (res.status === 200) {
-                        if (res.data.message === "Email error") {
-                            const errorEmail = "Email không đúng";
-                            showErrors(errorEmail);
-                            showResult(true);
-                        } else if (res.data.message === "Pass error") {
-                            const errorPassword = "Mật khẩu không đúng";
-                            showErrors(errorPassword);
-                            showResult(true);
-                        } else {
-                            setUser({
-                                Id: res.data.result._id,
-                                Fullname: res.data.result.name,
-                                Email: res.data.result.email,
-                                Address: res.data.result.address,
-                                Hometown: res.data.result.hometown,
-                                Date: res.data.result.birthday,
-                                Phone: res.data.result.phone,
-                                Role: res.data.result.role,
-                                Slug: res.data.result.slug,
-                                Public: res.data.result.public,
-                                Image: res.data.result.image,
-                                AccessToken: res.data.Token
-                            });
-                            alert("Đăng nhập thành công!")
-                            navigate('/');
-                        }
+            const fetchInformation = async () => {
+                const Logincheck = await LoginUser(details);
+                dispatch(fetchOfUser(Logincheck));
+                if (Logincheck.status === 200) {
+                    if (Logincheck.data.message === "Email error") {
+                        const errorEmail = "Email không đúng";
+                        showErrors(errorEmail);
+                        showResult(true);
+                    } else if (Logincheck.data.message === "Pass error") {
+                        const errorPassword = "Mật khẩu không đúng";
+                        showErrors(errorPassword);
+                        showResult(true);
                     } else {
-                        const error = new Error(res.error);
-                        throw error;
+                        setUser({
+                            Id: Logincheck.data.result._id,
+                            Fullname: Logincheck.data.result.name,
+                            Email: Logincheck.data.result.email,
+                            Address: Logincheck.data.result.address,
+                            Hometown: Logincheck.data.result.hometown,
+                            Date: Logincheck.data.result.birthday,
+                            Phone: Logincheck.data.result.phone,
+                            Role: Logincheck.data.result.role,
+                            Slug: Logincheck.data.result.slug,
+                            Public: Logincheck.data.result.public,
+                            Image: Logincheck.data.result.image,
+                            AccessToken: Logincheck.data.Token
+                        });
+                        alert("Đăng nhập thành công!")
+                        navigate('/');
                     }
-                })
-                .catch(err => {
-                    console.error(err.data);
-                    // alert('Error logging in please try again');
-                });
+                } else {
+                    const error = new Error(Logincheck.error);
+                    throw error;
+                }
+            }
+            fetchInformation();
         }
-    }
-
-    const google = () => {
-        // returnUrl = window.location.protocol + "//" + window.location.host + Path
-        window.open("/another-login", "_self")
     }
 
     useEffect(() => {

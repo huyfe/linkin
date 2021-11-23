@@ -1,8 +1,24 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import groupApi from '../../../../../api/groupApi';
+import { update } from '../../../../Group/groupSlice';
 import GroupTitle from './GroupTitle';
 import './style.scss';
 
 function GroupProfile() {
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        const fetchGroup = async () => {
+            const groupList = await groupApi.getAll();
+            dispatch(update(groupList.data));
+        }
+        fetchGroup();
+    }, []);
+
+    const groupListData = useSelector(state => state.group);
+    console.log(groupListData, "list group");
+
     return (
         <div className="Groupsprofile">
             <GroupTitle />

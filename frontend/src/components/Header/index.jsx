@@ -72,11 +72,6 @@ export default function Header() {
                                                 </MDBDropdownItem>
                                             ) : ("")
                                         ) : ("")}
-                                        <MDBDropdownItem>
-                                            <MDBDropdownLink className="linkItem__dropdown--link" href="#" >
-                                                <i className="fal fa-trash-alt"></i> Đổi mật khẩu
-                                            </MDBDropdownLink>
-                                        </MDBDropdownItem>
 
                                         <MDBDropdownItem>
                                             {(dataUsers) ? (

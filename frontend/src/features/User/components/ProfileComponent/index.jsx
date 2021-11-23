@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { Link, useParams } from 'react-router-dom';
 import {
     MDBBtn,
     MDBTabs,
@@ -19,11 +20,16 @@ import MainFollowing from "./MainFollowing";
 import TimelineUserComponent from "../TimelineUserComponent"
 import IntroduceProfile from "./IntroduceProfile";
 import UpLoadLinkComponent from "../../../../components/UploadLinkComponent/index";
-import Header from "../../../../components/Header";
+import { ProfileUser } from "../../../../api/UserApi";
+import { fetchOfUser } from "../../Userslice";
+import FormEditImage from "./FormEditImage";
+import FormEditUser from "./IntroduceProfile/FormEditUser";
 
 function ProfileComponent(props) {
     const { slug } = useParams();
     const [Profile, setProfile] = useState([])
+    const [EditImages, setEditImages] = useState([])
+    const dispatch = useDispatch();
     const dataUser = localStorage.getItem("dataUser")
     const dataUsers = JSON.parse(dataUser)
     const [basicActive, setBasicActive] = useState("tab1");
@@ -37,11 +43,53 @@ function ProfileComponent(props) {
     };
 
     useEffect(() => {
-        axios.get(`http://localhost:3000/users/${slug}`)
-            .then(res => {
-                setProfile(res.data.users)
-            })
+        const fetchInformation = async () => {
+            const Profileinfo = await ProfileUser(slug);
+            dispatch(fetchOfUser(Profileinfo.data.users));
+            setProfile(Profileinfo.data.users)
+        }
+        fetchInformation();
     }, [slug]);
+
+    const followFriend = (Slug) => {
+        const dataFollow = {
+            following: [Slug]
+        };
+        console.log(dataFollow);
+    }
+
+    const ShowFormImg = () => {
+        const dataShowImg = "ShowImg";
+        setEditImages(dataShowImg);
+    }
+
+    const HideFormImg = () => {
+        const dataShowImg = "";
+        setEditImages(dataShowImg);
+    }
+
+    const KeyEditImage = detailS => {
+        if (detailS.image === "") {
+            alert("Vui lòng chọn ảnh!")
+        } else {
+            const offff = ({
+                image: detailS.image.replace("C:\\fakepath\\", ""),
+            })
+            try {
+                axios.patch(`http://localhost:3000/users/edit-infomation-user/` + dataUsers.Id, offff)
+                    .then(res => {
+                        alert('Cập nhật ảnh thành công!');
+                        // navigate('/');
+                        window.location.href = `/profile/${dataUsers.Slug}`;
+                    })
+                    .catch(err => {
+                        console.log(err);
+                    })
+            } catch (e) {
+                console.log(e);
+            }
+        }
+    }
 
     const [userInfo, setUserInfo] = useState({
         avatar: "https://images.unsplash.com/photo-1517841905240-472988babdf9?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=387&q=80",
@@ -107,7 +155,6 @@ function ProfileComponent(props) {
 
     return (
         <div>
-            <Header />
             <section id="Profile-component">
                 <div className="container-fluid">
                     <div className="row">
@@ -117,11 +164,20 @@ function ProfileComponent(props) {
                                 <div className="avatar-name d-flex align-items-center justify-content-between">
                                     <div className="d-flex align-items-center">
                                         <img src={`/images/Users/${Profile.image}`} alt="" />
+                                        {(dataUsers) ? (
+                                            (dataUsers.Slug) === Profile.slug ? (
+                                                (EditImages) ==="ShowImg" ? (
+                                                    <Link to="#" onClick={HideFormImg}><i class="fas fa-folder-plus"></i></Link>
+                                                ) : (
+                                                    <Link to="#" onClick={ShowFormImg}><i class="fas fa-folder-plus"></i></Link>
+                                                )
+                                            ) : ("")
+                                        ) : ("")}
                                         <h2>{Profile.name}</h2>
                                     </div>
                                     {(dataUsers) ? (
                                         (dataUsers.Slug) !== Profile.slug ? (
-                                            <MDBBtn outline className="button">
+                                            <MDBBtn outline className="button" onClick={() => followFriend(Profile.slug)}>
                                                 Theo dõi
                                             </MDBBtn>
                                         ) : ("")
@@ -130,6 +186,9 @@ function ProfileComponent(props) {
                             </div>
                             <div className="detail-profile row">
                                 <div className="left-tab-menu col-8">
+                                    {(EditImages) ==="ShowImg" ? (
+                                        <FormEditImage KeyEditImage={KeyEditImage} />
+                                    ) : ("")}
                                     <MDBTabs fill className="mb-3">
                                         <MDBTabsItem>
                                             <MDBTabsLink

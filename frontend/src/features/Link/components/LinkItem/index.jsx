@@ -99,7 +99,7 @@ function LinkItem(props) {
           </MDBDropdown>
         </div>
         <div className="d-flex align-items-center linkItem__link">
-          <Link to={props.urlLink} title={props.urlLink} target="_blank">{props.urlLink}</Link>
+          <a href={props.urlLink} title={props.urlLink} target="_blank" rel="noopener noreferrer">{props.urlLink}</a>
           <button>
             <span className="icon-copy"></span>
           </button>

@@ -10,7 +10,10 @@ module.exports = {
     //Hiện tất cả links -> [GET]/
     async ShowAllLinks(req, res, next) {
         await Links.find({})
-            .then((links) => res.json(links))
+            .then((data) => {
+                const links = data.reverse();
+                return res.json(links)
+            })
             .catch(next);
     },
 

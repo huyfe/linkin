@@ -53,7 +53,7 @@ export default function FormForgotPass({ ForgotPass }) {
     return (
         <div className="ForgotPass-component">
             <div className="many-hands">
-                <img src="images/Users/many-hands.png" alt="" />
+                <img src="images/Users/background_user1.png" alt="" />
             </div>
             <div className="form-ForgotPass">
                 <h2>Quên mật khẩu</h2>

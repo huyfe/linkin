@@ -18,7 +18,7 @@ section#Profile-component {
         .avatar-name {
             margin: 0 98px;
             margin-top: -76px;
-
+            
             img {
                 width: 100%;
                 max-width: 150px;
@@ -27,6 +27,12 @@ section#Profile-component {
                 border-radius: 50%;
                 object-fit: contain;
                 border: 8px solid #FFF;
+            }
+
+            .fa-folder-plus{
+                font-size: 18px;
+                margin-left: -15px;
+                margin-top: 50px;
             }
 
             h2 {

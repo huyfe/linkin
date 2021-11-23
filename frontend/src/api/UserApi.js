@@ -14,5 +14,14 @@ export const RegisterUser = (data) => {
     };
 }
 
+export const ProfileUser = (data) => {
+    const url = `/users/${data}`;
+    return axiosClient.get(url);
+}
+
+export const LoginUser = (data) => {
+    const url = '/users/checklogin';
+    return axiosClient.post(url, data);
+}
 
 

@@ -91,7 +91,7 @@ function IntroduceProfile() {
             try {
                 axios.patch(`http://localhost:3000/users/edit-infomation-user/` + dataUsers.Id, detailsTwo)
                     .then(res => {
-                        alert('Cập nhật thành công thành công!');
+                        alert('Cập nhật thông tin thành công!');
                         // navigate('/');
                         window.location.href=`/profile/${dataUsers.Slug}`;
                     })
@@ -114,8 +114,8 @@ function IntroduceProfile() {
                         <p>{Profile.name}</p>
                     </div>
                     <div className="services d-flex">
-                        <Link to="#"><i className="fal fa-pen"></i></Link>
-                        <Link to="#"><i className="far fa-globe-africa"></i></Link>
+                        <Link to="#" onClick={Updateinformation}><i className="fal fa-pen"></i></Link>
+                        <Link to="#" ><i className="far fa-globe-africa"></i></Link>
                         <Link to="#"><i className="fas fa-lock"></i></Link>
                     </div>
                 </div>
@@ -125,7 +125,7 @@ function IntroduceProfile() {
                         <p>{day}-{month}-{year}</p>
                     </div>
                     <div className="services d-flex">
-                        <Link to="#"><i className="fal fa-pen"></i></Link>
+                        <Link to="#" onClick={Updateinformation}><i className="fal fa-pen"></i></Link>
                         <Link to="#"><i className="far fa-globe-africa"></i></Link>
                         <Link to="#"><i className="fas fa-lock"></i></Link>
                     </div>
@@ -136,7 +136,7 @@ function IntroduceProfile() {
                         <p>{Profile.address}</p>
                     </div>
                     <div className="services d-flex">
-                        <Link to="#"><i className="fal fa-pen"></i></Link>
+                        <Link to="#" onClick={Updateinformation}><i className="fal fa-pen"></i></Link>
                         <Link to="#"><i className="far fa-globe-africa"></i></Link>
                         <Link to="#"><i className="fas fa-lock"></i></Link>
                     </div>
@@ -147,7 +147,7 @@ function IntroduceProfile() {
                         <p>{Profile.hometown}</p>
                     </div>
                     <div className="services d-flex">
-                        <Link to="#"><i className="fal fa-pen"></i></Link>
+                        <Link to="#" onClick={Updateinformation}><i className="fal fa-pen"></i></Link>
                         <Link to="#"><i className="far fa-globe-africa"></i></Link>
                         <Link to="#"><i className="fas fa-lock"></i></Link>
                     </div>
@@ -158,7 +158,7 @@ function IntroduceProfile() {
                         <p>{Profile.email}</p>
                     </div>
                     <div className="services d-flex">
-                        <Link to="#"><i className="fal fa-pen"></i></Link>
+                        <Link to="#" onClick={Updateinformation}><i className="fal fa-pen"></i></Link>
                         <Link to="#"><i className="far fa-globe-africa"></i></Link>
                         <Link to="#"><i className="fas fa-lock"></i></Link>
                     </div>
@@ -169,7 +169,7 @@ function IntroduceProfile() {
                         <p>{Profile.phone}</p>
                     </div>
                     <div className="services d-flex">
-                        <Link to="#"><i className="fal fa-pen"></i></Link>
+                        <Link to="#" onClick={Updateinformation}><i className="fal fa-pen"></i></Link>
                         <Link to="#"><i className="far fa-globe-africa"></i></Link>
                         <Link to="#"><i className="fas fa-lock"></i></Link>
                     </div>

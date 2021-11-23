@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 function LinkTitle() {
     return (
         <div className="d-flex align-items-center LinkTitle">
-            <h1><Link to="/categories/slug">Link</Link>
+            <h1>Link
                 &nbsp;
                 <Link to="/profile/tran-quoc-huy">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-plus-circle" viewBox="0 0 16 16">

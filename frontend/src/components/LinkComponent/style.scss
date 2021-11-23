@@ -96,6 +96,13 @@
 					}
 				}
 			}
+			.btn-function {
+				button {
+					outline: none;
+					border: none;
+					background: transparent;
+				}
+			}
 		}
 		&-image {
 			img {

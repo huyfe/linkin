@@ -16,7 +16,6 @@ module.exports = {
             })
             .catch(next);
     },
-
     //Hiện các link đã xóa mềm (Thùng rác) -> [GET]/show-trash
     async ShowTrash(req, res, next) {
         await Links.findDeleted({})

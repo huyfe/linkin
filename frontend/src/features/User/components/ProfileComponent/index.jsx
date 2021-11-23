@@ -13,7 +13,6 @@ import axios from 'axios';
 import CategoryProfile from "./CategoryProfile";
 import GroupProfile from "./GroupProfile";
 import LinkProFile from "./LinkProfile";
-
 import "./style.scss";
 import MainFollower from "./MainFollower";
 import MainFollowing from "./MainFollowing";

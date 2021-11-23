@@ -35,7 +35,7 @@
     }
   }
   &__link {
-    input {
+    a {
       height: 25px;
       padding: 5px 10px;
       border-radius: 4px;
@@ -48,6 +48,9 @@
       line-height: 15px;
       color: $txt-black;
       margin-right: auto;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
     button {
       outline: none;

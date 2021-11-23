@@ -33,8 +33,8 @@ function HomeGroupComponent(props) {
 
     return (
         <div className="homeGroup">
-            <div className="wrapper">
-                <div className="row">
+            <div className="container-fluid">
+                <div className="row gx-0">
                     <div className="col-lg-3">
                         <aside className="group__aside__left">
                             <GroupSearchComponent />

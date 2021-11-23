@@ -1,7 +1,9 @@
 .homeGroup {
-    // padding-left: 40px;
-    // padding-right: 5px;
-    .wrapper {
+
+    .container-fluid {
+
+        padding-left: 40px;
+        padding-right: 5px;
         main {
             .list-my-group {
                 margin-top: 30px;
@@ -62,7 +64,7 @@
         }
 
         aside.group__aside__left {
-            position: sticky;
+            position: static;
             top: 71px;
             max-width: 300px;
             height: calc(100vh - 71px);

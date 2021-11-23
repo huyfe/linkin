@@ -86,33 +86,69 @@ function ManagerGroupComponent(props) {
                                                 onChange=""
                                                 id='validationCustom01'
                                                 required
-                                                label='Tiêu đề của link'
-                                                validation='Xin mời nhập tiêu đề!'
+                                                label='Tên nhóm'
+                                                validation='Xin mời nhập tên nhóm!'
                                                 invalid
                                             />
                                         </div>
                                         <div className='col-12'>
-                                            <MDBInput
+                                            {/* <MDBInput
                                                 className='bg-light rounded-0'
                                                 value=""
-                                                name='link'
+                                                name='group'
                                                 onChange=""
                                                 id='validationCustom02'
                                                 required
                                                 label='Nhập link'
                                                 validation='Xin mời nhập link!'
                                                 invalid
+                                            /> */}
+                                            <MDBInput
+                                                className='bg-light rounded-0'
+                                                type="textarea"
+                                                label="Mô tả nhóm"
+                                                rows="5"
+                                                required
+                                                validation='Xin mời nhập mô tả nhóm!'
+                                                invalid
                                             />
                                         </div>
                                         <div className='col-12'>
-                                            <MDBInput
-                                                className='bg-light rounded-0'
-                                                value=""
-                                                name='categories'
+                                            <div className="d-flex align-items-center formAddCategory__upload--btn">
+                                                <h3>Chọn hình</h3>
+                                                <label
+                                                    htmlFor="img-uploadAdd"
+                                                    className="d-flex justify-content-center align-items-center"
+                                                >
+                                                    <i className="far fa-plus"></i>
+                                                </label>
+                                            </div>
+                                            <input
+                                                // className="d-block"
+                                                type="file"
+                                                name="image"
+                                                id="img-uploadAdd"
+                                                accept=".jpg,.jpeg,.png"
                                                 onChange=""
-                                                id='validationCustom03'
-                                                label='Danh mục'
                                             />
+                                            {/* {isImageUpload && ( */}
+                                                <div className="formAddCategory__img-uploaded">
+                                                    <button
+                                                        className="d-none"
+                                                        // onClick={() => {
+                                                        //     setIsImageUpload(false);
+                                                        //     setImageUpload(null);
+                                                        // }}
+                                                    >
+                                                        <i className="fad fa-times-circle"></i>
+                                                    </button>
+                                                    <img
+                                                        src="" //{imageUpload}
+                                                        draggable="" //{false}
+                                                        alt="img-uploaded"
+                                                    />
+                                                </div>
+                                            {/* )} */}
                                         </div>
                                         <div className="col-12">
                                             <MDBBtn type='submit' className="w-100 pt-3 pb-3">Tạo Nhóm</MDBBtn>

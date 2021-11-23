@@ -17,7 +17,7 @@ import { update as updateLoading } from "../../../../components/LoadingComponent
 LinkItem.propTypes = {
   id: PropTypes.number,
   title: PropTypes.string,
-  urlPost: PropTypes.string,
+  slug: PropTypes.string,
   urlLink: PropTypes.string,
   image: PropTypes.string,
   date: PropTypes.string,
@@ -26,7 +26,7 @@ LinkItem.propTypes = {
 LinkItem.defaultProps = {
   id: null,
   title: 'My link',
-  urlPost: 'https://www.facebook.com/ybx1802',
+  slug: '/',
   urlLink: 'https://www.facebook.com/ybx1802',
   image: 'https://images.unsplash.com/photo-1514315384763-ba401779410f?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=383&q=80'
 }
@@ -49,14 +49,14 @@ function LinkItem(props) {
   return (
     <div className="d-flex linkItem">
       <div className="linkItem__img">
-        <Link to={props.urlPost}>
+        <Link to={props.slug}>
           <img src={props.image} />
         </Link>
       </div>
       <div className="d-flex flex-column justify-content-between linkItem__desc">
         <div className="d-flex align-items-center linkItem__title">
           <h2>
-            <Link to={props.urlPost} style={{ color: '#000' }}>
+            <Link to={props.slug} style={{ color: '#000' }}>
               {props.title}
             </Link>
           </h2>
@@ -99,11 +99,7 @@ function LinkItem(props) {
           </MDBDropdown>
         </div>
         <div className="d-flex align-items-center linkItem__link">
-          <input
-            type="text"
-            defaultValue={props.urlLink}
-            readOnly
-          />
+          <a href={props.urlLink} title={props.urlLink} target="_blank" rel="noopener noreferrer">{props.urlLink}</a>
           <button>
             <span className="icon-copy"></span>
           </button>

@@ -13,10 +13,11 @@ const Link = new Schema(
         created_date: { type: Date },
         public: { type: Boolean },
         id_author: { type: Number },
-        id_cats: { type: [{ id: Number }] },
+        categories: { type: [{ id: Number, name: String }] },
         id_passengers: { type: [{ id: Number }] },
         id_groups: { type: [{ id: Number }] },
         type: { type: String },
+        slug: { type: String, slug: "title", unique: true },
     },
     {
         _id: false,

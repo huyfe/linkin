@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import "./style.scss";
 
 // this is a function popup chat when you click the circle button message it will show presently
 

@@ -53,7 +53,7 @@ module.exports = {
             .catch(next);
     },
     async ShowPostByGroupTimeline(req, res, next) {
-        await TimelineLinkin.find({ _id: req.params.id, type: "Group" })
+        await TimelineLinkin.find({type: "Group"})
             .then((timeline) => res.json(timeline))
             .catch(next)
     },

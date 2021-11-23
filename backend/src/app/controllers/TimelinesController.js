@@ -53,7 +53,14 @@ module.exports = {
             .catch(next);
     },
     async ShowPostByGroupTimeline(req, res, next) {
-        await TimelineLinkin.find({type: "Group"})
+       let idForeign = req.params.id_foreign;
+        await TimelineLinkin.findOne({id_foreign: idForeign, type: "Group"})
+        .then((timeline) => res.json(timeline))
+        .catch(next)
+    },
+    async ShowPostByUserTimeline(req, res, next) {
+        let idForeign = req.params.id_foreign;
+        await TimelineLinkin.findOne({id_foreign:idForeign, type: "User"})
             .then((timeline) => res.json(timeline))
             .catch(next)
     },

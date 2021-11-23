@@ -1,7 +1,11 @@
 import React, { useState } from 'react';
-import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import {CopyToClipboard} from 'react-copy-to-clipboard';
+
+import PropTypes from 'prop-types';
+
 import './style.scss';
+
 LinkComponent.propTypes = {
     imageUser: PropTypes.string,
     userLink: PropTypes.string,
@@ -17,15 +21,19 @@ LinkComponent.propTypes = {
     comment: PropTypes.array,
     hour: PropTypes.string,
 }
+
 LinkComponent.defaultProps = {
     userLink: "/profile/user",
     groupLink: "/group/group-detail",
 }
+
 function LinkComponent(props) {
     const [like, setLike] = useState(false);
     const eventLike = () => {
         setLike(like => !like);
     }
+    const [value, setValue] = useState(props.contentLink);
+
     return (
         <div className="box-item mb-4">
             <div className="info__box d-flex align-items-center">
@@ -48,7 +56,6 @@ function LinkComponent(props) {
                             {props.datePost} <span className="icon-earth"></span>
                         </p>
                     </div>
-
                 </div>
             </div>
 
@@ -61,8 +68,11 @@ function LinkComponent(props) {
                                 {props.contentLink}
                             </p>
                         </div>
-                        <div className="col-lg-2 icon d-flex justify-content-around">
-                            <span className="icon-copy"></span>
+                        <div className="col-lg-2 icon d-flex justify-content-around btn-function">
+                            {/* Copy clipboard */}
+                            <CopyToClipboard text={value} >
+                                <span className="icon-copy"></span>
+                            </CopyToClipboard>
                             <span className="icon-plus"></span>
                         </div>
                     </div>

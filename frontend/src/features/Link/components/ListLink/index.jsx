@@ -25,7 +25,7 @@ function ListLink(props) {
 
     const linkList = linkListData.map(link => {
         return (
-            <LinkItem key={link._id} title={link.title} urlPost={link.link} urlLink={link.link} image={link.image} date={link.created_date} public={link.public} />
+            <LinkItem key={link._id} id={link._id} title={link.title} urlPost={link.link} urlLink={link.link} image={link.image} date={link.created_date} public={link.public} />
         )
     })
 

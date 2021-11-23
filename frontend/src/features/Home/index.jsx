@@ -3,7 +3,7 @@ import { Routes, Route } from 'react-router-dom';
 import HomePage from './pages/HomePage';
 import linkApi from '../../api/linkApi';
 import categoriesApi from '../../api/categoriesApi';
-import { fetchCatOfUser } from '../Category/categorySlice';
+import { fetchCatOfUser } from '../Category/categoriesUserSlice';
 import { useDispatch } from 'react-redux';
 
 function HomeFeature() {

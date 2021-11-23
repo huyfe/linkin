@@ -17,7 +17,7 @@ export default function FormRegister({ Register, errors, result }) {
         public: 1,
         password: "",
         Password: "",
-        role: 1
+        role: 0
     });
 
     const Result = () => {
@@ -34,7 +34,7 @@ export default function FormRegister({ Register, errors, result }) {
     return (
         <div className="Register-component">
             <div className="many-hands">
-                <img src="images/Users/many-hands.png" alt="" />
+                <img src="images/Users/background_user1.png" alt="" />
             </div>
             <div className="form-register">
                 <h2>Đăng ký</h2>

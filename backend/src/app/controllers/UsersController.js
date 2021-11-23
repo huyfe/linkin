@@ -111,6 +111,13 @@ module.exports = {
                 .catch(next);
     },
 
+    EditInfomationUser: async function (req, res, next) {
+        const newUser = new Users(req.body);
+            Users.updateOne({ _id: req.params.id }, newUser)
+                .then(() => res.send('Edit account successfully!'))
+                .catch(next);
+    },
+
     // Delete the account
     DeleteUser: function (req, res, next) {
         Users.deleteOne({ _id: req.params.id })

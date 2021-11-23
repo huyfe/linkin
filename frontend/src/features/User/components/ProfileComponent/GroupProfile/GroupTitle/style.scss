@@ -32,4 +32,20 @@
         color: $txt-blue;
         margin-right: auto;
     }
+
+    &__group {
+        position: relative;
+        width: 43.144%;
+        margin-top: -5px;
+
+        a{
+            font-family: Roboto;
+            font-style: normal;
+            font-weight: 400;
+            font-size: 18px;
+            line-height: 23px;
+            text-align: center;
+            color: $txt-blue;
+        }
+    }
 }

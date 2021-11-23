@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 function LinkTitle() {
     return (
         <div className="d-flex align-items-center LinkTitle">
-            <h1><Link to="/categories/slug">Link</Link>
+            <h1>Link
                 &nbsp;
                 <Link to="/profile/tran-quoc-huy">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-plus-circle" viewBox="0 0 16 16">
@@ -14,14 +14,8 @@ function LinkTitle() {
                     </svg>
                 </Link>
             </h1>
-            <div className="LinkTitle__group">
-                <label
-                    htmlFor="LinkTitle"
-                    className="d-flex justify-content-end align-items-center"
-                >
-                    <i className="fal fa-search"></i>
-                </label>
-                <input id="LinkTitle" type="search" />
+            <div className="LinkTitle__group d-flex justify-content-end">
+                <Link to="/links">Xem tất cả link</Link>
             </div>
         </div>
     );

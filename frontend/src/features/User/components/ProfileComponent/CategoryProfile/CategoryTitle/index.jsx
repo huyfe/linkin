@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 function CategoryTitle() {
     return (
         <div className="d-flex align-items-center CategoryTitle">
-            <h1><Link to="/categories">Danh mục</Link>
+            <h1>Danh mục
                 &nbsp;
                 <Link to="/profile/tran-quoc-huy">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-plus-circle" viewBox="0 0 16 16">
@@ -14,14 +14,15 @@ function CategoryTitle() {
                     </svg>
                 </Link>
             </h1>
-            <div className="CategoryTitle__group">
-                <label
+            <div className="CategoryTitle__group d-flex justify-content-end">
+                {/* <label
                     htmlFor="CategoryTitle"
                     className="d-flex justify-content-end align-items-center"
                 >
                     <i className="fal fa-search"></i>
                 </label>
-                <input id="CategoryTitle" type="search" />
+                <input id="CategoryTitle" type="search" /> */}
+                <Link to="/categories">Xem tất cả danh mục</Link>
             </div>
         </div>
     );

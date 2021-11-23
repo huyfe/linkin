@@ -9,8 +9,13 @@ import {
 import "./style.scss";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
+import linkApi from "../../../../api/linkApi";
+import { useDispatch } from "react-redux";
+import { update } from "../../linkSlice";
+import { update as updateLoading } from "../../../../components/LoadingComponent/loadingSlice";
 
 LinkItem.propTypes = {
+  id: PropTypes.number,
   title: PropTypes.string,
   urlPost: PropTypes.string,
   urlLink: PropTypes.string,
@@ -19,6 +24,7 @@ LinkItem.propTypes = {
   public: PropTypes.bool,
 };
 LinkItem.defaultProps = {
+  id: null,
   title: 'My link',
   urlPost: 'https://www.facebook.com/ybx1802',
   urlLink: 'https://www.facebook.com/ybx1802',
@@ -26,6 +32,20 @@ LinkItem.defaultProps = {
 }
 
 function LinkItem(props) {
+  const dispatch = useDispatch();
+
+  const removeLinkItem = (id) => async (event) => {
+    event.preventDefault();
+    dispatch(updateLoading(100));
+    const awaitRemove = await linkApi.remove(id);
+    dispatch(updateLoading(101));
+
+    // Update the links  
+    const linkList = await linkApi.getAll();
+    dispatch(update(linkList.data));
+  }
+
+
   return (
     <div className="d-flex linkItem">
       <div className="linkItem__img">
@@ -54,6 +74,7 @@ function LinkItem(props) {
                 <MDBDropdownLink
                   className="linkItem__dropdown--link"
                   href="#"
+                  onClick={removeLinkItem(props.id)}
                 >
                   <i className="fal fa-trash-alt"></i> Xóa
                 </MDBDropdownLink>

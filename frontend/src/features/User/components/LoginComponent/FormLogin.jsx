@@ -33,21 +33,23 @@ export default function FormLogin({ Login, errors, result }) {
 
     return (
         <form className="form d-flex flex-column" onSubmit={submitHandlers}>
-            <div className="form-group">
-                <input className="form-control" type="email" placeholder="Email" name="Email" id="Email" onChange={e => setDetails({ ...details, email: e.target.value })} value={details.email} />
-            </div> <br />
-            <div className="form-group">
-                <input className="form-control" type="password" placeholder="Mật khẩu" name="password" id="id_password" onChange={e => setDetails({ ...details, password: e.target.value })} value={details.password} />
-                <span>
-                    <i className="fa fa-eye" aria-hidden="true" type="button" id="eye" onClick={Clickeye} ></i>
-                </span>
+            <div className="d-flex form-detail">
+                <div className="form-group">
+                    <input className="form-control" type="email" placeholder="Email" name="Email" id="Email" onChange={e => setDetails({ ...details, email: e.target.value })} value={details.email} />
+                </div> <br /> &nbsp;&nbsp;
+                <div className="form-group">
+                    <input className="form-control" type="password" placeholder="Mật khẩu" name="password" id="id_password" onChange={e => setDetails({ ...details, password: e.target.value })} value={details.password} />
+                </div> <br /> &nbsp;&nbsp;
+                <MDBBtn type="submit" className="pull-right">Đăng nhập</MDBBtn>
             </div>
-            
             <div className="forgot-pass d-flex justify-content-between">
                 <div >{result ? <Result /> : null}</div>
-                <Link to="/forgot-password">Quên mật khẩu</Link>
+                <div>
+                    <Link className="link-register" to="/register">Đăng ký <i class="fal fa-arrow-right"></i></Link>
+                    <Link to="/forgot-password">Quên mật khẩu?</Link>
+                </div>
             </div>
-            <MDBBtn type="submit" className="pull-right">Đăng nhập</MDBBtn>
+            
         </form>
     );
 }

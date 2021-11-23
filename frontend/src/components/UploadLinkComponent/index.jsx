@@ -29,28 +29,33 @@ function UpLoadLinkComponent(props) {
 
     const [centredModal, setCentredModal] = useState(false);
     const toggleShow = () => setCentredModal(!centredModal);
+    const dispatch = useDispatch();
 
     // Uploading image
     const [images, setImages] = React.useState([]);
     const maxNumber = 1;
 
+    // Default form value
     const [formValue, setFormValue] = useState({
         title: '',
         link: '',
-        categories: '',
+        categories: [],
         image: '',
+        public: true,
     });
 
-    const dispatch = useDispatch();
-
-
+    // Event onchange form 
     const onChangeForm = (e) => {
         setFormValue({ ...formValue, [e.target.name]: e.target.value });
     };
 
+    // Event onsubmit form
     const onSubmitForm = async (data) => {
-        console.log(data);
+        data.image = data.image || "https://images.unsplash.com/photo-1496440737103-cd596325d314?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80";
 
+        // Validate form value not null 
+        if (data.title === '' || data.link === '') return false;
+        console.log(data);
         const uploadLink = await linkApi.add(data);
         const linkList = await linkApi.getAll();
         dispatch(update(linkList.data));

@@ -23,8 +23,9 @@ aside.filterCategory {
       color: $txt-black;
       margin-bottom: 25px;
       transition: .5s;
-      &:hover{
-          font-weight: 700;
+      &:hover,
+      &.active{
+        color: $txt-blue;
       }
     }
   }

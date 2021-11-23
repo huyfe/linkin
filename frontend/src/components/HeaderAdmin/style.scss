@@ -1,0 +1,89 @@
+.header-admin {
+    $blue: #3573e2;
+    $white: #ffffff;
+    
+    overflow: hidden;
+    padding: 10px 0;
+    border-bottom: 1px solid $blue;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background-color: $white;
+    &__menu {
+        width: calc(100% - 80px);
+        margin: 0 auto;
+    }
+    &__controls {
+        button {
+            font-weight: normal;
+            font-size: 16px;
+            line-height: 19px;
+            text-transform: none;
+        }
+        .btn-login,
+        .btn-create-link {
+            width: 170px;
+            padding-top: 15px;
+            padding-bottom: 15px;
+        }
+        .btn-notification {
+            margin: 0 30px;
+            width: 37px;
+            font-size: 18px;
+            color: #222222;
+            background-color: transparent;
+            &:focus {
+                color: #222222;
+                background-color: transparent;
+            }
+            &:hover {
+                color: #222222;
+                background-color: #3574e231;
+            }
+        }
+
+        .user {
+            &__avatar {
+                width: 50px;
+                height: 50px;
+                border-radius: 50%;
+                object-fit: contain;
+            }
+            &__dropdown {
+                font-size: 10px;
+                margin-left: 10px;
+                color: #222222;
+                background-color: transparent;
+                &:after {
+                    display: none;
+                }
+                &:focus {
+                    color: #222222;
+                    background-color: transparent;
+                }
+                &:hover {
+                    color: #222222;
+                    background-color: #3574e231;
+                }
+                span {
+                    line-height: 38px;
+                }
+            }
+        }
+    }
+}
+.dropdown-menu-user {
+    width: 300px;
+    margin-top: 20px !important;
+    padding: 10px !important;
+    .dropdown-item {
+        font-size: 18px !important;
+        border-radius: 5px !important;
+        padding: 15px !important;
+
+        .fa-user-shield{
+            color: #3573e2;
+            margin-right: 8px;
+        }
+    }
+}

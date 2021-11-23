@@ -1,9 +1,9 @@
 import React from 'react';
-import { GoogleLogout } from 'react-google-login';
 import { NavLink, useNavigate } from 'react-router-dom';
 import './style.scss';
 import { MDBBtn, MDBDropdownLink, MDBDropdown, MDBDropdownToggle, MDBDropdownMenu, MDBDropdownItem } from 'mdb-react-ui-kit';
 import { Link } from 'react-router-dom';
+import LoadingComponent from '../LoadingComponent';
 
 export default function Header() {
     const dataUser = localStorage.getItem("dataUser")
@@ -14,16 +14,11 @@ export default function Header() {
         localStorage.removeItem("dataUser");
         // navigate('/');
         // Nếu đăng xuất mà không reload trang thì sẽ bị 404
-        window.location.href = "/"
+        window.location.href = "/login"
     }
 
     const Logins = () => {
         navigate('/login');
-    }
-
-    const LogoutGoogle = () => {
-        localStorage.removeItem("dataUser")
-        navigate('/another-login');
     }
 
     return (
@@ -68,27 +63,24 @@ export default function Header() {
                                                 </Link>
                                             </MDBDropdownItem>
                                         ) : ("")}
-                                        <MDBDropdownItem>
-                                            <MDBDropdownLink className="linkItem__dropdown--link" href="#" >
-                                                <i className="fal fa-trash-alt"></i> Đổi mật khẩu
-                                            </MDBDropdownLink>
-                                        </MDBDropdownItem>
+                                        {(dataUsers) ? (
+                                            (dataUsers.Role) === "1" ? (
+                                                <MDBDropdownItem>
+                                                    <Link className="dropdown-item linkItem__dropdown--link" to="/admin" >
+                                                        <span className="fas fa-user-shield"></span> Quản trị
+                                                    </Link>
+                                                </MDBDropdownItem>
+                                            ) : ("")
+                                        ) : ("")}
 
                                         <MDBDropdownItem>
                                             {(dataUsers) ? (
-                                                (dataUsers.TokenId) ? (
-                                                    <MDBBtn className="border-0"><GoogleLogout
-                                                        clientId="1022092216832-1rf2be1vf26lfoav4pbm5sfei8rentqk.apps.googleusercontent.com"
-                                                        buttonText="Đăng xuất" onLogoutSuccess={LogoutGoogle} /></MDBBtn>
-                                                ) : (
-                                                    <MDBDropdownLink onClick={Logout}
-                                                        className="linkItem__dropdown--link"
-                                                        href="#"
-                                                    >
-                                                        <span className="icon-earth"></span> Đăng xuất
-                                                    </MDBDropdownLink>
-                                                    // <MDBBtn onClick={Logout} className="btn btn-light btn-logout">Đăng xuất</MDBBtn>
-                                                )
+                                                <MDBDropdownLink onClick={Logout}
+                                                    className="linkItem__dropdown--link"
+                                                    href="#"
+                                                >
+                                                    <span className="icon-earth"></span> Đăng xuất
+                                                </MDBDropdownLink>
                                             ) : (
                                                 <Link to="/login"
                                                     className="dropdown-item linkItem__dropdown--link"
@@ -107,6 +99,7 @@ export default function Header() {
                     </div>
                 </div>
             </nav>
+            <LoadingComponent />
         </header>
     );
 }

@@ -15,7 +15,9 @@ router.delete('/hide-post/:id', timelineController.HideTimeline);
 router.patch('/unhide-post/:id', timelineController.UnhideTimeline);
 
 // Hiển thị bài viết theo nhóm
-router.get('/show-group-post', timelineController.ShowPostByGroupTimeline);
+router.get('/group-post/:id_foreign', timelineController.ShowPostByGroupTimeline);
+// Hiển thị bài viết theo user
+router.get('/user-post/:id_foreign', timelineController.ShowPostByUserTimeline);
 
 
 module.exports = router;

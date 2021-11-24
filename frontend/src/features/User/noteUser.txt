@@ -53,3 +53,10 @@ Profile không dùng redux
         .then(res => {
             setProfile(res.data.users)
         })
+
+Admin xóa user không dùng redux
+    axios.delete(`http://localhost:3000/users/delete-user/${id}`)
+        .then(res=>{
+             window.location.href="/admin"
+            })
+        .catch((error) => console.log(error));

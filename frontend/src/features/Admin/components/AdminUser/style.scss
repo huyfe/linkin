@@ -1,5 +1,12 @@
 section#adminuser-page{
+    overflow-x: hidden;
     h2{
         font-size: 42px;
+    }
+
+    form{
+        .form-select{
+            width: 20% !important;
+        }
     }
 }

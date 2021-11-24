@@ -6,7 +6,7 @@ export const RegisterUser = (data) => {
         axiosClient.post(url, data)
             .then(res => {
                 alert('Đăng ký thành công!');
-                window.location.href="/login"
+                window.location.href = "/login"
             })
             .catch(err => {
                 console.log(err);
@@ -18,6 +18,18 @@ export const ProfileUser = (data) => {
     const url = `/users/${data}`;
     return axiosClient.get(url);
 }
+
+export const AdminDeleteUser = (data) => {
+    const url = `/users/delete-user/${data}`;
+    return function (dispatch) {
+        axiosClient.delete(url, data)
+            .then(res => {
+                window.location.href = "/admin"
+            })
+            .catch((error) => console.log(error));
+    };
+}
+
 
 export const LoginUser = (data) => {
     const url = '/users/checklogin';

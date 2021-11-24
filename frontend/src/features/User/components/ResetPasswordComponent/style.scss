@@ -1,0 +1,119 @@
+@import url("https://fonts.googleapis.com/css?family=Abel|Abril+Fatface|Alegreya|Arima+Madurai|Dancing+Script|Dosis|Merriweather|Oleo+Script|Overlock|PT+Serif|Pacifico|Playball|Playfair+Display|Share|Unica+One|Vibur");
+.ResetPass-form {
+    .ResetPass-component {
+        height: calc(100vh - 71px);
+        background-color: #fdfdfd;
+        display: flex;
+        align-items: center;
+
+        .many-hands {
+            width: 50%;
+            img {
+                width: 200%;
+                // object-fit: cover;
+            }
+        }
+
+        .form-ResetPass {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            width: 100%;
+
+            h2 {
+                font-family: Roboto;
+                font-style: normal;
+                font-weight: 900;
+                font-size: 48px;
+                line-height: 56px;
+                text-align: center;
+                color: #3573e2;
+            }
+
+            p {
+                font-family: Roboto;
+                font-style: normal;
+                font-weight: normal;
+                font-size: 20px;
+                line-height: 23px;
+                text-align: center;
+                color: rgb(165, 159, 159);
+                margin-top: 16px;
+
+                a {
+                    color: #3573e2;
+                    text-decoration: none;
+                }
+            }
+
+            form {
+                margin-top: 20px;
+                width: 50.42%;
+                max-width: 507px;
+                height: 100%;
+
+                .form-group {
+                    input {
+                        background: #fdfdfd;
+                        border: 2px solid #3573e2;
+                        box-sizing: border-box;
+                        border-radius: 15px;
+                        height: 88px;
+                        padding-left: 30px;
+                        font-family: Roboto;
+                        font-style: normal;
+                        font-weight: normal;
+                        font-size: 28px;
+                        line-height: 33px;
+                        color: #222222;
+                    }
+                }
+
+                .forgot-pass {
+                    margin-top: 30px;
+                }
+
+                button {
+                    margin-top: 22px;
+                    margin-left: auto;
+                    width: 50%;
+                    max-width: 253.5px;
+                    height: 66px;
+                    background: #3573e2;
+                    border-radius: 15px;
+
+                    font-family: Roboto;
+                    font-style: normal;
+                    font-weight: 500;
+                    font-size: 24px;
+                    line-height: 28px;
+                    text-align: center;
+                    color: #ffffff;
+                    border: none;
+                    transition: 0.3s;
+
+                    &:hover {
+                        background-color: transparent;
+                        border: 2px solid #3573e2;
+                        transition: 0.3s;
+                        color: #3573e2;
+                    }
+                }
+            }
+
+            @media (max-width: 1440px) {
+                form {
+                    width: 46%;
+                    .form-group {
+                        input {
+                            height: 82px;
+                            font-size: 26px;
+                            line-height: 28px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

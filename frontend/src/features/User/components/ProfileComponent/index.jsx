@@ -22,7 +22,6 @@ import UpLoadLinkComponent from "../../../../components/UploadLinkComponent/inde
 import { ProfileUser } from "../../../../api/UserApi";
 import { fetchOfUser } from "../../Userslice";
 import FormEditImage from "./FormEditImage";
-import FormEditUser from "./IntroduceProfile/FormEditUser";
 
 function ProfileComponent(props) {
     const { slug } = useParams();

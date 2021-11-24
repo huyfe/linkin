@@ -163,7 +163,7 @@ function ModalEditCategory({ showModalEdit, setShowModalEdit, categoryEdit }) {
                   <h4>Vui lòng nhập đầy đủ thông tin</h4>
                 </div>
                 <MDBModalFooter className="modalEdit__footer">
-                  <MDBBtn onClick={() => setShowModalEdit(!showModalEdit)}>
+                  <MDBBtn type="button" onClick={() => setShowModalEdit(!showModalEdit)}>
                     Hủy
                   </MDBBtn>
                   <MDBBtn type="submit">Đồng ý</MDBBtn>

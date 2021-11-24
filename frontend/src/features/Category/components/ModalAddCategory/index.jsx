@@ -168,7 +168,7 @@ function ModalAddCategory({ showModal, setShowModal }) {
                   <h4>Vui lòng nhập đầy đủ thông tin</h4>
                 </div>
                 <MDBModalFooter className="modalAdd__footer">
-                  <MDBBtn onClick={() => setShowModal(!showModal)}>Hủy</MDBBtn>
+                  <MDBBtn type="button" onClick={() => setShowModal(!showModal)}>Hủy</MDBBtn>
                   <MDBBtn type="submit">Đồng ý</MDBBtn>
                 </MDBModalFooter>
               </form>

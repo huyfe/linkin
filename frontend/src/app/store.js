@@ -3,12 +3,14 @@ import groupReducer from "../features/Group/groupSlice";
 import categoriesUserReducer from "../features/Category/categoriesUserSlice";
 import userReducer from "../features/User/Userslice";
 import loadingReducer from "../components/LoadingComponent/loadingSlice";
+import timelineReducer from '../features/Group/timelineSlice'
 
 const { configureStore } = require("@reduxjs/toolkit");
 
 const rootReducer = {
     link: linkReducer,
     group: groupReducer,
+    timeline: timelineReducer,
     categoriesUser: categoriesUserReducer,
     user: userReducer,
     loading: loadingReducer,

@@ -33,13 +33,13 @@ export default function FormLogin({ Login, errors, result }) {
 
     return (
         <form className="form d-flex flex-column" onSubmit={submitHandlers}>
-            <div className="d-flex form-detail">
+            <div className="form-detail">
                 <div className="form-group">
                     <input className="form-control" type="email" placeholder="Email" name="Email" id="Email" onChange={e => setDetails({ ...details, email: e.target.value })} value={details.email} />
-                </div> <br /> &nbsp;&nbsp;
+                </div>
                 <div className="form-group">
                     <input className="form-control" type="password" placeholder="Mật khẩu" name="password" id="id_password" onChange={e => setDetails({ ...details, password: e.target.value })} value={details.password} />
-                </div> <br /> &nbsp;&nbsp;
+                </div>
                 <MDBBtn type="submit" className="pull-right">Đăng nhập</MDBBtn>
             </div>
             <div className="forgot-pass d-flex justify-content-between">

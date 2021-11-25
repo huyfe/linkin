@@ -1,12 +1,11 @@
 import React, { useContext, useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { NavLink, useNavigate } from 'react-router-dom';
+import { MDBBtn } from 'mdb-react-ui-kit';
 import { DataContext } from '../../../../DataLinkin';
 import FormRegister from './FormRegister';
 import './style.scss';
-// import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
 import { RegisterUser } from '../../../../api/UserApi';
-import HeaderAdmin from '../../../../components/HeaderAdmin';
 
 export default function Register() {
     const value = useContext(DataContext)
@@ -69,9 +68,31 @@ export default function Register() {
         }
     }
 
+    const loginLink = () => {
+        navigate("/login");
+    }
+
     return (
         <div>
-            <HeaderAdmin />
+            <header className="header-register">
+                <nav className="header-register__menu">
+                    <div className="row align-items-center">
+                        <div className="col-2">
+                            <div className="header__logo d-flex align-items-center justify-content-between">
+                                <NavLink to="/"> <img src="/logo.svg" alt="Linkin" /></NavLink>
+                                <h2>Linkin</h2>
+                            </div>
+                        </div>
+                        <div className="col-10">
+                            <div className="header-register__controls d-flex justify-content-end align-items-center">
+                                <div className="userss d-flex align-items-center">
+                                    <MDBBtn onClick={loginLink}>Đăng nhập</MDBBtn>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+            </header>
             <FormRegister Register={Register} errors={errors} result={result} />
         </div>
     );

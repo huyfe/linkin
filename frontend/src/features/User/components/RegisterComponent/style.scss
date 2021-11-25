@@ -1,3 +1,54 @@
+@import url("https://fonts.googleapis.com/css?family=Abel|Abril+Fatface|Alegreya|Arima+Madurai|Dancing+Script|Dosis|Merriweather|Oleo+Script|Overlock|PT+Serif|Pacifico|Playball|Playfair+Display|Share|Unica+One|Vibur");
+$white: #ffffff;
+.header-register {
+    $blue: #3573e2;
+
+    overflow: hidden;
+    padding: 10px 0;
+    border-bottom: 1px solid $blue;
+    top: 0;
+    z-index: 1000;
+    background-color: $white;
+    &__menu {
+        width: calc(100% - 80px);
+        margin: 0 auto;
+
+        .header__logo {
+            a {
+                margin-right: 40px;
+                img {
+                    width: 150%;
+                    min-width: 40px;
+                }
+            }
+            h2 {
+                font-family: Audiowide;
+                font-style: normal;
+                font-weight: normal;
+                font-size: 60px;
+                line-height: 76px;
+                color: #2196f3;
+                margin-bottom: 0 !important;
+
+                @media (max-width: 1600px) {
+                    font-size: 52px;
+                }
+            }
+        }
+    }
+    &__controls {
+        button {
+            font-weight: normal;
+            font-size: 16px;
+            line-height: 19px;
+            text-transform: none;
+        }
+
+        // .userss {
+
+        // }
+    }
+}
 .Register-component {
     min-height: 555px;
     background-color: #fdfdfd;

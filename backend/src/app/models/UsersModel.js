@@ -20,6 +20,7 @@ const User = new Schema(
         birthday: { type: Date },
         created_date: { type: Date },
         image: { type: String },
+        coverimage: { type: String },
         public: { type: String },
         follower: {type: [{id: Number, name:String, avatar:String}]},
         following: {type: [{id: Number, name:String, avatar:String}]},

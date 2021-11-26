@@ -1,4 +1,65 @@
 @import url("https://fonts.googleapis.com/css?family=Abel|Abril+Fatface|Alegreya|Arima+Madurai|Dancing+Script|Dosis|Merriweather|Oleo+Script|Overlock|PT+Serif|Pacifico|Playball|Playfair+Display|Share|Unica+One|Vibur");
+$white: #ffffff;
+.header-resetpass {
+    $blue: #3573e2;
+
+    overflow: hidden;
+    padding: 10px 0;
+    border-bottom: 1px solid $blue;
+    top: 0;
+    z-index: 1000;
+    background-color: $white;
+    &__menu {
+        width: calc(100% - 80px);
+        margin: 0 auto;
+
+        .header__logo {
+            a {
+                margin-right: 40px;
+                img {
+                    width: 150%;
+                    min-width: 40px;
+                }
+            }
+            h2 {
+                font-family: Audiowide;
+                font-style: normal;
+                font-weight: normal;
+                font-size: 60px;
+                line-height: 76px;
+                margin-bottom: 0 !important;
+                color: #2196f3;
+
+                @media (max-width: 1600px) {
+                    font-size: 52px;
+                }
+            }
+        }
+    }
+    &__controls {
+        button {
+            font-weight: normal;
+            font-size: 16px;
+            line-height: 19px;
+            text-transform: none;
+        }
+
+        .userss {
+            button{
+                    font-family: Roboto;
+                    font-style: normal;
+                    font-weight: 500;
+                    font-size: 17px;
+                    line-height: 23px;
+                    text-align: center;
+                    color: #ffffff;
+                    border: none;
+                    transition: 0.3s;
+                    text-transform: none;
+            }
+        }
+    }
+}
 .ResetPass-form {
     .ResetPass-component {
         height: calc(100vh - 71px);

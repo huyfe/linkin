@@ -34,6 +34,24 @@ $white: #ffffff;
                     font-size: 52px;
                 }
             }
+
+            @media (max-width:480px) {
+                a{
+                    margin-right: 5px;
+                    img{
+                        width: 100%;
+                    }
+                }
+
+                h2{
+                    font-size: 40px;
+                    line-height: 56px;
+                }
+            }
+        }
+
+        @media (max-width:480px) {
+            width: calc(100% - 40px);
         }
     }
     &__controls {
@@ -80,6 +98,11 @@ $white: #ffffff;
             line-height: 56px;
             text-align: center;
             color: #3573e2;
+
+            @media (max-width: 600px) {
+                font-size: 40px;
+                line-height: 48px;
+            }
         }
 
         p {
@@ -174,6 +197,27 @@ $white: #ffffff;
                         font-size: 22px;
                         line-height: 28px;
                     }
+                }
+            }
+        }
+        @media (max-width: 600px) {
+
+            form {
+                width: 68%;
+
+                .form-group {
+                    input {
+                        padding-left: 18px;
+                        font-size: 18px;
+                        line-height: 20px;
+                    }
+                }
+
+                button{
+                    margin-top: 0px;
+                    font-size: 18px;
+                    line-height: 20px;
+                    height: 44px;
                 }
             }
         }

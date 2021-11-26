@@ -22,6 +22,7 @@ import UpLoadLinkComponent from "../../../../components/UploadLinkComponent/inde
 import { ProfileUser } from "../../../../api/UserApi";
 import { fetchOfUser } from "../../Userslice";
 import FormEditImage from "./FormEditImage";
+import FormEditCoverImage from "./FormEditCoverImage";
 
 function ProfileComponent(props) {
     const { slug } = useParams();
@@ -70,21 +71,56 @@ function ProfileComponent(props) {
         if (detailS.image === "") {
             alert("Vui lòng chọn ảnh!")
         } else {
-            const offff = ({
-                image: detailS.image.replace("C:\\fakepath\\", ""),
-            })
-            try {
-                axios.patch(`http://localhost:3000/users/edit-infomation-user/` + dataUsers.Id, offff)
-                    .then(res => {
-                        alert('Cập nhật ảnh thành công!');
-                        // navigate('/');
-                        window.location.href = `/profile/${dataUsers.Slug}`;
-                    })
-                    .catch(err => {
-                        console.log(err);
-                    })
-            } catch (e) {
-                console.log(e);
+            let reader = new FileReader();
+            reader.readAsDataURL(detailS.image[0])
+            reader.onload = (e) => {
+                console.log("img data", e.target.result);
+                const offff = ({
+                    image: e.target.result
+                })
+                try {
+                    axios.patch(`http://localhost:3000/users/edit-infomation-user/` + dataUsers.Id, offff)
+                        .then(res => {
+                            alert('Cập nhật ảnh đại diện thành công!');
+                            // navigate('/');
+                            window.location.href = `/profile/${dataUsers.Slug}`;
+                        })
+                        .catch(err => {
+                            console.log(err);
+                        })
+                } catch (e) {
+                    console.log(e);
+                }
+            }
+        }
+    }
+
+    const KeyEditCoverImage = detailSs => {
+        console.log(detailSs);
+
+        if (detailSs.coverimage === "") {
+            alert("Vui lòng chọn ảnh!")
+        } else {
+            let reader = new FileReader();
+            reader.readAsDataURL(detailSs.coverimage[0])
+            reader.onload = (e) => {
+                console.log("img data", e.target.result);
+                const offff = ({
+                    coverimage: e.target.result
+                })
+                try {
+                    axios.patch(`http://localhost:3000/users/edit-infomation-user/` + dataUsers.Id, offff)
+                        .then(res => {
+                            alert('Cập nhật ảnh bìa thành công!');
+                            // navigate('/');
+                            window.location.href = `/profile/${dataUsers.Slug}`;
+                        })
+                        .catch(err => {
+                            console.log(err);
+                        })
+                } catch (e) {
+                    console.log(e);
+                }
             }
         }
     }
@@ -153,108 +189,114 @@ function ProfileComponent(props) {
 
     return (
         <div>
-            <section id="Profile-component">
-                <div className="container-fluid">
-                    <div className="row">
-                        <div className="col-12">
-                            <div className="img-profile">
-                                <img src="/images/Users/anhbia.jpg" alt="" />
-                                <div className="avatar-name d-flex align-items-center justify-content-between">
-                                    <div className="d-flex align-items-center">
-                                        <img src={`/images/Users/${Profile.image}`} alt="" />
+            {(Profile) ? (
+                <section id="Profile-component">
+                    <div className="container-fluid">
+                        <div className="row">
+                            <div className="col-12">
+                                <div className="img-profile">
+                                    <img src={Profile.coverimage} alt="" />
+                                    <div className="avatar-name d-flex align-items-center justify-content-between">
+                                        <div className="d-flex align-items-center">
+                                            <img src={Profile.image} alt="" />
+                                            {(dataUsers) ? (
+                                                (dataUsers.Slug) === Profile.slug ? (
+                                                    (EditImages) === "ShowImg" ? (
+                                                        <Link to="#" onClick={HideFormImg}><i class="fas fa-folder-plus"></i></Link>
+                                                    ) : (
+                                                        <Link to="#" onClick={ShowFormImg}><i class="fas fa-folder-plus"></i></Link>
+                                                    )
+                                                ) : ("")
+                                            ) : ("")}
+                                            <h2>{Profile.name}</h2>
+                                        </div>
                                         {(dataUsers) ? (
-                                            (dataUsers.Slug) === Profile.slug ? (
-                                                (EditImages) ==="ShowImg" ? (
-                                                    <Link to="#" onClick={HideFormImg}><i class="fas fa-folder-plus"></i></Link>
-                                                ) : (
-                                                    <Link to="#" onClick={ShowFormImg}><i class="fas fa-folder-plus"></i></Link>
-                                                )
+                                            (dataUsers.Slug) !== Profile.slug ? (
+                                                <MDBBtn outline className="button" onClick={() => followFriend(Profile.slug)}>
+                                                    Theo dõi
+                                                </MDBBtn>
                                             ) : ("")
                                         ) : ("")}
-                                        <h2>{Profile.name}</h2>
                                     </div>
-                                    {(dataUsers) ? (
-                                        (dataUsers.Slug) !== Profile.slug ? (
-                                            <MDBBtn outline className="button" onClick={() => followFriend(Profile.slug)}>
-                                                Theo dõi
-                                            </MDBBtn>
-                                        ) : ("")
-                                    ) : ("")}
                                 </div>
-                            </div>
-                            <div className="detail-profile row">
-                                <div className="left-tab-menu col-8">
-                                    {(EditImages) ==="ShowImg" ? (
-                                        <FormEditImage KeyEditImage={KeyEditImage} />
-                                    ) : ("")}
-                                    <MDBTabs fill className="mb-3">
-                                        <MDBTabsItem>
-                                            <MDBTabsLink
-                                                onClick={() => handleBasicClick("tab1")}
-                                                active={basicActive === "tab1"}
-                                            >
-                                                Bài viết
-                                            </MDBTabsLink>
-                                        </MDBTabsItem>
-                                        <MDBTabsItem>
-                                            <MDBTabsLink
-                                                onClick={() => handleBasicClick("tab2")}
-                                                active={basicActive === "tab2"}
-                                            >
-                                                Giới thiệu
-                                            </MDBTabsLink>
-                                        </MDBTabsItem>
-                                        <MDBTabsItem>
-                                            <MDBTabsLink
-                                                onClick={() => handleBasicClick("tab3")}
-                                                active={basicActive === "tab3"}
-                                            >
-                                                Đang theo dõi
-                                            </MDBTabsLink>
-                                        </MDBTabsItem>
-                                        <MDBTabsItem>
-                                            <MDBTabsLink
-                                                onClick={() => handleBasicClick("tab4")}
-                                                active={basicActive === "tab4"}
-                                            >
-                                                Người theo dõi
-                                            </MDBTabsLink>
-                                        </MDBTabsItem>
-                                    </MDBTabs>
-                                    <MDBTabsContent>
-                                        <MDBTabsPane show={basicActive === "tab1"}>
-                                            <div className="Timeline-profile">
-                                                <UpLoadLinkComponent UpLoadLinkComponent avatar={userInfo.avatar} href={userInfo.href}></UpLoadLinkComponent>
-                                                {LinkPostProfile}
-                                            </div>
-                                        </MDBTabsPane>
-                                        <MDBTabsPane show={basicActive === "tab2"}>
-                                            <IntroduceProfile />
-                                        </MDBTabsPane>
-                                        <MDBTabsPane show={basicActive === "tab3"}>
-                                            <MainFollowing />
-                                        </MDBTabsPane>
-                                        <MDBTabsPane show={basicActive === "tab4"}>
-                                            <MainFollower />
-                                        </MDBTabsPane>
-                                    </MDBTabsContent>
-                                </div>
-                                <div className="right-information col-4">
-                                    <div className="category-imformation">
-                                        <CategoryProfile />
+                                <div className="detail-profile row">
+                                    <div className="left-tab-menu col-8">
+                                        {(EditImages) === "ShowImg" ? (
+                                            <>
+                                                <FormEditImage KeyEditImage={KeyEditImage} />
+                                                <FormEditCoverImage KeyEditCoverImage={KeyEditCoverImage} />
+                                            </>
+                                        ) : ("")}
+                                        <MDBTabs fill className="mb-3">
+                                            <MDBTabsItem>
+                                                <MDBTabsLink
+                                                    onClick={() => handleBasicClick("tab1")}
+                                                    active={basicActive === "tab1"}
+                                                >
+                                                    Bài viết
+                                                </MDBTabsLink>
+                                            </MDBTabsItem>
+                                            <MDBTabsItem>
+                                                <MDBTabsLink
+                                                    onClick={() => handleBasicClick("tab2")}
+                                                    active={basicActive === "tab2"}
+                                                >
+                                                    Giới thiệu
+                                                </MDBTabsLink>
+                                            </MDBTabsItem>
+                                            <MDBTabsItem>
+                                                <MDBTabsLink
+                                                    onClick={() => handleBasicClick("tab3")}
+                                                    active={basicActive === "tab3"}
+                                                >
+                                                    Đang theo dõi
+                                                </MDBTabsLink>
+                                            </MDBTabsItem>
+                                            <MDBTabsItem>
+                                                <MDBTabsLink
+                                                    onClick={() => handleBasicClick("tab4")}
+                                                    active={basicActive === "tab4"}
+                                                >
+                                                    Người theo dõi
+                                                </MDBTabsLink>
+                                            </MDBTabsItem>
+                                        </MDBTabs>
+                                        <MDBTabsContent>
+                                            <MDBTabsPane show={basicActive === "tab1"}>
+                                                <div className="Timeline-profile">
+                                                    <UpLoadLinkComponent UpLoadLinkComponent avatar={userInfo.avatar} href={userInfo.href}></UpLoadLinkComponent>
+                                                    {LinkPostProfile}
+                                                </div>
+                                            </MDBTabsPane>
+                                            <MDBTabsPane show={basicActive === "tab2"}>
+                                                <IntroduceProfile />
+                                            </MDBTabsPane>
+                                            <MDBTabsPane show={basicActive === "tab3"}>
+                                                <MainFollowing />
+                                            </MDBTabsPane>
+                                            <MDBTabsPane show={basicActive === "tab4"}>
+                                                <MainFollower />
+                                            </MDBTabsPane>
+                                        </MDBTabsContent>
                                     </div>
-                                    <div className="link-imformation">
-                                        <LinkProFile />
-                                    </div>
-                                    <div className="group-information">
-                                        <GroupProfile />
+                                    <div className="right-information col-4">
+                                        <div className="category-imformation">
+                                            <CategoryProfile />
+                                        </div>
+                                        <div className="link-imformation">
+                                            <LinkProFile />
+                                        </div>
+                                        <div className="group-information">
+                                            <GroupProfile />
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </section>
+                </section>
+            ) : ("")}
+
         </div>
     );
 }

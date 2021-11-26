@@ -51,6 +51,7 @@ export default function Login() {
                             Slug: Logincheck.data.result.slug,
                             Public: Logincheck.data.result.public,
                             Image: Logincheck.data.result.image,
+                            CoverImage: Logincheck.data.result.coverimage,
                             AccessToken: Logincheck.data.Token
                         });
                         alert("Đăng nhập thành công!")

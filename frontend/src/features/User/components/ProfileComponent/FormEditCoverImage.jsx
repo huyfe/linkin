@@ -1,25 +1,24 @@
 import React, { useState } from 'react';
 import { MDBBtn } from 'mdb-react-ui-kit';
 
-export default function FormEditImage({ KeyEditImage }) {
+export default function FormEditCoverImage({ KeyEditCoverImage }) {
     const dataUser = localStorage.getItem("dataUser")
     const dataUsers = JSON.parse(dataUser)
-    const [detailS, setDetailS] = useState({
-        image: dataUsers.Image
+    const [detailSs, setDetailSs] = useState({
+        coverimage: dataUsers.CoverImage
     });
 
     const submitHandlers = e => {
         e.preventDefault();
-        KeyEditImage(detailS)
+        KeyEditCoverImage(detailSs)
     }
 
     return (
         <form onSubmit={submitHandlers}>
-            <h3>Ảnh đại diện</h3>
+            <h3>Ảnh bìa</h3>
             <div className="itemintroduces d-flex justify-content-start">
-                
                 <div className="img-title d-flex align-items-center">
-                    <input className="form-control" type="file" name="Image" accept="image/*" onChange={e => setDetailS({ ...detailS, image: e.target.files })} required/>
+                    <input className="form-control" type="file" name="Image" accept="image/*" onChange={e => setDetailSs({ ...detailSs, coverimage: e.target.files })} required/>
                 </div> &nbsp;
                 <MDBBtn type="submit">Cập nhật</MDBBtn>
             </div> <br />

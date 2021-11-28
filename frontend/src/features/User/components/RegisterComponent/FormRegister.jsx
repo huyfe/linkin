@@ -14,6 +14,7 @@ export default function FormRegister({ Register, errors, result }) {
         birthday: "",
         created_date: date,
         image: "avatar.png",
+        coverimage: "anhbia.jpg",
         public: 1,
         password: "",
         Password: "",

@@ -4,64 +4,64 @@ const TimelineLinkin = require('../models/TimelineModel');
 
 module.exports = {
     // Hiển thị tất cả bài viết
-    ShowwAllTimeline: function(req, res, next) {
-        TimelineLinkin.find({})
-            .then(timeline => {
-                res.json({ 
-                    timeline: mutipleMongooseToObject(timeline)
-                });
-            })
+    async ShowwAllTimeline(req, res, next) {
+        await TimelineLinkin.find({})
+            .then((timeline) => res.json(timeline))
             .catch(next);
     },
     // Hiện chi tiết một bài viết 
-    DetalTimeline: function(req, res, next) {
-        TimelineLinkin.findOne({ _id: req.params.id})
-            .then(timeline => {
-                res.json({
-                    timeline: mongooseToObject(timeline)
-                });
-            })
+    async DetailTimeline(req, res, next) {
+        await TimelineLinkin.findOne({ _id: req.params.id })
+            .then((timeline) => res.json(timeline))
             .catch(next)
     },
     // Tạo mới một bài viết 
-    CreateTimeline: function(req, res, next) {
+    async CreateTimeline(req, res, next) {
         const timeline = new TimelineLinkin(req.body);
         timeline.save()
-            .then(() => res.send('Thêm bài viết mới thành công 🐦'))
+            .then(() => res.json(timeline))
             .catch(next);
     },
     // Sửa một bài viết
-    UpdateTimeline: function(req, res, next) {
-        TimelineLinkin.updateOne({ _id: req.params.id }, req.body)
+    async UpdateTimeline(req, res, next) {
+        await TimelineLinkin.updateOne({ _id: req.params.id }, req.body.data)
             .then(() => res.send('Sửa bài viết thành công 🐦'))
-            .catch(next); 
+            .catch(next);
     },
     // Xóa một bài viết
-    DeleteTimeline: function(req, res, next) {
-        TimelineLinkin.deleteOne({ _id: req.params.id }, req.body)
+    async DeleteTimeline(req, res, next) {
+        await TimelineLinkin.deleteOne({ _id: req.params.id })
             .then(() => res.send('Xóa bài viết thành công 🐦'))
             .catch(next);
     },
     // Ẩn bài viết
-    HideTimeline: function(req, res, next) {
-        TimelineLinkin.delete({ _id: req.params.id })
+    async HideTimeline(req, res, next) {
+        await TimelineLinkin.delete({ _id: req.params.id })
             .then(() => res.send("Ẩn bài viết thành công 👻"))
             .catch(next)
     },
     // Hiện bài viết
-    UnhideTimeline: function(req, res, next) {
-        TimelineLinkin.restore({ _id: req.params.id })
+    async UnhideTimeline(req, res, next) {
+        await TimelineLinkin.restore({ _id: req.params.id })
             .then(() => res.send("Đã bỏ ẩn bài viết 👻"))
             .catch(next)
     },
     // Hiện tất cả bài viết bị ẩn
-    ShowHideTimeline: function(req, res, next) {
-        TimelineLinkin.findDeleted({})
-            .then(timeline => {
-                res.json({ 
-                    timeline: mutipleMongooseToObject(timeline) 
-                });
-            })
-            .catch(next); 
-    }
+    async ShowHideTimeline(req, res, next) {
+        await TimelineLinkin.findDeleted({})
+            .then((timeline) => res.json(timeline))
+            .catch(next);
+    },
+    async ShowPostByGroupTimeline(req, res, next) {
+       let idForeign = req.params.id_foreign;
+        await TimelineLinkin.findOne({id_foreign: idForeign, type: "Group"})
+        .then((timeline) => res.json(timeline))
+        .catch(next)
+    },
+    async ShowPostByUserTimeline(req, res, next) {
+        let idForeign = req.params.id_foreign;
+        await TimelineLinkin.findOne({id_foreign:idForeign, type: "User"})
+            .then((timeline) => res.json(timeline))
+            .catch(next)
+    },
 }

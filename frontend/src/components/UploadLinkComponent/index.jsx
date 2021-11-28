@@ -12,7 +12,7 @@ import {
 } from 'mdb-react-ui-kit';
 import { Link } from 'react-router-dom';
 import linkApi from '../../api/linkApi';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { update } from '../../features/Link/linkSlice';
 
 UpLoadLinkComponent.propTypes = {
@@ -26,14 +26,11 @@ UpLoadLinkComponent.defaultProps = {
 
 function UpLoadLinkComponent(props) {
     const [scrollableModal, setScrollableModal] = useState(false);
+    const [showListCategory, setShowListCategory] = useState(false);
 
     const [centredModal, setCentredModal] = useState(false);
     const toggleShow = () => setCentredModal(!centredModal);
     const dispatch = useDispatch();
-
-    // Uploading image
-    const [images, setImages] = React.useState([]);
-    const maxNumber = 1;
 
     // Default form value
     const [formValue, setFormValue] = useState({
@@ -49,6 +46,30 @@ function UpLoadLinkComponent(props) {
         setFormValue({ ...formValue, [e.target.name]: e.target.value });
     };
 
+    // Event handle change checkbox categories
+    const handleChangeCheckbox = (e) => {
+        const isChecked = e.target.checked;
+
+        // If checkbox is checked then add category to state form
+        if (isChecked) {
+            let categories = formValue.categories;
+            categories.push({ id: e.target.value, name: e.target.name });
+            setFormValue({ ...formValue, categories: categories });
+            console.log(formValue);
+        }
+
+        // Else remove category from state form
+        else {
+            let categories = formValue.categories;
+            var index = categories.findIndex(function (obj) {
+                return obj.id === e.target.value;
+            })
+            if (index !== -1) categories.splice(index, 1);
+            setFormValue({ ...formValue, categories: categories });
+            console.log(formValue);
+        }
+    }
+
     // Event onsubmit form
     const onSubmitForm = async (data) => {
         data.image = data.image || "https://images.unsplash.com/photo-1496440737103-cd596325d314?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80";
@@ -61,6 +82,9 @@ function UpLoadLinkComponent(props) {
         dispatch(update(linkList.data));
     }
 
+    // Get categories from state
+    const listCategoryData = useSelector(state => state.categoriesUser);
+    console.log(listCategoryData);
     return (
         <div className="box-upload-link">
             <div className="wrap-upload-link d-flex">
@@ -131,14 +155,27 @@ function UpLoadLinkComponent(props) {
                                         />
                                     </div>
                                     <div className='col-12'>
-                                        <MDBInput
+                                        {/* <MDBInput
                                             className='bg-light rounded-0'
+                                            autoComplete="off"
                                             value={formValue.categories}
                                             name='categories'
                                             onChange={onChangeForm}
+                                            onFocus={() => setShowListCategory(true)}
+                                            onBlur={() => setShowListCategory(false)}
                                             id='validationCustom03'
                                             label='Danh mục'
-                                        />
+                                        /> */}
+                                        <label htmlFor="" className="mb-2">Danh mục</label>
+                                        <div className="checkbox-categories" style={{ minWidth: '22rem' }}>
+                                            {
+                                                listCategoryData.map(cat => {
+                                                    return (
+                                                        <MDBCheckbox onChange={handleChangeCheckbox} className="mb-2" key={cat._id} name={cat.title} id={cat._id} value={cat._id} label={cat.title} inline />
+                                                    )
+                                                })
+                                            }
+                                        </div>
                                     </div>
                                     <div className="col-12">
                                         <MDBBtn type='submit' className="w-100 pt-3 pb-3">Đăng</MDBBtn>

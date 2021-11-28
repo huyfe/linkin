@@ -1,55 +1,62 @@
-Login bình thường
-            axios.post('http://localhost:3000/users/checklogin', details)
-                .then(res => {
-                    if (res.status === 200) {
-                        if (res.data.message === "Email error") {
-                            const errorEmail = "Email không đúng";
-                            showErrors(errorEmail);
-                            showResult(true);
-                        } else if (res.data.message === "Pass error") {
-                            const errorPassword = "Mật khẩu không đúng";
-                            showErrors(errorPassword);
-                            showResult(true);
-                        } else {
-                            setUser({
-                                Id: res.data.result._id,
-                                Fullname: res.data.result.name,
-                                Email: res.data.result.email,
-                                Address: res.data.result.address,
-                                Hometown: res.data.result.hometown,
-                                Date: res.data.result.birthday,
-                                Phone: res.data.result.phone,
-                                Role: res.data.result.role,
-                                Slug: res.data.result.slug,
-                                Public: res.data.result.public,
-                                Image: res.data.result.image,
-                                AccessToken: res.data.Token
-                            });
-                            alert("Đăng nhập thành công!")
-                            navigate('/');
-                        }
-                    } else {
-                        const error = new Error(res.error);
-                        throw error;
-                    }
-                })
-                .catch(err => {
-                    console.error(err.data);
-                    // alert('Error logging in please try again');
-                });
+Login không dùng redux
+    axios.post('http://localhost:3000/users/checklogin', details)
+        .then(res => {
+            if (res.status === 200) {
+                if (res.data.message === "Email error") {
+                    const errorEmail = "Email không đúng";
+                    showErrors(errorEmail);
+                    showResult(true);
+                } else if (res.data.message === "Pass error") {
+                    const errorPassword = "Mật khẩu không đúng";
+                    showErrors(errorPassword);
+                    showResult(true);
+                } else {
+                    setUser({
+                        Id: res.data.result._id,
+                        Fullname: res.data.result.name,
+                        Email: res.data.result.email,
+                        Address: res.data.result.address,
+                        Hometown: res.data.result.hometown,
+                        Date: res.data.result.birthday,
+                        Phone: res.data.result.phone,
+                        Role: res.data.result.role,
+                        Slug: res.data.result.slug,
+                        Public: res.data.result.public,
+                        Image: res.data.result.image,
+                        AccessToken: res.data.Token
+                    });
+                    alert("Đăng nhập thành công!")
+                    navigate('/');
+                }
+            } else {
+                const error = new Error(res.error);
+                throw error;
+            }
+        })
+        .catch(err => {
+            console.error(err.data);
+            // alert('Error logging in please try again');
+        });
 
-Register bình thường
-                    axios.post(`http://localhost:3000/users/create-user`, details)
-                        .then(res => {
-                            alert('Đăng ký thành công!');
-                            navigate('/login');
-                        })
-                        .catch(err => {
-                            console.log(err);
-                        })  
+Register không dùng redux
+    axios.post(`http://localhost:3000/users/create-user`, details)
+        .then(res => {
+            alert('Đăng ký thành công!');
+            navigate('/login');
+        })
+        .catch(err => {
+            console.log(err);
+        })  
 
-Profile bình thường
-        axios.get(`http://localhost:3000/users/${slug}`)
-            .then(res => {
-                setProfile(res.data.users)
+Profile không dùng redux
+    axios.get(`http://localhost:3000/users/${slug}`)
+        .then(res => {
+            setProfile(res.data.users)
+        })
+
+Admin xóa user không dùng redux
+    axios.delete(`http://localhost:3000/users/delete-user/${id}`)
+        .then(res=>{
+             window.location.href="/admin"
             })
+        .catch((error) => console.log(error));

@@ -11,18 +11,32 @@ function IntroduceProfile() {
     const navigate = useNavigate();
     const { slug } = useParams();
     const [Profile, setProfile] = useState([])
+    const [Profile2, setProfile2] = useState([])
     const [Information, setInformation] = useState([])
     const dataUser = localStorage.getItem("dataUser")
     const dataUsers = JSON.parse(dataUser)
     useEffect(() => {
         axios.get(`http://localhost:3000/users/${slug}`)
             .then(res => {
-                setProfile(res.data.users)
+                let date = new Date(res.data.users.birthday)
+                setProfile({
+                    name: res.data.users.name,
+                    day: date.getDate(),
+                    month: date.getMonth() + 1,
+                    year: date.getFullYear(),
+                    address: res.data.users.address,
+                    hometown: res.data.users.hometown,
+                    email: res.data.users.email,
+                    phone: res.data.users.phone,
+                    slug: res.data.users.slug
+                })
+            })
+            .catch(err => {
             })
     }, [slug]);
 
-    let date = new Date(Profile.birthday)
-    const [month, day, year] = [date.getMonth()+1, date.getDate(), date.getFullYear()];
+    // let date = new Date(Profile.birthday)
+    // const [month, day, year] = [date.getMonth() + 1, date.getDate(), date.getFullYear()];
 
     const ResetPass = details => {
         console.log(details);
@@ -93,7 +107,7 @@ function IntroduceProfile() {
                     .then(res => {
                         alert('Cập nhật thông tin thành công!');
                         // navigate('/');
-                        window.location.href=`/profile/${dataUsers.Slug}`;
+                        window.location.href = `/profile/${dataUsers.Slug}`;
                     })
                     .catch(err => {
                         console.log(err);
@@ -105,107 +119,111 @@ function IntroduceProfile() {
     }
 
     return (
-        <div className={`Introducesprofile-component ${Information}`}>
-            <div className="Introducesprofile">
-                <IntroduceTitle />
-                <div className="itemintroduces d-flex justify-content-between">
-                    <div className="img-title d-flex align-items-center justify-content-center">
-                        <h2>Tên</h2>
-                        <p>{Profile.name}</p>
-                    </div>
-                    <div className="services d-flex">
-                        <Link to="#" onClick={Updateinformation}><i className="fal fa-pen"></i></Link>
-                        <Link to="#" ><i className="far fa-globe-africa"></i></Link>
-                        <Link to="#"><i className="fas fa-lock"></i></Link>
-                    </div>
-                </div>
-                <div className="itemintroduces d-flex justify-content-between">
-                    <div className="img-title d-flex align-items-center justify-content-center">
-                        <h2>Ngày sinh</h2>
-                        <p>{day}-{month}-{year}</p>
-                    </div>
-                    <div className="services d-flex">
-                        <Link to="#" onClick={Updateinformation}><i className="fal fa-pen"></i></Link>
-                        <Link to="#"><i className="far fa-globe-africa"></i></Link>
-                        <Link to="#"><i className="fas fa-lock"></i></Link>
-                    </div>
-                </div>
-                <div className="itemintroduces d-flex justify-content-between">
-                    <div className="img-title d-flex align-items-center justify-content-center">
-                        <h2>Địa chỉ</h2>
-                        <p>{Profile.address}</p>
-                    </div>
-                    <div className="services d-flex">
-                        <Link to="#" onClick={Updateinformation}><i className="fal fa-pen"></i></Link>
-                        <Link to="#"><i className="far fa-globe-africa"></i></Link>
-                        <Link to="#"><i className="fas fa-lock"></i></Link>
-                    </div>
-                </div>
-                <div className="itemintroduces d-flex justify-content-between">
-                    <div className="img-title d-flex align-items-center justify-content-center">
-                        <h2>Quê quán</h2>
-                        <p>{Profile.hometown}</p>
-                    </div>
-                    <div className="services d-flex">
-                        <Link to="#" onClick={Updateinformation}><i className="fal fa-pen"></i></Link>
-                        <Link to="#"><i className="far fa-globe-africa"></i></Link>
-                        <Link to="#"><i className="fas fa-lock"></i></Link>
-                    </div>
-                </div>
-                <div className="itemintroduces d-flex justify-content-between">
-                    <div className="img-title d-flex align-items-center justify-content-center">
-                        <h2>Email</h2>
-                        <p>{Profile.email}</p>
-                    </div>
-                    <div className="services d-flex">
-                        <Link to="#" onClick={Updateinformation}><i className="fal fa-pen"></i></Link>
-                        <Link to="#"><i className="far fa-globe-africa"></i></Link>
-                        <Link to="#"><i className="fas fa-lock"></i></Link>
-                    </div>
-                </div>
-                <div className="itemintroduces d-flex justify-content-between">
-                    <div className="img-title d-flex align-items-center justify-content-center">
-                        <h2>Số điện thoại</h2>
-                        <p>{Profile.phone}</p>
-                    </div>
-                    <div className="services d-flex">
-                        <Link to="#" onClick={Updateinformation}><i className="fal fa-pen"></i></Link>
-                        <Link to="#"><i className="far fa-globe-africa"></i></Link>
-                        <Link to="#"><i className="fas fa-lock"></i></Link>
-                    </div>
-                </div>
-
-                {(dataUsers) ? (
-                    (dataUsers.Slug) === Profile.slug ? (
-                        <div className="itemintroduces d-flex justify-content-center align-items-center">
-                            <Link to="#" onClick={Updateinformation} className="button-a">Cập nhật thông tin</Link>
+        <>
+            {(Profile) ? (
+                <div className={`Introducesprofile-component ${Information}`}>
+                    <div className="Introducesprofile">
+                        <IntroduceTitle />
+                        <div className="itemintroduces d-flex justify-content-between">
+                            <div className="img-title d-flex align-items-center justify-content-center">
+                                <h2>Tên</h2>
+                                <p>{Profile.name}</p>
+                            </div>
+                            <div className="services d-flex">
+                                <Link to="#" onClick={Updateinformation}><i className="fal fa-pen"></i></Link>
+                                <Link to="#" ><i className="far fa-globe-africa"></i></Link>
+                                <Link to="#"><i className="fas fa-lock"></i></Link>
+                            </div>
                         </div>
-                    ) : ("")
-                ) : ("")}
-            </div>
-
-            <div className="Introducesprofile-2">
-                <IntroduceTitle />
-                <FormEditUser KeyEdit={KeyEdit} />
-                {(dataUsers) ? (
-                    (dataUsers.Slug) === Profile.slug ? (
-                        <div className="itemintroduces d-flex justify-content-center align-items-center">
-                            <Link to="#" onClick={Returninformation} className="button-a">Trở về</Link>
+                        <div className="itemintroduces d-flex justify-content-between">
+                            <div className="img-title d-flex align-items-center justify-content-center">
+                                <h2>Ngày sinh</h2>
+                                <p>{Profile.day}-{Profile.month}-{Profile.year}</p>
+                            </div>
+                            <div className="services d-flex">
+                                <Link to="#" onClick={Updateinformation}><i className="fal fa-pen"></i></Link>
+                                <Link to="#"><i className="far fa-globe-africa"></i></Link>
+                                <Link to="#"><i className="fas fa-lock"></i></Link>
+                            </div>
                         </div>
-                    ) : ("")
-                ) : ("")}
-            </div>
+                        <div className="itemintroduces d-flex justify-content-between">
+                            <div className="img-title d-flex align-items-center justify-content-center">
+                                <h2>Địa chỉ</h2>
+                                <p>{Profile.address}</p>
+                            </div>
+                            <div className="services d-flex">
+                                <Link to="#" onClick={Updateinformation}><i className="fal fa-pen"></i></Link>
+                                <Link to="#"><i className="far fa-globe-africa"></i></Link>
+                                <Link to="#"><i className="fas fa-lock"></i></Link>
+                            </div>
+                        </div>
+                        <div className="itemintroduces d-flex justify-content-between">
+                            <div className="img-title d-flex align-items-center justify-content-center">
+                                <h2>Quê quán</h2>
+                                <p>{Profile.hometown}</p>
+                            </div>
+                            <div className="services d-flex">
+                                <Link to="#" onClick={Updateinformation}><i className="fal fa-pen"></i></Link>
+                                <Link to="#"><i className="far fa-globe-africa"></i></Link>
+                                <Link to="#"><i className="fas fa-lock"></i></Link>
+                            </div>
+                        </div>
+                        <div className="itemintroduces d-flex justify-content-between">
+                            <div className="img-title d-flex align-items-center justify-content-center">
+                                <h2>Email</h2>
+                                <p>{Profile.email}</p>
+                            </div>
+                            <div className="services d-flex">
+                                <Link to="#" onClick={Updateinformation}><i className="fal fa-pen"></i></Link>
+                                <Link to="#"><i className="far fa-globe-africa"></i></Link>
+                                <Link to="#"><i className="fas fa-lock"></i></Link>
+                            </div>
+                        </div>
+                        <div className="itemintroduces d-flex justify-content-between">
+                            <div className="img-title d-flex align-items-center justify-content-center">
+                                <h2>Số điện thoại</h2>
+                                <p>{Profile.phone}</p>
+                            </div>
+                            <div className="services d-flex">
+                                <Link to="#" onClick={Updateinformation}><i className="fal fa-pen"></i></Link>
+                                <Link to="#"><i className="far fa-globe-africa"></i></Link>
+                                <Link to="#"><i className="fas fa-lock"></i></Link>
+                            </div>
+                        </div>
 
-            {(dataUsers) ? (
-                (dataUsers.Slug) === Profile.slug ? (
-                    <div className="Introducesprofile-3">
-                        <ResetpassTitle />
-                        <FormResetPasss ResetPass={ResetPass} />
+                        {(dataUsers) ? (
+                            (dataUsers.Slug) === Profile.slug ? (
+                                <div className="itemintroduces d-flex justify-content-center align-items-center">
+                                    <Link to="#" onClick={Updateinformation} className="button-a">Cập nhật thông tin</Link>
+                                </div>
+                            ) : ("")
+                        ) : ("")}
                     </div>
-                ) : ("")
+
+                    <div className="Introducesprofile-2">
+                        <IntroduceTitle />
+                        <FormEditUser KeyEdit={KeyEdit} />
+                        {(dataUsers) ? (
+                            (dataUsers.Slug) === Profile.slug ? (
+                                <div className="itemintroduces d-flex justify-content-center align-items-center">
+                                    <Link to="#" onClick={Returninformation} className="button-a">Trở về</Link>
+                                </div>
+                            ) : ("")
+                        ) : ("")}
+                    </div>
+
+                    {(dataUsers) ? (
+                        (dataUsers.Slug) === Profile.slug ? (
+                            <div className="Introducesprofile-3">
+                                <ResetpassTitle />
+                                <FormResetPasss ResetPass={ResetPass} />
+                            </div>
+                        ) : ("")
+                    ) : ("")}
+
+                </div>
             ) : ("")}
-
-        </div>
+        </>
     );
 }
 

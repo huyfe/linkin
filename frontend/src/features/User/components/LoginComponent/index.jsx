@@ -51,6 +51,7 @@ export default function Login() {
                             Slug: Logincheck.data.result.slug,
                             Public: Logincheck.data.result.public,
                             Image: Logincheck.data.result.image,
+                            CoverImage: Logincheck.data.result.coverimage,
                             AccessToken: Logincheck.data.Token
                         });
                         alert("Đăng nhập thành công!")
@@ -82,15 +83,15 @@ export default function Login() {
         <div>
             <header className="header-login">
                 <nav className="header-login__menu">
-                    <div className="row align-items-center">
-                        <div className="col-2">
-                            <div className="header__logo d-flex align-items-center justify-content-between">
+                    <div className="row align-items-center menu-header">
+                        <div className="col-4">
+                            <div className="header__logo">
                                 <NavLink to="/"> <img src="/logo.svg" alt="Linkin" /></NavLink>
                                 <h2>Linkin</h2>
                             </div>
                         </div>
-                        <div className="col-10">
-                            <div className="header-login__controls d-flex justify-content-end align-items-center">
+                        <div className="col-8">
+                            <div className="header-login__controls">
                                 <div className="userss d-flex align-items-center">
                                     <FormLogin Login={Login} errors={errors} result={result} />
                                 </div>

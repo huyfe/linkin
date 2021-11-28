@@ -28,19 +28,6 @@
 
 		&-post {
 			width: 80%;
-			// .group-info {
-			// 	img {
-			// 		width: 24px;
-			// 		height: 24px;
-			// 		border-radius: 4px;
-			// 		margin-right: 4px;
-			// 	}
-			// 	@include text(#000000, 16px, 400, 18px);
-			// 	text-decoration: none;
-			// 	&:hover {
-			// 		color: #3573e2;
-			// 	}
-			// }
 			.client-name {
 				margin-bottom: 20px;
 				a {
@@ -117,8 +104,8 @@
 				border-radius: 5px;
 				padding: 8px 30px;
 				text-align: center;
+				position: relative;
 				transition: all 0.25s;
-
 				-webkit-user-select: none;
 				-moz-user-select: none;
 				-ms-user-select: none;
@@ -134,12 +121,36 @@
 				}
 				&:hover {
 					background-color: rgba(127, 196, 241, 0.165);
-					.fa-heart {
-						// color: rgb(255, 0, 0);
-					}
 					.fa-comment-alt-lines,
 					.fa-share {
 						color: #3573e2;
+					}
+				}
+			}
+			.share-button {
+				z-index: 1;
+				position: absolute;
+				height: 150px;
+				width: 150px;
+				bottom: -140px;
+				background: white;
+				right: 30px;
+				box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+
+				ul {
+					list-style-type: none;
+					height: 100%;
+					display: flex;
+					flex-direction: column;
+					justify-content: space-evenly;
+					align-items: flex-start;
+					margin: 0;
+					li {
+						cursor: pointer;
+						padding-left: 15px;
+						&:hover {
+							color: #3573e2;
+						}
 					}
 				}
 			}
@@ -158,6 +169,7 @@
 }
 .comment__container {
 	padding: 15px;
+	transition: all 1s ease-out;
 	.comment__box {
 		padding: 0px 15px;
 		&-load {

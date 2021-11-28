@@ -28,14 +28,28 @@ LinkComponent.defaultProps = {
 }
 
 function LinkComponent(props) {
+    // Toggle like 
     const [like, setLike] = useState(false);
     const eventLike = () => {
         setLike(like => !like);
     }
+    // Toggle hide comment box
+    const [hideComment, setHideComment] = useState(false);
+    const eventHideComment = () => {
+        setHideComment(hideComment => !hideComment);
+    }
+    // Toogle share button 
+    const [share, setShare] = useState(false);
+    const eventShare = () => {
+        setShare(share => !share);
+    }
+    // Format date post
+    const datePost = new Date(props.datePost).toLocaleDateString('vi-VN', { day: 'numeric', month: 'long', year: 'numeric' } )
+    
     const [value, setValue] = useState(props.contentLink);
 
     return (
-        <div className="box-item mb-4">
+        <div className="box-item mt-4">
             <div className="info__box d-flex align-items-center">
                 <div className="info__box-client">
                     <Link to={props.userLink} className="avatar">
@@ -53,7 +67,8 @@ function LinkComponent(props) {
                     </div>
                     <div className="d-flex align-items-center">
                         <p className="time-post">
-                            {props.datePost} <span className="icon-earth"></span>
+                            
+                            {datePost} <span className="icon-earth"></span>
                         </p>
                     </div>
                 </div>
@@ -90,20 +105,30 @@ function LinkComponent(props) {
                             </div>
                         </div>
                         <div className="col-lg-4 col-sm-4 d-flex align-items-center justify-content-center">
-                            <div className="item">
+                            <div onClick={eventHideComment} className="item">
                                 <i className="fal fa-comment-alt-lines"></i> <span>Bình luận</span>
                             </div>
                         </div>
                         <div className="col-lg-4 col-sm-4 d-flex align-items-center justify-content-center">
-                            <div className="item">
+                            <div className="item" onClick={eventShare}>
                                 <i className="fal fa-share"></i> <span>Chia sẻ</span>
                             </div>
+                            <div className={share ? 'share-button' : 'd-none'}>
+                                    <ul>
+                                        <li>Chia sẻ ngay</li>
+                                        <li>Chia sẻ lên nhóm</li>
+                                        <li>Tùy chọn</li>
+                                        <li>Hủy </li>
+                                    </ul>
+                                </div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div className="comment__container">
+        
+            
+            <div className={hideComment ? "comment__container" : "d-none"} >
                 <button className="comment__box-load">
                     Xem thêm bình luận
                 </button>

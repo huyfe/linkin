@@ -48,7 +48,11 @@ export default function Header() {
                             <MDBBtn floating className="btn btn-notification shadow-0"><i className="fal fa-bell"></i></MDBBtn>
                             <div className="user d-flex align-items-center">
                                 {(dataUsers) ? (
-                                    <NavLink to={`/profile/${dataUsers.Slug}`}><img src="/images/Header/avatar.png" className="user__avatar" /></NavLink>
+                                    (dataUsers.Image)==="avatar.png" ? (
+                                        <NavLink to={`/profile/${dataUsers.Slug}`}><img src={`/images/Users/${dataUsers.Image}`} className="user__avatar" /></NavLink>
+                                    ) : (
+                                        <NavLink to={`/profile/${dataUsers.Slug}`}><img src={dataUsers.Image} className="user__avatar" /></NavLink>
+                                    )                
                                 ) : ("")}
 
                                 <MDBDropdown>

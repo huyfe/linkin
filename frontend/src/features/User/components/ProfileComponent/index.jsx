@@ -195,10 +195,22 @@ function ProfileComponent(props) {
                         <div className="row">
                             <div className="col-12">
                                 <div className="img-profile">
-                                    <img src={Profile.coverimage} alt="" />
+                                    {(dataUsers) ? (
+                                        (dataUsers.CoverImage) === "anhbia.jpg" ? (
+                                            <img src="/images/Users/anhbia.jpg" alt="" />
+                                        ) : (
+                                            <img src={Profile.coverimage} alt="" />
+                                        )
+                                    ) : ("")}
                                     <div className="avatar-name d-flex align-items-center justify-content-between">
                                         <div className="d-flex align-items-center">
-                                            <img src={Profile.image} alt="" />
+                                            {(dataUsers) ? (
+                                                (dataUsers.Image) === "avatar.png" ? (
+                                                    <img src={`/images/Users/${Profile.image}`} alt="" />
+                                                ) : (
+                                                    <img src={Profile.image} alt="" />
+                                                )
+                                            ) : ("")}
                                             {(dataUsers) ? (
                                                 (dataUsers.Slug) === Profile.slug ? (
                                                     (EditImages) === "ShowImg" ? (

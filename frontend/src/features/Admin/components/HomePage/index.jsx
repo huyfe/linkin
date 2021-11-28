@@ -9,7 +9,6 @@ import {
     MDBCol
 } from 'mdb-react-ui-kit';
 import AdminUser from '../AdminUser';
-import HeaderAdmin from '../../../../components/HeaderAdmin';
 
 function HomePage() {
     const [verticalActive, setVerticalActive] = useState('tab1');
@@ -24,7 +23,6 @@ function HomePage() {
 
     return (
         <>
-            <HeaderAdmin />
             <br />
             <MDBRow>
                 <MDBCol size='2'>

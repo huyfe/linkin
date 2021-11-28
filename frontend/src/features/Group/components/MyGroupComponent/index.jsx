@@ -1,8 +1,11 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 
 import ItemMyGroupComponent from '../ItemMyGroupComponent/index';
 import './style.scss';
+import { useDispatch, useSelector } from 'react-redux';
+import { update } from '../../groupSlice';
+import groupApi from './../../../../api/groupApi';
 
 
 MyGroupComponent.propTypes = {
@@ -11,74 +14,27 @@ MyGroupComponent.propTypes = {
 
 function MyGroupComponent(props) {
 
-  const listMyGroupData = [
-    {
-      groupName: "Cộng Đồng Front-End",
-      image: 'images/Groups/image_join_four.jpg',
-      numbers: "500",
-      dateJoin: "12/12/2022",
-      href: "/groups/slug",
-    },
-    {
-      groupName: "Cộng Đồng JavaScrpit",
-      image: 'images/Groups/image_join_three.jpg',
-      numbers: "1200",
-      dateJoin: "12/12/2022",
-      href: "/groups/slug",
-    },
-    {
-      groupName: "Cộng Đồng Html/Css",
-      image: 'images/Groups/image_join_five.jpg',
-      numbers: "2100",
-      dateJoin: "12/12/2022",
-      href: "/groups/slug",
-    },
-    {
-      groupName: "Cộng Đồng Java BackEnd",
-      image: 'images/Groups/image_join_six.jpg',
-      numbers: "300",
-      dateJoin: "12/12/2022",
-      href: "/groups/slug",
-    }, {
-      groupName: "Cộng Đồng Front-End",
-      image: 'images/Groups/image_join_seven.jpg',
-      numbers: "700",
-      dateJoin: "12/12/2022",
-      href: "/groups/slug",
-    },
-    {
-      groupName: "Cộng Đồng Front-End",
-      image: 'images/Groups/image_join_eight.jpg',
-      numbers: "1000",
-      dateJoin: "12/12/2022",
-      href: "/groups/slug",
-    }, {
-      groupName: "Cộng Đồng Front-End",
-      image: 'images/Groups/image_join_night.jpg',
-      numbers: "2200",
-      dateJoin: "12/12/2022",
-      href: "/groups/slug",
-    }, {
-      groupName: "Cộng Đồng Nodejs",
-      image: 'images/Groups/image_join_twleve.jpg',
-      numbers: "12200",
-      dateJoin: "12/12/2022",
-      href: "/groups/slug",
-    },
-    {
-      groupName: "Cộng Đồng Front-End",
-      image: 'images/Groups/image_join_one.jpg',
-      numbers: "11100",
-      dateJoin: "12/12/2022",
-      href: "/groups/slug",
-    }
+  //dùng dispatch 1 action
+  const dispatch = useDispatch();
 
-  ];
-  const iconPlus = "icon-plus";
-  const listMyGroup = listMyGroupData.map(group => {
+  useEffect(() => {
+    const fetchGroup = async () => {
+      const groupList = await groupApi.getAll();
+      dispatch(update(groupList.data));
+    }
+    fetchGroup();
+
+  }, []);
+  // dùng để lấy dữ liệu từ state
+  const listMyGroupData = useSelector(state => state.group);
+  console.log(listMyGroupData);
+
+  console.log("Render");
+
+  const groupList = listMyGroupData.map(group => {
     return (
       <div className="col-lg-6">
-        <ItemMyGroupComponent groupName={group.groupName} image={group.image} numbers={group.numbers} dateJoin={group.dateJoin} href={group.href}></ItemMyGroupComponent>
+        <ItemMyGroupComponent key={group._id} id={group._id} title={group.title} image={group.image} members={group.members} desc={group.desc} urlGroup={group.slug}  date={group.created_date} public={group.public}></ItemMyGroupComponent>
       </div>
     );
   });
@@ -87,7 +43,7 @@ function MyGroupComponent(props) {
     <div className="list-my-group">
       <h3>Nhóm của bạn</h3>
       <div className="row no-gutters">
-        {listMyGroup}
+        {groupList}
       </div>
     </div>
   );

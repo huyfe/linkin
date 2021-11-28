@@ -44,14 +44,14 @@ module.exports = {
     //Thêm group
     async CreateGroup(req, res) {
         try {
-            const newGroup = req.body.data
-            const groups = new Groups(newGroup);
-            await groups.save()
-            res.send('Tạo group thành công!');
-        }catch (err) {
-            res.json({ error: err });
-          }
-    },
+          const newGroup  = req.body;
+          const groups = new Groups(newGroup);
+          await groups.save();
+          res.send('Tạo group thành công!');
+        } catch (err) {
+          res.json({ error: err });
+        }
+      },
 
      // Cập nhật group
     async UpdateGroup (req, res) {

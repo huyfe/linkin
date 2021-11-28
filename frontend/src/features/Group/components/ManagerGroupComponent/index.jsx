@@ -13,14 +13,25 @@ import {
 } from 'mdb-react-ui-kit';
 
 ManagerGroupComponent.propTypes = {
+    showModal: PropTypes.bool,
+    setShowModal: PropTypes.func,
+};
 
+
+ManagerGroupComponent.defaultProps = {
+    showModal: false,
+    setShowModal: null,
 };
 
 function ManagerGroupComponent(props) {
+
+
     const [scrollableModal, setScrollableModal] = useState(false);
 
     const [centredModal, setCentredModal] = useState(false);
     const toggleShow = () => setCentredModal(!centredModal);
+
+    const [isImageUpload, setIsImageUpload] = useState(false);
 
     const listManagerGroupData = [
         { image: 'https://tuhoclaptrinh.edu.vn/upload/post/16/10/18/tu-hoc-lap-trinh-html-va-css-462993.jpg', href: "/", name: "Cộng đồng Frontend Developer Việt Nam" },
@@ -32,6 +43,8 @@ function ManagerGroupComponent(props) {
             <Item image={group.image} name={group.name} href={group.href}></Item>
         );
     });
+
+
 
     return (
         <div className="group-sidebar-manager">
@@ -114,41 +127,43 @@ function ManagerGroupComponent(props) {
                                             />
                                         </div>
                                         <div className='col-12'>
-                                            <div className="d-flex align-items-center formAddCategory__upload--btn">
-                                                <h3>Chọn hình</h3>
-                                                <label
-                                                    htmlFor="img-uploadAdd"
-                                                    className="d-flex justify-content-center align-items-center"
-                                                >
-                                                    <i className="far fa-plus"></i>
-                                                </label>
-                                            </div>
-                                            <input
-                                                // className="d-block"
-                                                type="file"
-                                                name="image"
-                                                id="img-uploadAdd"
-                                                accept=".jpg,.jpeg,.png"
-                                                onChange=""
-                                            />
-                                            {/* {isImageUpload && ( */}
-                                                <div className="formAddCategory__img-uploaded">
-                                                    <button
-                                                        className="d-none"
-                                                        // onClick={() => {
-                                                        //     setIsImageUpload(false);
-                                                        //     setImageUpload(null);
-                                                        // }}
+                                            <div className="form-group formAddCategory__upload">
+                                                <div className="d-flex align-items-center formAddCategory__upload--btn">
+                                                    <h3>Chọn hình</h3>
+                                                    <label
+                                                        htmlFor="img-uploadAdd"
+                                                        className="d-flex justify-content-center align-items-center"
                                                     >
-                                                        <i className="fad fa-times-circle"></i>
-                                                    </button>
-                                                    <img
-                                                        src="" //{imageUpload}
-                                                        draggable="" //{false}
-                                                        alt="img-uploaded"
-                                                    />
+                                                        <i className="far fa-plus"></i>
+                                                    </label>
                                                 </div>
-                                            {/* )} */}
+                                                <input
+                                                    // className="d-block"
+                                                    type="file"
+                                                    name="image"
+                                                    id="img-uploadAdd"
+                                                    accept=".jpg,.jpeg,.png"
+                                                    onChange= "" //{handleImageUploadChange}
+                                                />
+                                                {isImageUpload && (
+                                                    <div className="formAddCategory__img-uploaded">
+                                                        <button
+                                                            className="d-none"
+                                                            // onClick={() => {
+                                                            //     setIsImageUpload(false);
+                                                            //     setImageUpload(null);
+                                                            // }}
+                                                        >
+                                                            <i className="fad fa-times-circle"></i>
+                                                        </button>
+                                                        <img
+                                                            src="" //{imageUpload}
+                                                            draggable="" //{false}
+                                                            alt="img-uploaded"
+                                                        />
+                                                    </div>
+                                                )}
+                                            </div>
                                         </div>
                                         <div className="col-12">
                                             <MDBBtn type='submit' className="w-100 pt-3 pb-3">Tạo Nhóm</MDBBtn>

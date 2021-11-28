@@ -15,6 +15,7 @@ $text-dark:#000000;
 
             .item__title {
                 margin-bottom: 5px;
+
                 a.group__name {
 
                     font-family: "Roboto", sans-serif;
@@ -24,6 +25,7 @@ $text-dark:#000000;
                     line-height: 23px;
                     color: $text-dark;
                     padding: 10px 0;
+
                     &:hover {
                         color: $bg-primary;
                         transition: all 0.25s;
@@ -42,6 +44,7 @@ $text-dark:#000000;
                     margin-bottom: 8px;
                 }
             }
+
             .item__date__join {
                 p {
                     font-family: "Roboto", sans-serif;
@@ -53,6 +56,22 @@ $text-dark:#000000;
                 }
             }
 
+        }
+        
+        .box__image {
+            a {
+                img {
+                    width: 88px;
+                    height: 88px;
+                    object-fit: cover;
+                    border-radius: 10px;
+                    transition: all 0.3s;
+                }
+            }
+            &:hover {
+                filter: brightness(80%);
+                transition: all 0.3s;
+            }
         }
 
     }

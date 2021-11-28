@@ -56,7 +56,7 @@ function GroupNotificationComponent(props) {
     const listGroupNotification = listGroupNotificationDataData.map(group => {
         return (
             <SplideSlide>
-                <ItemNotificationGroup numbers={group.numbers} href={group.href} image={group.image}></ItemNotificationGroup>
+                <ItemNotificationGroup key={group.id} numbers={group.numbers} href={group.href} image={group.image}></ItemNotificationGroup>
             </SplideSlide>
         )
     });

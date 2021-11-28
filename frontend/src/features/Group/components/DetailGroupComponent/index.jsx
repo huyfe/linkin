@@ -4,19 +4,20 @@ import GroupJoinComponent from '../GroupJoinComponent';
 import GroupSearchComponent from '../GroupSearchComponent';
 import GroupFollowComponent from '../GroupFollowComponent';
 import HeadingGroupComponent from '../HeadingGroupComponent';
-
-
+import './style.scss';
 function DetailGroupComponent(props) {
     return (
 
         <div className="group">
-            <div className="wrapper">
-                <div className="row">
+            <div className="container-fluid">
+                <div className="row gx-0">
                     <div className="col-lg-3">
-                        <GroupSearchComponent />
-                        <ManagerGroupComponent />
-                        <GroupJoinComponent />
-                        <GroupFollowComponent />
+                        <aside className="group__aside__left">
+                            <GroupSearchComponent />
+                            <ManagerGroupComponent />
+                            <GroupJoinComponent />
+                            <GroupFollowComponent />
+                        </aside>
                     </div>
                     <div className="col-lg-9">
                         <HeadingGroupComponent />

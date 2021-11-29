@@ -23,12 +23,30 @@ function IntroduceProfile() {
                     day: date.getDate(),
                     month: date.getMonth() + 1,
                     year: date.getFullYear(),
+                    birthday: res.data.users.birthday,
                     address: res.data.users.address,
                     hometown: res.data.users.hometown,
                     email: res.data.users.email,
                     phone: res.data.users.phone,
                     slug: res.data.users.slug
                 })
+
+                const profile2 ={
+                    Id: dataUsers.Id,
+                    Fullname: res.data.users.name,
+                    Email: res.data.users.email,
+                    Address: res.data.users.address,
+                    Hometown: res.data.users.hometown,
+                    Date: res.data.users.birthday,
+                    Phone: res.data.users.phone,
+                    Role: res.data.users.role,
+                    Slug: dataUsers.Slug,
+                    Public: dataUsers.Public,
+                    Image: res.data.users.image,
+                    CoverImage: res.data.users.coverimage,
+                    AccessToken: dataUsers.AccessToken
+                }
+                localStorage.setItem('dataUser', JSON.stringify(profile2))
             })
             .catch(err => {
             })
@@ -123,9 +141,10 @@ function IntroduceProfile() {
                 axios.patch(`http://localhost:3000/users/edit-infomation-user/` + dataUsers.Id, detailsTwo)
                     .then(res => {
                         alert('Cập nhật thông tin thành công!');
-                        alert('Vui lòng đăng nhập lại để cập nhật thông tin tốt hơn!')
-                        // navigate('/');
-                        window.location.href = `/profile/${dataUsers.Slug}`;
+                        alert('Cập nhật xong bạn nên reset thông tin!');
+                        window.location.reload(false);
+                        // navigate('/');                        
+                        
                     })
                     .catch(err => {
                         console.log(err);
@@ -208,7 +227,6 @@ function IntroduceProfile() {
                                 <Link to="#"><i className="fas fa-lock"></i></Link>
                             </div>
                         </div>
-
                         {(dataUsers) ? (
                             (dataUsers.Slug) === Profile.slug ? (
                                 <div className="itemintroduces d-flex justify-content-center align-items-center">

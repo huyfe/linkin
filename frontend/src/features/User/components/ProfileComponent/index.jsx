@@ -52,7 +52,7 @@ function ProfileComponent(props) {
 
     const followFriend = (Slug) => {
         const dataFollow = {
-            following: [Slug]
+            following: [{name: Slug}]
         };
         console.log(dataFollow);
     }
@@ -196,7 +196,7 @@ function ProfileComponent(props) {
                             <div className="col-12">
                                 <div className="img-profile">
                                     {(dataUsers) ? (
-                                        (dataUsers.CoverImage) === "anhbia.jpg" ? (
+                                        (Profile.coverimage) === "anhbia.jpg" ? (
                                             <img src="/images/Users/anhbia.jpg" alt="" />
                                         ) : (
                                             <img src={Profile.coverimage} alt="" />
@@ -205,7 +205,7 @@ function ProfileComponent(props) {
                                     <div className="avatar-name d-flex align-items-center justify-content-between">
                                         <div className="d-flex align-items-center">
                                             {(dataUsers) ? (
-                                                (dataUsers.Image) === "avatar.png" ? (
+                                                (Profile.image) === "avatar.png" ? (
                                                     <img src={`/images/Users/${Profile.image}`} alt="" />
                                                 ) : (
                                                     <img src={Profile.image} alt="" />
@@ -224,7 +224,7 @@ function ProfileComponent(props) {
                                         </div>
                                         {(dataUsers) ? (
                                             (dataUsers.Slug) !== Profile.slug ? (
-                                                <MDBBtn outline className="button" onClick={() => followFriend(Profile.slug)}>
+                                                <MDBBtn outline className="button" onClick={() => followFriend(Profile.name)}>
                                                     Theo dõi
                                                 </MDBBtn>
                                             ) : ("")

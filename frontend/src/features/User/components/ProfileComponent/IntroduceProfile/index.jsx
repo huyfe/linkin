@@ -11,7 +11,6 @@ function IntroduceProfile() {
     const navigate = useNavigate();
     const { slug } = useParams();
     const [Profile, setProfile] = useState([])
-    const [Profile2, setProfile2] = useState([])
     const [Information, setInformation] = useState([])
     const dataUser = localStorage.getItem("dataUser")
     const dataUsers = JSON.parse(dataUser)
@@ -46,6 +45,12 @@ function IntroduceProfile() {
             alert("Vui lòng điền mật khẩu mới!")
         } else if (details.confirmpassword === "") {
             alert("Vui lòng xác nhận mật khẩu mới!")
+        } else if (details.oldpassword.length < 6) {
+            alert("Mật khẩu cũ không dưới 6 kí tự!")
+        } else if (details.newpassword.length < 6) {
+            alert("Mật khẩu mới không dưới 6 kí tự!")
+        } else if (details.confirmpassword.length < 6) {
+            alert("Xác nhận mật khẩu không dưới 6 kí tự!")
         } else if (details.oldpassword === details.newpassword) {
             alert("Mật khẩu mới và mật khẩu cũ giống nhau!")
         } else if (details.newpassword !== details.confirmpassword) {
@@ -88,7 +93,13 @@ function IntroduceProfile() {
     }
 
     const KeyEdit = detailsTwo => {
-        console.log(detailsTwo);
+        const PhoneCheck = detailsTwo.phone.split('');
+        const Zero = "0";
+
+        const checkPhone = PhoneCheck.filter(phones => {
+            return Zero === phones
+        });
+
         if (detailsTwo.name === "") {
             alert("Vui lòng điền tên!")
         } else if (detailsTwo.birthday === "") {
@@ -101,11 +112,18 @@ function IntroduceProfile() {
             alert("Vui lòng điền email!")
         } else if (detailsTwo.phone === "") {
             alert("Vui lòng điền số điện thoại!")
+        } else if (detailsTwo.name.length > 14) {
+            alert("Tên không điền quá 14 ký tự!")
+        } else if (detailsTwo.phone.length < 10) {
+            alert("Số điện thoại không dưới 10 chữ số!")
+        } else if (checkPhone.length===0) {
+            alert("Số điện thoại không đúng!")
         } else {
             try {
                 axios.patch(`http://localhost:3000/users/edit-infomation-user/` + dataUsers.Id, detailsTwo)
                     .then(res => {
                         alert('Cập nhật thông tin thành công!');
+                        alert('Vui lòng đăng nhập lại để cập nhật thông tin tốt hơn!')
                         // navigate('/');
                         window.location.href = `/profile/${dataUsers.Slug}`;
                     })

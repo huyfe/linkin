@@ -30,23 +30,6 @@ function IntroduceProfile() {
                     phone: res.data.users.phone,
                     slug: res.data.users.slug
                 })
-
-                const profile2 ={
-                    Id: dataUsers.Id,
-                    Fullname: res.data.users.name,
-                    Email: res.data.users.email,
-                    Address: res.data.users.address,
-                    Hometown: res.data.users.hometown,
-                    Date: res.data.users.birthday,
-                    Phone: res.data.users.phone,
-                    Role: res.data.users.role,
-                    Slug: dataUsers.Slug,
-                    Public: dataUsers.Public,
-                    Image: res.data.users.image,
-                    CoverImage: res.data.users.coverimage,
-                    AccessToken: dataUsers.AccessToken
-                }
-                localStorage.setItem('dataUser', JSON.stringify(profile2))
             })
             .catch(err => {
             })
@@ -142,6 +125,23 @@ function IntroduceProfile() {
                     .then(res => {
                         alert('Cập nhật thông tin thành công!');
                         alert('Cập nhật xong bạn nên reset thông tin!');
+                        
+                        const profile2 ={
+                            Id: dataUsers.Id,
+                            Fullname: Profile.name,
+                            Email: Profile.email,
+                            Address: Profile.address,
+                            Hometown: Profile.hometown,
+                            Date: Profile.birthday,
+                            Phone: Profile.phone,
+                            Role: Profile.role,
+                            Slug: dataUsers.Slug,
+                            Public: dataUsers.Public,
+                            Image: Profile.image,
+                            CoverImage: Profile.coverimage,
+                            AccessToken: dataUsers.AccessToken
+                        }
+                        localStorage.setItem('dataUser', JSON.stringify(profile2))
                         window.location.reload(false);
                         // navigate('/');                        
                         

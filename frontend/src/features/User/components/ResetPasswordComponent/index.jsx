@@ -23,6 +23,10 @@ export default function ResetPassword() {
             alert("Vui lòng điền mật khẩu mới!")
         } else if (details.confirmpassword === "") {
             alert("Vui lòng xác nhận mật khẩu mới!")
+        } else if (details.newpassword.length < 6) {
+            alert("Mật khẩu mới không dưới 6 kí tự!")
+        } else if (details.confirmpassword.length < 6) {
+            alert("Xác nhận mật khẩu không dưới 6 kí tự!")
         } else if (details.confirmpassword !== details.newpassword) {
             alert("Mật khẩu mới và xác nhận mật khẩu không khớp")
         } else {

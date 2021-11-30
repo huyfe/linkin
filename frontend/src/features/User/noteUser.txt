@@ -60,24 +60,3 @@ Admin xóa user không dùng redux
              window.location.href="/admin"
             })
         .catch((error) => console.log(error));
-
-Validate dởm
-    if(!phones === details.phone){
-        alert("Đăng ký thành công");
-    }
-            // users.forEach(user => {
-            //     console.log([user.phone]);
-            //     if (details.email === user.email || details.name === user.name) {
-            //         const errorss = "Email hoặc tên người dùng này đã có người sử dụng";
-            //         showErrors(errorss);
-            //         showResult(true);
-            //     } else if (details.phone === user.phone) {
-            //         const errorss = "Số điện thoại đã có người sử dụng";
-            //         showErrors(errorss);
-            //         showResult(true);
-            //     }else if (details.phone !== user.phone) {
-            //         if (details.email !== user.email || details.name !== user.name || details.phone !== user.phone) {
-            //             dispatch(RegisterUser(details));
-            //         }
-            //     }
-            // })

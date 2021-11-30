@@ -27,6 +27,8 @@ import FormEditCoverImage from "./FormEditCoverImage";
 function ProfileComponent(props) {
     const { slug } = useParams();
     const [Profile, setProfile] = useState([])
+    const [Profile2, setProfile2] = useState([])
+    const [Profile3, setProfile3] = useState([])
     const [EditImages, setEditImages] = useState([])
     const dispatch = useDispatch();
     const dataUser = localStorage.getItem("dataUser")
@@ -50,11 +52,81 @@ function ProfileComponent(props) {
         fetchInformation();
     }, [slug]);
 
+    useEffect(() => {
+        const fetchInformation2 = async () => {
+            const Profileinfo2 = await ProfileUser(dataUsers.Slug);
+            dispatch(fetchOfUser(Profileinfo2.data.users));
+            setProfile2(Profileinfo2.data.users)
+        }
+        fetchInformation2();
+    }, [dataUsers.Slug]);
+    
     const followFriend = (Slug) => {
-        const dataFollow = {
-            following: [{name: Slug}]
-        };
-        console.log(dataFollow);
+        if(Profile2.following.length>0){
+            const dataFollow = {    
+                following: [{
+                    id: Slug
+                }]
+            };
+            const dataFollower = {
+                follower: [{
+                    id: dataUsers.Id
+                }]
+            };
+            console.log(dataFollow);
+            try {
+                axios.patch(`http://localhost:3000/users/edit-infomation-user/` + dataUsers.Id, dataFollow)
+                    .then(res => {
+                        alert('Theo dõi thành công!');
+                        window.location.reload(false);
+                        axios.patch(`http://localhost:3000/users/edit-infomation-user/` + Profile._id, dataFollower)
+                            .then(res => {
+                                alert('Theo dõi thành công!');
+                                window.location.reload(false);
+                            })
+                            .catch(err => {
+                                console.log(err);
+                            })
+                    })
+                    .catch(err => {
+                        console.log(err);
+                    })
+            } catch (e) {
+                console.log(e);
+            }
+        }else{
+            const dataFollow = {    
+                following: [{
+                    id: Slug
+                }]
+            };
+            const dataFollower = {
+                follower: [{
+                    id: dataUsers.Id
+                }]
+            };
+            console.log(dataFollow);
+            try {
+                axios.patch(`http://localhost:3000/users/edit-infomation-user/` + dataUsers.Id, dataFollow)
+                    .then(res => {
+                        alert('Theo dõi thành công!');
+                        window.location.reload(false);
+                        axios.patch(`http://localhost:3000/users/edit-infomation-user/` + Profile._id, dataFollower)
+                            .then(res => {
+                                alert('Theo dõi thành công!');
+                                window.location.reload(false);
+                            })
+                            .catch(err => {
+                                console.log(err);
+                            })
+                    })
+                    .catch(err => {
+                        console.log(err);
+                    })
+            } catch (e) {
+                console.log(e);
+            }
+        }
     }
 
     const ShowFormImg = () => {
@@ -224,7 +296,7 @@ function ProfileComponent(props) {
                                         </div>
                                         {(dataUsers) ? (
                                             (dataUsers.Slug) !== Profile.slug ? (
-                                                <MDBBtn outline className="button" onClick={() => followFriend(Profile.name)}>
+                                                <MDBBtn outline className="button" onClick={() => followFriend(Profile._id)}>
                                                     Theo dõi
                                                 </MDBBtn>
                                             ) : ("")

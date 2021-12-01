@@ -16,7 +16,17 @@ export default function Register() {
     const [result, showResult] = useState(false);
     const [errors, showErrors] = useState(null);
 
+    const ggs = "Lam";
+    console.log(ggs.split(''));
+
     const Register = details => {
+        const PhoneCheck = details.phone.split('');
+        const Zero = "0";
+
+        const checkPhone = PhoneCheck.filter(phones => {
+            return Zero === phones
+        });
+
         if (details.name === "") {
             const errorss = "Vui lòng nhập tên";
             showErrors(errorss);
@@ -45,26 +55,57 @@ export default function Register() {
             const errorss = "Vui lòng xác nhận mật khẩu";
             showErrors(errorss);
             showResult(true);
+        } else if (details.name.length > 14) {
+            const errorss = "Tên không điền quá 14 ký tự!";
+            showErrors(errorss);
+            showResult(true);
+        } else if (details.phone.length < 10) {
+            const errorss = "Số điện thoại không dưới 10 chữ số!";
+            showErrors(errorss);
+            showResult(true);
+        } else if (details.password.length < 6) {
+            const errorss = "Mật khẩu không dưới 6 ký tự!";
+            showErrors(errorss);
+            showResult(true);
+        } else if (details.Password.length < 6) {
+            const errorss = "Xác nhận mật khẩu không dưới 6 ký tự!";
+            showErrors(errorss);
+            showResult(true);
+        } else if (checkPhone.length===0) {
+            const errorss = "Số điện thoại không đúng!";
+            showErrors(errorss);
+            showResult(true);
         } else if (details.password !== details.Password) {
             const errorss = "Mật khẩu và xác nhận mật khẩu không khớp";
             showErrors(errorss);
             showResult(true);
         } else {
-            users.forEach(user => {
-                if (details.email === user.email && details.name === user.name) {
-                    const errorss = "Email hoặc tên người dùng này đã có người sử dụng";
-                    showErrors(errorss);
-                    showResult(true);
-                }
-                else if (details.phone === user.phone) {
-                    const errorss = "Số điện thoại đã có người sử dụng";
-                    showErrors(errorss);
-                    showResult(true);
-                }
-                if (details.email !== user.email && details.name !== user.name && details.phone !== user.phone) {
-                    dispatch(RegisterUser(details));
-                }
-            })
+            const phones = users.filter(user => {
+                return details.phone === user.phone
+            });
+
+            const emails = users.filter(user => {
+                return details.email === user.email
+            });
+
+            const name = users.filter(user => {
+                return details.name === user.name
+            });
+            if (phones.length>0) {
+                const errorss = "Số điện thoại đã có người sử dụng";
+                showErrors(errorss);
+                showResult(true);
+            } else if (emails.length>0) {
+                const errorss = "Email đã có người sử dụng";
+                showErrors(errorss);
+                showResult(true);
+            } else if (name.length>0) {
+                const errorss = "Tên này đã có người sử dụng";
+                showErrors(errorss);
+                showResult(true);
+            } else {
+                dispatch(RegisterUser(details));
+            }
         }
     }
 

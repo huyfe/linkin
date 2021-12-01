@@ -11,7 +11,6 @@ function IntroduceProfile() {
     const navigate = useNavigate();
     const { slug } = useParams();
     const [Profile, setProfile] = useState([])
-    const [Profile2, setProfile2] = useState([])
     const [Information, setInformation] = useState([])
     const dataUser = localStorage.getItem("dataUser")
     const dataUsers = JSON.parse(dataUser)
@@ -24,6 +23,7 @@ function IntroduceProfile() {
                     day: date.getDate(),
                     month: date.getMonth() + 1,
                     year: date.getFullYear(),
+                    birthday: res.data.users.birthday,
                     address: res.data.users.address,
                     hometown: res.data.users.hometown,
                     email: res.data.users.email,
@@ -46,6 +46,12 @@ function IntroduceProfile() {
             alert("Vui lòng điền mật khẩu mới!")
         } else if (details.confirmpassword === "") {
             alert("Vui lòng xác nhận mật khẩu mới!")
+        } else if (details.oldpassword.length < 6) {
+            alert("Mật khẩu cũ không dưới 6 kí tự!")
+        } else if (details.newpassword.length < 6) {
+            alert("Mật khẩu mới không dưới 6 kí tự!")
+        } else if (details.confirmpassword.length < 6) {
+            alert("Xác nhận mật khẩu không dưới 6 kí tự!")
         } else if (details.oldpassword === details.newpassword) {
             alert("Mật khẩu mới và mật khẩu cũ giống nhau!")
         } else if (details.newpassword !== details.confirmpassword) {
@@ -88,7 +94,13 @@ function IntroduceProfile() {
     }
 
     const KeyEdit = detailsTwo => {
-        console.log(detailsTwo);
+        const PhoneCheck = detailsTwo.phone.split('');
+        const Zero = "0";
+
+        const checkPhone = PhoneCheck.filter(phones => {
+            return Zero === phones
+        });
+
         if (detailsTwo.name === "") {
             alert("Vui lòng điền tên!")
         } else if (detailsTwo.birthday === "") {
@@ -101,13 +113,38 @@ function IntroduceProfile() {
             alert("Vui lòng điền email!")
         } else if (detailsTwo.phone === "") {
             alert("Vui lòng điền số điện thoại!")
+        } else if (detailsTwo.name.length > 14) {
+            alert("Tên không điền quá 14 ký tự!")
+        } else if (detailsTwo.phone.length < 10) {
+            alert("Số điện thoại không dưới 10 chữ số!")
+        } else if (checkPhone.length===0) {
+            alert("Số điện thoại không đúng!")
         } else {
             try {
                 axios.patch(`http://localhost:3000/users/edit-infomation-user/` + dataUsers.Id, detailsTwo)
                     .then(res => {
                         alert('Cập nhật thông tin thành công!');
-                        // navigate('/');
-                        window.location.href = `/profile/${dataUsers.Slug}`;
+                        alert('Cập nhật xong bạn nên reset thông tin!');
+                        
+                        const profile2 ={
+                            Id: dataUsers.Id,
+                            Fullname: Profile.name,
+                            Email: Profile.email,
+                            Address: Profile.address,
+                            Hometown: Profile.hometown,
+                            Date: Profile.birthday,
+                            Phone: Profile.phone,
+                            Role: Profile.role,
+                            Slug: dataUsers.Slug,
+                            Public: dataUsers.Public,
+                            Image: Profile.image,
+                            CoverImage: Profile.coverimage,
+                            AccessToken: dataUsers.AccessToken
+                        }
+                        localStorage.setItem('dataUser', JSON.stringify(profile2))
+                        window.location.reload(false);
+                        // navigate('/');                        
+                        
                     })
                     .catch(err => {
                         console.log(err);
@@ -190,7 +227,6 @@ function IntroduceProfile() {
                                 <Link to="#"><i className="fas fa-lock"></i></Link>
                             </div>
                         </div>
-
                         {(dataUsers) ? (
                             (dataUsers.Slug) === Profile.slug ? (
                                 <div className="itemintroduces d-flex justify-content-center align-items-center">

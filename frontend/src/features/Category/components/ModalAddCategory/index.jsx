@@ -26,11 +26,13 @@ ModalAddCategory.defaultProps = {
 function ModalAddCategory({ showModal, setShowModal }) {
   const dispatch = useDispatch();
 
+  const dataUser = JSON.parse(localStorage.getItem("dataUser"));
+
   const initData = {
     title: "",
     image: "",
     public: true,
-    id_user_or_group: 1, //Sau này sẽ lấy ID User đăng nhập
+    id_user_or_group: dataUser.Id,
     role: 0,
   };
   const [data, setData] = useState(initData);

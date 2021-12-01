@@ -22,8 +22,8 @@ const User = new Schema(
         image: { type: String },
         coverimage: { type: String },
         public: { type: String },
-        follower: {type: [{id: Number, name:String, avatar:String}]},
-        following: {type: [{id: Number, name:String, avatar:String}]},
+        follower: [{id: Number}],
+        following: [{id: Number}],
         role: {type: String},
         slug: { type: String, slug: 'name', unique: true },
         accessToken: {type:String}

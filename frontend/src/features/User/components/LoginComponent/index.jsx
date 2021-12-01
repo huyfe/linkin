@@ -55,7 +55,8 @@ export default function Login() {
                             AccessToken: Logincheck.data.Token
                         });
                         alert("Đăng nhập thành công!")
-                        navigate('/');
+                        // navigate('/');
+                        window.location.href="/";
                     }
                 } else {
                     const error = new Error(Logincheck.error);

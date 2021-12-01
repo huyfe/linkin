@@ -23,6 +23,10 @@ export default function ResetPassword() {
             alert("Vui lòng điền mật khẩu mới!")
         } else if (details.confirmpassword === "") {
             alert("Vui lòng xác nhận mật khẩu mới!")
+        } else if (details.newpassword.length < 6) {
+            alert("Mật khẩu mới không dưới 6 kí tự!")
+        } else if (details.confirmpassword.length < 6) {
+            alert("Xác nhận mật khẩu không dưới 6 kí tự!")
         } else if (details.confirmpassword !== details.newpassword) {
             alert("Mật khẩu mới và xác nhận mật khẩu không khớp")
         } else {
@@ -48,15 +52,15 @@ export default function ResetPassword() {
                 <div>
                     <header className="header-resetpass">
                         <nav className="header-resetpass__menu">
-                            <div className="row align-items-center">
+                            <div className="row align-items-center menu-header">
                                 <div className="col-2">
-                                    <div className="header__logo d-flex align-items-center justify-content-between">
+                                    <div className="header__logo">
                                         <NavLink to="/"> <img src="/logo.svg" alt="Linkin" /></NavLink>
                                         <h2>Linkin</h2>
                                     </div>
                                 </div>
                                 <div className="col-10">
-                                    <div className="header-resetpass__controls d-flex justify-content-end align-items-center">
+                                    <div className="header-resetpass__controls">
                                         <div className="userss d-flex align-items-center">
                                             <MDBBtn onClick={loginLink}>Đăng nhập</MDBBtn> &nbsp;
                                             <MDBBtn onClick={registerLink}>Đăng Ký</MDBBtn>

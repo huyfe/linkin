@@ -19,7 +19,11 @@ function UserAsideRight() {
             {(dataUsers) ? (
                 <div className="user__info d-flex justify-content-start align-items-center">
                     <div className="avatar">
-                        <Link to={`/profile/${dataUsers.Slug}`} ><img className="img-fuild" src={userInfo.avatar} alt="" /></Link>
+                        {(dataUsers.Image) === "avatar.png" ? (
+                            <Link to={`/profile/${dataUsers.Slug}`} ><img className="img-fuild" src={`/images/Users/${dataUsers.Image}`} alt="" /></Link>
+                        ) : (
+                            <Link to={`/profile/${dataUsers.Slug}`} ><img className="img-fuild" src={dataUsers.Image} alt="" /></Link>
+                        )}
                     </div>
                     <Link to={`/profile/${dataUsers.Slug}`} className="name">{dataUsers.Fullname}</Link>
                 </div>

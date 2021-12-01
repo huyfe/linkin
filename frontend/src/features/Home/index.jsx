@@ -17,15 +17,16 @@ function HomeFeature() {
 
     const dispatch = useDispatch();
 
+    const dataUser = JSON.parse(localStorage.getItem("dataUser"));
+
     //Nạp dữ liệu cho Redux -> Category
     useEffect(() => {
         const fetchCatUser = async (id) => {
             let {data} = await categoriesApi.getCatOfUser(id);
             dispatch(fetchCatOfUser(data));
-        }
+        };
 
-        fetchCatUser(1);
-        //Chưa bt cách lấy id user nên tạm thời để là 1
+        fetchCatUser(dataUser.Id);
     }, [])
 
     return (

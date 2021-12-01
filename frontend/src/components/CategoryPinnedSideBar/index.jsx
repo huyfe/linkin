@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './style.scss';
 import Item from '../Item/index';
+import { useSelector } from 'react-redux';
 
 CategoryPinnedSideBar.propTypes = {
 
@@ -9,18 +10,17 @@ CategoryPinnedSideBar.propTypes = {
 
 function CategoryPinnedSideBar(props) {
 
-    const listCategoryPinnedData = [
-        { id: 0, image: '/images/AsideRightHomePage/catpinned1.png', href: "/", name: "Trick CSS" },
-        { id: 1, image: '/images/AsideRightHomePage/catpinned2.jpg', href: "/", name: "HTML" },
-        { id: 2, image: '/images/AsideRightHomePage/recent3.png', href: "/", name: "JS Tips" },
-        { id: 3, image: '/images/AsideRightHomePage/recent4.png', href: "/", name: "Form" }
-    ];
+    const listCategoryData = useSelector(state => state.categoriesUser);
+
+    const listCategoryPinnedData = [...listCategoryData].filter(
+        (category) => category.pin === true
+      );
 
     const pinIcon = "fal fa-ellipsis-h";
 
     const listCategoryPinned = listCategoryPinnedData.map(category => {
         return (
-            <Item key={category.id} image={category.image} name={category.name} href={category.href} icon={pinIcon}></Item>
+            <Item key={category.id} image={category.image} name={category.title} href={`categories/${category.slug}`} icon={pinIcon}></Item>
         );
     });
 

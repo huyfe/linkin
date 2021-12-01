@@ -8,31 +8,40 @@ import { DataContext } from '../../../../DataLinkin';
 import { AdminDeleteUser, ProfileUser } from '../../../../api/UserApi';
 import { fetchOfUser } from '../../../User/Userslice';
 
-const data = {
-    labels: ["Huy", "Lam", "Lập", "Hải", "Đạt", "Quốc"],
-    datasets: [
-        {
-            label: "First dataset",
-            data: [33, 53, 85, 41, 44, 65],
-            fill: true,
-            backgroundColor: "rgba(75,192,192,0.2)",
-            borderColor: "rgba(75,192,192,1)"
-        },
-        {
-            label: "Second dataset",
-            data: [33, 25, 35, 51, 54, 76],
-            fill: false,
-            borderColor: "#742774"
-        }
-    ]
-};
-
 function AdminUser(props) {
     const value = useContext(DataContext)
     const [users] = value.users
     const dispatch = useDispatch();
     const [Profile, setProfile] = useState([])
     const [Showhide, setShowhide] = useState([])
+
+    const NameChart = users.map(user => user.name);
+
+    const dataChart1 = users.map(user => (user.email.split('').length));
+
+    const dataChart2 = users.map(user => (user.name.split('').length));
+
+    console.log(dataChart1);
+    console.log(dataChart2);
+
+    const data = {
+        labels: NameChart,
+        datasets: [
+            {
+                label: "Độ dài kí tự theo email",
+                data: dataChart1,
+                fill: true,
+                backgroundColor: "rgba(75,192,192,0.2)",
+                borderColor: "rgba(75,192,192,1)"
+            },
+            {
+                label: "Độ dài kí tự theo tên",
+                data: dataChart2,
+                fill: false,
+                borderColor: "#742774"
+            }
+        ]
+    };
 
     const deleteusers = (id) => {
         console.log("id", id);
@@ -104,7 +113,6 @@ function AdminUser(props) {
                                 <td>{userss.email}</td>
                                 <td>{userss.phone}</td>
                                 <td >
-                                    {/* {userss.follower.length} Người */}
                                     {
                                         (userss.role) === "1" ? (
                                             <td>Admin</td>

@@ -2,6 +2,12 @@ import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import './style.scss';
 import Item from '../../../../components/Item/index';
+import { useDispatch, useSelector } from 'react-redux';
+import { update } from '../../groupSlice';
+import groupApi from './../../../../api/groupApi';
+
+
+//import form react ui kit
 import {
     MDBBtn, MDBModal, MDBModalDialog, MDBModalContent, MDBModalBody, MDBModalFooter, MDBModalHeader, MDBModalTitle,
     MDBDropdown, MDBDropdownMenu, MDBDropdownToggle, MDBDropdownItem, MDBDropdownLink
@@ -12,32 +18,69 @@ import {
     MDBCheckbox
 } from 'mdb-react-ui-kit';
 
+
 ManagerGroupComponent.propTypes = {
-    showModal: PropTypes.bool,
-    setShowModal: PropTypes.func,
+    id: PropTypes.number,
+    title: PropTypes.string,
+    desc: PropTypes.string,
+    urlGroup: PropTypes.string,
+    image: PropTypes.string,
+    date: PropTypes.string,
+    public: PropTypes.bool,
 };
 
 
 ManagerGroupComponent.defaultProps = {
-    showModal: false,
-    setShowModal: null,
+    
 };
 
 function ManagerGroupComponent(props) {
 
 
     const [scrollableModal, setScrollableModal] = useState(false);
+    const [showListGroup, setShowListGroup] = useState(false);
 
     const [centredModal, setCentredModal] = useState(false);
     const toggleShow = () => setCentredModal(!centredModal);
+    const dispatch = useDispatch();
 
-    const [isImageUpload, setIsImageUpload] = useState(false);
+     // Gía trị mặc định của form
+     const [formValue, setFormValue] = useState({
+        title: '',
+        slug: '',
+        groups: [],
+        image: '',
+        public: true,
+    });
 
-    const listManagerGroupData = [
-        { image: 'https://tuhoclaptrinh.edu.vn/upload/post/16/10/18/tu-hoc-lap-trinh-html-va-css-462993.jpg', href: "/", name: "Cộng đồng Frontend Developer Việt Nam" },
-        { image: 'https://aventislearning.com/wp-content/uploads/2020/06/Node.js.png', href: "/", name: "Cộng đồng Nodejs" },
-        { image: 'https://laptrinhcanban.com/python/nhap-mon-lap-trinh-python/gioi-thieu-python/python-la-gi/Python.jpg', href: "/", name: "Cộng đồng Backend Developer" }
-    ];
+     // Sự kiện thay đổi của form
+     const onChangeForm = (e) => {
+        setFormValue({ ...formValue, [e.target.name]: e.target.value });
+    };
+
+     // Sự kiện khi nhấn submit form
+     const onSubmitForm = async (data) => {
+        data.image = data.image || "https://images.unsplash.com/photo-1496440737103-cd596325d314?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80";
+
+        // Validate form value not null 
+        if (data.title === '' || data.slug === '') return false;
+        console.log(data);
+        const uploadGroup = await groupApi.add(data);
+        const groupList = await groupApi.getAll();
+        dispatch(update(groupList.data));
+    }
+      // dùng để lấy dữ liệu từ state
+    const listManagerGroupData = useSelector(state => state.group);
+    console.log(listManagerGroupData);
+
+
+    // const [isImageUpload, setIsImageUpload] = useState(false);
+
+    // const listManagerGroupData = [
+    //     { image: 'https://tuhoclaptrinh.edu.vn/upload/post/16/10/18/tu-hoc-lap-trinh-html-va-css-462993.jpg', href: "/", name: "Cộng đồng Frontend Developer Việt Nam" },
+    //     { image: 'https://aventislearning.com/wp-content/uploads/2020/06/Node.js.png', href: "/", name: "Cộng đồng Nodejs" },
+    //     { image: 'https://laptrinhcanban.com/python/nhap-mon-lap-trinh-python/gioi-thieu-python/python-la-gi/Python.jpg', href: "/", name: "Cộng đồng Backend Developer" }
+    // ];
     const listGroupManager = listManagerGroupData.map(group => {
         return (
             <Item image={group.image} name={group.name} href={group.href}></Item>
@@ -50,7 +93,7 @@ function ManagerGroupComponent(props) {
         <div className="group-sidebar-manager">
             <h3>Nhóm bạn quản lí</h3>
             <ul>
-                {listGroupManager}
+                {/* {listGroupManager} */}
             </ul>
             <div className="btn__join">
                 <div className="box-create-group">
@@ -145,7 +188,7 @@ function ManagerGroupComponent(props) {
                                                     accept=".jpg,.jpeg,.png"
                                                     onChange= "" //{handleImageUploadChange}
                                                 />
-                                                {isImageUpload && (
+                                                {/* {isImageUpload && ( */}
                                                     <div className="formAddCategory__img-uploaded">
                                                         <button
                                                             className="d-none"
@@ -162,7 +205,7 @@ function ManagerGroupComponent(props) {
                                                             alt="img-uploaded"
                                                         />
                                                     </div>
-                                                )}
+                                               {/* )}  */}
                                             </div>
                                         </div>
                                         <div className="col-12">

@@ -32,7 +32,7 @@ function ModalAddCategory({ showModal, setShowModal }) {
     title: "",
     image: "",
     public: true,
-    id_user_or_group: dataUser.Id,
+    id_user_or_group: dataUser?dataUser.Id:0,
     role: 0,
   };
   const [data, setData] = useState(initData);

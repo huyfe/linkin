@@ -6,6 +6,11 @@ const categoriesApi = {
     return axiosClient.get(url);
   },
 
+  getCatOfUserLimit(id) {
+    const url = `/categories/categories-user/${id}`;
+    return axiosClient.get(url, { params: { _limit: 8 }});
+  },
+
   getCatOfGroup(id) {
     const url = `/categories/categories-group/${id}`;
     return axiosClient.get(url);

@@ -13,8 +13,10 @@ function CategoryProfile() {
 
     useEffect(() => {
         const fetchLink = async () => {
-            const categoryList = await categoriesApi.getCatOfUser(dataUsers.Id);
-            dispatch(fetchCatOfUser(categoryList.data));
+            if (dataUsers) {
+                const categoryList = await categoriesApi.getCatOfUserLimit(dataUsers.Id);
+                dispatch(fetchCatOfUser(categoryList.data));
+            }
         }
         fetchLink();
     }, []);
@@ -26,6 +28,20 @@ function CategoryProfile() {
         <div className="cateProFile">
             <CategoryTitle />
             <div className="listCategoryProFile">
+                {/* {(categoryListData) ? (
+                    categoryListData.map((
+                        <div className="listCategoryProFile__item">
+                            <div className="categoryItemProfile">
+                                <div className="categoryItemProfile__img">
+                                    <Link to="/categories/du-lich">
+                                        <img src="/images/Categories/ux-ui.jpg" />
+                                    </Link>
+                                </div>
+                                <Link to="/categories/du-lich">Thiết kế UI/ux</Link>
+                            </div>
+                        </div>
+                    ))
+                ) : ("")} */}
                 <div className="listCategoryProFile__item">
                     <div className="categoryItemProfile">
                         <div className="categoryItemProfile__img">

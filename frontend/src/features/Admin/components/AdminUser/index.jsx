@@ -97,7 +97,6 @@ function AdminUser(props) {
                         <th scope='col'>#</th>
                         <th scope='col'>Họ Tên</th>
                         <th scope='col'>Email</th>
-                        <th scope='col'>Số điện thoại</th>
                         <th scope='col'>Phân Quyền</th>
                         <th scope='col'>Chức năng</th>
                     </tr>
@@ -111,7 +110,6 @@ function AdminUser(props) {
                                 <th scope='row'>{userss._id}</th>
                                 <td>{userss.name}</td>
                                 <td>{userss.email}</td>
-                                <td>{userss.phone}</td>
                                 <td >
                                     {
                                         (userss.role) === "1" ? (

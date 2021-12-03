@@ -24,10 +24,7 @@ function IntroduceProfile() {
                     month: date.getMonth() + 1,
                     year: date.getFullYear(),
                     birthday: res.data.users.birthday,
-                    address: res.data.users.address,
-                    hometown: res.data.users.hometown,
                     email: res.data.users.email,
-                    phone: res.data.users.phone,
                     slug: res.data.users.slug
                 })
             })
@@ -94,31 +91,15 @@ function IntroduceProfile() {
     }
 
     const KeyEdit = detailsTwo => {
-        const PhoneCheck = detailsTwo.phone.split('');
-        const Zero = "0";
-
-        const checkPhone = PhoneCheck.filter(phones => {
-            return Zero === phones
-        });
 
         if (detailsTwo.name === "") {
             alert("Vui lòng điền tên!")
         } else if (detailsTwo.birthday === "") {
             alert("Vui lòng không để trống ngày sinh này!")
-        } else if (detailsTwo.address === "") {
-            alert("Vui lòng điền địa chỉ!")
-        } else if (detailsTwo.hometown === "") {
-            alert("Vui lòng điền quê quán!")
         } else if (detailsTwo.email === "") {
             alert("Vui lòng điền email!")
-        } else if (detailsTwo.phone === "") {
-            alert("Vui lòng điền số điện thoại!")
         } else if (detailsTwo.name.length > 14) {
             alert("Tên không điền quá 14 ký tự!")
-        } else if (detailsTwo.phone.length < 10) {
-            alert("Số điện thoại không dưới 10 chữ số!")
-        } else if (checkPhone.length===0) {
-            alert("Số điện thoại không đúng!")
         } else {
             try {
                 axios.patch(`http://localhost:3000/users/edit-infomation-user/` + dataUsers.Id, detailsTwo)
@@ -130,15 +111,12 @@ function IntroduceProfile() {
                             Id: dataUsers.Id,
                             Fullname: Profile.name,
                             Email: Profile.email,
-                            Address: Profile.address,
-                            Hometown: Profile.hometown,
                             Date: Profile.birthday,
-                            Phone: Profile.phone,
                             Role: Profile.role,
                             Slug: dataUsers.Slug,
                             Public: dataUsers.Public,
                             Image: Profile.image,
-                            CoverImage: Profile.coverimage,
+                            Theme: Profile.theme,
                             AccessToken: dataUsers.AccessToken
                         }
                         localStorage.setItem('dataUser', JSON.stringify(profile2))
@@ -185,41 +163,8 @@ function IntroduceProfile() {
                         </div>
                         <div className="itemintroduces d-flex justify-content-between">
                             <div className="img-title d-flex align-items-center justify-content-center">
-                                <h2>Địa chỉ</h2>
-                                <p>{Profile.address}</p>
-                            </div>
-                            <div className="services d-flex">
-                                <Link to="#" onClick={Updateinformation}><i className="fal fa-pen"></i></Link>
-                                <Link to="#"><i className="far fa-globe-africa"></i></Link>
-                                <Link to="#"><i className="fas fa-lock"></i></Link>
-                            </div>
-                        </div>
-                        <div className="itemintroduces d-flex justify-content-between">
-                            <div className="img-title d-flex align-items-center justify-content-center">
-                                <h2>Quê quán</h2>
-                                <p>{Profile.hometown}</p>
-                            </div>
-                            <div className="services d-flex">
-                                <Link to="#" onClick={Updateinformation}><i className="fal fa-pen"></i></Link>
-                                <Link to="#"><i className="far fa-globe-africa"></i></Link>
-                                <Link to="#"><i className="fas fa-lock"></i></Link>
-                            </div>
-                        </div>
-                        <div className="itemintroduces d-flex justify-content-between">
-                            <div className="img-title d-flex align-items-center justify-content-center">
                                 <h2>Email</h2>
                                 <p>{Profile.email}</p>
-                            </div>
-                            <div className="services d-flex">
-                                <Link to="#" onClick={Updateinformation}><i className="fal fa-pen"></i></Link>
-                                <Link to="#"><i className="far fa-globe-africa"></i></Link>
-                                <Link to="#"><i className="fas fa-lock"></i></Link>
-                            </div>
-                        </div>
-                        <div className="itemintroduces d-flex justify-content-between">
-                            <div className="img-title d-flex align-items-center justify-content-center">
-                                <h2>Số điện thoại</h2>
-                                <p>{Profile.phone}</p>
                             </div>
                             <div className="services d-flex">
                                 <Link to="#" onClick={Updateinformation}><i className="fal fa-pen"></i></Link>

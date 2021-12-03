@@ -16,31 +16,13 @@ export default function Register() {
     const [result, showResult] = useState(false);
     const [errors, showErrors] = useState(null);
 
-    const ggs = "Lam";
-    console.log(ggs.split(''));
-
     const Register = details => {
-        const PhoneCheck = details.phone.split('');
-        const Zero = "0";
-
-        const checkPhone = PhoneCheck.filter(phones => {
-            return Zero === phones
-        });
-
         if (details.name === "") {
             const errorss = "Vui lòng nhập tên";
             showErrors(errorss);
             showResult(true);
         } else if (details.email === "") {
             const errorss = "Vui lòng nhập email";
-            showErrors(errorss);
-            showResult(true);
-        } else if (details.address === "") {
-            const errorss = "Vui lòng nhập địa chỉ";
-            showErrors(errorss);
-            showResult(true);
-        } else if (details.phone === "") {
-            const errorss = "Vui lòng nhập số điện thoại";
             showErrors(errorss);
             showResult(true);
         } else if (details.birthday === "") {
@@ -59,10 +41,6 @@ export default function Register() {
             const errorss = "Tên không điền quá 14 ký tự!";
             showErrors(errorss);
             showResult(true);
-        } else if (details.phone.length < 10) {
-            const errorss = "Số điện thoại không dưới 10 chữ số!";
-            showErrors(errorss);
-            showResult(true);
         } else if (details.password.length < 6) {
             const errorss = "Mật khẩu không dưới 6 ký tự!";
             showErrors(errorss);
@@ -71,19 +49,11 @@ export default function Register() {
             const errorss = "Xác nhận mật khẩu không dưới 6 ký tự!";
             showErrors(errorss);
             showResult(true);
-        } else if (checkPhone.length===0) {
-            const errorss = "Số điện thoại không đúng!";
-            showErrors(errorss);
-            showResult(true);
         } else if (details.password !== details.Password) {
             const errorss = "Mật khẩu và xác nhận mật khẩu không khớp";
             showErrors(errorss);
             showResult(true);
         } else {
-            const phones = users.filter(user => {
-                return details.phone === user.phone
-            });
-
             const emails = users.filter(user => {
                 return details.email === user.email
             });
@@ -91,11 +61,8 @@ export default function Register() {
             const name = users.filter(user => {
                 return details.name === user.name
             });
-            if (phones.length>0) {
-                const errorss = "Số điện thoại đã có người sử dụng";
-                showErrors(errorss);
-                showResult(true);
-            } else if (emails.length>0) {
+
+            if (emails.length>0) {
                 const errorss = "Email đã có người sử dụng";
                 showErrors(errorss);
                 showResult(true);

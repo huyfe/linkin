@@ -146,7 +146,7 @@ function ProfileComponent(props) {
             let reader = new FileReader();
             reader.readAsDataURL(detailS.image[0])
             reader.onload = (e) => {
-                console.log("img data", e.target.result);
+                // console.log("img data", e.target.result);
                 const offff = ({
                     image: e.target.result
                 })
@@ -155,6 +155,19 @@ function ProfileComponent(props) {
                         .then(res => {
                             alert('Cập nhật ảnh đại diện thành công!');
                             // navigate('/');
+                            const profile2 ={
+                                Id: dataUsers.Id,
+                                Fullname: dataUsers.Fullname,
+                                Email: dataUsers.Email,
+                                Date: dataUsers.Date,
+                                Role: dataUsers.Role,
+                                Slug: dataUsers.Slug,
+                                Public: dataUsers.Public,
+                                Image: e.target.result,
+                                Theme: dataUsers.Theme,
+                                AccessToken: dataUsers.AccessToken
+                            }
+                            localStorage.setItem('dataUser', JSON.stringify(profile2))
                             window.location.href = `/profile/${dataUsers.Slug}`;
                         })
                         .catch(err => {
@@ -168,27 +181,40 @@ function ProfileComponent(props) {
     }
 
     const KeyEditCoverImage = detailSs => {
-        console.log(detailSs);
 
-        if (detailSs.coverimage === "") {
+        if (detailSs.theme === "") {
             alert("Vui lòng chọn ảnh!")
         } else {
             let reader = new FileReader();
-            reader.readAsDataURL(detailSs.coverimage[0])
+            reader.readAsDataURL(detailSs.theme[0])
             reader.onload = (e) => {
-                console.log("img data", e.target.result);
+                // console.log("img data", e.target.result);
                 const offff = ({
-                    coverimage: e.target.result
+                    theme: e.target.result
                 })
                 try {
                     axios.patch(`http://localhost:3000/users/edit-infomation-user/` + dataUsers.Id, offff)
                         .then(res => {
                             alert('Cập nhật ảnh bìa thành công!');
                             // navigate('/');
+                            const profile2 ={
+                                Id: dataUsers.Id,
+                                Fullname: dataUsers.Fullname,
+                                Email: dataUsers.Email,
+                                Date: dataUsers.Date,
+                                Role: dataUsers.Role,
+                                Slug: dataUsers.Slug,
+                                Public: dataUsers.Public,
+                                Image: dataUsers.Image,
+                                Theme: e.target.result,
+                                AccessToken: dataUsers.AccessToken
+                            }
+                            localStorage.setItem('dataUser', JSON.stringify(profile2))
                             window.location.href = `/profile/${dataUsers.Slug}`;
                         })
                         .catch(err => {
-                            console.log(err);
+                            alert("ảnh kích thước quá lớn!")
+                            window.location.reload(false);
                         })
                 } catch (e) {
                     console.log(e);
@@ -268,10 +294,10 @@ function ProfileComponent(props) {
                             <div className="col-12">
                                 <div className="img-profile">
                                     {(dataUsers) ? (
-                                        (Profile.coverimage) === "anhbia.jpg" ? (
+                                        (Profile.theme) === "anhbia.jpg" ? (
                                             <img src="/images/Users/anhbia.jpg" alt="" />
                                         ) : (
-                                            <img src={Profile.coverimage} alt="" />
+                                            <img src={Profile.theme} alt="" />
                                         )
                                     ) : ("")}
                                     <div className="avatar-name d-flex align-items-center justify-content-between">

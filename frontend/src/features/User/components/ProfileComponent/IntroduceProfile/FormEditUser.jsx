@@ -6,10 +6,7 @@ export default function FormEditUser({ KeyEdit }) {
     const [detailsTwo, setDetailsTwo] = useState({
         name: dataUsers.Fullname,
         birthday: dataUsers.Date,
-        address: dataUsers.Address,
-        hometown: dataUsers.Hometown,
-        email: dataUsers.Email,
-        phone: dataUsers.Phone
+        email: dataUsers.Email
     });
 
     const submitHandlers = e => {
@@ -33,26 +30,8 @@ export default function FormEditUser({ KeyEdit }) {
             </div>
             <div className="itemintroduces d-flex justify-content-start">
                 <div className="img-title d-flex align-items-center">
-                    <h2 className="title-resetpass">Địa chỉ</h2>
-                    <input className="form-control" type="text" name="Address" onChange={e => setDetailsTwo({ ...detailsTwo, address: e.target.value })} value={detailsTwo.address} required/>
-                </div>
-            </div>
-            <div className="itemintroduces d-flex justify-content-start">
-                <div className="img-title d-flex align-items-center">
-                    <h2 className="title-resetpass">Quê quán</h2>
-                    <input className="form-control" type="text" name="Hometown" onChange={e => setDetailsTwo({ ...detailsTwo, hometown: e.target.value })} value={detailsTwo.hometown} required/>
-                </div>
-            </div>
-            <div className="itemintroduces d-flex justify-content-start">
-                <div className="img-title d-flex align-items-center">
                     <h2 className="title-resetpass">Email</h2>
                     <input className="form-control" type="email" name="Email" onChange={e => setDetailsTwo({ ...detailsTwo, email: e.target.value })} value={detailsTwo.email} required/>
-                </div>
-            </div>
-            <div className="itemintroduces d-flex justify-content-start">
-                <div className="img-title d-flex align-items-center">
-                    <h2 className="title-resetpass">Số điện thoại</h2>
-                    <input className="form-control" type="number" name="Phone" onChange={e => setDetailsTwo({ ...detailsTwo, phone: e.target.value })} value={detailsTwo.phone} required/>
                 </div>
             </div>
             <div className="itemintroduces d-flex justify-content-center align-items-center">

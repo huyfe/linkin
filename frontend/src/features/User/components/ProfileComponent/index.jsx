@@ -48,6 +48,10 @@ function ProfileComponent(props) {
             const Profileinfo = await ProfileUser(slug);
             dispatch(fetchOfUser(Profileinfo.data.users));
             setProfile(Profileinfo.data.users)
+            const gggg = Profileinfo.data.users.follower?.filter((ggs) => {
+                return ggs.id === dataUsers.Id
+            })
+            setProfile3(gggg.length);
         }
         fetchInformation();
     }, [slug]);
@@ -60,25 +64,29 @@ function ProfileComponent(props) {
         }
         fetchInformation2();
     }, [dataUsers.Slug]);
-    
+
+    console.log(Profile3);
     const followFriend = (Slug) => {
-        if(Profile2.following.length>0){
-            const dataFollow = {    
-                following: [{
-                    id: Slug
+        if (Profile2.following.length > 0) {
+            const dataFollow = {
+                following: [...Profile2.following, {
+                    id: Slug,
+                    name: Profile.name,
+                    image: Profile.image
                 }]
             };
+
             const dataFollower = {
-                follower: [{
-                    id: dataUsers.Id
+                follower: [...Profile.follower, {
+                    id: dataUsers.Id,
+                    name: dataUsers.Fullname,
+                    image: dataUsers.Image
                 }]
             };
-            console.log(dataFollow);
+
             try {
                 axios.patch(`http://localhost:3000/users/edit-infomation-user/` + dataUsers.Id, dataFollow)
                     .then(res => {
-                        alert('Theo dõi thành công!');
-                        window.location.reload(false);
                         axios.patch(`http://localhost:3000/users/edit-infomation-user/` + Profile._id, dataFollower)
                             .then(res => {
                                 alert('Theo dõi thành công!');
@@ -94,26 +102,68 @@ function ProfileComponent(props) {
             } catch (e) {
                 console.log(e);
             }
-        }else{
-            const dataFollow = {    
+        } else {
+            const dataFollow = {
                 following: [{
-                    id: Slug
+                    id: Slug,
+                    name: Profile.name,
+                    image: Profile.image
                 }]
             };
             const dataFollower = {
                 follower: [{
-                    id: dataUsers.Id
+                    id: dataUsers.Id,
+                    name: dataUsers.Fullname,
+                    image: dataUsers.Image
                 }]
             };
             console.log(dataFollow);
             try {
                 axios.patch(`http://localhost:3000/users/edit-infomation-user/` + dataUsers.Id, dataFollow)
                     .then(res => {
-                        alert('Theo dõi thành công!');
-                        window.location.reload(false);
                         axios.patch(`http://localhost:3000/users/edit-infomation-user/` + Profile._id, dataFollower)
                             .then(res => {
                                 alert('Theo dõi thành công!');
+                                window.location.reload(false);
+                            })
+                            .catch(err => {
+                                console.log(err);
+                            })
+                    })
+                    .catch(err => {
+                        console.log(err);
+                    })
+            } catch (e) {
+                console.log(e);
+            }
+        }
+    }
+
+    const unfollowFriend = (Slug) => {
+        if (Profile2.following.length > 0) {
+            
+            const folloWing = Profile2.following?.filter((ggs)=>{
+                return ggs.id !== Slug
+            })
+
+            const folloWer = Profile.follower?.filter((ggs)=>{
+                return ggs.id !== dataUsers.Id
+            })
+
+            const dataFollow = {
+                following: folloWing
+            };
+
+            const dataFollower = {
+                follower: folloWer
+            };
+
+            try {
+                axios.patch(`http://localhost:3000/users/edit-infomation-user/` + dataUsers.Id, dataFollow)
+                    .then(res => {
+                        axios.patch(`http://localhost:3000/users/edit-infomation-user/` + Profile._id, dataFollower)
+                            .then(res => {
+                                alert('Hủy theo dõi thành công!');
                                 window.location.reload(false);
                             })
                             .catch(err => {
@@ -155,7 +205,7 @@ function ProfileComponent(props) {
                         .then(res => {
                             alert('Cập nhật ảnh đại diện thành công!');
                             // navigate('/');
-                            const profile2 ={
+                            const profile2 = {
                                 Id: dataUsers.Id,
                                 Fullname: dataUsers.Fullname,
                                 Email: dataUsers.Email,
@@ -197,7 +247,7 @@ function ProfileComponent(props) {
                         .then(res => {
                             alert('Cập nhật ảnh bìa thành công!');
                             // navigate('/');
-                            const profile2 ={
+                            const profile2 = {
                                 Id: dataUsers.Id,
                                 Fullname: dataUsers.Fullname,
                                 Email: dataUsers.Email,
@@ -289,6 +339,9 @@ function ProfileComponent(props) {
         <div>
             {(Profile) ? (
                 <section id="Profile-component">
+                    {/* {Profile2.following?.map(flo=>(
+                        flo.id
+                    ))} */}
                     <div className="container-fluid">
                         <div className="row">
                             <div className="col-12">
@@ -322,9 +375,16 @@ function ProfileComponent(props) {
                                         </div>
                                         {(dataUsers) ? (
                                             (dataUsers.Slug) !== Profile.slug ? (
-                                                <MDBBtn outline className="button" onClick={() => followFriend(Profile._id)}>
-                                                    Theo dõi
-                                                </MDBBtn>
+                                                (Profile3) === 0 ? (
+                                                    <MDBBtn outline className="button" onClick={() => followFriend(Profile._id)}>
+                                                        Theo dõi
+                                                    </MDBBtn>
+                                                ) : (
+                                                    <MDBBtn outline className="button" onClick={() => unfollowFriend(Profile._id)}>
+                                                        Đang theo dõi
+                                                    </MDBBtn>
+                                                )
+
                                             ) : ("")
                                         ) : ("")}
                                     </div>

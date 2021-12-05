@@ -11,6 +11,15 @@ module.exports = {
     }
   },
 
+  async ShowAllCategorieslimit(req, res) {
+    try {
+      const categories = await Categories.find({id_user_or_group: req.params.id, role: 0}).limit(8);
+      res.json(categories);
+    } catch (err) {
+      res.json({ error: err });
+    }
+  },
+
   //Hiện tất cả danh mục của User -> [GET]/categories-user/:id
   async ShowAllByUser(req, res) {
     try {

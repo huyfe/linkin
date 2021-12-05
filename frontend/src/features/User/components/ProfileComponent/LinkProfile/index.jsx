@@ -18,46 +18,23 @@ function LinkProFile() {
     }, []);
 
     const linkListData = useSelector(state => state.link);
-    console.log(linkListData, "list link");
 
     return (
         <div className="Linksprofile">
             <LinkTitle />
-            <div className="itemlink d-flex justify-content-between">
-                <div className="img-title d-flex align-items-center justify-content-center">
-                    <img src="/images/Users/link_img.png" alt="" />
-                    <h2>Nguyên lý cơ bản design</h2>
-                </div>
-            </div>
-            <div className="itemlink d-flex justify-content-between">
-                <div className="img-title d-flex align-items-center justify-content-center">
-                    <img src="/images/Users/link_img.png" alt="" />
-                    <h2>Nguyên lý cơ bản design</h2>
-                </div>
-            </div>
-            <div className="itemlink d-flex justify-content-between">
-                <div className="img-title d-flex align-items-center justify-content-center">
-                    <img src="/images/Users/link_img.png" alt="" />
-                    <h2>Nguyên lý cơ bản design</h2>
-                </div>
-            </div>
-            <div className="itemlink d-flex justify-content-between">
-                <div className="img-title d-flex align-items-center justify-content-center">
-                    <img src="/images/Users/link_img.png" alt="" />
-                    <h2>Nguyên lý cơ bản design</h2>
-                </div>
-            </div>
-            <div className="itemlink d-flex justify-content-between">
-                <div className="img-title d-flex align-items-center justify-content-center">
-                    <img src="/images/Users/link_img.png" alt="" />
-                    <h2>Nguyên lý cơ bản design</h2>
-                </div>
-            </div>
-            <div className="itemlink d-flex justify-content-between">
-                <div className="img-title d-flex align-items-center justify-content-center">
-                    <img src="/images/Users/link_img.png" alt="" />
-                    <h2>Nguyên lý cơ bản design</h2>
-                </div>
+            <div className="listLinkProFile">
+                {linkListData?.map(links => (
+                    <div className="listLinkProFile__item">
+                        <div className="linkItemProfile">
+                            <div className="linkItemProfile__img">
+                                <Link to={`/links/${links.slug}`}>
+                                    <img src={links.image} />
+                                </Link>
+                            </div>
+                            <Link to={`/links/${links.slug}`}>{links.title}</Link>
+                        </div>
+                    </div>
+                ))}
             </div>
         </div>
     );

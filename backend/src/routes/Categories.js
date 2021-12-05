@@ -14,5 +14,6 @@ router.patch('/:id/restore', categoryController.RestoreCategory);
 router.delete('/:id/destroy', categoryController.DestroyCategory);
 router.patch('/:id/pin', categoryController.UpdatePin);
 router.get('/', categoryController.ShowAllCategories);
+router.get('/limit/:id', categoryController.ShowAllCategorieslimit);
 
 module.exports = router;

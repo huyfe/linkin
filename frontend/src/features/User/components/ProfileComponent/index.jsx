@@ -65,7 +65,6 @@ function ProfileComponent(props) {
         fetchInformation2();
     }, [dataUsers.Slug]);
 
-    console.log(Profile3);
     const followFriend = (Slug) => {
         if (Profile2.following.length > 0) {
             const dataFollow = {

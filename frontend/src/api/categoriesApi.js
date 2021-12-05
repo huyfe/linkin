@@ -7,8 +7,8 @@ const categoriesApi = {
   },
 
   getCatOfUserLimit(id) {
-    const url = `/categories/categories-user/${id}`;
-    return axiosClient.get(url, { params: { _limit: 8 }});
+    const url = `/categories/limit/${id}`;
+    return axiosClient.get(url);
   },
 
   getCatOfGroup(id) {

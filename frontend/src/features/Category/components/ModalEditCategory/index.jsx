@@ -31,11 +31,22 @@ function ModalEditCategory({ showModalEdit, setShowModalEdit, categoryEdit }) {
 
   const [showErr, setShowErr] = useState(false);
 
+  const [imgErr, setImgErr] = useState(false);
+
   const [imageUpload, setImageUpload] = useState(categoryEdit.image);
   const [isImageUpload, setIsImageUpload] = useState(true);
 
   function handleImageUploadChange(e) {
     if (e.target.files && e.target.files[0]) {
+      if (e.target.files[0].size > 75*1024) {
+        // 75*1024  = 75kb
+        setImageUpload("");
+        setData({ ...data, image: "" });
+        setIsImageUpload(false);
+        setImgErr(true);
+        return;
+      }
+
       let reader = new FileReader();
       // Sử dụng FileReader để đọc file vừa chọn
 
@@ -106,6 +117,13 @@ function ModalEditCategory({ showModalEdit, setShowModalEdit, categoryEdit }) {
                     >
                       <i className="far fa-plus"></i>
                     </label>
+                    {imgErr ? (
+                      <span className="img__err">
+                        (Ảnh không được quá 75kB)
+                      </span>
+                    ) : (
+                      ""
+                    )}
                   </div>
                   <input
                     type="file"

@@ -3,7 +3,7 @@
   $txt-black: #222222;
   $bg-white: #f9f9f9;
   $modal-border: #b1aed9;
-  $img-border: #D4E7F6;
+  $img-border: #d4e7f6;
   $txt-err: #e41e3f;
 
   max-width: 470px !important;
@@ -96,7 +96,7 @@
         width: 90px;
         height: 90px;
         margin-bottom: 15px;
-        button{
+        button {
           position: absolute;
           top: 2px;
           right: 5px;
@@ -105,8 +105,8 @@
           border: none;
           color: $txt-black;
           font-size: 16px;
-          transition: .3s;
-          &:hover{
+          transition: 0.3s;
+          &:hover {
             color: $txt-blue;
           }
         }
@@ -117,6 +117,13 @@
           border-radius: 4px;
           border: 1px solid $img-border;
         }
+      }
+      .img__err {
+        color: $txt-err;
+        font-weight: normal;
+        font-size: 16px;
+        line-height: 19px;
+        margin-left: 15px;
       }
     }
   }
@@ -141,7 +148,7 @@
       }
     }
   }
-  &__error h4{
+  &__error h4 {
     text-align: center;
     color: $txt-err;
     font-size: 16px;

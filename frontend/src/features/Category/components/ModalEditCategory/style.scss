@@ -4,6 +4,7 @@
   $bg-white: #f9f9f9;
   $modal-border: #b1aed9;
   $img-border: #D4E7F6;
+  $txt-err: #e41e3f;
 
   max-width: 470px !important;
   &__content {
@@ -116,6 +117,13 @@
           border-radius: 4px;
           border: 1px solid $img-border;
         }
+      }
+      .img__err {
+        color: $txt-err;
+        font-weight: normal;
+        font-size: 16px;
+        line-height: 19px;
+        margin-left: 15px;
       }
     }
   }

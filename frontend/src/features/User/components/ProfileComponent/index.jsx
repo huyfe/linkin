@@ -71,7 +71,8 @@ function ProfileComponent(props) {
                 following: [...Profile2.following, {
                     id: Slug,
                     name: Profile.name,
-                    image: Profile.image
+                    image: Profile.image,
+                    slug: Profile.slug
                 }]
             };
 
@@ -79,7 +80,8 @@ function ProfileComponent(props) {
                 follower: [...Profile.follower, {
                     id: dataUsers.Id,
                     name: dataUsers.Fullname,
-                    image: dataUsers.Image
+                    image: dataUsers.Image,
+                    slug: dataUsers.Slug
                 }]
             };
 
@@ -106,14 +108,16 @@ function ProfileComponent(props) {
                 following: [{
                     id: Slug,
                     name: Profile.name,
-                    image: Profile.image
+                    image: Profile.image,
+                    slug: Profile.slug
                 }]
             };
             const dataFollower = {
                 follower: [{
                     id: dataUsers.Id,
                     name: dataUsers.Fullname,
-                    image: dataUsers.Image
+                    image: dataUsers.Image,
+                    slug: dataUsers.Slug
                 }]
             };
             console.log(dataFollow);
@@ -441,10 +445,10 @@ function ProfileComponent(props) {
                                                 <IntroduceProfile />
                                             </MDBTabsPane>
                                             <MDBTabsPane show={basicActive === "tab3"}>
-                                                <MainFollowing />
+                                                <MainFollowing Profile={Profile} />
                                             </MDBTabsPane>
                                             <MDBTabsPane show={basicActive === "tab4"}>
-                                                <MainFollower />
+                                                <MainFollower Profile={Profile} />
                                             </MDBTabsPane>
                                         </MDBTabsContent>
                                     </div>

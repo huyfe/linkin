@@ -32,11 +32,7 @@ function IntroduceProfile() {
             })
     }, [slug]);
 
-    // let date = new Date(Profile.birthday)
-    // const [month, day, year] = [date.getMonth() + 1, date.getDate(), date.getFullYear()];
-
     const ResetPass = details => {
-        console.log(details);
         if (details.oldpassword === "") {
             alert("Vui lòng điền mật khẩu cũ!")
         } else if (details.newpassword === "") {
@@ -91,7 +87,6 @@ function IntroduceProfile() {
     }
 
     const KeyEdit = detailsTwo => {
-
         if (detailsTwo.name === "") {
             alert("Vui lòng điền tên!")
         } else if (detailsTwo.birthday === "") {
@@ -121,8 +116,7 @@ function IntroduceProfile() {
                         }
                         localStorage.setItem('dataUser', JSON.stringify(profile2))
                         window.location.reload(false);
-                        // navigate('/');                        
-                        
+                        // navigate('/');                          
                     })
                     .catch(err => {
                         console.log(err);

@@ -1,0 +1,105 @@
+.mainFollower{
+    .searchFollower {
+        $txt-blue: #3573e2;
+        $txt-black: #222222;
+    
+        margin: 15px 0 30px;
+    
+        h3 {
+            font-weight: 500;
+            font-size: 20px;
+            line-height: 23px;
+            color: $txt-blue;
+            margin-bottom: 0;
+            margin-right: 60px;
+        }
+    
+        &__group {
+            position: relative;
+            flex-grow: 1;
+    
+            label {
+                position: absolute;
+                top: 0;
+                left: 0;
+                height: 100%;
+                padding-left: 15px;
+                padding-right: 10px;
+                font-size: 14px;
+                cursor: pointer;
+            }
+            
+            input {
+                width: 41%;
+                max-width: 250px;
+                height: 30px;
+                outline: none;
+                border: 1px solid $txt-blue;
+                border-radius: 4px;
+                padding: 5px 15px 5px 35px;
+            }
+        }
+    }
+
+    .listFollower {
+        width: 100%;
+        max-width: 960px;
+        display: flex;
+        flex-wrap: wrap;
+        margin-left: calc(-1 * 80px);
+        margin-bottom: calc(-1 * 25px);
+        
+        &__item {
+            width: calc((100% / 3) - 80px);
+            margin-left: 80px;
+            margin-bottom: 25px;
+            .followerItem {
+                $txt-blue: #3573e2;
+                $txt-black: #222222;
+                $icon: #b1aed9;
+            
+                a {
+                    margin-right: 15px;
+                }
+                
+                img {
+                    width: 50px;
+                    height: 50px;
+                    border-radius: 50%;
+                    object-fit: cover;
+                    border: 1px solid $txt-blue;
+                }
+            
+                h3 {
+                    word-break: break-word;
+                    font-weight: normal;
+                    font-size: 13px;
+                    line-height: 15px;
+                    color: $txt-black;
+                    margin-bottom: 0;
+                    margin-right: auto;
+                }
+            
+                button {
+                    display: flex;
+                    margin-right: 5px;
+                    outline: none;
+                    border: none;
+                    background-color: transparent;
+                    font-size: 20px;
+                    color: $icon;
+                    padding: 5px;
+                    transition: .3s;
+            
+                    &:hover{
+                        color: $txt-black;
+                        
+                        span.icon-user-voice::before{
+                            color: initial;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

@@ -19,8 +19,8 @@ const User = new Schema(
         image: { type: String },
         theme: { type: String },
         public: { type: String },
-        follower: [{id: Number, name: String, image: String}],
-        following: [{id: Number, name: String, image: String}],
+        follower: [{id: Number, name: String, image: String, slug: String}],
+        following: [{id: Number, name: String, image: String, slug: String}],
         role: {type: String},
         slug: { type: String, slug: 'name', unique: true },
         accessToken: {type:String}

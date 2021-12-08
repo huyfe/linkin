@@ -23,7 +23,10 @@ ItemMyGroupComponent.defaultProps = {
 };
 
 function ItemMyGroupComponent(props) {
+    // đếm numbers member tham gia
     const numbers = props.members.length;
+    // Format date post
+    const date = new Date(props.date).toLocaleDateString('vi-VN', { day: 'numeric', month: 'long', year: 'numeric' } )
     return (
         <div className="box__my__group">
             <div className="item__list__group">
@@ -43,13 +46,7 @@ function ItemMyGroupComponent(props) {
                     </div>
                     <div className="item__date__join">
                         {/* fomat date time */}
-                        <p>Bạn tham gia từ  
-                            {new Intl.DateTimeFormat("en-GB", {
-                                year: "numeric",
-                                month: "long",
-                                day: "2-digit"
-                            }).format(props.firstSale)}
-                        </p>
+                        <p>Bạn tham gia từ {date}</p>
                     </div>
                 </div>
             </div>

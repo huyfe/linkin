@@ -133,18 +133,15 @@ function ManagerGroupComponent(props) {
                                 <MDBModalBody>
 
                                     <MDBValidation className='row gx-0 gy-3' noValidate>
-                                        {/* <MDBValidation onSubmit={() => onSubmitForm(formValue)} className='row gx-0 gy-3' noValidate> */}
+                                    {/* <MDBValidation onSubmit={() => onSubmitForm(formValue)} className='row gx-0 gy-3' noValidate> */}
                                         <div className='col-12'>
                                             <MDBInput
-                                                className='bg-light rounded-0'
-                                                value=""
-                                                name='title'
-                                                onChange=""
-                                                id='validationCustom01'
-                                                required
-                                                label='Tên nhóm'
-                                                validation='Xin mời nhập tên nhóm!'
-                                                invalid
+                                             className='bg-light rounded-0'
+                                             type="text"
+                                             label="Tên nhóm"
+                                             required
+                                             validation='Xin mời nhập tên nhóm!'
+                                             invalid
                                             />
                                         </div>
                                         <div className='col-12'>

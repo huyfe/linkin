@@ -43,15 +43,12 @@ export default function Login() {
                             Id: Logincheck.data.result._id,
                             Fullname: Logincheck.data.result.name,
                             Email: Logincheck.data.result.email,
-                            Address: Logincheck.data.result.address,
-                            Hometown: Logincheck.data.result.hometown,
                             Date: Logincheck.data.result.birthday,
-                            Phone: Logincheck.data.result.phone,
                             Role: Logincheck.data.result.role,
                             Slug: Logincheck.data.result.slug,
                             Public: Logincheck.data.result.public,
                             Image: Logincheck.data.result.image,
-                            CoverImage: Logincheck.data.result.coverimage,
+                            Theme: Logincheck.data.result.theme,
                             AccessToken: Logincheck.data.Token
                         });
                         alert("Đăng nhập thành công!")

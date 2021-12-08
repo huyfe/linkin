@@ -48,6 +48,10 @@ function ProfileComponent(props) {
             const Profileinfo = await ProfileUser(slug);
             dispatch(fetchOfUser(Profileinfo.data.users));
             setProfile(Profileinfo.data.users)
+            const gggg = Profileinfo.data.users.follower?.filter((ggs) => {
+                return ggs.id === dataUsers.Id
+            })
+            setProfile3(gggg.length);
         }
         fetchInformation();
     }, [slug]);
@@ -60,28 +64,33 @@ function ProfileComponent(props) {
         }
         fetchInformation2();
     }, [dataUsers.Slug]);
-    
+
     const followFriend = (Slug) => {
-        if(Profile2.following.length>0){
-            const dataFollow = {    
-                following: [{
-                    id: Slug
+        if (Profile2.following.length > 0) {
+            const dataFollow = {
+                following: [...Profile2.following, {
+                    id: Slug,
+                    name: Profile.name,
+                    image: Profile.image,
+                    slug: Profile.slug
                 }]
             };
+
             const dataFollower = {
-                follower: [{
-                    id: dataUsers.Id
+                follower: [...Profile.follower, {
+                    id: dataUsers.Id,
+                    name: dataUsers.Fullname,
+                    image: dataUsers.Image,
+                    slug: dataUsers.Slug
                 }]
             };
-            console.log(dataFollow);
+
             try {
                 axios.patch(`http://localhost:3000/users/edit-infomation-user/` + dataUsers.Id, dataFollow)
                     .then(res => {
-                        alert('Theo dõi thành công!');
-                        window.location.reload(false);
                         axios.patch(`http://localhost:3000/users/edit-infomation-user/` + Profile._id, dataFollower)
                             .then(res => {
-                                alert('Theo dõi thành công!');
+                                // alert('Theo dõi thành công!');
                                 window.location.reload(false);
                             })
                             .catch(err => {
@@ -94,26 +103,70 @@ function ProfileComponent(props) {
             } catch (e) {
                 console.log(e);
             }
-        }else{
-            const dataFollow = {    
+        } else {
+            const dataFollow = {
                 following: [{
-                    id: Slug
+                    id: Slug,
+                    name: Profile.name,
+                    image: Profile.image,
+                    slug: Profile.slug
                 }]
             };
             const dataFollower = {
                 follower: [{
-                    id: dataUsers.Id
+                    id: dataUsers.Id,
+                    name: dataUsers.Fullname,
+                    image: dataUsers.Image,
+                    slug: dataUsers.Slug
                 }]
             };
             console.log(dataFollow);
             try {
                 axios.patch(`http://localhost:3000/users/edit-infomation-user/` + dataUsers.Id, dataFollow)
                     .then(res => {
-                        alert('Theo dõi thành công!');
-                        window.location.reload(false);
                         axios.patch(`http://localhost:3000/users/edit-infomation-user/` + Profile._id, dataFollower)
                             .then(res => {
-                                alert('Theo dõi thành công!');
+                                // alert('Theo dõi thành công!');
+                                window.location.reload(false);
+                            })
+                            .catch(err => {
+                                console.log(err);
+                            })
+                    })
+                    .catch(err => {
+                        console.log(err);
+                    })
+            } catch (e) {
+                console.log(e);
+            }
+        }
+    }
+
+    const unfollowFriend = (Slug) => {
+        if (Profile2.following.length > 0) {
+            
+            const folloWing = Profile2.following?.filter((ggs)=>{
+                return ggs.id !== Slug
+            })
+
+            const folloWer = Profile.follower?.filter((ggs)=>{
+                return ggs.id !== dataUsers.Id
+            })
+
+            const dataFollow = {
+                following: folloWing
+            };
+
+            const dataFollower = {
+                follower: folloWer
+            };
+
+            try {
+                axios.patch(`http://localhost:3000/users/edit-infomation-user/` + dataUsers.Id, dataFollow)
+                    .then(res => {
+                        axios.patch(`http://localhost:3000/users/edit-infomation-user/` + Profile._id, dataFollower)
+                            .then(res => {
+                                // alert('Hủy theo dõi thành công!');
                                 window.location.reload(false);
                             })
                             .catch(err => {
@@ -146,7 +199,7 @@ function ProfileComponent(props) {
             let reader = new FileReader();
             reader.readAsDataURL(detailS.image[0])
             reader.onload = (e) => {
-                console.log("img data", e.target.result);
+                // console.log("img data", e.target.result);
                 const offff = ({
                     image: e.target.result
                 })
@@ -155,6 +208,19 @@ function ProfileComponent(props) {
                         .then(res => {
                             alert('Cập nhật ảnh đại diện thành công!');
                             // navigate('/');
+                            const profile2 = {
+                                Id: dataUsers.Id,
+                                Fullname: dataUsers.Fullname,
+                                Email: dataUsers.Email,
+                                Date: dataUsers.Date,
+                                Role: dataUsers.Role,
+                                Slug: dataUsers.Slug,
+                                Public: dataUsers.Public,
+                                Image: e.target.result,
+                                Theme: dataUsers.Theme,
+                                AccessToken: dataUsers.AccessToken
+                            }
+                            localStorage.setItem('dataUser', JSON.stringify(profile2))
                             window.location.href = `/profile/${dataUsers.Slug}`;
                         })
                         .catch(err => {
@@ -168,27 +234,40 @@ function ProfileComponent(props) {
     }
 
     const KeyEditCoverImage = detailSs => {
-        console.log(detailSs);
 
-        if (detailSs.coverimage === "") {
+        if (detailSs.theme === "") {
             alert("Vui lòng chọn ảnh!")
         } else {
             let reader = new FileReader();
-            reader.readAsDataURL(detailSs.coverimage[0])
+            reader.readAsDataURL(detailSs.theme[0])
             reader.onload = (e) => {
-                console.log("img data", e.target.result);
+                // console.log("img data", e.target.result);
                 const offff = ({
-                    coverimage: e.target.result
+                    theme: e.target.result
                 })
                 try {
                     axios.patch(`http://localhost:3000/users/edit-infomation-user/` + dataUsers.Id, offff)
                         .then(res => {
                             alert('Cập nhật ảnh bìa thành công!');
                             // navigate('/');
+                            const profile2 = {
+                                Id: dataUsers.Id,
+                                Fullname: dataUsers.Fullname,
+                                Email: dataUsers.Email,
+                                Date: dataUsers.Date,
+                                Role: dataUsers.Role,
+                                Slug: dataUsers.Slug,
+                                Public: dataUsers.Public,
+                                Image: dataUsers.Image,
+                                Theme: e.target.result,
+                                AccessToken: dataUsers.AccessToken
+                            }
+                            localStorage.setItem('dataUser', JSON.stringify(profile2))
                             window.location.href = `/profile/${dataUsers.Slug}`;
                         })
                         .catch(err => {
-                            console.log(err);
+                            alert("ảnh kích thước quá lớn!")
+                            window.location.reload(false);
                         })
                 } catch (e) {
                     console.log(e);
@@ -263,15 +342,18 @@ function ProfileComponent(props) {
         <div>
             {(Profile) ? (
                 <section id="Profile-component">
+                    {/* {Profile2.following?.map(flo=>(
+                        flo.id
+                    ))} */}
                     <div className="container-fluid">
                         <div className="row">
                             <div className="col-12">
                                 <div className="img-profile">
                                     {(dataUsers) ? (
-                                        (Profile.coverimage) === "anhbia.jpg" ? (
+                                        (Profile.theme) === "anhbia.jpg" ? (
                                             <img src="/images/Users/anhbia.jpg" alt="" />
                                         ) : (
-                                            <img src={Profile.coverimage} alt="" />
+                                            <img src={Profile.theme} alt="" />
                                         )
                                     ) : ("")}
                                     <div className="avatar-name d-flex align-items-center justify-content-between">
@@ -296,9 +378,16 @@ function ProfileComponent(props) {
                                         </div>
                                         {(dataUsers) ? (
                                             (dataUsers.Slug) !== Profile.slug ? (
-                                                <MDBBtn outline className="button" onClick={() => followFriend(Profile._id)}>
-                                                    Theo dõi
-                                                </MDBBtn>
+                                                (Profile3) === 0 ? (
+                                                    <MDBBtn outline className="button" onClick={() => followFriend(Profile._id)}>
+                                                        Theo dõi
+                                                    </MDBBtn>
+                                                ) : (
+                                                    <MDBBtn outline className="button" onClick={() => unfollowFriend(Profile._id)}>
+                                                        Đang theo dõi
+                                                    </MDBBtn>
+                                                )
+
                                             ) : ("")
                                         ) : ("")}
                                     </div>
@@ -356,10 +445,10 @@ function ProfileComponent(props) {
                                                 <IntroduceProfile />
                                             </MDBTabsPane>
                                             <MDBTabsPane show={basicActive === "tab3"}>
-                                                <MainFollowing />
+                                                <MainFollowing Profile={Profile} />
                                             </MDBTabsPane>
                                             <MDBTabsPane show={basicActive === "tab4"}>
-                                                <MainFollower />
+                                                <MainFollower Profile={Profile} />
                                             </MDBTabsPane>
                                         </MDBTabsContent>
                                     </div>

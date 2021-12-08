@@ -169,7 +169,7 @@ function UpLoadLinkComponent(props) {
                                         <label htmlFor="" className="mb-2">Danh mục</label>
                                         <div className="checkbox-categories" style={{ minWidth: '22rem' }}>
                                             {
-                                                listCategoryData.map(cat => {
+                                                listCategoryData?.map(cat => {
                                                     return (
                                                         <MDBCheckbox onChange={handleChangeCheckbox} className="mb-2" key={cat._id} name={cat.title} id={cat._id} value={cat._id} label={cat.title} inline />
                                                     )

@@ -32,17 +32,28 @@ function ModalAddCategory({ showModal, setShowModal }) {
     title: "",
     image: "",
     public: true,
-    id_user_or_group: dataUser?dataUser.Id:0,
+    id_user_or_group: dataUser ? dataUser.Id : 0,
     role: 0,
   };
   const [data, setData] = useState(initData);
 
   const [showErr, setShowErr] = useState(false);
 
+  const [imgErr, setImgErr] = useState(false);
+
   const [imageUpload, setImageUpload] = useState("");
   const [isImageUpload, setIsImageUpload] = useState(false);
   function handleImageUploadChange(e) {
     if (e.target.files && e.target.files[0]) {
+      if (e.target.files[0].size > 75*1024) {
+        // 75*1024  = 75kb
+        setImageUpload("");
+        setData({ ...data, image: "" });
+        setIsImageUpload(false);
+        setImgErr(true);
+        return;
+      }
+
       let reader = new FileReader();
       // Sử dụng FileReader để đọc file vừa chọn
 
@@ -114,6 +125,13 @@ function ModalAddCategory({ showModal, setShowModal }) {
                     >
                       <i className="far fa-plus"></i>
                     </label>
+                    {imgErr ? (
+                      <span className="img__err">
+                        (Ảnh không được quá 75kB)
+                      </span>
+                    ) : (
+                      ""
+                    )}
                   </div>
                   <input
                     // className="d-block"
@@ -170,7 +188,12 @@ function ModalAddCategory({ showModal, setShowModal }) {
                   <h4>Vui lòng nhập đầy đủ thông tin</h4>
                 </div>
                 <MDBModalFooter className="modalAdd__footer">
-                  <MDBBtn type="button" onClick={() => setShowModal(!showModal)}>Hủy</MDBBtn>
+                  <MDBBtn
+                    type="button"
+                    onClick={() => setShowModal(!showModal)}
+                  >
+                    Hủy
+                  </MDBBtn>
                   <MDBBtn type="submit">Đồng ý</MDBBtn>
                 </MDBModalFooter>
               </form>

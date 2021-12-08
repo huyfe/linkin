@@ -8,13 +8,10 @@ export default function FormRegister({ Register, errors, result }) {
     const [details, setDetails] = useState({
         name: "",
         email: "",
-        address: "",
-        hometown: "",
-        phone: "",
         birthday: "",
         created_date: date,
         image: "avatar.png",
-        coverimage: "anhbia.jpg",
+        theme: "anhbia.jpg",
         public: 1,
         password: "",
         Password: "",
@@ -46,15 +43,6 @@ export default function FormRegister({ Register, errors, result }) {
                     </div><br />
                     <div className="form-group">
                         <input className="form-control" type="email" placeholder="Email" name="Email" id="Email" onChange={e => setDetails({ ...details, email: e.target.value })} value={details.email} />
-                    </div><br />
-                    <div className="form-group">
-                        <input className="form-control" type="text" placeholder="Địa chỉ" name="address" id="address" onChange={e => setDetails({ ...details, address: e.target.value })} value={details.address} />
-                    </div><br />
-                    <div className="form-group">
-                        <input className="form-control" type="text" placeholder="Quê quán" name="hometown" id="hometown" onChange={e => setDetails({ ...details, hometown: e.target.value })} value={details.hometown} />
-                    </div><br />
-                    <div className="form-group">
-                        <input className="form-control" type="number" placeholder="Số điện thoại" name="phone" id="phone" onChange={e => setDetails({ ...details, phone: e.target.value })} value={details.phone} />
                     </div><br />
                     <div className="form-group">
                         <input className="form-control" type="date" name="Birthday" id="Ngày tháng năm sinh" pattern="\d{1,2}/\d{1,2}/\d{4}" onChange={e => setDetails({ ...details, birthday: e.target.value })} value={details.birthday} />

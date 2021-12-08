@@ -5,7 +5,7 @@ export default function FormEditCoverImage({ KeyEditCoverImage }) {
     const dataUser = localStorage.getItem("dataUser")
     const dataUsers = JSON.parse(dataUser)
     const [detailSs, setDetailSs] = useState({
-        coverimage: dataUsers.CoverImage
+        theme: dataUsers.Theme
     });
 
     const submitHandlers = e => {
@@ -18,7 +18,7 @@ export default function FormEditCoverImage({ KeyEditCoverImage }) {
             <h3>Ảnh bìa</h3>
             <div className="itemintroduces d-flex justify-content-start">
                 <div className="img-title d-flex align-items-center">
-                    <input className="form-control" type="file" name="Image" accept="image/*" onChange={e => setDetailSs({ ...detailSs, coverimage: e.target.files })} required/>
+                    <input className="form-control" type="file" name="Image" accept="image/*" onChange={e => setDetailSs({ ...detailSs, theme: e.target.files })} required/>
                 </div> &nbsp;
                 <MDBBtn type="submit">Cập nhật</MDBBtn>
             </div> <br />

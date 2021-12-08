@@ -17,29 +17,18 @@ function GroupProfile() {
     }, []);
 
     const groupListData = useSelector(state => state.group);
-    console.log(groupListData, "list group");
 
     return (
         <div className="Groupsprofile">
             <GroupTitle />
-            <div className="itemgroups d-flex justify-content-between">
-                <div className="img-title d-flex align-items-center justify-content-center">
-                    <img src="/images/Users/link_img.png" alt="" />
-                    <h2>Công động thiết kế</h2>
+            {groupListData?.map(groups => (
+                <div className="itemgroups d-flex justify-content-between">
+                    <div className="img-title d-flex align-items-center justify-content-center">
+                        <img src={groups.image} alt="" width="24" height="24"/>
+                        <h2>{groups.title}</h2>
+                    </div>
                 </div>
-            </div>
-            <div className="itemgroups d-flex justify-content-between">
-                <div className="img-title d-flex align-items-center justify-content-center">
-                    <img src="/images/Users/link_img.png" alt="" />
-                    <h2>Công động thiết kế</h2>
-                </div>
-            </div>
-            <div className="itemgroups d-flex justify-content-between">
-                <div className="img-title d-flex align-items-center justify-content-center">
-                    <img src="/images/Users/link_img.png" alt="" />
-                    <h2>Công động thiết kế</h2>
-                </div>
-            </div>
+            ))}
         </div>
     );
 }

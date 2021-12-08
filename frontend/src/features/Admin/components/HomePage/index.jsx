@@ -10,6 +10,7 @@ import {
 } from 'mdb-react-ui-kit';
 import AdminUser from '../AdminUser';
 import './style.scss';
+import AdminCategory from '../AdminCategory';
 
 function HomePage() {
     const [verticalActive, setVerticalActive] = useState('tab1');
@@ -71,7 +72,7 @@ function HomePage() {
                             <MDBTabsPane show={verticalActive === 'tab1'}>Bảng điều khiển content</MDBTabsPane>
                             <MDBTabsPane show={verticalActive === 'tab2'}><AdminUser /></MDBTabsPane>
                             <MDBTabsPane show={verticalActive === 'tab3'}>Links content</MDBTabsPane>
-                            <MDBTabsPane show={verticalActive === 'tab4'}>Danh mục content</MDBTabsPane>
+                            <MDBTabsPane show={verticalActive === 'tab4'}><AdminCategory/></MDBTabsPane>
                             <MDBTabsPane show={verticalActive === 'tab5'}>Nhóm content</MDBTabsPane>
                             <MDBTabsPane show={verticalActive === 'tab6'}>Chat content</MDBTabsPane>
                             <MDBTabsPane show={verticalActive === 'tab7'}>chung content</MDBTabsPane>

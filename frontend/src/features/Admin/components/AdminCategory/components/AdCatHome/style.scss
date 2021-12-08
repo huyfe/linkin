@@ -1,0 +1,19 @@
+.adcathome {
+  $txt-blue: #3573e2;
+  $txt-black: #222222;
+  $bg-white: #f9f9f9;
+  ul.nav-tabs {
+    a {
+      color: $txt-blue !important;
+      transition: .3s;
+      &:hover {
+        background-color: transparent;
+        color: $txt-black !important;
+      }
+      &.active {
+        border-color: $txt-blue !important;
+        background-color: transparent !important;
+      }
+    }
+  }
+}

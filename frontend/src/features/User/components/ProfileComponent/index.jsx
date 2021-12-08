@@ -90,7 +90,7 @@ function ProfileComponent(props) {
                     .then(res => {
                         axios.patch(`http://localhost:3000/users/edit-infomation-user/` + Profile._id, dataFollower)
                             .then(res => {
-                                alert('Theo dõi thành công!');
+                                // alert('Theo dõi thành công!');
                                 window.location.reload(false);
                             })
                             .catch(err => {
@@ -126,7 +126,7 @@ function ProfileComponent(props) {
                     .then(res => {
                         axios.patch(`http://localhost:3000/users/edit-infomation-user/` + Profile._id, dataFollower)
                             .then(res => {
-                                alert('Theo dõi thành công!');
+                                // alert('Theo dõi thành công!');
                                 window.location.reload(false);
                             })
                             .catch(err => {
@@ -166,7 +166,7 @@ function ProfileComponent(props) {
                     .then(res => {
                         axios.patch(`http://localhost:3000/users/edit-infomation-user/` + Profile._id, dataFollower)
                             .then(res => {
-                                alert('Hủy theo dõi thành công!');
+                                // alert('Hủy theo dõi thành công!');
                                 window.location.reload(false);
                             })
                             .catch(err => {

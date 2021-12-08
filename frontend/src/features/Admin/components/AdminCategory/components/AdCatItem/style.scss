@@ -1,0 +1,69 @@
+.adcatitem {
+  $txt-blue: #3573e2;
+  $txt-black: #222222;
+  $bg-white: #f9f9f9;
+  max-width: 200px;
+  margin: 0 auto;
+  margin: 20px;
+  height: 200px;
+  perspective: 1000px;
+  &__inner {
+    width: 100%;
+    height: 100%;
+    perspective: 1000px;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+    position: relative;
+  }
+  &:hover &__inner {
+    transform: rotateY(180deg);
+  }
+  .front,
+  .back {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    backface-visibility: hidden;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  }
+  .back {
+    transform: rotateY(180deg);
+    text-align: center;
+    padding: 10px;
+    > span {
+      color: $txt-black;
+      font-size: 20px;
+      font-weight: 700;
+    }
+    .public{
+        font-size: 16px;
+        margin-bottom: 5px;
+        color: $txt-black;
+    }
+    h4{
+        margin-bottom: 10px;
+        font-size: 24px;
+        font-weight: 500;
+        color: $txt-blue;
+        display:-webkit-box;
+        -webkit-line-clamp:3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        word-break: break-word;
+    }
+    .date{
+        font-size: 18px;
+        font-weight: 700;
+    }
+  }
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}

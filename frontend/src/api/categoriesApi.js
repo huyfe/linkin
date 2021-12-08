@@ -40,6 +40,16 @@ const categoriesApi = {
     const url = `/categories/${slug}`;
     return axiosClient.get(url);
   },
+
+  getAll() {
+    const url = "/categories";
+    return axiosClient.get(url);
+  },
+
+  getTrash(){
+    const url = "/categories/show-trash";
+    return axiosClient.get(url);
+  },
 };
 
 export default categoriesApi;

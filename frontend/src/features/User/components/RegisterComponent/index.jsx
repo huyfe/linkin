@@ -17,6 +17,7 @@ export default function Register() {
     const [errors, showErrors] = useState(null);
 
     const Register = details => {
+        const pattern = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+")([\w-]+(?:\.[\w-]+)*))(@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)/i);
         if (details.name === "") {
             const errorss = "Vui lòng nhập tên";
             showErrors(errorss);
@@ -36,6 +37,10 @@ export default function Register() {
         } else if (details.Password === "") {
             const errorss = "Vui lòng xác nhận mật khẩu";
             showErrors(errorss);
+            showResult(true);
+        } else if (!pattern.test(details.email)) {
+            const errorPassword = "Vui lòng nhập đúng định dạng email";
+            showErrors(errorPassword);
             showResult(true);
         } else if (details.name.length > 14) {
             const errorss = "Tên không điền quá 14 ký tự!";

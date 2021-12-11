@@ -17,12 +17,17 @@ export default function Login() {
     const [errors, showErrors] = useState(null);
 
     const Login = details => {
+        const pattern = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+")([\w-]+(?:\.[\w-]+)*))(@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)/i);
         if (details.email === "") {
             const errorEmail = "Vui lòng nhập email";
             showErrors(errorEmail);
             showResult(true);
         } else if (details.password === "") {
             const errorPassword = "Vui lòng nhập mật khẩu";
+            showErrors(errorPassword);
+            showResult(true);
+        } else if (!pattern.test(details.email)) {
+            const errorPassword = "Vui lòng nhập đúng định dạng email";
             showErrors(errorPassword);
             showResult(true);
         } else {

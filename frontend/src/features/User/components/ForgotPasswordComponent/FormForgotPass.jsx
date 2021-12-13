@@ -1,10 +1,12 @@
 import React, { useState, useRef, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import { MDBBtn } from 'mdb-react-ui-kit';
 import emailjs from 'emailjs-com';
 import axios from 'axios';
 
 const Result = () => {
     return (
-        <span className="badge badge-pill badge-success">Tin nhắn của bạn đã được gửi thành công!</span>
+        <span className="checkin">Gửi thành công!</span>
     )
 }
 
@@ -16,7 +18,9 @@ export default function FormForgotPass({ ForgotPass }) {
 
     const sendEmail = (e) => {
         e.preventDefault();
+        
         const valuegmail = document.getElementById("email").value;
+        console.log(valuegmail);
         axios.get(`http://localhost:3000/users/email/${valuegmail}`)
             .then(res => {
                 setDetails({ 
@@ -31,6 +35,7 @@ export default function FormForgotPass({ ForgotPass }) {
                             console.log(error.text);
                         });
                     showResult(true);
+                    localStorage.removeItem("datacheckmail");
                 }
             })
             .catch(err => {
@@ -51,21 +56,19 @@ export default function FormForgotPass({ ForgotPass }) {
     }, [details])
 
     return (
-        <div className="ForgotPass-component">
-            <div className="many-hands">
-                <img src="images/Users/background_user1.png" alt="" />
+        <form className="form d-flex flex-column" ref={form} onSubmit={sendEmail}>
+            <div className="form-detail">
+                <div className="form-group">
+                    <input className="form-control" type="email" placeholder="Email" name="email" id="email" />
+                </div>
+                <MDBBtn type="submit" className="pull-right">Xác thực Email</MDBBtn>
             </div>
-            <div className="form-ForgotPass">
-                <h2>Quên mật khẩu</h2>
-                <p>Vui lòng ghi đúng email để xác thực!</p>
-                <form className="form d-flex flex-column" ref={form} onSubmit={sendEmail}>
-                    <div className="form-group">
-                        <input className="form-control" type="email" placeholder="Email" name="email" id="email" />
-                    </div> <br />
-                    <div >{result ? <Result /> : null}</div>
-                    <button type="submit" className="pull-right">Xác thực Email</button>
-                </form>
+            <div className="forgot-pass d-flex justify-content-between">
+                <div >{result ? <Result /> : null}</div>
+                <div>
+                    <Link to="/login">Đăng nhập <i class="fal fa-arrow-right"></i></Link>
+                </div>
             </div>
-        </div>
+        </form>
     );
 }

@@ -16,7 +16,7 @@ $white: #ffffff;
         .menu-header {
             .header__logo {
                 display: flex;
-                justify-content: space-between;
+                justify-content: start;
                 align-items: center;
 
                 a {
@@ -25,13 +25,6 @@ $white: #ffffff;
                         width: 150%;
                         min-width: 40px;
                     }
-                    @media (max-width: 600px) {
-                        margin-right: 30px;
-                        img {
-                            width: 120%;
-                            min-width: 20px;
-                        }
-                    }
                 }
                 h2 {
                     font-family: Audiowide;
@@ -39,34 +32,35 @@ $white: #ffffff;
                     font-weight: normal;
                     font-size: 60px;
                     line-height: 76px;
-                    margin-bottom: 0 !important;
                     color: #2196f3;
+                    margin-bottom: 0 !important;
 
                     @media (max-width: 1600px) {
                         font-size: 52px;
                     }
 
-                    @media (max-width: 600px) {
+                    @media (max-width: 620px) {
                         font-size: 40px;
                         line-height: 50px;
                     }
                 }
-                @media (max-width: 600px) {
+
+                @media (max-width:900px) {
                     justify-content: center;
                 }
             }
 
-            @media (max-width: 600px) {
+            @media (max-width: 900px) {
                 display: flex;
                 flex-direction: column;
             }
         }
 
-        @media (max-width: 600px) {
-            .col-2 {
+        @media (max-width:900px) {
+            .col-4{
                 width: 100% !important;
             }
-            .col-10 {
+            .col-8{
                 width: 100% !important;
             }
         }
@@ -75,157 +69,173 @@ $white: #ffffff;
         display: flex;
         justify-content: end;
         align-items: center;
-
         button {
             font-weight: normal;
             font-size: 16px;
             line-height: 19px;
             text-transform: none;
         }
+        .btn-login,
+        .btn-create-link {
+            width: 170px;
+            padding-top: 15px;
+            padding-bottom: 15px;
+        }
+        .btn-notification {
+            margin: 0 30px;
+            width: 37px;
+            font-size: 18px;
+            color: #222222;
+            background-color: transparent;
+            &:focus {
+                color: #222222;
+                background-color: transparent;
+            }
+            &:hover {
+                color: #222222;
+                background-color: #3574e231;
+            }
+        }
 
         .userss {
-            button {
-                font-family: Roboto;
-                font-style: normal;
-                font-weight: 500;
-                font-size: 17px;
-                line-height: 23px;
-                text-align: center;
-                color: #ffffff;
-                border: none;
-                transition: 0.3s;
-                text-transform: none;
-            }
-        }
-
-        @media (max-width: 600px) {
-            justify-content: center;
-            margin-top: 10px;
-        }
-    }
-}
-.ForgotPass-form {
-    .ForgotPass-component {
-        height: calc(100vh - 71px);
-        background-color: #fdfdfd;
-        display: flex;
-        align-items: center;
-
-        .many-hands {
-            width: 50%;
-            img {
-                width: 200%;
-                // object-fit: cover;
-            }
-
-            @media (max-width: 768px) {
-                display: none;
-            }
-        }
-
-        .form-ForgotPass {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-direction: column;
-            width: 100%;
-
-            h2 {
-                font-family: Roboto;
-                font-style: normal;
-                font-weight: 900;
-                font-size: 48px;
-                line-height: 56px;
-                text-align: center;
-                color: #3573e2;
-                
-                @media (max-width: 600px) {
-                    font-size: 35px;
-                    line-height: 43px;
-                }
-            }
-
-            p {
-                font-family: Roboto;
-                font-style: normal;
-                font-weight: normal;
-                font-size: 20px;
-                line-height: 23px;
-                text-align: center;
-                color: rgb(165, 159, 159);
-                margin-top: 16px;
-
-                a {
-                    color: #3573e2;
-                    text-decoration: none;
-                }
-
-                @media (max-width: 600px) {
-                    font-size: 18px;
-                    line-height: 21px;
-                }
-            }
-
             form {
-                margin-top: 20px;
-                width: 50.42%;
-                max-width: 507px;
-                height: 100%;
+                .form-detail {
+                    display: flex;
+                    .form-group {
+                        margin-top: 20px;
+                        margin-right: 10px;
+                        input {
+                            background: #fdfdfd;
+                            border: 2px solid #3573e2;
+                            box-sizing: border-box;
+                            padding-left: 10px;
+                            height: 44px;
+                            font-family: Roboto;
+                            font-style: normal;
+                            font-weight: normal;
+                            font-size: 20px;
+                            line-height: 23px;
+                            color: #222222;
+                        }
+                    }
 
-                .form-group {
-                    input {
-                        background: #fdfdfd;
-                        border: 2px solid #3573e2;
-                        box-sizing: border-box;
-                        border-radius: 15px;
-                        height: 88px;
-                        padding-left: 30px;
+                    button {
+                        margin-top: 20px;
+                        margin-left: auto;
+                        height: 44px;
                         font-family: Roboto;
                         font-style: normal;
-                        font-weight: normal;
-                        font-size: 28px;
-                        line-height: 33px;
-                        color: #222222;
+                        font-weight: 500;
+                        font-size: 20px;
+                        line-height: 23px;
+                        text-align: center;
+                        color: #ffffff;
+                        border: none;
+                    }
+
+                    @media (max-width: 1024px) {
+                        .form-group {
+                            input {
+                                font-size: 16px;
+                            }
+                        }
+
+                        button {
+                            font-size: 16px;
+                        }
+                    }
+
+                    @media (max-width: 620px) {
+                        flex-direction: column;
+                        button {
+                            font-size: 16px;
+                        }
+                    }
+
+                    @media (max-width:620px) {
+                        align-items: center;
+                        .form-group{
+                            width: 120%;
+                            margin-right: 0;
+                        }
+
+                        button{
+                            width: 100%;
+                            margin-left: 0;
+                        }
                     }
                 }
 
                 .forgot-pass {
-                    margin-top: 30px;
+                    margin-top: 10px;
+                    .checkin {
+                        font-family: Roboto;
+                        font-style: normal;
+                        font-weight: normal;
+                        font-size: 20px;
+                        line-height: 23px;
+                        color: #20b158;
+                    }
+
+                    a {
+                        font-family: Roboto;
+                        font-style: normal;
+                        font-weight: normal;
+                        font-size: 17px;
+                        line-height: 23px;
+                        color: #3573e2;
+
+                        &:hover {
+                            color: #508ffc;
+                        }
+
+                        &.link-register {
+                            margin-right: 30px;
+
+                            .fa-arrow-right {
+                                margin-left: 5px;
+                                font-size: 12px;
+                            }
+                        }
+                    }
                 }
 
                 button {
-                    margin-top: 22px;
+                    margin-top: 20px;
                     margin-left: auto;
-                    width: 50%;
-                    max-width: 253.5px;
-                    height: 66px;
+                    width: 42%;
+                    max-width: 185.5px;
+                    height: 44px;
                     background: #3573e2;
-                    border-radius: 15px;
+                    border-radius: 5px;
 
                     font-family: Roboto;
                     font-style: normal;
                     font-weight: 500;
-                    font-size: 24px;
-                    line-height: 28px;
+                    font-size: 20px;
+                    line-height: 23px;
                     text-align: center;
                     color: #ffffff;
                     border: none;
                     transition: 0.3s;
-
-                    &:hover {
-                        background-color: transparent;
-                        border: 2px solid #3573e2;
-                        transition: 0.3s;
-                        color: #3573e2;
+                    text-transform: none;
+                    // &:hover {
+                    //     background-color: transparent;
+                    //     border: 2px solid #3573e2;
+                    //     transition: 0.3s;
+                    //     color: #3573e2;
+                    // }
+                    @media (max-width:1024px) {
+                        max-width: 155.5px;
                     }
                 }
             }
 
             @media (max-width: 1440px) {
                 form {
-                    width: 46%;
                     .form-group {
                         input {
+                            width: 100%;
                             height: 82px;
                             font-size: 26px;
                             line-height: 28px;
@@ -233,48 +243,86 @@ $white: #ffffff;
                     }
                 }
             }
+        }
 
-            @media (max-width: 1280px) {
-                form {
-                    width: 60%;
-                }
+        @media (max-width:900px) {
+            justify-content: center;
+        }
+    }
+
+    @media (max-width:900px) {
+        border-bottom: none;
+    }
+}
+
+.Forgotpass-form {
+    background-color: $white;
+
+    .Forgotpass-component {
+        height: 100%;
+        background-color: #fdfdfd;
+
+        .many-hands {
+            position: absolute;
+            background-color: #fdfdfd;
+            width: 100%;
+
+            img {
+                width: 75%;
             }
+        }
 
-            @media (max-width: 900px) {
-                justify-content: start;
+        .form-Forgotpass {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            position: relative;
+            width: 90%;
 
-                form {
-                    width: 60%;
+            .title-form {
+                margin-top: 200px;
+                margin-left: 100px;
+                display: flex;
+                flex-direction: column;
+                align-items: flex-end;
+                h3 {
+                    font-family: "Lobster", cursive;
+                    font-style: normal;
+                    font-weight: normal;
+                    font-size: 60px;
+                    line-height: 61px;
 
-                    .form-group {
-                        input {
-                            padding-left: 18px;
-                            font-size: 18px;
-                            line-height: 20px;
-                            height: 55px;
-                        }
+                    color: #2196f3;
+
+                    &.line-1 {
+                        margin-right: 30px;
                     }
+                }
+            }
 
-                    button {
-                        margin-top: 0px;
-                        font-size: 18px;
-                        line-height: 20px;
-                        height: 44px;
+            @media (max-width: 1440px) {
+                .title-form {
+                    margin-top: 150px;
+
+                    h3 {
+                        font-size: 50px;
+                        line-height: 51px;
                     }
                 }
             }
 
-            @media (max-width: 768px) {
-                form {
-                    width: 60%;
-                }
-            }
-
-            @media (max-width: 500px) {
-                form {
-                    width: 70%;
+            @media (max-width: 1024px) {
+                .title-form {
+                    h3 {
+                        font-size: 40px;
+                        line-height: 45px;
+                    }
                 }
             }
         }
+    }
+
+    @media (max-width: 900px) {
+        display: none;
     }
 }

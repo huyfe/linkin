@@ -24,25 +24,34 @@ export default function ForgotPassword() {
             <header className="header-forgotpass">
                 <nav className="header-forgotpass__menu">
                     <div className="row align-items-center menu-header">
-                        <div className="col-2">
+                        <div className="col-4">
                             <div className="header__logo">
                                 <NavLink to="/"> <img src="/logo.svg" alt="Linkin" /></NavLink>
                                 <h2>Linkin</h2>
                             </div>
                         </div>
-                        <div className="col-10">
-                            <div className="header-forgotpass__controls ">
+                        <div className="col-8">
+                            <div className="header-forgotpass__controls">
                                 <div className="userss d-flex align-items-center">
-                                    <MDBBtn onClick={loginLink}>Đăng nhập</MDBBtn> &nbsp;
-                                    <MDBBtn onClick={registerLink}>Đăng Ký</MDBBtn>
+                                    <FormForgotPass ForgotPass={ForgotPass} />
                                 </div>
                             </div>
                         </div>
                     </div>
                 </nav>
             </header>
-            <div className="ForgotPass-form">
-                <FormForgotPass ForgotPass={ForgotPass} />
+            <div className="Forgotpass-form">
+                <div className="Forgotpass-component">
+                    <div className="many-hands">
+                        <img src="/images/Users/background_user1.png" alt="" />
+                    </div>
+                    <div className="form-Forgotpass">
+                        <div className="title-form">
+                            <h3 className="line-1">Chia sẻ liên kết của bạn</h3>
+                            <h3>Kết nối thế giới</h3>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     );

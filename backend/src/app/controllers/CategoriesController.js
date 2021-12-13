@@ -110,6 +110,13 @@ module.exports = {
       .catch(next);
   },
 
+  //Lấy lại các danh mục đã xóa (Dạng danh sách) -> [PATCH]/list-restore
+  ListRestoreCategory(req, res, next) {
+    Categories.restore({ _id: {$in: req.body} })
+      .then(() => res.send("Restore successfully!"))
+      .catch(next);
+  },
+
   //Xóa vĩnh viễn danh mục -> [DELETE]/:id/destroy
   async DestroyCategory(req, res, next) {
     try {
@@ -120,11 +127,33 @@ module.exports = {
     }
   },
 
-  //Cập nhật Ghim cho danh mục
+  //Cập nhật Ghim cho danh mục -> [PATCH]/:id/pin
   async UpdatePin(req, res, next) {
     try {
       const category = await Categories.findById(req.params.id);
       await Categories.findByIdAndUpdate(req.params.id, {pin: !category.pin});
+      const categoryUpdate = await Categories.findById(req.params.id);
+      res.json(categoryUpdate);
+    } catch (err) {
+      res.json({ error: err });
+    }
+  },
+
+  //Cập nhật ID_Links cho danh mục -> [PATCH]/:id/links/:idLink
+  async UpdateLinks(req, res, next) {
+    try {
+      let idLink = req.params.idLink;
+      const category = await Categories.findById(req.params.id);
+      let curLinks = category.id_links;
+      let updateLinks = [];
+      if (curLinks.includes(+idLink)) {
+        updateLinks = [...curLinks].filter(i => i !== +idLink);
+      } else {
+        updateLinks = [...curLinks, +idLink];
+      }
+      
+      await Categories.findByIdAndUpdate(req.params.id, {id_links: updateLinks});
+
       const categoryUpdate = await Categories.findById(req.params.id);
       res.json(categoryUpdate);
     } catch (err) {

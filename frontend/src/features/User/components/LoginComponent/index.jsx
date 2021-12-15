@@ -56,7 +56,6 @@ export default function Login() {
                             Theme: Logincheck.data.result.theme,
                             AccessToken: Logincheck.data.Token
                         });
-                        alert("Đăng nhập thành công!")
                         // navigate('/');
                         window.location.href="/";
                     }

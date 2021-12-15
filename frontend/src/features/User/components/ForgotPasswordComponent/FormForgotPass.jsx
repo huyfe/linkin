@@ -35,7 +35,6 @@ export default function FormForgotPass({ ForgotPass }) {
                             console.log(error.text);
                         });
                     showResult(true);
-                    localStorage.removeItem("datacheckmail");
                 }
             })
             .catch(err => {

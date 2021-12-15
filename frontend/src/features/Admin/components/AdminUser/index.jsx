@@ -14,10 +14,12 @@ function AdminUser(props) {
     const dispatch = useDispatch();
     const [Profile, setProfile] = useState([])
     const [Showhide, setShowhide] = useState([])
+    const dataUser = localStorage.getItem("dataUser")
+    const dataUsers = JSON.parse(dataUser)
 
     // Pagination
     const [currentPage, setCurrentPage] = useState(1)
-    const [postPerPage] = useState(4)
+    const [postPerPage] = useState(5)
     const totalPost = users.length
     const pageNumber = []
     for (let i = 1; i <= Math.ceil(totalPost / postPerPage); i++) {
@@ -136,20 +138,27 @@ function AdminUser(props) {
                                 </td>
                                 <td>
                                     {
-                                        (Showhide) === "showupdate" ? (
-                                            <MDBBtn className='text-light' onClick={hideupdate}>
-                                                Sửa
-                                            </MDBBtn>
-                                        ) : (
-                                            <MDBBtn className='text-light' onClick={() => updateusers(userss.slug)}>
-                                                Sửa
+                                        (userss._id) === (dataUsers.Id) ? ("") : (
+                                            (Showhide) === "showupdate" ? (
+                                                <MDBBtn className='text-light' onClick={hideupdate}>
+                                                    Sửa
+                                                </MDBBtn>
+                                            ) : (
+                                                <MDBBtn className='text-light' onClick={() => updateusers(userss.slug)}>
+                                                    Sửa
+                                                </MDBBtn>
+                                            )
+                                        )
+
+                                    }
+                                    &nbsp;
+                                    {
+                                        (userss._id) === (dataUsers.Id) ? ("") : (
+                                            <MDBBtn className='text-dark' color='light' onClick={() => deleteusers(userss._id)}>
+                                                Xóa
                                             </MDBBtn>
                                         )
                                     }
-                                    &nbsp;
-                                    <MDBBtn className='text-dark' color='light' onClick={() => deleteusers(userss._id)}>
-                                        Xóa
-                                    </MDBBtn>
                                 </td>
                             </tr>
                         ))
@@ -159,7 +168,7 @@ function AdminUser(props) {
                             {
                                 pageNumber.map(number => (
                                     <MDBPaginationItem key={number}>
-                                        <MDBPaginationLink href='#' onClick={()=>paginate(number)}>{number}</MDBPaginationLink>
+                                        <MDBPaginationLink href='#' onClick={() => paginate(number)}>{number}</MDBPaginationLink>
                                     </MDBPaginationItem>
                                 ))
                             }

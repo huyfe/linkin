@@ -270,7 +270,8 @@ function ProfileComponent(props) {
                             window.location.reload(false);
                         })
                 } catch (e) {
-                    console.log(e);
+                    alert("ảnh kích thước quá lớn!")
+                    window.location.reload(false);
                 }
             }
         }

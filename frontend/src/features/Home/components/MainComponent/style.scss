@@ -1,9 +1,20 @@
 .home-page {
-    h2 {
-        color: red;
+  h2 {
+    color: red;
+  }
+  > .container-fluid {
+    padding-left: 40px;
+    padding-right: 5px;
+    @media screen and (max-width: 991px) {
+        padding: 0 40px;
     }
-    > .container-fluid {
-        padding-left: 40px;
-        padding-right: 5px;
+    @media screen and (max-width: 768px) {
+      padding: 0 20px;
     }
+  }
+  @media screen and (max-width: 991px) {
+    .col-lg-3 {
+      display: none;
+    }
+  }
 }

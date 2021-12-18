@@ -7,7 +7,6 @@ import Header from '../../../../components/Header';
 function ActivityHistoryComponent(props) {
     return (
         <div>
-            <Header />
             <section id="categoryPage">
                 <div className="container-fluid">
                     <div className="row no-gutters">

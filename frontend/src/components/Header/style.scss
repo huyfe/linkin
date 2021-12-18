@@ -1,131 +1,171 @@
 $blue: #3573e2;
 $white: #ffffff;
 .header {
-    // overflow: hidden;
-    padding: 10px 0;
-    border-bottom: 1px solid $blue;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    background-color: $white;
-    &__menu {
-        width: calc(100% - 80px);
+  // overflow: hidden;
+  padding: 10px 0;
+  border-bottom: 1px solid $blue;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background-color: $white;
+  &__menu {
+    width: calc(100% - 80px);
+    margin: 0 auto;
+    @media screen and (max-width: 768px) {
+      width: calc(100% - 40px);
+    }
+  }
+  &__search {
+    margin-left: 30px;
+    position: relative;
+    i {
+      line-height: 40px;
+      position: absolute;
+      padding-left: 20px;
+      cursor: pointer;
+      @media screen and (max-width: 810px) {
+        display: none;
+      }
+    }
+    input {
+      padding: 10px 0;
+      padding-left: 50px;
+      border: 1px solid $blue;
+      border-radius: 4px;
+
+      font-family: "Roboto";
+      font-style: normal;
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 19px;
+      display: flex;
+      align-items: center;
+
+      /* Tone / Dark grey */
+
+      color: #222222;
+      @media screen and (max-width: 810px) {
+        display: none;
+      }
+    }
+  }
+  &__main-menu {
+    flex-wrap: nowrap !important;
+    li {
+      a {
+        padding: 30px 50px;
+        font-size: 26px;
+
+        color: #222222;
+        transition: all 0.25s;
+        &.active {
+          color: $blue;
+        }
+        @media screen and (max-width: 992px) {
+          padding: 30px;
+        }
+        @media screen and (max-width: 576px) {
+          padding: 15px;
+          font-size: 20px;
+        }
+      }
+    }
+  }
+  &__controls {
+    button {
+      font-weight: normal;
+      font-size: 16px;
+      line-height: 19px;
+      text-transform: none;
+    }
+    .btn-login,
+    .btn-create-link {
+      width: 170px;
+      padding-top: 15px;
+      padding-bottom: 15px;
+      @media screen and (max-width: 991px) {
+        display: none;
+      }
+    }
+    .btn-notification {
+      margin: 0 30px;
+      width: 37px;
+      font-size: 18px;
+      color: #222222;
+      background-color: transparent;
+      &:focus {
+        color: #222222;
+        background-color: transparent;
+      }
+      &:hover {
+        color: #222222;
+        background-color: #3574e231;
+      }
+      @media screen and (max-width: 768px) {
         margin: 0 auto;
+      }
     }
-    &__search {
-        margin-left: 30px;
-        position: relative;
-        i {
-            line-height: 40px;
-            position: absolute;
-            padding-left: 20px;
-            cursor: pointer;
+
+    .user {
+      &__avatar {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        object-fit: contain;
+        @media screen and (max-width: 576px) {
+            width: 30px;
+            height: 30px;
         }
-        input {
-            padding: 10px 0;
-            padding-left: 50px;
-            border: 1px solid $blue;
-            border-radius: 4px;
-
-            font-family: "Roboto";
-            font-style: normal;
-            font-weight: 500;
-            font-size: 16px;
-            line-height: 19px;
-            display: flex;
-            align-items: center;
-
-            /* Tone / Dark grey */
-
-            color: #222222;
+      }
+      &__dropdown {
+        font-size: 10px;
+        margin-left: 10px;
+        color: #222222;
+        background-color: transparent;
+        &:after {
+          display: none;
         }
+        &:focus {
+          color: #222222;
+          background-color: transparent;
+        }
+        &:hover {
+          color: #222222;
+          background-color: #3574e231;
+        }
+        span {
+          line-height: 38px;
+        }
+      }
     }
-    &__main-menu {
-        flex-wrap: nowrap !important;
-        li {
-            a {
-                padding: 30px 50px;
-                font-size: 26px;
-
-                color: #222222;
-                transition: all 0.25s;
-                &.active {
-                    color: $blue;
-                }
-            }
-        }
+  }
+  &__logo {
+    @media screen and (max-width: 576px) {
+      img {
+        width: 30px;
+      }
     }
-    &__controls {
-        button {
-            font-weight: normal;
-            font-size: 16px;
-            line-height: 19px;
-            text-transform: none;
-        }
-        .btn-login,
-        .btn-create-link {
-            width: 170px;
-            padding-top: 15px;
-            padding-bottom: 15px;
-        }
-        .btn-notification {
-            margin: 0 30px;
-            width: 37px;
-            font-size: 18px;
-            color: #222222;
-            background-color: transparent;
-            &:focus {
-                color: #222222;
-                background-color: transparent;
-            }
-            &:hover {
-                color: #222222;
-                background-color: #3574e231;
-            }
-        }
-
-        .user {
-            &__avatar {
-                width: 50px;
-                height: 50px;
-                border-radius: 50%;
-                object-fit: contain;
-            }
-            &__dropdown {
-                font-size: 10px;
-                margin-left: 10px;
-                color: #222222;
-                background-color: transparent;
-                &:after {
-                    display: none;
-                }
-                &:focus {
-                    color: #222222;
-                    background-color: transparent;
-                }
-                &:hover {
-                    color: #222222;
-                    background-color: #3574e231;
-                }
-                span {
-                    line-height: 38px;
-                }
-            }
-        }
-    }
+  }
 }
 .dropdown-menu-user {
-    width: 300px;
-    margin-top: 20px !important;
-    padding: 10px !important;
-    .dropdown-item {
-        font-size: 18px !important;
-        border-radius: 5px !important;
-        padding: 15px !important;
+  width: 300px;
+  margin-top: 20px !important;
+  padding: 10px !important;
+  .dropdown-item {
+    font-size: 18px !important;
+    border-radius: 5px !important;
+    padding: 15px !important;
 
-        .fa-user-shield {
-            color: #3573e2;
-            margin-right: 8px;
-        }
+    .fa-user-shield {
+      color: #3573e2;
+      margin-right: 8px;
     }
+
+    &--mobile {
+      display: none;
+      @media screen and (max-width: 991px) {
+        display: block;
+      }
+    }
+  }
 }

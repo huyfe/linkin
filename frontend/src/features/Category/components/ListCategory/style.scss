@@ -8,4 +8,24 @@
     margin-left: 25px;
     margin-bottom: 25px;
   }
+  @media screen and (max-width: 1280px) {
+    &__item {
+      width: calc((100% / 4) - 25px);
+    }
+  }
+  @media screen and (max-width: 991px) {
+    &__item {
+      width: calc((100% / 5) - 25px);
+    }
+  }
+  @media screen and (max-width: 700px) {
+    &__item {
+      width: calc((100% / 4) - 25px);
+    }
+  }
+  @media screen and (max-width: 500px) {
+    &__item {
+      width: calc((100% / 2) - 25px);
+    }
+  }
 }

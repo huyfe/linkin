@@ -1,6 +1,7 @@
-aside.filterCategory {
+.filterCategory {
   $txt-blue: #3573e2;
   $txt-black: #222222;
+  $white: #fff;
 
   padding-top: 30px !important;
   h2 {
@@ -22,11 +23,30 @@ aside.filterCategory {
       line-height: 23px;
       color: $txt-black;
       margin-bottom: 25px;
-      transition: .5s;
+      transition: 0.5s;
       &:hover,
-      &.active{
+      &.active {
         color: $txt-blue;
       }
+    }
+  }
+  .btn-toggle {
+    background-color: $txt-blue;
+    display: none;
+    @media screen and (max-width: 991px) {
+      display: block;
+    }
+  }
+  &__dropdown-menu {
+    .dropdown-item.is-active {
+      background-color: $txt-blue;
+      color: $white;
+    }
+  }
+  @media screen and (max-width: 991px) {
+    h2,
+    .filterCategory__list {
+      display: none;
     }
   }
 }

@@ -7,14 +7,16 @@ SearchCategory.propTypes = {
   title: PropTypes.string,
   showBtnBack: PropTypes.bool,
   searchChange: PropTypes.func,
+  isNone: PropTypes.bool,
 };
 
 SearchCategory.defaultProps = {
   showBtnBack: false,
   searchChange: null,
+  isNone: false,
 };
 
-function SearchCategory({ title, showBtnBack, searchChange }) {
+function SearchCategory({ title, showBtnBack, searchChange, isNone }) {
   const navigate = useNavigate();
 
   const [valueSearch, setValueSearch] = useState("");
@@ -45,7 +47,7 @@ function SearchCategory({ title, showBtnBack, searchChange }) {
       )}
       {/* title được truyền ở MainCategory và MainCategoryDetail */}
       <h1>{title}</h1>
-      <div className="searchCategory__group">
+      <div className={isNone ? "searchCategory__group d-none" : "searchCategory__group"}>
         <label
           htmlFor="searchCategory"
           className="d-flex justify-content-end align-items-center"

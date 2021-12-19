@@ -6,6 +6,7 @@ import categoriesApi from "../../api/categoriesApi";
 import { fetchCatOfUser } from "../Category/categoriesUserSlice";
 import { useDispatch } from "react-redux";
 import Error404Page from "../User/pages/Error404Page";
+import { update } from "../Link/linkSlice";
 
 function HomeFeature() {
     // useEffect(() => {
@@ -19,6 +20,14 @@ function HomeFeature() {
     const dispatch = useDispatch();
     const dataUser = localStorage.getItem("dataUser")
     const dataUsers = JSON.parse(dataUser)
+
+    useEffect(() => {
+        const fetchLink = async () => {
+            const linkList = await linkApi.getAll();
+            dispatch(update(linkList.data));
+        }
+        fetchLink();
+    }, []);
 
     //Nạp dữ liệu cho Redux -> Category
     useEffect(() => {

@@ -20,7 +20,7 @@ function CategoryPage(props) {
             <div className="col-lg-6 col-12 p-0">
               <Routes>
                 <Route path="/" element={<MainCategory />} />
-                <Route path="/*" element={<MainCategoryDetail />} />
+                <Route path="/:slug" element={<MainCategoryDetail />} />
               </Routes>
             </div>
             <div className="col-lg-3 col-12 p-0 aside-right">

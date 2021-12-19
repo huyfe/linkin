@@ -9,25 +9,39 @@ import {
 import "./style.scss";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
+import CopyToClipboard from "react-copy-to-clipboard";
+import { useDispatch } from "react-redux";
+import categoriesApi from "../../../../api/categoriesApi";
+import { updateCatOfUser } from "../../categoriesUserSlice";
 
-CategoryLinkItem.propTypes = {};
+CategoryLinkItem.propTypes = {
+  linkItem: PropTypes.object.isRequired,
+  idCat: PropTypes.number,
+};
 
-function CategoryLinkItem(props) {
+CategoryLinkItem.defaultProps = {
+  idCat: null,
+};
+
+function CategoryLinkItem({ linkItem, idCat }) {
+  const dispatch = useDispatch();
+
+  const handleLinkCat = async (idCat, idLink) => {
+    let { data } = await categoriesApi.updateLinks(idCat, idLink);
+    dispatch(updateCatOfUser(data));
+  };
+
   return (
     <div className="d-flex categoryLinkItem">
       <div className="categoryLinkItem__img">
-        <a
-          href="https://www.facebook.com/"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <img src="../images/Categories/ux-ui.jpg" />
+        <a href={linkItem.link} target="_blank" rel="noopener noreferrer">
+          <img src={linkItem.image} />
         </a>
       </div>
       <div className="d-flex flex-column justify-content-between categoryLinkItem__desc">
         <div className="d-flex align-items-center categoryLinkItem__title">
-          <h2>Nguyên tắc thiết kế cơ bản</h2>
-          <MDBDropdown dropright className="categoryLinkItem__dropdown">
+          <h2>{linkItem.title}</h2>
+          {/* <MDBDropdown dropright className="categoryLinkItem__dropdown">
             <MDBDropdownToggle className="categoryLinkItem__btn">
               <span className="icon-more-horizontal"></span>
             </MDBDropdownToggle>
@@ -35,7 +49,8 @@ function CategoryLinkItem(props) {
               <MDBDropdownItem>
                 <MDBDropdownLink
                   className="categoryLinkItem__dropdown--link"
-                  tag='button' type='button'
+                  tag="button"
+                  type="button"
                 >
                   <span className="icon-edit-basic"></span> Sửa
                 </MDBDropdownLink>
@@ -43,7 +58,8 @@ function CategoryLinkItem(props) {
               <MDBDropdownItem>
                 <MDBDropdownLink
                   className="categoryLinkItem__dropdown--link"
-                  tag='button' type='button'
+                  tag="button"
+                  type="button"
                 >
                   <i className="fal fa-trash-alt"></i> Xóa
                 </MDBDropdownLink>
@@ -51,7 +67,8 @@ function CategoryLinkItem(props) {
               <MDBDropdownItem>
                 <MDBDropdownLink
                   className="categoryLinkItem__dropdown--link"
-                  tag='button' type='button'
+                  tag="button"
+                  type="button"
                 >
                   <span className="icon-earth"></span> Công khai
                 </MDBDropdownLink>
@@ -59,30 +76,33 @@ function CategoryLinkItem(props) {
               <MDBDropdownItem>
                 <MDBDropdownLink
                   className="categoryLinkItem__dropdown--link"
-                  tag='button' type='button'
+                  tag="button"
+                  type="button"
                 >
                   <span className="icon-lock"></span> Riêng tư
                 </MDBDropdownLink>
               </MDBDropdownItem>
             </MDBDropdownMenu>
-          </MDBDropdown>
+          </MDBDropdown> */}
         </div>
         <div className="d-flex align-items-center categoryLinkItem__link">
-          <input
-            type="text"
-            defaultValue="https://www.facebook.com/"
-            readOnly
-          />
+          <input type="text" defaultValue={linkItem.link} readOnly />
           <button>
-            <span className="icon-copy"></span>
+            <CopyToClipboard text={linkItem.link}>
+              <span className="icon-copy"></span>
+            </CopyToClipboard>
           </button>
-          <button>
+          {/* <button>
             <span className="icon-pin"></span>
+          </button> */}
+          <button onClick={() => handleLinkCat(idCat, linkItem._id)}>
+            <i title="Gỡ khỏi danh mục" className="fal fa-trash"></i>
           </button>
         </div>
         <div className="categoryLinkItem__date">
           <h3>
-            <span className="icon-earth"></span>Ngày 1/10/2021
+            <span className="icon-earth"></span>
+            {new Date(linkItem.createdAt).toLocaleDateString("vi-VN")}
           </h3>
         </div>
       </div>

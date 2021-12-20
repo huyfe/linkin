@@ -32,7 +32,7 @@ function SearchCategory({ title, showBtnBack, searchChange, isNone }) {
     }
 
     typingTime.current = setTimeout(() => {
-      searchChange(value);
+      searchChange(value.trim());
     }, 1000);
   }
 

@@ -22,7 +22,7 @@ AdCatTrItem.defaultProps = {
 function AdCatTrItem({ id, name, img, date, handleClick, isChecked }) {
   return (
     <tr>
-      <td scope="row">
+      <td scope="row" className="td-mobile">
         <input
           type="checkbox"
           id={id}
@@ -33,11 +33,11 @@ function AdCatTrItem({ id, name, img, date, handleClick, isChecked }) {
         <span>{id}</span>
       </td>
       <td>{name}</td>
-      <td>
-        <img src={img} alt={name} />
+      <td className="res-mobile" >
+        <img className="res-mobile" src={img} alt={name} />
       </td>
       <td>{new Date(date).toLocaleDateString("vi-VN")}</td>
-      <td>{new Date(date).toLocaleTimeString()}</td>
+      <td className="res-mobile" >{new Date(date).toLocaleTimeString()}</td>
     </tr>
   );
 }

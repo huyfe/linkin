@@ -12,6 +12,9 @@
       color: $txt-black;
       border-radius: 4px;
       width: 300px;
+      @media screen and (max-width: 400px) {
+        width: 100%;
+      }
     }
   }
 }

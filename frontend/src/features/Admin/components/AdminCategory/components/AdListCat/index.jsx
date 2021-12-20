@@ -28,7 +28,7 @@ function AdListCat(props) {
     }
 
     typingTime.current = setTimeout(() => {
-      setSearch(value);
+      setSearch(value.trim());
     }, 1000);
   }
 
@@ -51,7 +51,7 @@ function AdListCat(props) {
       <div className="row">
         {categories.length == 0 ? <p>Không có danh mục nào</p> : ""}
         {categories.map((category) => (
-          <div className="col-lg-3 col-6" key={category._id}>
+          <div className="col-lg-3 col-md-4 col-6" key={category._id}>
             <AdCatItem categoryItem={category} />
           </div>
         ))}

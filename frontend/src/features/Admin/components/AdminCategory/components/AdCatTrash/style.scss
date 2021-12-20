@@ -71,7 +71,6 @@
       margin-left: 10px;
     }
     input[type="search"] {
-      margin-left: auto;
       outline: none;
       border-color: $txt-blue;
       padding: 5px 15px;
@@ -79,10 +78,18 @@
       color: $txt-black;
       border-radius: 4px;
       width: 300px;
+      @media screen and (max-width: 600px) {
+        margin-top: 20px;
+        width: 100%;
+      }
     }
     .btn {
       margin-left: 20px;
+      margin-right: auto;
       padding: 5px 15px;
+    }
+    @media screen and (max-width: 600px) {
+      margin-top: 20px;
     }
   }
 
@@ -111,6 +118,18 @@
       height: 100px;
       object-fit: cover;
       border-radius: 10px;
+    }
+    @media screen and (max-width: 700px) {
+      .res-mobile {
+        display: none;
+      }
+      .td-mobile{
+        display: flex;
+        flex-direction: column;
+        span{
+          margin: 5px 0;
+        }
+      }
     }
   }
 }

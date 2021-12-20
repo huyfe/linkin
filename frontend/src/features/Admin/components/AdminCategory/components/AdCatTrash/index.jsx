@@ -40,7 +40,7 @@ function AdCatTrash(props) {
     }
 
     typingTime.current = setTimeout(() => {
-      setSearch(value);
+      setSearch(value.trim());
     }, 1000);
   }
 
@@ -132,9 +132,9 @@ function AdCatTrash(props) {
           <tr>
             <th scope="col">#</th>
             <th scope="col">Tên danh mục</th>
-            <th scope="col">Ảnh</th>
+            <th scope="col" className="res-mobile">Ảnh</th>
             <th scope="col">Ngày xóa</th>
-            <th scope="col">Thời gian xóa</th>
+            <th scope="col" className="res-mobile">Thời gian xóa</th>
           </tr>
         </thead>
         <tbody>

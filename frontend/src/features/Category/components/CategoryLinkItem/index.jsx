@@ -34,7 +34,7 @@ function CategoryLinkItem({ linkItem, idCat }) {
   return (
     <div className="d-flex categoryLinkItem">
       <div className="categoryLinkItem__img">
-        <a href={linkItem.link} target="_blank" rel="noopener noreferrer">
+        <a href={linkItem.link} title={linkItem.title} target="_blank" rel="noopener noreferrer">
           <img src={linkItem.image} />
         </a>
       </div>

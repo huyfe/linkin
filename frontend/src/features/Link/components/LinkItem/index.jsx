@@ -117,7 +117,7 @@ function LinkItem(props) {
                 {listCategoriesOfUser.map((category) => (
                   <MDBDropdownItem key={`${props.id}-${category._id}`}>
                     <MDBDropdownLink
-                      className="linkItem__dropdown--link"
+                      className={category.id_links.includes(props.id) ? "linkItem__dropdown--link d-none" : "linkItem__dropdown--link"}
                       tag="button"
                       type="button"
                       onClick={() => handleLinkCat(category._id, props.id)}

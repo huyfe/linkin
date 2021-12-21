@@ -7,6 +7,10 @@ const linkApi = {
         const url = '/links';
         return axiosClient.get(url, { params });
     },
+    getAlllimit(id) {
+        const url = `/links/limit/${id}`;
+        return axiosClient.get(url);
+    },
     get(id) {
         const url = `/links/${id}`;
         return axiosClient.get(url);

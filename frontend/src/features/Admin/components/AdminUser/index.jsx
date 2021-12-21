@@ -113,30 +113,36 @@ function AdminUser(props) {
                     <tr>
                         <th scope='col'>#</th>
                         <th scope='col'>Họ Tên</th>
-                        <th scope='col'>Email</th>
+                        <th scope='col' className='email'>Email</th>
                         <th scope='col'>Phân Quyền</th>
                         <th scope='col'>Chức năng</th>
                     </tr>
                 </MDBTableHead>
                 <MDBTableBody>
+
                     {
                         users.length === 0 ? (
-                            <h2>Không có gì</h2>
+                            <tr>
+                                <th scope='row'></th>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
                         ) : users.slice(indexOfFirstPost, indexOfLastPost).map(userss => (
                             <tr key={userss._id}>
-                                <th scope='row'>{userss._id}</th>
-                                <td>{userss.name}</td>
-                                <td>{userss.email}</td>
+                                <td className='stt'>{userss._id}</td>
+                                <td className='name'>{userss.name}</td>
+                                <td className='email'>{userss.email}</td>
                                 <td >
                                     {
                                         (userss.role) === "1" ? (
-                                            <td>Admin</td>
+                                            "Admin"
                                         ) : (
-                                            <td>Người dùng</td>
+                                            "Người dùng"
                                         )
                                     }
                                 </td>
-                                <td>
+                                <td className='function'>
                                     {
                                         (userss._id) === (dataUsers.Id) ? ("") : (
                                             (Showhide) === "showupdate" ? (
@@ -163,19 +169,19 @@ function AdminUser(props) {
                             </tr>
                         ))
                     }
-                    <nav aria-label='Page navigation example'>
-                        <MDBPagination className='mb-0'>
-                            {
-                                pageNumber.map(number => (
-                                    <MDBPaginationItem key={number}>
-                                        <MDBPaginationLink href='#' onClick={() => paginate(number)}>{number}</MDBPaginationLink>
-                                    </MDBPaginationItem>
-                                ))
-                            }
-                        </MDBPagination>
-                    </nav>
                 </MDBTableBody>
             </MDBTable>
+            <nav aria-label='Page navigation example'>
+                <MDBPagination className='mb-0'>
+                    {
+                        pageNumber.map(number => (
+                            <MDBPaginationItem key={number}>
+                                <MDBPaginationLink href='#' onClick={() => paginate(number)}>{number}</MDBPaginationLink>
+                            </MDBPaginationItem>
+                        ))
+                    }
+                </MDBPagination>
+            </nav>
             {
                 (Showhide) === "showupdate" ? (
                     (Profile.name) ? (

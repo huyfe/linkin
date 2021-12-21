@@ -56,6 +56,20 @@ section#timelineUser {
 							border-radius: 4px;
 							margin-right: 4px;
 						}
+
+						@media (max-width:768px) {
+							@include text(#000000, 15px, 400, 18px);
+							width: 46%;
+							
+							&.name-group{
+								width: auto;
+							}
+							
+							i {
+								margin: 0 10px;
+								font-size: 20px;
+							}
+						}
 					}
 				}
 

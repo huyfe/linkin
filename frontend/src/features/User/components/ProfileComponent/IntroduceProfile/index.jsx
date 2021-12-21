@@ -60,7 +60,7 @@ function IntroduceProfile() {
                             axios.patch(`http://localhost:3000/users/edit-users/` + dataUsers.Id, details)
                                 .then(res => {
                                     alert('Đổi mật khẩu thành công!');
-                                    navigate('/');
+                                    window.location.reload(false);
                                 })
                                 .catch(err => {
                                     console.log(err);
@@ -110,8 +110,8 @@ function IntroduceProfile() {
                             Role: Profile.role,
                             Slug: dataUsers.Slug,
                             Public: dataUsers.Public,
-                            Image: Profile.image,
-                            Theme: Profile.theme,
+                            Image: dataUsers.Image,
+                            Theme: dataUsers.Theme,
                             AccessToken: dataUsers.AccessToken
                         }
                         localStorage.setItem('dataUser', JSON.stringify(profile2))

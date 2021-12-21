@@ -1,5 +1,5 @@
 section#adminuser-page{
-    overflow-x: hidden;
+    // overflow-x: hidden;
     h2{
         font-size: 42px;
     }
@@ -7,6 +7,68 @@ section#adminuser-page{
     form{
         .form-select{
             width: 20% !important;
+        }
+    }
+
+    @media (max-width:768px) {
+        h2{
+            font-size: 35px;
+        }
+        .table>:not(caption)>*>* {
+            padding: 0.5rem 0.5rem !important;
+        }
+
+        .table{
+            thead{
+                tr{
+                    th{
+                        &.email{
+                            display: none;
+                        }
+                    }
+                }
+            }
+
+            tbody{
+                tr{
+                    th{
+                        &.stt{
+                            width: 20px;
+                        }
+                    }
+                    td{
+                        &.email{
+                            display: none;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    @media (max-width:480px) {
+
+        h2{
+            font-size: 30px;
+        }
+
+        .table{
+            tbody{
+                tr{
+                    th{
+                        &.stt{
+                            width: 20px;
+                        }
+                    }
+                    td{
+                        font-size: 12px;
+
+                        &.function{
+                            width: 36%;
+                        }
+                    }
+                }
+            }
         }
     }
 }

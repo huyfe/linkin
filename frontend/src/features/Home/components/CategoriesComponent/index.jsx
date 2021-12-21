@@ -17,11 +17,11 @@ function Categories(props) {
     setShowModal(!showModal);
   }
 
-  const listCategoryData = useSelector(state => state.categoriesUser);
+  const listCategoryData = useSelector((state) => state.categoriesUser);
 
   const listCategory = listCategoryData.map((category) => {
     return (
-      <SplideSlide key={category._id} >
+      <SplideSlide key={category._id}>
         <CategoryComponent
           key={category._id}
           name={category.title}
@@ -40,6 +40,14 @@ function Categories(props) {
     pagination: false,
     padding: {
       right: 100,
+    },
+    breakpoints: {
+      1200: {
+        perPage: 3,
+      },
+      450: {
+        perPage: 2,
+      },
     },
   };
 
@@ -65,10 +73,7 @@ function Categories(props) {
           {listCategory}
         </Splide>
       </div>
-      <ModalAddCategory
-        showModal={showModal}
-        setShowModal={setShowModal}
-      />
+      <ModalAddCategory showModal={showModal} setShowModal={setShowModal} />
     </>
   );
 }

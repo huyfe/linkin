@@ -11,8 +11,10 @@ router.post('/add-category', categoryController.AddCategory);
 router.patch('/:id/update', categoryController.UpdateCategory);
 router.delete('/:id/trash', categoryController.TrashCategory);
 router.patch('/:id/restore', categoryController.RestoreCategory);
+router.patch('/list-restore', categoryController.ListRestoreCategory);
 router.delete('/:id/destroy', categoryController.DestroyCategory);
 router.patch('/:id/pin', categoryController.UpdatePin);
+router.patch('/:id/links/:idLink', categoryController.UpdateLinks);
 router.get('/', categoryController.ShowAllCategories);
 router.get('/limit/:id', categoryController.ShowAllCategorieslimit);
 

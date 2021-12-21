@@ -50,7 +50,7 @@
         margin-bottom: calc(-1 * 25px);
         
         &__item {
-            width: calc((100% / 3) - 80px);
+            width: auto;
             margin-left: 80px;
             margin-bottom: 25px;
             .followerItem {

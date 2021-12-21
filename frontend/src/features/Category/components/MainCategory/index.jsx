@@ -23,7 +23,7 @@ function MainCategory(props) {
   let param = searchParams.get("filterSort");
 
   if (!param) {
-    categories = [...listCategoriesOfUser];
+    categories = [...listCategoriesOfUser].reverse();
   } else {
     switch (param) {
       case "new":
@@ -73,7 +73,7 @@ function MainCategory(props) {
         break;
 
       default:
-        categories = [...listCategoriesOfUser];
+        categories = [...listCategoriesOfUser].reverse();
         break;
     }
   }
@@ -82,7 +82,7 @@ function MainCategory(props) {
     categories = [...categories];
   } else {
     categories = [...categories].filter((category) =>
-      category.title.toLowerCase().includes(search.toLowerCase())
+      category.title.toLowerCase().includes(search.toLowerCase()) || category.slug.toLowerCase().includes(search.toLowerCase())
     );
   }
 

@@ -18,54 +18,105 @@ section#Profile-component {
         .avatar-name {
             margin: 0 98px;
             margin-top: -76px;
-            
-            img {
-                width: 100%;
-                max-width: 150px;
-                height: 100%;
-                max-height: 150px;
-                border-radius: 50%;
-                object-fit: contain;
-                border: 8px solid #FFF;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            .img-title {
+                width: 56%;
+                display: flex;
+                align-items: center;
+
+                .img-edit {
+                    width: 100%;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    img {
+                        width: 100%;
+                        max-width: 150px;
+                        height: 100%;
+                        max-height: 150px;
+                        border-radius: 50%;
+                        object-fit: contain;
+                        border: 8px solid #fff;
+                    }
+
+                    .fa-folder-plus {
+                        font-size: 18px;
+                        margin-left: -15px;
+                        margin-top: 50px;
+                    }
+                }
+
+                h2 {
+                    font-family: Roboto;
+                    font-style: normal;
+                    font-weight: 500;
+                    font-size: 32px;
+                    line-height: 37px;
+                    color: $color_blue;
+                    margin-left: 16px;
+                    margin-top: 60px;
+                    width: 300%;
+                }
+
+                @media (max-width: 1280px) {
+                    width: 60%;
+                }
+
+                @media (max-width: 1024px) {
+                    width: 80%;
+                }
+
+                @media (max-width: 768px) {
+                    width: 100%;
+                    h2 {
+                        margin: 0;
+                        width: 100%;
+                        text-align: center;
+                        font-size: 25px;
+                        line-height: 30px;
+                    }
+                }
+
+                @media (max-width: 480px) {
+                    h2 {
+                        font-size: 20px;
+                        line-height: 25px;
+                    }
+                }
             }
 
-            .fa-folder-plus{
-                font-size: 18px;
-                margin-left: -15px;
-                margin-top: 50px;
-            }
-
-            h2 {
-                font-family: Roboto;
-                font-style: normal;
-                font-weight: 500;
-                font-size: 32px;
-                line-height: 37px;
-                color: $color_blue;
-                margin-left: 16px;
-                margin-top: 60px;
-                width: 300%;
-            }
-
-            .button{
+            .button {
                 // margin-left: 150px;
                 margin-top: 60px;
+            }
+
+            @media (max-width: 768px) {
+                flex-direction: column;
+
+                .img-title {
+                    flex-direction: column;
+                }
+
+                .button {
+                    margin: 20px;
+                }
             }
         }
     }
 
     .detail-profile {
-
-        .col-8{
+        .col-8 {
             width: 60% !important;
         }
 
-        .col-4{
+        .col-4 {
             width: 40% !important;
         }
 
         .left-tab-menu {
-
             .nav {
                 .nav-item {
                     // margin: 0 105px;
@@ -80,29 +131,29 @@ section#Profile-component {
                         color: $color_black;
                         text-transform: none;
 
-                        &:hover{
+                        &:hover {
                             background: transparent;
                             color: #000;
                         }
                     }
 
-                    &:first-child{
+                    &:first-child {
                         margin-left: 0;
                     }
-                    &:last-child{
+                    &:last-child {
                         margin-right: 0;
                     }
-                    & .active{
+                    & .active {
                         font-weight: bold;
-                        border:none;
+                        border: none;
                         background: transparent;
                     }
                 }
             }
 
-            .tab-content{
-                .tab-pane{
-                    .Timeline-profile{
+            .tab-content {
+                .tab-pane {
+                    .Timeline-profile {
                         width: 90%;
                         max-width: 890px;
                         margin-top: 30px;
@@ -113,25 +164,132 @@ section#Profile-component {
                 }
             }
         }
-        
-        .right-information{
+
+        .right-information {
             display: flex;
             flex-direction: column;
             align-items: end;
 
-            .category-imformation{
+            .category-imformation {
                 width: 100%;
                 margin-bottom: 16px;
             }
 
-            .link-imformation{
+            .link-imformation {
                 width: 100%;
                 margin-bottom: 16px;
             }
 
-            .group-information{
+            .group-information {
                 width: 100%;
             }
         }
+
+        @media (max-width: 768px) {
+            display: none;
+        }
+    }
+
+    .detail-profile2 {
+        display: none;
+        .col-8 {
+            width: 60% !important;
+        }
+
+        .col-4 {
+            width: 40% !important;
+        }
+
+        .left-tab-menu {
+            .nav {
+                .nav-item {
+                    // margin: 0 105px;
+                    text-align: center;
+                    .nav-link {
+                        padding: 0;
+                        font-family: Roboto;
+                        font-style: normal;
+                        font-weight: normal;
+                        font-size: 20px;
+                        line-height: 23px;
+                        color: $color_black;
+                        text-transform: none;
+
+                        &:hover {
+                            background: transparent;
+                            color: #000;
+                        }
+
+                        @media (max-width:480px) {
+                            font-size: 14px;
+                            line-height: 17px;
+                        }
+                    }
+
+                    &:first-child {
+                        margin-left: 0;
+                    }
+                    &:last-child {
+                        margin-right: 0;
+                    }
+                    & .active {
+                        font-weight: bold;
+                        border: none;
+                        background: transparent;
+                    }
+                }
+            }
+
+            .tab-content {
+                .tab-pane {
+                    .Timeline-profile {
+                        width: 100%;                    
+                        margin-top: 30px;
+                        .box-upload-link {
+                            margin: 35px 0;
+                        }
+                    }
+                }
+            }
+        }
+
+        .right-information {
+            display: flex;
+            justify-content: space-around;
+
+            width: 100%;
+            height: 100%;
+            background: #e7edf4;
+            border: 1px solid #3573e2;
+            border-radius: 20px;
+            padding: 16px;
+            margin-bottom: 16px;
+
+            a {
+                font-family: Roboto;
+                font-style: normal;
+                font-weight: 500;
+                font-size: 20px;
+                line-height: 23px;
+                color: #3573e2;
+            }
+
+        }
+
+        @media (max-width: 768px) {
+            display: block;
+            .col-8 {
+                width: 100% !important;
+                margin: 0 !important;
+            }
+
+            .col-4 {
+                width: 100% !important;
+            }
+        }
+    }
+
+    @media (max-width: 768px) {
+        margin: 0 10px;
     }
 }

@@ -4,6 +4,9 @@
   $black: #000;
 
   margin-bottom: 30px;
+  padding: 5px 10px;
+  border-radius: 4px;
+  border: 1px solid $txt-blue;
   &__img {
     width: 75px;
     height: 75px;

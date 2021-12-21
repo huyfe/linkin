@@ -20,7 +20,7 @@ function CategoryPinnedSideBar(props) {
 
     const listCategoryPinned = listCategoryPinnedData.map(category => {
         return (
-            <Item key={category.id} image={category.image} name={category.title} href={`categories/${category.slug}`} icon={pinIcon}></Item>
+            <Item key={category.id} image={category.image} name={category.title} href={`/categories/${category.slug}`} icon={pinIcon}></Item>
         );
     });
 

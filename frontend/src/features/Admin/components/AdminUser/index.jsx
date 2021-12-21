@@ -14,10 +14,12 @@ function AdminUser(props) {
     const dispatch = useDispatch();
     const [Profile, setProfile] = useState([])
     const [Showhide, setShowhide] = useState([])
+    const dataUser = localStorage.getItem("dataUser")
+    const dataUsers = JSON.parse(dataUser)
 
     // Pagination
     const [currentPage, setCurrentPage] = useState(1)
-    const [postPerPage] = useState(4)
+    const [postPerPage] = useState(5)
     const totalPost = users.length
     const pageNumber = []
     for (let i = 1; i <= Math.ceil(totalPost / postPerPage); i++) {
@@ -111,62 +113,75 @@ function AdminUser(props) {
                     <tr>
                         <th scope='col'>#</th>
                         <th scope='col'>Họ Tên</th>
-                        <th scope='col'>Email</th>
+                        <th scope='col' className='email'>Email</th>
                         <th scope='col'>Phân Quyền</th>
                         <th scope='col'>Chức năng</th>
                     </tr>
                 </MDBTableHead>
                 <MDBTableBody>
+
                     {
                         users.length === 0 ? (
-                            <h2>Không có gì</h2>
+                            <tr>
+                                <th scope='row'></th>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
                         ) : users.slice(indexOfFirstPost, indexOfLastPost).map(userss => (
                             <tr key={userss._id}>
-                                <th scope='row'>{userss._id}</th>
-                                <td>{userss.name}</td>
-                                <td>{userss.email}</td>
+                                <td className='stt'>{userss._id}</td>
+                                <td className='name'>{userss.name}</td>
+                                <td className='email'>{userss.email}</td>
                                 <td >
                                     {
                                         (userss.role) === "1" ? (
-                                            <td>Admin</td>
+                                            "Admin"
                                         ) : (
-                                            <td>Người dùng</td>
+                                            "Người dùng"
                                         )
                                     }
                                 </td>
-                                <td>
+                                <td className='function'>
                                     {
-                                        (Showhide) === "showupdate" ? (
-                                            <MDBBtn className='text-light' onClick={hideupdate}>
-                                                Sửa
-                                            </MDBBtn>
-                                        ) : (
-                                            <MDBBtn className='text-light' onClick={() => updateusers(userss.slug)}>
-                                                Sửa
+                                        (userss._id) === (dataUsers.Id) ? ("") : (
+                                            (Showhide) === "showupdate" ? (
+                                                <MDBBtn className='text-light' onClick={hideupdate}>
+                                                    Sửa
+                                                </MDBBtn>
+                                            ) : (
+                                                <MDBBtn className='text-light' onClick={() => updateusers(userss.slug)}>
+                                                    Sửa
+                                                </MDBBtn>
+                                            )
+                                        )
+
+                                    }
+                                    &nbsp;
+                                    {
+                                        (userss._id) === (dataUsers.Id) ? ("") : (
+                                            <MDBBtn className='text-dark' color='light' onClick={() => deleteusers(userss._id)}>
+                                                Xóa
                                             </MDBBtn>
                                         )
                                     }
-                                    &nbsp;
-                                    <MDBBtn className='text-dark' color='light' onClick={() => deleteusers(userss._id)}>
-                                        Xóa
-                                    </MDBBtn>
                                 </td>
                             </tr>
                         ))
                     }
-                    <nav aria-label='Page navigation example'>
-                        <MDBPagination className='mb-0'>
-                            {
-                                pageNumber.map(number => (
-                                    <MDBPaginationItem key={number}>
-                                        <MDBPaginationLink href='#' onClick={()=>paginate(number)}>{number}</MDBPaginationLink>
-                                    </MDBPaginationItem>
-                                ))
-                            }
-                        </MDBPagination>
-                    </nav>
                 </MDBTableBody>
             </MDBTable>
+            <nav aria-label='Page navigation example'>
+                <MDBPagination className='mb-0'>
+                    {
+                        pageNumber.map(number => (
+                            <MDBPaginationItem key={number}>
+                                <MDBPaginationLink href='#' onClick={() => paginate(number)}>{number}</MDBPaginationLink>
+                            </MDBPaginationItem>
+                        ))
+                    }
+                </MDBPagination>
+            </nav>
             {
                 (Showhide) === "showupdate" ? (
                     (Profile.name) ? (

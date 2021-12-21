@@ -2,68 +2,58 @@
   $txt-blue: #3573e2;
   $txt-black: #222222;
   $bg-white: #f9f9f9;
-  max-width: 200px;
+
+  position: relative;
+  max-width: 250px;
+  height: 300px;
   margin: 0 auto;
-  margin: 20px;
-  height: 200px;
-  perspective: 1000px;
-  &__inner {
-    width: 100%;
-    height: 100%;
-    perspective: 1000px;
-    transition: transform 0.8s;
-    transform-style: preserve-3d;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2);
+  transition: 0.5s;
+  &__circle {
     position: relative;
-  }
-  &:hover &__inner {
-    transform: rotateY(180deg);
-  }
-  .front,
-  .back {
     width: 100%;
     height: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    backface-visibility: hidden;
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-  }
-  .back {
-    transform: rotateY(180deg);
+    clip-path: circle(60% at center 0);
+    background-position: center;
+    background-size: cover;
     text-align: center;
-    padding: 10px;
-    > span {
+    span {
+      font-size: 50px;
+      font-weight: 700;
+      color: $bg-white;
+      text-shadow: -5px 5px 5px $txt-black;
+    }
+  }
+
+  &__content {
+    width: 100%;
+    position: absolute;
+    bottom: 10px;
+    page-break-after: 20px;
+    text-align: center;
+    h3 {
+      color: $txt-blue;
+      margin-bottom: 10px;
+      font-size: 28px;
+      font-weight: 500;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      word-break: break-word;
+    }
+    span {
+      font-size: 16px;
+      margin-bottom: 5px;
       color: $txt-black;
+    }
+    p {
       font-size: 20px;
       font-weight: 700;
     }
-    .public{
-        font-size: 16px;
-        margin-bottom: 5px;
-        color: $txt-black;
-    }
-    h4{
-        margin-bottom: 10px;
-        font-size: 24px;
-        font-weight: 500;
-        color: $txt-blue;
-        display:-webkit-box;
-        -webkit-line-clamp:3;
-        -webkit-box-orient: vertical;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        word-break: break-word;
-    }
-    .date{
-        font-size: 18px;
-        font-weight: 700;
-    }
-  }
-  img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
   }
 }

@@ -1,29 +1,34 @@
-import React, { useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { Link, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import linkApi from '../../../../../api/linkApi';
 import { update } from '../../../../Link/linkSlice';
+import { ProfileUser } from '../../../../../api/UserApi';
+import { fetchOfUser } from '../../../Userslice';
 import LinkTitle from './LinkTitle';
 import './style.scss';
 
 function LinkProFile() {
+    const { slug } = useParams();
     const dispatch = useDispatch();
+    const [Links, setLinks] = useState([])
 
     useEffect(() => {
         const fetchLink = async () => {
-            const linkList = await linkApi.getAll();
+            const Profileinfo = await ProfileUser(slug);
+            dispatch(fetchOfUser(Profileinfo.data.users));
+            const linkList = await linkApi.getAlllimit(Profileinfo.data.users._id);
             dispatch(update(linkList.data));
+            setLinks(linkList.data)
         }
         fetchLink();
     }, []);
-
-    const linkListData = useSelector(state => state.link);
 
     return (
         <div className="Linksprofile">
             <LinkTitle />
             <div className="listLinkProFile">
-                {linkListData?.map(links => (
+                {Links?.map(links => (
                     <div className="listLinkProFile__item">
                         <div className="linkItemProfile">
                             <div className="linkItemProfile__img">

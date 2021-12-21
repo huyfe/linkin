@@ -1,7 +1,35 @@
-section#admin-page{
-    .row{
-        margin-top: 0 !important;
-        margin-right: 0 !important;
-        margin-left: 0 !important;
+section#admin-page {
+  $primary: #3573e2;
+  $black: #000;
+  $white: #fff;
+  .row {
+    margin-top: 0 !important;
+    margin-right: 0 !important;
+    margin-left: 0 !important;
+  }
+  .tabs-nav {
+    .nav-link {
+      border-radius: 15px;
+      border: 2px solid $primary !important;
+      padding: 15px 0;
+      color: $black;
+      font-weight: 700;
+      letter-spacing: 1px;
+      box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+      transition: 0.5s;
+      &.active {
+        color: $white;
+        box-shadow: none;
+      }
     }
+    @media screen and (max-width: 991px) {
+      ul.nav-pills {
+        flex-direction: row !important;
+        margin-bottom: 20px;
+        .nav-link {
+            padding: 10px 20px;
+        }
+      }
+    }
+  }
 }

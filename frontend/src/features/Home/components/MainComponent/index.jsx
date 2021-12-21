@@ -15,7 +15,7 @@ function MainComponent(props) {
                         <div className="col-lg-3">
                             <AsideLeft />
                         </div>
-                        <main className="col-lg-6">
+                        <main className="col-lg-6 col-12">
                             <div className="row">
                                 <div className="col-12">
                                     <CategoriesComponent></CategoriesComponent>

@@ -144,12 +144,12 @@ function ProfileComponent(props) {
 
     const unfollowFriend = (Slug) => {
         if (Profile2.following.length > 0) {
-            
-            const folloWing = Profile2.following?.filter((ggs)=>{
+
+            const folloWing = Profile2.following?.filter((ggs) => {
                 return ggs.id !== Slug
             })
 
-            const folloWer = Profile.follower?.filter((ggs)=>{
+            const folloWer = Profile.follower?.filter((ggs) => {
                 return ggs.id !== dataUsers.Id
             })
 
@@ -270,7 +270,8 @@ function ProfileComponent(props) {
                             window.location.reload(false);
                         })
                 } catch (e) {
-                    console.log(e);
+                    alert("ảnh kích thước quá lớn!")
+                    window.location.reload(false);
                 }
             }
         }
@@ -356,24 +357,27 @@ function ProfileComponent(props) {
                                             <img src={Profile.theme} alt="" />
                                         )
                                     ) : ("")}
-                                    <div className="avatar-name d-flex align-items-center justify-content-between">
-                                        <div className="d-flex align-items-center">
-                                            {(dataUsers) ? (
-                                                (Profile.image) === "avatar.png" ? (
-                                                    <img src={`/images/Users/${Profile.image}`} alt="" />
-                                                ) : (
-                                                    <img src={Profile.image} alt="" />
-                                                )
-                                            ) : ("")}
-                                            {(dataUsers) ? (
-                                                (dataUsers.Slug) === Profile.slug ? (
-                                                    (EditImages) === "ShowImg" ? (
-                                                        <Link to="#" onClick={HideFormImg}><i class="fas fa-folder-plus"></i></Link>
+                                    <div className="avatar-name">
+                                        <div className="img-title">
+                                            <div className="img-edit">
+                                                {(dataUsers) ? (
+                                                    (Profile.image) === "avatar.png" ? (
+                                                        <img src={`/images/Users/${Profile.image}`} alt="" />
                                                     ) : (
-                                                        <Link to="#" onClick={ShowFormImg}><i class="fas fa-folder-plus"></i></Link>
+                                                        <img src={Profile.image} alt="" />
                                                     )
-                                                ) : ("")
-                                            ) : ("")}
+                                                ) : ("")}
+                                                {(dataUsers) ? (
+                                                    (dataUsers.Slug) === Profile.slug ? (
+                                                        (EditImages) === "ShowImg" ? (
+                                                            <Link to="#" onClick={HideFormImg}><i className="fas fa-folder-plus"></i></Link>
+                                                        ) : (
+                                                            <Link to="#" onClick={ShowFormImg}><i className="fas fa-folder-plus"></i></Link>
+                                                        )
+                                                    ) : ("")
+                                                ) : ("")}
+                                            </div>
+
                                             <h2>{Profile.name}</h2>
                                         </div>
                                         {(dataUsers) ? (
@@ -462,6 +466,73 @@ function ProfileComponent(props) {
                                         <div className="group-information">
                                             <GroupProfile />
                                         </div>
+                                    </div>
+                                </div>
+                                <div className="detail-profile2">
+                                    {(EditImages) === "ShowImg" ? (
+                                        <div className="d-flex align-items-center justify-content-center flex-column">
+                                            <FormEditImage KeyEditImage={KeyEditImage} />
+                                            <FormEditCoverImage KeyEditCoverImage={KeyEditCoverImage} />
+                                        </div>
+                                    ) : ("")}
+                                    <div className="right-information col-4">
+                                        <Link to="/categories">Danh Mục</Link>
+                                        <Link to="/links">Link</Link>
+                                        <Link to="/groups">Nhóm</Link>
+                                    </div>
+                                    <div className="left-tab-menu col-8">
+
+                                        <MDBTabs fill className="mb-3">
+                                            <MDBTabsItem>
+                                                <MDBTabsLink
+                                                    onClick={() => handleBasicClick("tab1")}
+                                                    active={basicActive === "tab1"}
+                                                >
+                                                    Bài viết
+                                                </MDBTabsLink>
+                                            </MDBTabsItem>
+                                            <MDBTabsItem>
+                                                <MDBTabsLink
+                                                    onClick={() => handleBasicClick("tab2")}
+                                                    active={basicActive === "tab2"}
+                                                >
+                                                    Giới thiệu
+                                                </MDBTabsLink>
+                                            </MDBTabsItem>
+                                            <MDBTabsItem>
+                                                <MDBTabsLink
+                                                    onClick={() => handleBasicClick("tab3")}
+                                                    active={basicActive === "tab3"}
+                                                >
+                                                    Đang theo dõi
+                                                </MDBTabsLink>
+                                            </MDBTabsItem>
+                                            <MDBTabsItem>
+                                                <MDBTabsLink
+                                                    onClick={() => handleBasicClick("tab4")}
+                                                    active={basicActive === "tab4"}
+                                                >
+                                                    Người theo dõi
+                                                </MDBTabsLink>
+                                            </MDBTabsItem>
+                                        </MDBTabs>
+                                        <MDBTabsContent>
+                                            <MDBTabsPane show={basicActive === "tab1"}>
+                                                <div className="Timeline-profile">
+                                                    <UpLoadLinkComponent UpLoadLinkComponent avatar={userInfo.avatar} href={userInfo.href}></UpLoadLinkComponent>
+                                                    {LinkPostProfile}
+                                                </div>
+                                            </MDBTabsPane>
+                                            <MDBTabsPane show={basicActive === "tab2"}>
+                                                <IntroduceProfile />
+                                            </MDBTabsPane>
+                                            <MDBTabsPane show={basicActive === "tab3"}>
+                                                <MainFollowing Profile={Profile} />
+                                            </MDBTabsPane>
+                                            <MDBTabsPane show={basicActive === "tab4"}>
+                                                <MainFollower Profile={Profile} />
+                                            </MDBTabsPane>
+                                        </MDBTabsContent>
                                     </div>
                                 </div>
                             </div>

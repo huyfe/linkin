@@ -16,6 +16,17 @@ module.exports = {
             })
             .catch(next);
     },
+
+    //Hiện tất cả link của User -> [GET]/link-user/:id
+    async ShowAllByUser(req, res) {
+        try {
+            const links = await Links.find({ id_author: req.params.id_author, type: req.params.type });
+            res.json(links);
+        } catch (err) {
+            res.json({ error: err });
+        }
+    },
+
     //Hiện các link đã xóa mềm (Thùng rác) -> [GET]/show-trash
     async ShowTrash(req, res, next) {
         await Links.findDeleted({})

@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from 'react'
+import { useParams } from 'react-router-dom';
+
 import './style.scss';
 import LinkComponent from '../../../../components/LinkComponent';
 import UpLoadLinkComponent from '../../../../components/UploadLinkComponent/index';
@@ -15,60 +17,28 @@ function TimelineGroup() {
 
     // dùng dispatch 1 action
     const dispatch = useDispatch();
+    // let { id } = useParams();
+    // ID của nhóm
+    const id = 1;
 
     useEffect(() => {
         const fetchGroup= async () => {
             const timeline = await timelineApi.getAll();
             dispatch(update(timeline.data));
         }
+  
         fetchGroup();
-
     }, []);
-    
-    // dùng để lấy dữ liệu từ state
+
+    // Lấy dữ liệu từ state
+    const link = useSelector(state => state.link);
     const timeline = useSelector(state => state.timeline);
-
-    console.log("Dữ liệu group detail")
-    console.log(timeline);
     
-    const Posts = [
-    //     // {
-    //     //     id: 1,
-    //     //     imageUser: 'https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2787&q=80',
-    //     //     userLink: "/do-ba-dat",
-    //     //     nameUser: "Bá Đạt",
-    //     //     datePost: "20/10/2019",
-    //     //     groupLink: "/cong-dong-frontend-vietnam",
-    //     //     imageGroup: "/images/Timeline/group__thumb-1.png",
-    //     //     nameGroup: "Cộng đồng Frontend Việt Nam",
-    //     //     contentLink: "www.linkin.com/abcxyx",
-    //     //     contentDesc: "Các nguyên lý cơ bản của lập trình...",
-    //     //     imageLink: "/images/Timeline/post-thumb.png",
-
-    //     //     like: 20,
-    //     //     comment: 30,
-    //     //     hour: 40,
-    //     // },
-    //     // {
-    //     //     id: 2,
-    //     //     imageUser: 'https://images.unsplash.com/photo-1604004555489-723a93d6ce74?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=987&q=80',
-    //     //     userLink: "/do-ba-dat",
-    //     //     nameUser: "Bá Đạt 2",
-    //     //     datePost: "20/10/2019",
-    //     //     groupLink: "/cong-dong-frontend-vietnam",
-    //     //     imageGroup: "/images/Timeline/group__thumb-1.png",
-    //     //     nameGroup: "Cộng đồng Frontend Việt Nam",
-    //     //     contentLink: "www.linkin.com/abcxyx",
-    //     //     contentDesc: "Các nguyên lý cơ bản của lập trình...",
-    //     //     imageLink: "/images/Timeline/post-thumb.png",
-
-    //     //     like: 20,
-    //     //     comment: 30,
-    //     //     hour: 40,
-    //     // },
-    ];
-    
+    console.log("Dữ liệu của tất cả bài viết: ", link);
+    console.log("Dữ liệu group detail: ",timeline)
+    console.log(link._id);
     const listPost = timeline.map(post => {
+        // Kiểm tra dữ liệu có phải là nhóm hay không
         return (
             <LinkComponent
                 key={post.id}
@@ -90,7 +60,7 @@ function TimelineGroup() {
             ></LinkComponent>
         );
     });
-
+   
     return (
         <section id="timelineGroup">
             <div className="timeline__group">

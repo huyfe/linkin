@@ -170,11 +170,14 @@
 }
 .dropdown-public {
     z-index: 2000 !important;
+    li {
+        background-color: transparent !important;
+        padding-left: 10px;
+    }
     .dropdown-item {
-        padding-left: 0 10px;
         margin-left: -15px;
         font-size: 16px;
-        background-color: transparent;
+        background-color: transparent !important;
         &:hover {
             color: #3573e2 !important;
         }

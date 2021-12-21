@@ -4,7 +4,8 @@ import { useDispatch } from 'react-redux';
 const linkApi = {
 
     getAll(params) {
-        const url = '/links';
+        const dataUser = JSON.parse(localStorage.getItem('dataUser'));
+        const url = `/links/link-user/${dataUser.Id}`;
         return axiosClient.get(url, { params });
     },
     get(id) {

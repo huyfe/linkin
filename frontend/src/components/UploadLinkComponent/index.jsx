@@ -27,18 +27,22 @@ UpLoadLinkComponent.defaultProps = {
 function UpLoadLinkComponent(props) {
     const [scrollableModal, setScrollableModal] = useState(false);
     const [showListCategory, setShowListCategory] = useState(false);
+    const [publicLink, setPublicLink] = useState(false);
 
     const [centredModal, setCentredModal] = useState(false);
     const toggleShow = () => setCentredModal(!centredModal);
     const dispatch = useDispatch();
 
+    const dataUser = JSON.parse(localStorage.getItem('dataUser'));
+
     // Default form value
     const [formValue, setFormValue] = useState({
+        id_author: dataUser.Id,
         title: '',
         link: '',
         categories: [],
         image: '',
-        public: true,
+        public: false,
     });
 
     // Event onchange form 
@@ -70,6 +74,12 @@ function UpLoadLinkComponent(props) {
         }
     }
 
+    // Event set public link
+    const onSetPublicLink = () => {
+        setPublicLink(!publicLink);
+        setFormValue({ ...formValue, public: publicLink });
+    }
+
     // Event onsubmit form
     const onSubmitForm = async (data) => {
         data.image = data.image || "https://images.unsplash.com/photo-1496440737103-cd596325d314?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80";
@@ -83,7 +93,7 @@ function UpLoadLinkComponent(props) {
     }
 
     // Get categories from state
-    const listCategoryData = useSelector(state => state.categoriesUser);
+    const listCategoryData = useSelector(state => state.fetchCatOfUser);
     console.log(listCategoryData);
     return (
         <div className="box-upload-link">
@@ -114,11 +124,17 @@ function UpLoadLinkComponent(props) {
                                     <h3>Quốc Huy</h3>
                                     <div className="public">
                                         <MDBDropdown>
-                                            <MDBDropdownToggle color='none' className="btn-public"><i className="fas fa-lock"></i> Riêng tư</MDBDropdownToggle>
+                                            <MDBDropdownToggle color='none' className="btn-public">
+                                                {!publicLink && <> <i className="fas fa-lock"></i> Riêng tư </>}
+                                                {publicLink && <> <i className="far fa-globe-europe"></i> Công khai </>}
+                                            </MDBDropdownToggle>
                                             <MDBDropdownMenu className="dropdown-public">
-                                                <MDBDropdownItem>
-                                                    <MDBDropdownLink className="pl-0" href="#"><i className="far fa-globe-europe"></i> Công khai</MDBDropdownLink>
-                                                </MDBDropdownItem>
+                                                {!publicLink && <MDBDropdownItem>
+                                                    <MDBDropdownLink onClick={() => onSetPublicLink()} className="pl-0" href="#"><i className="far fa-globe-europe"></i> Công khai</MDBDropdownLink>
+                                                </MDBDropdownItem>}
+                                                {publicLink && <MDBDropdownItem>
+                                                    <MDBDropdownLink onClick={() => onSetPublicLink()} className="pl-0" href="#"><i className="fas fa-lock"></i> Riêng tư</MDBDropdownLink>
+                                                </MDBDropdownItem>}
                                             </MDBDropdownMenu>
                                         </MDBDropdown>
                                     </div>
@@ -155,17 +171,6 @@ function UpLoadLinkComponent(props) {
                                         />
                                     </div>
                                     <div className='col-12'>
-                                        {/* <MDBInput
-                                            className='bg-light rounded-0'
-                                            autoComplete="off"
-                                            value={formValue.categories}
-                                            name='categories'
-                                            onChange={onChangeForm}
-                                            onFocus={() => setShowListCategory(true)}
-                                            onBlur={() => setShowListCategory(false)}
-                                            id='validationCustom03'
-                                            label='Danh mục'
-                                        /> */}
                                         <label htmlFor="" className="mb-2">Danh mục</label>
                                         <div className="checkbox-categories" style={{ minWidth: '22rem' }}>
                                             {

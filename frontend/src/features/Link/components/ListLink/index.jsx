@@ -15,7 +15,8 @@ function ListLink(props) {
 
     useEffect(() => {
         const fetchLink = async () => {
-            const linkList = await linkApi.getAll();
+            const dataUser = JSON.parse(localStorage.getItem('dataUser'));
+            const linkList = await linkApi.getAll({ type: "user" });
             dispatch(update(linkList.data));
         }
         fetchLink();

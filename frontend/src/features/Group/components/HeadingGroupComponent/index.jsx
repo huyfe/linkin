@@ -1,29 +1,44 @@
 
-import React from 'react';
 import PropTypes from 'prop-types';
+import React, { useEffect } from 'react';
 import './style.scss';
 import ItemHeadingComponent from '../ItemHeadingComponent';
+import { useDispatch, useSelector } from 'react-redux';
+import { update } from '../../groupSlice';
+import groupApi from './../../../../api/groupApi';
+import { useParams } from "react-router-dom";
 
 HeadingGroupComponent.propTypes = {
 
 };
 
 function HeadingGroupComponent(props) {
+    
+    //dùng dispatch 1 action
+    const dispatch = useDispatch();
+    const { slug } = useParams();
 
-    const GroupHeadingData = [
-        {
-            imageThumbnail: '/images/Groups/image_theme.png',
-            titleHeading: "Cộng Đồng Front-End",
-            subTitleHeading: "Nhóm công khai",
-            members: "1500",
-            href: "/"
+    useEffect(() => {
+        const fetch = async () => {
+            // const GroupHeadingData = await Group(slug);
+        
+            // const linkList = await linkApi.getAlllimit(Profileinfo.data.users._id);
+            // dispatch(update(linkList.data));
+            // setLinks(linkList.data)
         }
+        fetch();
+    }, []);
 
-    ];
-    const iconEarth = "icon-earth";
+
+  // dùng để lấy dữ liệu từ state
+  const GroupHeadingData = useSelector(state => state.group);
+  console.log(GroupHeadingData);
+
+  console.log("Render");
+
     const GroupHeading = GroupHeadingData.map(group => {
         return (
-            <ItemHeadingComponent imageThumbnail={group.imageThumbnail} titleHeading={group.titleHeading} subTitleHeading={group.subTitleHeading} members={group.members} href={group.href} iconEarth={iconEarth}></ItemHeadingComponent>
+            <ItemHeadingComponent key={group._id} id={group._id} title={group.title} image={group.image} members={group.members} desc={group.desc} urlGroup={group.slug}  date={group.created_date} public={group.public}></ItemHeadingComponent>
         );
     });
 

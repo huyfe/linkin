@@ -9,25 +9,44 @@ import SidebarGroupLinkComponent from '../SidebarGroupLinkComponent';
 
 
 ItemHeadingComponent.propTypes = {
-
+    id: PropTypes.number,
+    title: PropTypes.string,
+    desc: PropTypes.string,
+    urlGroup: PropTypes.string,
+    image: PropTypes.string,
+    date: PropTypes.string,
+    public: PropTypes.bool,
 };
 
+// giá trị mặc định cho của props
+ItemHeadingComponent.defaultProps = {
+    members: PropTypes.array
+};
+
+
 function ItemHeadingComponent(props) {
+    // đếm numbers member tham gia
+    
+    const numbers = props.members.length;
+    
+    
     return (
         <div className="group__heading">
             <div className="group__theme ">
-                <img className="img__thumbail" src={props.imageThumbnail} />
+                <Link to={props.urlGroup} title={props.title}>
+                    <img className="" src={props.image} />
+                </Link>
             </div>
             <div className="row ">
                 <div className="timeline__heading col-lg-8 dark">
                     <div className="box__heading">
                         <div className="title ">
-                            <h3 className="title__heading">{props.titleHeading}</h3>
+                            <h3 className="title__heading">{props.title}</h3>
                             <div className="item__heading">
                                 <h4 className="subTitle__heading">
-                                    {props.iconEarth && <span className={"icon " + props.iconEarth}></span>}
-                                    {props.subTitleHeading}
-                                    <span className="member__title"> - {props.members}k thành viên</span>
+                                    {/* {props.iconEarth && <span className={"icon " + props.iconEarth}></span>}
+                                    {props.subTitleHeading} */}
+                                    <span className="member__title"> - {props.number}k thành viên</span>
                                 </h4>
                             </div>
                         </div>

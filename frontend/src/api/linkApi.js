@@ -31,7 +31,11 @@ const linkApi = {
     removeReal(id) {
         const url = `/links/${id}/destroy`;
         return axiosClient.delete(url);
-    }
+    },
+    updatePinLink(id) {
+        const url = `/links/${id}/pin`;
+        return axiosClient.patch(url);
+    },
 };
 
 export default linkApi;

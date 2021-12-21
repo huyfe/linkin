@@ -13,7 +13,7 @@ function CategoryPage(props) {
     <>
       <section id="categoryPage">
         <div className="container-fluid">
-          <div className="row no-gutters">
+          <div className="row gx-0">
             <div className="col-lg-3 col-12 p-0">
               <FilterCategory />
             </div>

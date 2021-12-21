@@ -16,6 +16,7 @@ import { update as updateLoading } from "../../../../components/LoadingComponent
 import CopyToClipboard from "react-copy-to-clipboard";
 import categoriesApi from "../../../../api/categoriesApi";
 import { updateCatOfUser } from "../../../Category/categoriesUserSlice";
+import { updateLinkOfUser } from "../../../Link/linkSlice";
 
 LinkItem.propTypes = {
   id: PropTypes.number,
@@ -55,6 +56,11 @@ function LinkItem(props) {
     let { data } = await categoriesApi.updateLinks(idCat, idLink);
     dispatch(updateCatOfUser(data));
   };
+
+  const onPinned = async () => {
+    let { data } = await linkApi.updatePinLink(props.id);
+    dispatch(updateLinkOfUser(data));
+  }
 
   return (
     <div className="d-flex linkItem">
@@ -146,6 +152,12 @@ function LinkItem(props) {
               <span className="icon-copy"></span>
             </CopyToClipboard>
           </button>
+          <button onClick={() => onPinned()}>
+            <span className={props.pinned ? "icon-pin text-primary" : "icon-pin"}></span>
+          </button>
+          <button>
+            <span class="icon-edit-basic"></span>
+          </button>
           <button onClick={removeLinkItem(props.id)}>
             <i className="fal fa-trash"></i>
           </button>
@@ -153,9 +165,9 @@ function LinkItem(props) {
         <div className="linkItem__date">
           <h3>
             {props.public ? (
-              <span className="icon-lock"></span>
-            ) : (
               <span className="icon-earth"></span>
+            ) : (
+              <span className="icon-lock"></span>
             )}
             {props.date}
           </h3>

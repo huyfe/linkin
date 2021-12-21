@@ -14,7 +14,7 @@ function CategoryPinnedSideBar(props) {
 
     const listCategoryPinnedData = [...listCategoryData].filter(
         (category) => category.pin === true
-      );
+    );
 
     const pinIcon = "fal fa-ellipsis-h";
 

@@ -12,7 +12,7 @@ const Link = new Schema(
         image: { type: String },
         created_date: { type: Date },
         public: { type: Boolean },
-        pinned: { type: Boolean },
+        pinned: { type: Boolean, default: false },
         id_author: { type: Number },
         categories: { type: [{ id: Number, name: String }] },
         id_passengers: { type: [{ id: Number }] },

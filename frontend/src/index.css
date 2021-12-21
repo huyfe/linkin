@@ -16,8 +16,7 @@ body {
 @font-face {
   font-family: "icomoon";
   src: url("fonts/iconmoon/icomoon.eot?ae9c5a");
-  src: url("fonts/iconmoon/icomoon.eot?ae9c5a#iefix")
-      format("embedded-opentype"),
+  src: url("fonts/iconmoon/icomoon.eot?ae9c5a#iefix") format("embedded-opentype"),
     url("fonts/iconmoon/icomoon.ttf?ae9c5a") format("truetype"),
     url("fonts/iconmoon/icomoon.woff?ae9c5a") format("woff"),
     url("fonts/iconmoon/icomoon.svg?ae9c5a#icomoon") format("svg");
@@ -28,7 +27,8 @@ body {
 
 section#categoryPage > .container-fluid,
 .wrapper {
-  width: calc(100% - 80px);
+  padding-left: 40px;
+  padding-right: 5px;
   margin: 0 auto;
 }
 

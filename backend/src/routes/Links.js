@@ -10,6 +10,8 @@ router.delete('/:id/trash', linkController.TrashLink);
 router.patch('/:id/restore', linkController.RestoreLink);
 router.delete('/:id/destroy', linkController.DestroyLink);
 router.get('/', linkController.ShowAllLinks);
+router.get('/link-user/:id_author', linkController.ShowAllByUser);
 router.get('/limit/:id', linkController.ShowAllLinksLimit);
+router.patch('/:id/pin', linkController.UpdatePin);
 
 module.exports = router;

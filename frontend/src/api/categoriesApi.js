@@ -50,6 +50,17 @@ const categoriesApi = {
     const url = "/categories/show-trash";
     return axiosClient.get(url);
   },
+
+  restoreByList(data){
+    const url = "/categories/list-restore";
+    return axiosClient.patch(url, data);
+  },
+
+  updateLinks(idCat, idLink) {
+    const url = `/categories/${idCat}/links/${idLink}`;
+    return axiosClient.patch(url);
+  },
+
 };
 
 export default categoriesApi;

@@ -16,6 +16,16 @@ module.exports = {
             })
             .catch(next);
     },
+
+    //Hiện giới hạn links số lượng 8
+    async ShowAllLinksLimit(req, res, next) {
+        try {
+            const links = await Links.find({}).limit(8);
+            res.json(links);
+        } catch (err) {
+            res.json({ error: err });
+        }
+    },
     //Hiện các link đã xóa mềm (Thùng rác) -> [GET]/show-trash
     async ShowTrash(req, res, next) {
         await Links.findDeleted({})

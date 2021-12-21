@@ -25,7 +25,7 @@ export default function Header() {
         <header className="header">
             <nav className="header__menu">
                 <div className="row align-items-center">
-                    <div className="col-4">
+                    <div className="col-lg-4 col-md-5 col-2">
                         <div className="header__logo d-flex align-items-center">
                             <NavLink to="/"> <img src="/logo.svg" alt="Linkin" /></NavLink>
                             <div className="header__search">
@@ -35,14 +35,14 @@ export default function Header() {
                             </div>
                         </div>
                     </div>
-                    <div className="col-4">
+                    <div className="col-lg-4 col-md-4 col-5">
                         <ul className="header__main-menu nav d-flex align-items-center justify-content-center">
                             <li><NavLink to="/"><i className="fas fa-home"></i></NavLink></li>
                             <li><NavLink to="/follows"><i className="fas fa-user-friends"></i></NavLink></li>
                             <li><NavLink to="/groups"><i className="fas fa-users"></i></NavLink></li>
                         </ul>
                     </div>
-                    <div className="col-4">
+                    <div className="col-lg-4 col-md-3 col-5">
                         <div className="header__controls d-flex justify-content-end align-items-center">
                             <MDBBtn className="btn btn-primary btn-create-link shadow-0" >Tạo Link</MDBBtn>
                             <MDBBtn floating className="btn btn-notification shadow-0"><i className="fal fa-bell"></i></MDBBtn>
@@ -61,11 +61,23 @@ export default function Header() {
                                     </MDBDropdownToggle>
                                     <MDBDropdownMenu className="dropdown-menu-user">
                                         {(dataUsers) ? (
+                                            <>
                                             <MDBDropdownItem>
                                                 <Link className="dropdown-item linkItem__dropdown--link" to={`/profile/${dataUsers.Slug}`} >
                                                     <span className="icon-lock"></span> Trang cá nhân của bạn
                                                 </Link>
                                             </MDBDropdownItem>
+                                            <MDBDropdownItem>
+                                                <Link className="dropdown-item linkItem__dropdown--link dropdown-item--mobile" to="/links" >
+                                                <i className="fal fa-link"></i>Link của tôi
+                                                </Link>
+                                            </MDBDropdownItem>
+                                            <MDBDropdownItem>
+                                                <Link className="dropdown-item linkItem__dropdown--link dropdown-item--mobile" to="/categories" >
+                                                <i className="fal fa-folders"></i>Danh mục của tôi
+                                                </Link>
+                                            </MDBDropdownItem>
+                                            </>                
                                         ) : ("")}
                                         {(dataUsers) ? (
                                             (dataUsers.Role) === "1" ? (

@@ -17,12 +17,17 @@ export default function Login() {
     const [errors, showErrors] = useState(null);
 
     const Login = details => {
+        const pattern = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+")([\w-]+(?:\.[\w-]+)*))(@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)/i);
         if (details.email === "") {
             const errorEmail = "Vui lòng nhập email";
             showErrors(errorEmail);
             showResult(true);
         } else if (details.password === "") {
             const errorPassword = "Vui lòng nhập mật khẩu";
+            showErrors(errorPassword);
+            showResult(true);
+        } else if (!pattern.test(details.email)) {
+            const errorPassword = "Vui lòng nhập đúng định dạng email";
             showErrors(errorPassword);
             showResult(true);
         } else {
@@ -51,7 +56,6 @@ export default function Login() {
                             Theme: Logincheck.data.result.theme,
                             AccessToken: Logincheck.data.Token
                         });
-                        alert("Đăng nhập thành công!")
                         // navigate('/');
                         window.location.href="/";
                     }
@@ -84,7 +88,7 @@ export default function Login() {
                     <div className="row align-items-center menu-header">
                         <div className="col-4">
                             <div className="header__logo">
-                                <NavLink to="/"> <img src="/logo.svg" alt="Linkin" /></NavLink>
+                                <NavLink to="/login"> <img src="/logo.svg" alt="Linkin" /></NavLink>
                                 <h2>Linkin</h2>
                             </div>
                         </div>

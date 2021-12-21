@@ -9,6 +9,7 @@ import {
   MDBTabsPane,
 } from "mdb-react-ui-kit";
 import AdListCat from "../AdListCat";
+import AdCatTrash from "../AdCatTrash";
 
 AdCatHome.propTypes = {};
 
@@ -48,7 +49,9 @@ function AdCatHome(props) {
         <MDBTabsPane show={basicActive === "tab1"}>
           <AdListCat />
         </MDBTabsPane>
-        <MDBTabsPane show={basicActive === "tab2"}>Tab 2 content</MDBTabsPane>
+        <MDBTabsPane show={basicActive === "tab2"}>
+          <AdCatTrash />
+        </MDBTabsPane>
       </MDBTabsContent>
     </div>
   );

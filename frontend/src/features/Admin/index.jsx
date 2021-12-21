@@ -8,7 +8,6 @@ function AdminFeature(props) {
     const dataUsers = JSON.parse(dataUser)
 
     return (
-
         (dataUsers) ? (
             (dataUsers.Role) === "1" ? (
                 <Routes>

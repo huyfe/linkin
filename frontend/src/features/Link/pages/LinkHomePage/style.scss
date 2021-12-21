@@ -1,9 +1,20 @@
 .link-homepage {
-    > .container-fluid {
-        padding-left: 40px;
-        padding-right: 5px;
+  > .container-fluid {
+    padding-left: 40px;
+    padding-right: 5px;
+    @media screen and (max-width: 991px) {
+      padding: 0 40px;
     }
-    .main-link {
-        margin-top: 40px;
+    @media screen and (max-width: 768px) {
+      padding: 0 20px;
     }
+  }
+  .main-link {
+    margin-top: 40px;
+  }
+  @media screen and (max-width: 991px) {
+    .res-mobile {
+      display: none;
+    }
+  }
 }

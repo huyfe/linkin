@@ -71,16 +71,7 @@ function MainFollower({ Profile }) {
     return (
         <div className="mainFollower">
             <div className="d-flex align-items-center searchFollower">
-                <h3>{Profile.follower?.length} Người</h3>
-                <div className="searchFollower__group">
-                    <label
-                        htmlFor="searchFollower"
-                        className="d-flex justify-content-end align-items-center"
-                    >
-                        <i className="fal fa-search"></i>
-                    </label>
-                    <input id="searchFollowing" type="search" />
-                </div>
+                <h3>Người theo dõi: {Profile.follower?.length}</h3>
             </div>
             <div className="listFollower">
                 {(Profile.follower?.map(Flo => (

@@ -1,0 +1,20 @@
+.adlistcat {
+  $txt-blue: #3573e2;
+  $txt-black: #222222;
+  $bg-white: #f9f9f9;
+  &__search {
+    margin-bottom: 20px;
+    input {
+      outline: none;
+      border-color: $txt-blue;
+      padding: 5px 15px;
+      font-size: 16px;
+      color: $txt-black;
+      border-radius: 4px;
+      width: 300px;
+      @media screen and (max-width: 400px) {
+        width: 100%;
+      }
+    }
+  }
+}

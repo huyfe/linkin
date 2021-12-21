@@ -55,7 +55,7 @@ export default function ResetPassword() {
                             <div className="row align-items-center menu-header">
                                 <div className="col-2">
                                     <div className="header__logo">
-                                        <NavLink to="/"> <img src="/logo.svg" alt="Linkin" /></NavLink>
+                                        <NavLink to="/login"> <img src="/logo.svg" alt="Linkin" /></NavLink>
                                         <h2>Linkin</h2>
                                     </div>
                                 </div>

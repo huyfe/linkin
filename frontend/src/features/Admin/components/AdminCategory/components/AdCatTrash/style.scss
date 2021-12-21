@@ -1,0 +1,135 @@
+.adcattrash {
+  $txt-blue: #3573e2;
+  $txt-black: #222222;
+  $bg-white: #f9f9f9;
+
+  input[type="checkbox"] {
+    position: absolute;
+    transform: scale(0);
+    &:checked ~ .checkbox {
+      border-color: transparent;
+      background: $txt-blue;
+      animation: jelly 0.6s ease;
+    }
+    &:checked ~ .checkbox::after {
+      opacity: 1;
+      transform: rotate(45deg) scale(1);
+    }
+  }
+
+  .checkbox {
+    position: relative;
+    width: 20px;
+    height: 20px;
+    border: 2px solid $txt-black;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.1s ease;
+    &::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 6px;
+      height: 12px;
+      margin-left: -3px;
+      margin-top: -8px;
+      opacity: 0;
+      transform: rotate(45deg) scale(0);
+      border-right: 2px solid $bg-white;
+      border-bottom: 2px solid $bg-white;
+      transition: all 0.3s ease;
+      transition-delay: 0.15s;
+    }
+  }
+
+  @keyframes jelly {
+    0%,
+    100% {
+      transform: scale(1, 1);
+    }
+    30% {
+      transform: scale(1.1, 0.9);
+    }
+    40% {
+      transform: scale(0.8, 1.2);
+    }
+    50% {
+      transform: scale(1.1, 0.8);
+    }
+    65% {
+      transform: scale(0.9, 1);
+    }
+    75% {
+      transform: scale(1, 0.9);
+    }
+  }
+
+  &__top {
+    margin-bottom: 20px;
+    label {
+      margin-left: 10px;
+    }
+    input[type="search"] {
+      outline: none;
+      border-color: $txt-blue;
+      padding: 5px 15px;
+      font-size: 16px;
+      color: $txt-black;
+      border-radius: 4px;
+      width: 300px;
+      @media screen and (max-width: 600px) {
+        margin-top: 20px;
+        width: 100%;
+      }
+    }
+    .btn {
+      margin-left: 20px;
+      margin-right: auto;
+      padding: 5px 15px;
+    }
+    @media screen and (max-width: 600px) {
+      margin-top: 20px;
+    }
+  }
+
+  &__table {
+    th,
+    td {
+      padding: 10px 20px !important;
+    }
+    thead th {
+      font-size: 18px;
+      font-weight: 700;
+    }
+    tbody {
+      td {
+        vertical-align: middle;
+        font-size: 16px;
+        font-weight: 500;
+        color: $txt-blue;
+        span {
+          margin-left: 20px;
+        }
+      }
+    }
+    img {
+      width: 100px;
+      height: 100px;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+    @media screen and (max-width: 700px) {
+      .res-mobile {
+        display: none;
+      }
+      .td-mobile{
+        display: flex;
+        flex-direction: column;
+        span{
+          margin: 5px 0;
+        }
+      }
+    }
+  }
+}

@@ -28,7 +28,7 @@ function HomePage() {
             <br />
             <section id="admin-page">
                 <MDBRow>
-                    <MDBCol size='2'>
+                    <MDBCol size='12' className='col-lg-2 tabs-nav'>
                         <MDBTabs pills className='flex-column text-center'>
                             <MDBTabsItem>
                                 <MDBTabsLink onClick={() => handleVerticalClick('tab1')} active={verticalActive === 'tab1'}>
@@ -67,7 +67,7 @@ function HomePage() {
                             </MDBTabsItem>
                         </MDBTabs>
                     </MDBCol>
-                    <MDBCol size='9'>
+                    <MDBCol size='12' className='col-lg-10'>
                         <MDBTabsContent>
                             <MDBTabsPane show={verticalActive === 'tab1'}>Bảng điều khiển content</MDBTabsPane>
                             <MDBTabsPane show={verticalActive === 'tab2'}><AdminUser /></MDBTabsPane>

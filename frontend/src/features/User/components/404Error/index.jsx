@@ -5,6 +5,14 @@ import './style.scss';
 function Web404Error() {
     const dataUser = localStorage.getItem("dataUser")
     const dataUsers = JSON.parse(dataUser)
+    
+    const LoGin = () => {
+        window.location.href="/login"
+    }
+
+    const RegisTer = () => {
+        window.location.href="/register"
+    }
 
     return (
         <div className="container page404">
@@ -23,17 +31,17 @@ function Web404Error() {
                                 <Link to="/" className="btn btn-primary btn-lg">
                                     <span className="glyphicon glyphicon-home" /> Trở về trang chủ
                                 </Link>
-                                <Link to="/" className="btn btn-default btn-lg">
+                                <Link to="/support-member" className="btn btn-default btn-lg" target="_blank">
                                     <span className="glyphicon glyphicon-envelope" /> Liên hệ hỗ trợ
                                 </Link>
                             </div>
                         ) : (
                             <div className="error-actions">
-                                <Link to="/login" className="btn btn-primary btn-lg">
+                                <Link to="#" onClick={LoGin} className="btn btn-primary btn-lg">
                                     <span className="glyphicon glyphicon-home" /> Đăng nhập
                                 </Link>
-                                <Link to="/" className="btn btn-default btn-lg">
-                                    <span className="glyphicon glyphicon-envelope" /> Liên hệ hỗ trợ
+                                <Link to="#" onClick={RegisTer} className="btn btn-default btn-lg">
+                                    <span className="glyphicon glyphicon-envelope" /> Đăng ký
                                 </Link>
                             </div>
                         )}

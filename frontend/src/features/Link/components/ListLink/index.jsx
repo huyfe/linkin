@@ -11,15 +11,15 @@ ListLink.propTypes = {
 };
 
 function ListLink(props) {
-    const dispatch = useDispatch();
+    // const dispatch = useDispatch();
 
-    useEffect(() => {
-        const fetchLink = async () => {
-            const linkList = await linkApi.getAll();
-            dispatch(update(linkList.data));
-        }
-        fetchLink();
-    }, []);
+    // useEffect(() => {
+    //     const fetchLink = async () => {
+    //         const linkList = await linkApi.getAll();
+    //         dispatch(update(linkList.data));
+    //     }
+    //     fetchLink();
+    // }, []);
 
     const linkListData = useSelector(state => state.link);
 

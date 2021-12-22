@@ -1,9 +1,12 @@
 const mongoose = require('mongoose');
+const dotenv = require('dotenv');
+
+dotenv.config();
 
 // async là khai báo 1 hàm bất đồng bộ
 async function connect() {
     try {
-        await mongoose.connect('mongodb+srv://lamnguyent2:Lam0123456z@cluster0.tlapj.mongodb.net/linkin_project', {
+        await mongoose.connect(process.env.DATABASE_URL, {
             useNewUrlParser: true,
             useUnifiedTopology: true
         });

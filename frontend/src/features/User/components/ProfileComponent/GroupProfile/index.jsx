@@ -10,7 +10,7 @@ function GroupProfile() {
 
     useEffect(() => {
         const fetchGroup = async () => {
-            const groupList = await groupApi.getAll();
+            const groupList = await groupApi.getAlllimit();
             dispatch(update(groupList.data));
         }
         fetchGroup();

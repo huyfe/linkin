@@ -1,0 +1,30 @@
+{
+    "name": "wolsey",
+    "description": "Output numbers as numerals and ordinals",
+    "version": "0.1.0",
+    "main": "wolsey.js",
+    "repository": {
+        "type": "git",
+        "url": "git://github.com/solidgoldpig/wolsey.git#0.1.0"
+    },
+    "homepage": "http://wolsey.solidgoldpig.com",
+    "bugs": "https://github.com/solidgoldpig/wolsey/issues",
+    "keywords": [
+        "cardinal",
+        "ordinal",
+        "numeral",
+        "number"
+    ],
+    "devDependencies": {
+        "jasmine-node": "^1.14.x",
+        "log": "^1.4.0"
+    },
+    "scripts": {
+        "test": "jasmine-node --verbose spec"
+    },
+    "author": {
+        "name": "Alex Robinson",
+        "email": "github@alex.fu2k.org"
+    },
+    "license": "UNLICENSE"
+}

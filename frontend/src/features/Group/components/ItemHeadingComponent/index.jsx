@@ -50,16 +50,16 @@ function ItemHeadingComponent(props) {
             <div className="row ">
                 <div className="timeline__heading col-lg-8 dark">
                     <div className="box__heading">
-                        {/* <div className="title ">
+                        <div className="title ">
                             <h3 className="title__heading"><Link to={`/groups/${Groups.slug}`}>{Groups.title}</Link></h3>
                             <div className="item__heading">
                                 <h4 className="subTitle__heading">
-                                    {group.iconEarth && <span className={"icon " + group.iconEarth}></span>}
-                                    {group.subTitleHeading}
-                                    <span className="member__title"> - {`/groups/${group.members}`}k thành viên</span>
+                                    {Groups.iconEarth && <span className={"icon " + Groups.iconEarth}></span>}
+                                    {/* {group.subTitleHeading} */}
+                                    <span className="member__title"> - {Groups.members}k thành viên</span>
                                 </h4>
                             </div>
-                        </div> */}
+                        </div>
                         <div className="search__heading">
                             <form>
                                 <div className="item__search">

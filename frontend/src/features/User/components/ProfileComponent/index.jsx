@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch } from 'react-redux';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import {
     MDBBtn,
     MDBTabs,
@@ -26,6 +26,7 @@ import FormEditCoverImage from "./FormEditCoverImage";
 
 function ProfileComponent(props) {
     const { slug } = useParams();
+    const navigate = useNavigate();
     const [Profile, setProfile] = useState([])
     const [Profile2, setProfile2] = useState([])
     const [Profile3, setProfile3] = useState([])
@@ -220,7 +221,7 @@ function ProfileComponent(props) {
                                 AccessToken: dataUsers.AccessToken
                             }
                             localStorage.setItem('dataUser', JSON.stringify(profile2))
-                            window.location.href = `/profile/${dataUsers.Slug}`;
+                            navigate(`/profile/${dataUsers.Slug}`);
                         })
                         .catch(err => {
                             console.log(err);

@@ -3,9 +3,9 @@ import { useDispatch } from 'react-redux';
 import { Link, useParams } from "react-router-dom";
 import categoriesApi from '../../../../../api/categoriesApi';
 import { ProfileUser } from '../../../../../api/UserApi';
-import { fetchCatOfUserLimit } from '../../../../Category/categoriesUserSlice';
 import { fetchOfUser } from '../../../Userslice';
 import CategoryTitle from './CategoryTitle';
+import { fetchCatProfile } from './cateProfileslice';
 import './style.scss';
 
 function CategoryProfile() {
@@ -18,11 +18,13 @@ function CategoryProfile() {
             const Profileinfo = await ProfileUser(slug);
             dispatch(fetchOfUser(Profileinfo.data.users));
             const categoryList = await categoriesApi.getCatOfUserLimit(Profileinfo.data.users._id);
-            dispatch(fetchCatOfUserLimit(categoryList.data));
+            // dispatch(fetchCatProfile(categoryList.data));
             setCategories(categoryList.data)
         }
         fetchInformation();
     }, [slug]);
+
+    // const categoryListData = useSelector(state => state.cates);
 
     return (
         <div className="cateProFile">

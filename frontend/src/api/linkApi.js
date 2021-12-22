@@ -5,12 +5,13 @@ const linkApi = {
 
     getAll(params) {
         const dataUser = JSON.parse(localStorage.getItem('dataUser'));
-        const url = `/links/link-user/${dataUser.Id}`;
+        const url = `/links/link-user/${dataUser?.Id}`;
         return axiosClient.get(url, { params });
     },
-    getAlllimit(id) {
-        const url = `/links/limit/${id}`;
-        return axiosClient.get(url);
+    getAlllimit(params) {
+        const dataUser = JSON.parse(localStorage.getItem('dataUser'));
+        const url = `/links/link-user/${dataUser?.Id}`;
+        return axiosClient.get(url, { params });
     },
     get(id) {
         const url = `/links/${id}`;

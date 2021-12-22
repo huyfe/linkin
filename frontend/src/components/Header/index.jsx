@@ -1,11 +1,14 @@
 import React from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 import './style.scss';
 import { MDBBtn, MDBDropdownLink, MDBDropdown, MDBDropdownToggle, MDBDropdownMenu, MDBDropdownItem } from 'mdb-react-ui-kit';
 import { Link } from 'react-router-dom';
 import LoadingComponent from '../LoadingComponent';
+import { AdminLockUser } from '../../api/UserApi';
 
 export default function Header() {
+    const dispatch = useDispatch();
     const dataUser = localStorage.getItem("dataUser")
     const dataUsers = JSON.parse(dataUser)
     const navigate = useNavigate();
@@ -17,9 +20,11 @@ export default function Header() {
         window.location.href = "/login"
     }
 
-    const Logins = () => {
-        navigate('/login');
-    }
+    const lockusers = (id) => {
+        if (window.confirm("Bạn thực sự muốn khóa tài khoản?")) {
+            dispatch(AdminLockUser(id));
+        }
+    };
 
     return (
         <header className="header">
@@ -65,6 +70,11 @@ export default function Header() {
                                             <MDBDropdownItem>
                                                 <Link className="dropdown-item linkItem__dropdown--link" to={`/profile/${dataUsers.Slug}`} >
                                                     <span className="icon-lock"></span> Trang cá nhân của bạn
+                                                </Link>
+                                            </MDBDropdownItem>
+                                            <MDBDropdownItem>
+                                                <Link className="dropdown-item linkItem__dropdown--link" to="#" onClick={() => lockusers(dataUsers.Id)} >
+                                                    <span className="fas fa-user"></span> Khóa tài khoản
                                                 </Link>
                                             </MDBDropdownItem>
                                             <MDBDropdownItem>

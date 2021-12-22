@@ -14,10 +14,16 @@ const linkSlice = createSlice({
             return newState.map((link) =>
                 link._id === action.payload._id ? action.payload : link
             );
-        }
+        },
+
+        fetchlinkOfUsers(state, action) {
+            let data = action.payload;
+            state = data;
+            return state;
+        },
     }
 });
 
 const { actions, reducer } = linkSlice;
-export const { update, updateLinkOfUser } = actions; // Named export
+export const { update, updateLinkOfUser, fetchlinkOfUsers } = actions; // Named export
 export default reducer;

@@ -4,6 +4,7 @@ import { MDBBtn } from 'mdb-react-ui-kit';
 import FormResetPass from './FormResetPass';
 import './style.scss';
 import axios from 'axios';
+import { AxiosUser } from '../../../../api/UserApi';
 
 export default function ResetPassword() {
     const navigate = useNavigate();
@@ -31,7 +32,7 @@ export default function ResetPassword() {
             alert("Mật khẩu mới và xác nhận mật khẩu không khớp")
         } else {
             try {
-                axios.patch(`http://localhost:3000/users/edit-users/` + datacheckmails.Id, details)
+                axios.patch(`${AxiosUser()}/users/edit-users/` + datacheckmails.Id, details)
                     .then(res => {
                         alert('Đổi mật khẩu thành công!');
                         localStorage.removeItem("datacheckmail")

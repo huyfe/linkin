@@ -19,6 +19,9 @@ const Link = new Schema(
         id_groups: { type: [{ id: Number }] },
         type: { type: String },
         slug: { type: String, slug: "title", unique: true },
+
+        loves: {type: Number, default: 0},
+        id_author: {type: Number}
     },
     {
         _id: false,

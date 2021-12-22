@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import './style.scss';
 import {
@@ -26,7 +27,6 @@ UpLoadLinkComponent.defaultProps = {
 
 function UpLoadLinkComponent(props) {
   const [scrollableModal, setScrollableModal] = useState(false);
-  const [showListCategory, setShowListCategory] = useState(false);
   const [publicLink, setPublicLink] = useState(false);
 
   const [centredModal, setCentredModal] = useState(false);
@@ -62,10 +62,19 @@ function UpLoadLinkComponent(props) {
 
     // Validate form value not null 
     if (data.title === '' || data.link === '') return false;
-    console.log(data);
+    setScrollableModal(!scrollableModal);
     const uploadLink = await linkApi.add(data);
     const linkList = await linkApi.getAll();
     dispatch(update(linkList.data));
+    showPopUp("Đã thêm link thành công", 1500);
+  }
+
+  const showPopUp = (message, time) => {
+    const mess = <div className="message">{message}</div>;
+    ReactDOM.render((mess), document.getElementById("popUp"));
+    setTimeout(() => {
+      ReactDOM.render(null, document.getElementById("popUp"));
+    }, time);
   }
 
   const [showErr, setShowErr] = useState(false);
@@ -93,6 +102,7 @@ function UpLoadLinkComponent(props) {
         setImageUpload(e.target.result);
         setFormValue({ ...formValue, image: e.target.result });
         setIsImageUpload(true);
+        setImgErr(false);
       };
 
       reader.readAsDataURL(e.target.files[0]);
@@ -188,7 +198,9 @@ function UpLoadLinkComponent(props) {
                           (Ảnh không được quá 75kB)
                         </span>
                       ) : (
-                        ""
+                        <span className="img__err text-success">
+                          Tải ảnh lên thành công
+                        </span>
                       )}
                     </div>
                     <input

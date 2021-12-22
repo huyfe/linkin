@@ -7,7 +7,7 @@ function SupportMember() {
     const dataUsers = JSON.parse(dataUser)
 
     const LinkFace = () => {
-        window.location.href="https://www.facebook.com/lamnguyendevv2/"
+        window.location.href="https://www.facebook.com/ybx1802"
     }
     return (
         <div className="container pageSuport">

@@ -1,13 +1,17 @@
-import React from "react";
+import React, { useEffect, useState } from 'react';
+import ReactDOM from 'react-dom';
 import {
-  MDBDropdown,
-  MDBDropdownMenu,
-  MDBDropdownToggle,
-  MDBDropdownItem,
-  MDBDropdownLink,
-} from "mdb-react-ui-kit";
+  MDBBtn, MDBModal, MDBModalDialog, MDBModalContent, MDBModalBody, MDBModalFooter, MDBModalHeader, MDBModalTitle,
+  MDBDropdown, MDBDropdownMenu, MDBDropdownToggle, MDBDropdownItem, MDBDropdownLink
+} from 'mdb-react-ui-kit';
+import {
+  MDBValidation,
+  MDBInput,
+  MDBCheckbox
+} from 'mdb-react-ui-kit';
 import "./style.scss";
 import PropTypes from "prop-types";
+import moment from "moment";
 import { Link } from "react-router-dom";
 import linkApi from "../../../../api/linkApi";
 import { useDispatch, useSelector } from "react-redux";
@@ -17,6 +21,8 @@ import CopyToClipboard from "react-copy-to-clipboard";
 import categoriesApi from "../../../../api/categoriesApi";
 import { updateCatOfUser } from "../../../Category/categoriesUserSlice";
 import { updateLinkOfUser } from "../../../Link/linkSlice";
+
+import ModalEditLink from '../ModalEditLink/index';
 
 LinkItem.propTypes = {
   id: PropTypes.number,
@@ -37,7 +43,20 @@ LinkItem.defaultProps = {
 };
 
 function LinkItem(props) {
+  // State
   const dispatch = useDispatch();
+  const [showModalEdit, setShowModalEdit] = useState(false);
+
+  const linkItem = {
+    id: props.id,
+    id_author: props.id_author,
+    title: props.title,
+    link: props.urlLink,
+    categories: props.categories,
+    image: props.image,
+    public: props.public,
+    createdAt: props.createdAt
+  };
 
   const listCategoriesOfUser = useSelector((state) => state.categoriesUser);
 
@@ -46,6 +65,7 @@ function LinkItem(props) {
     dispatch(updateLoading(100));
     const awaitRemove = await linkApi.remove(id);
     dispatch(updateLoading(101));
+    showPopUp("Đã xóa thành công");
 
     // Update the links
     const linkList = await linkApi.getAll();
@@ -57,13 +77,30 @@ function LinkItem(props) {
     dispatch(updateCatOfUser(data));
   };
 
+  // Events
+  // Events click pinned
   const onPinned = async () => {
     let { data } = await linkApi.updatePinLink(props.id);
     dispatch(updateLinkOfUser(data));
+    if (!data.pinned) {
+      showPopUp("Đã bỏ ghim thành công");
+    }
+    else {
+      showPopUp("Đã ghim thành công");
+    }
+  }
+
+  // Show pop up copy thành công
+  const showPopUp = (message) => {
+    const mess = <div className="message">{message}</div>;
+    ReactDOM.render((mess), document.getElementById("popUp"));
+    setTimeout(() => {
+      ReactDOM.render(null, document.getElementById("popUp"));
+    }, 1500);
   }
 
   return (
-    <div className="d-flex linkItem">
+    <div className="linkItem d-flex">
       <div className="linkItem__img">
         <Link to={props.slug}>
           <img src={props.image} />
@@ -75,45 +112,15 @@ function LinkItem(props) {
             <Link to={props.slug} style={{ color: "#000" }}>
               {props.title}
             </Link>
+            <div className="linkItem__status-time d-flex align-items-center my-1">
+              {props.public ? (
+                <span className="icon-earth"></span>
+              ) : (
+                <span className="icon-lock"></span>
+              )}
+              <span className="created-at ms-2">{moment(props.createdAt).fromNow()}</span>
+            </div>
           </h2>
-          {/* <MDBDropdown dropright className="linkItem__dropdown">
-            <MDBDropdownToggle className="linkItem__btn">
-              <span className="icon-more-horizontal"></span>
-            </MDBDropdownToggle>
-            <MDBDropdownMenu className="linkItem__dropdown--menu">
-              <MDBDropdownItem>
-                <MDBDropdownLink className="linkItem__dropdown--link" href="#">
-                  <span className="icon-edit-basic"></span> Sửa
-                </MDBDropdownLink>
-              </MDBDropdownItem>
-              <MDBDropdownItem>
-                <MDBDropdownLink
-                  className="linkItem__dropdown--link"
-                  href="#"
-                  onClick={removeLinkItem(props.id)}
-                >
-                  <i className="fal fa-trash-alt"></i> Xóa
-                </MDBDropdownLink>
-              </MDBDropdownItem>
-              <MDBDropdownItem>
-                <MDBDropdownLink
-                  className="linkItem__dropdown--link"
-                  href="#"
-                >
-                  <span className="icon-earth"></span> Công khai
-                </MDBDropdownLink>
-              </MDBDropdownItem>
-              <MDBDropdownItem>
-                <MDBDropdownLink
-                  className="linkItem__dropdown--link"
-                  href="#"
-                >
-                  <span className="icon-lock"></span> Riêng tư
-                </MDBDropdownLink>
-              </MDBDropdownItem>
-            </MDBDropdownMenu>
-          </MDBDropdown> */}
-
           {listCategoriesOfUser.length != 0 ? (
             <MDBDropdown dropright className="linkItem__dropdown">
               <MDBDropdownToggle className="linkItem__btn">
@@ -147,30 +154,28 @@ function LinkItem(props) {
           >
             {props.urlLink}
           </a>
-          <button>
+          <button onClick={() => showPopUp("Đã sao chép vào bộ nhớ tạm")} class="bg-transparent">
             <CopyToClipboard text={props.urlLink}>
               <span className="icon-copy"></span>
             </CopyToClipboard>
           </button>
-          <button onClick={() => onPinned()}>
+          <button class="bg-transparent" onClick={() => onPinned()}>
             <span className={props.pinned ? "icon-pin text-primary" : "icon-pin"}></span>
           </button>
-          <button>
+          <button class="bg-transparent" onClick={() => setShowModalEdit(!showModalEdit)}>
             <span class="icon-edit-basic"></span>
           </button>
-          <button onClick={removeLinkItem(props.id)}>
+
+          {/* Modal Edit Link */}
+          <ModalEditLink
+            showModalEdit={showModalEdit}
+            setShowModalEdit={setShowModalEdit}
+            linkEdit={linkItem} />
+          {/* End Modal Edit Link */}
+
+          <button class="bg-transparent" onClick={removeLinkItem(props.id)}>
             <i className="fal fa-trash"></i>
           </button>
-        </div>
-        <div className="linkItem__date">
-          <h3>
-            {props.public ? (
-              <span className="icon-earth"></span>
-            ) : (
-              <span className="icon-lock"></span>
-            )}
-            {props.date}
-          </h3>
         </div>
       </div>
     </div>

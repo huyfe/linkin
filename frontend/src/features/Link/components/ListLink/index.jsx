@@ -86,7 +86,7 @@ function ListLink(props) {
 
     const linkList = links.map(link => {
         return (
-            <LinkItem key={link._id} id={link._id} pinned={link.pinned} title={link.title} slug={link.slug || "/"} urlLink={link.link} image={link.image} date={link.created_date} public={link.public} />
+            <LinkItem key={link._id} id_author={link.id_author} id={link._id} pinned={link.pinned} title={link.title} slug={link.slug || "/"} urlLink={link.link} image={link.image} createdAt={link.createdAt} public={link.public} />
         )
     })
 

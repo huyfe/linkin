@@ -1,8 +1,8 @@
 import axios from 'axios';
 
-const dataUser = JSON.parse(localStorage.getItem('dataUser'))
+const dataUsers = JSON.parse(localStorage.getItem('dataUser'))
 
-let jwtToken = dataUser.AccessToken;
+let jwtToken = dataUsers?.AccessToken;
 
 const axiosClient = axios.create({
     baseURL: 'http://localhost:3000',

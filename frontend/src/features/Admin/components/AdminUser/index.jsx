@@ -5,7 +5,7 @@ import './style.scss';
 import { Line } from "react-chartjs-2";
 import { MDBTable, MDBTableHead, MDBTableBody, MDBBtn, MDBPagination, MDBPaginationItem, MDBPaginationLink } from 'mdb-react-ui-kit';
 import { DataContext } from '../../../../DataLinkin';
-import { AdminDeleteUser, ProfileUser } from '../../../../api/UserApi';
+import { AdminDeleteUser, AxiosUser, ProfileUser } from '../../../../api/UserApi';
 import { fetchOfUser } from '../../../User/Userslice';
 
 function AdminUser(props) {
@@ -90,7 +90,7 @@ function AdminUser(props) {
             role: document.getElementById("role").value
         }
         try {
-            axios.patch(`http://localhost:3000/users/edit-infomation-user/` + idform, valueform)
+            axios.patch(`${AxiosUser()}/users/edit-infomation-user/` + idform, valueform)
                 .then(res => {
                     alert('Cập nhật phân quyền thành công!');
                     // navigate('/');

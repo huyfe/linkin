@@ -6,6 +6,7 @@ import IntroduceTitle from './IntroduceTitle';
 import ResetpassTitle from './ResetpassTitle';
 import "./style.scss";
 import FormEditUser from "./FormEditUser";
+import { AxiosUser } from "../../../../../api/UserApi";
 
 function IntroduceProfile() {
     const navigate = useNavigate();
@@ -14,8 +15,9 @@ function IntroduceProfile() {
     const [Information, setInformation] = useState([])
     const dataUser = localStorage.getItem("dataUser")
     const dataUsers = JSON.parse(dataUser)
+    
     useEffect(() => {
-        axios.get(`http://localhost:3000/users/${slug}`)
+        axios.get(`${AxiosUser()}/users/${slug}`)
             .then(res => {
                 let date = new Date(res.data.users.birthday)
                 setProfile({
@@ -51,13 +53,13 @@ function IntroduceProfile() {
             alert("Mật khẩu mới và xác nhận mật khẩu mới không khớp!")
         } else {
             try {
-                axios.patch(`http://localhost:3000/users/edit-user/` + dataUsers.Id, details)
+                axios.patch(`${AxiosUser()}/users/edit-user/` + dataUsers.Id, details)
                     .then(res => {
                         console.log(res.data.message);
                         if (res.data.message === "password error!") {
                             alert("Mật khẩu cũ không đúng")
                         } else if (res.data.message === "password OK!") {
-                            axios.patch(`http://localhost:3000/users/edit-users/` + dataUsers.Id, details)
+                            axios.patch(`${AxiosUser()}/users/edit-users/` + dataUsers.Id, details)
                                 .then(res => {
                                     alert('Đổi mật khẩu thành công!');
                                     window.location.reload(false);
@@ -97,7 +99,7 @@ function IntroduceProfile() {
             alert("Tên không điền quá 14 ký tự!")
         } else {
             try {
-                axios.patch(`http://localhost:3000/users/edit-infomation-user/` + dataUsers.Id, detailsTwo)
+                axios.patch(`${AxiosUser()}/users/edit-infomation-user/` + dataUsers.Id, detailsTwo)
                     .then(res => {
                         alert('Cập nhật thông tin thành công!');
                         alert('Cập nhật xong bạn nên reset thông tin!');

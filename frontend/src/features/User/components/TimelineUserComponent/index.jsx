@@ -24,7 +24,7 @@ function TimelineUserComponent(props) {
     }, []);
 
     const linkList = useSelector(state => state.link)
-    console.info(linkList);
+    
     const listPostOfUser = linkList.map(post => {
         return (
             <TimelinePostUserComponent

@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 import axios from 'axios';
 import "./style.scss"
 import { fetchOfUser } from '../../../Userslice';
-import { ProfileUser } from '../../../../../api/UserApi';
+import { AxiosUser, ProfileUser } from '../../../../../api/UserApi';
 
 function MainFollowing({ Profile }) {
     const [Profile2, setProfile2] = useState([])
@@ -46,9 +46,9 @@ function MainFollowing({ Profile }) {
                 };
 
                 try {
-                    axios.patch(`http://localhost:3000/users/edit-infomation-user/` + dataUsers.Id, dataFollow)
+                    axios.patch(`${AxiosUser()}/users/edit-infomation-user/` + dataUsers.Id, dataFollow)
                         .then(res => {
-                            axios.patch(`http://localhost:3000/users/edit-infomation-user/` + Profile3._id, dataFollower)
+                            axios.patch(`${AxiosUser()}/users/edit-infomation-user/` + Profile3._id, dataFollower)
                                 .then(res => {
                                     alert('Hủy theo dõi thành công!');
                                     window.location.reload(false);

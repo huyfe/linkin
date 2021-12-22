@@ -31,7 +31,7 @@ module.exports = {
     //Hiện giới hạn links số lượng 8
     async ShowAllLinksLimit(req, res, next) {
         try {
-            const links = await Links.find({}).limit(8);
+            const links = await Links.find({ id_author: req.params.id_author, type: req.params.type }).limit(8);
             res.json(links);
         } catch (err) {
             res.json({ error: err });

@@ -31,13 +31,13 @@ function ItemMyGroupComponent(props) {
         <div className="box__my__group">
             <div className="item__list__group">
                 <div className="box__image">
-                    <Link to={props.urlGroup} title={props.title}>
+                    <Link to={`/groups/${props.urlGroup}`} title={props.title}>
                         <img className="" src={props.image} />
                     </Link>
                 </div>
                 <div className="box__content">
                     <div className="item__title">
-                        <Link to={props.urlGroup} title={props.title} className="group__name" >
+                        <Link to={`/groups/${props.urlGroup}`} title={props.title} className="group__name" >
                             {props.title}
                         </Link>
                     </div>

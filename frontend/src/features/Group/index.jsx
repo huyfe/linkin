@@ -14,12 +14,12 @@ function GroupFeature() {
         (dataUsers) ? (
             <Routes>
                 <Route path="/groups" element={<HomeGroupComponent />} />
-                <Route path="/groups/*" element={<DetailGroupComponent />} />
+                <Route path="/groups/:slug" element={<DetailGroupComponent />} />
             </Routes>
         ) : (
             <Routes>
                 <Route path="/groups" element={<Error404Page />} />
-                <Route path="/groups/*" element={<Error404Page />} />
+                <Route path="/groups/:slug" element={<Error404Page />} />
             </Routes>
         )
 

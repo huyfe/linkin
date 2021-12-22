@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import ItemMyGroupComponent from '../ItemMyGroupComponent/index';
 import './style.scss';
 import { useDispatch, useSelector } from 'react-redux';
-import { update } from '../../groupSlice';
+import { showGroupBySlug } from '../../groupSlice';
 import groupApi from './../../../../api/groupApi';
 
 
@@ -20,7 +20,7 @@ function MyGroupComponent(props) {
   useEffect(() => {
     const fetchGroup = async () => {
       const groupList = await groupApi.getAll();
-      dispatch(update(groupList.data));
+      dispatch(showGroupBySlug(groupList.data));
     }
     fetchGroup();
 

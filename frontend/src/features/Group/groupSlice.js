@@ -10,12 +10,17 @@ const groupSlice = createSlice({
             const data = action.payload;
             state = data;
             return state;
-        }
+        },
+        showGroupBySlug(state, action) {
+            const data = action.payload;
+            state = data;
+            return state;
+        },
     }
 });
 
 const { actions, reducer } = groupSlice;
-export const { update } = actions; // Named export
+export const { update, showGroupBySlug } = actions; // Named export
 export default reducer;
 
 

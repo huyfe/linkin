@@ -22,45 +22,44 @@ function ItemHeadingComponent(props) {
 
     const { slug } = useParams();
     const dispatch = useDispatch();
-
+    console.log(slug);
     const [Groups, setGroups] = useState([]);
+
     useEffect(() => {
         const fetcGroup = async () => {
             const groupList = await groupApi.getGroupBySlug(slug);
-            console.log(slug);
+           
             dispatch(update(groupList.data));
             setGroups(groupList.data);
         }
         fetcGroup();
     }, []);
-
+    console.log(Groups.image);
 
     return (
       
         <div className="group__heading">
             <div className="group__theme ">
-            {Groups?.map(group => (
-                <Link to={`/groups/${group.slug}`} >
-                    <img className="img__thumbail" src={`/groups/${group.image}`} />
-                </Link>
-            ))};
+
+            <Link to={`/groups/${Groups.slug}`} >
+                <img className="img__thumbail" src={Groups.image} />
+            </Link>
+    
             </div>
           
             <div className="row ">
                 <div className="timeline__heading col-lg-8 dark">
                     <div className="box__heading">
-                    {Groups?.map(group => (
-                        <div className="title ">
-                            <h3 className="title__heading"><Link to={`/groups/${group.slug}`}>{group.title}</Link></h3>
+                        {/* <div className="title ">
+                            <h3 className="title__heading"><Link to={`/groups/${Groups.slug}`}>{Groups.title}</Link></h3>
                             <div className="item__heading">
                                 <h4 className="subTitle__heading">
-                                    {/* {group.iconEarth && <span className={"icon " + group.iconEarth}></span>}
-                                    {group.subTitleHeading} */}
+                                    {group.iconEarth && <span className={"icon " + group.iconEarth}></span>}
+                                    {group.subTitleHeading}
                                     <span className="member__title"> - {`/groups/${group.members}`}k thành viên</span>
                                 </h4>
                             </div>
-                        </div>
-                        ))};
+                        </div> */}
                         <div className="search__heading">
                             <form>
                                 <div className="item__search">

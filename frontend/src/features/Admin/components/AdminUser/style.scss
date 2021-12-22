@@ -8,6 +8,12 @@ section#adminuser-page{
         .form-select{
             width: 20% !important;
         }
+
+        @media (max-width:768px) {
+            .form-select{
+                width: 35% !important;
+            }
+        }
     }
 
     @media (max-width:768px) {

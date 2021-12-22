@@ -9,7 +9,7 @@ const secret = 'mysecretsshhh';
 
 module.exports = {
 
-    // Show all accounts
+    // Hiện tất cả tài khoản
     ShowAllUsers: function (req, res, next) {
         Users.find({})
             .then(users => {
@@ -20,7 +20,7 @@ module.exports = {
             .catch(next);
     },
 
-    // Show details of a product
+    // Hiện tài khoản qua slug
     ShowUserBySlug: function (req, res, next) {
         Users.findOne({ slug: req.params.slug })
             .then(users => {
@@ -29,6 +29,7 @@ module.exports = {
             .catch(next);
     },
 
+    // Hiện tài khoản qua email
     ShowUserByEmail: function (req, res, next) {
         Users.findOne({ email: req.params.email })
             .then(users => {
@@ -37,9 +38,9 @@ module.exports = {
             .catch(next);
     },
 
-    // Show all locked accounts
+    // Hiện tất cả tài khoản bị xóa
     TrashUser: function (req, res, next) {
-        Users.findDeleted({})
+        Users.findDeleted({email: req.params.email})
             .then(users => {
                 res.json({
                     users: mutipleMongooseToObject(users)
@@ -48,7 +49,7 @@ module.exports = {
             .catch(next);
     },
 
-    // Add the account
+    // Đăng ký
     Registers: function (req, res, next) { // users.password = bcrypt.hashSync(req.body.password, bcrypt.genSaltSync(11), null)
         const newUser = new Users(req.body);
         const salt = bcrypt.genSaltSync(saltRounds);
@@ -70,7 +71,7 @@ module.exports = {
             .catch(next);
     },
 
-    // login the account
+    // Đăng nhập
     Logins: async function (req, res, next) { // users.password = bcrypt.hashSync(req.body.password, bcrypt.genSaltSync(11), null)
         const { email, password } = req.body;
         try {
@@ -78,15 +79,15 @@ module.exports = {
             if (!existingUser) return res.status(200).json({ message: "Email error" });
             const isPasswordCorrect = await bcrypt.compare(password, existingUser.password);
             if (!isPasswordCorrect) return res.status(200).json({ message: "Pass error" });
-
+            // Lấy token
             const Token = jwt.sign({ email: existingUser.email, id: existingUser._id }, "token", { expiresIn: "1h" });
             res.status(200).json({ result: existingUser, Token });
         } catch (error) {
-            res.status(500).json({ message: 'có gì đó không ổn!' });
+            res.status(500).json({ message: 'Error!' });
         }
     },
 
-    // Edit the account
+    // Cập nhật tài khoản
     UpdateUser: async function (req, res, next) {
         const newUser = req.body;
         try {
@@ -98,10 +99,12 @@ module.exports = {
                 return res.status(200).json({ message: "password error!" });
             }
         } catch (error) {
-            res.status(500).json({ message: 'có gì đó không ổn!' });
+            res.status(500).json({ message: 'Error!' });
         }
     },
 
+
+    // Cập nhật nhật tài khoản
     EditUser: async function (req, res, next) {
         const newUser = new Users(req.body);
         const salt = bcrypt.genSaltSync(saltRounds);
@@ -118,23 +121,39 @@ module.exports = {
                 .catch(next);
     },
 
-    // Delete the account
+    // Xóa tài khoản
     DeleteUser: function (req, res, next) {
         Users.deleteOne({ _id: req.params.id })
             .then(() => res.send('Account deleted successfully!'))
             .catch(next); // bắt lỗi
     },
 
-    // Temporarily lock your account
+    // Xóa mềm tài khoản
     LockUser: function (req, res, next) {
         Users.delete({ _id: req.params.id })
             .then(() => res.send('Account locked successfully!'))
             .catch(next);
     },
 
-    // Unblock the account
+
+    CheckRestore: async function (req, res, next) {
+        const { password } = req.body;
+        try{
+            const existingUser = await Users.findDeleted({ email: req.params.email });
+            console.log(existingUser);
+            if (!existingUser) return res.status(200).json({ message: "Email error" });
+            const isPasswordCorrect = await bcrypt.compare(password, existingUser.password);
+            if (!isPasswordCorrect) return res.status(200).json({ message: "Pass error" });
+            if (isPasswordCorrect) return res.status(200).json({ message: "Pass ok" });
+        }catch{
+
+        }
+            
+    },
+
+    // Khôi phục tài khoản
     RestoreUser: function (req, res, next) {
-        Users.restore({ _id: req.params.id })
+        Users.restore({ email: req.params.email })
             .then(() => res.send('Your account has been unblock!'))
             .catch(next);
     }

@@ -33,7 +33,7 @@ function App() {
                 {/* <Header /> */}
                 {/* Gắn header vào mỗi trang nha! Để trang admin không có header */}
                 {(window.location.pathname !== "/login" && window.location.pathname !== "/register"
-                    && window.location.pathname !== "/forgot-password" && window.location.pathname !== "/reset-password") ? (
+                    && window.location.pathname !== "/forgot-password" && window.location.pathname !== "/reset-password" && window.location.pathname !== "/restore-user") ? (
                     <Header />
                 ) : null}
                 <HomeFeature />

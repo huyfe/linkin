@@ -38,9 +38,6 @@ function AdminUser(props) {
 
     const dataChart2 = users.map(user => (user.name.split('').length));
 
-    console.log(dataChart1);
-    console.log(dataChart2);
-
     const data = {
         labels: NameChart,
         datasets: [
@@ -61,7 +58,6 @@ function AdminUser(props) {
     };
 
     const deleteusers = (id) => {
-        console.log("id", id);
         if (window.confirm("Bạn thực sự muốn xóa tài khoản này?")) {
             dispatch(AdminDeleteUser(id));
         }
@@ -111,7 +107,7 @@ function AdminUser(props) {
             <MDBTable>
                 <MDBTableHead>
                     <tr>
-                        <th scope='col'>#</th>
+                        <th scope='col'>Id</th>
                         <th scope='col'>Họ Tên</th>
                         <th scope='col' className='email'>Email</th>
                         <th scope='col'>Phân Quyền</th>
@@ -131,7 +127,11 @@ function AdminUser(props) {
                         ) : users.slice(indexOfFirstPost, indexOfLastPost).map(userss => (
                             <tr key={userss._id}>
                                 <td className='stt'>{userss._id}</td>
-                                <td className='name'>{userss.name}</td>
+                                <td className='name'>{userss.name} 
+                                {
+                                    (userss.deleted)==="true" ? ("(Đã khóa)") : ("")
+                                }
+                                </td>
                                 <td className='email'>{userss.email}</td>
                                 <td >
                                     {

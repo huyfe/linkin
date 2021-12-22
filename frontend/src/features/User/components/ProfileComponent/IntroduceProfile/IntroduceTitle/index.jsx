@@ -1,8 +1,9 @@
-import React from 'react';
+import React from "react";
 import { Link } from 'react-router-dom';
 import "./style.scss";
 
 function IntroduceTitle(props) {
+
     return (
         <div className="d-flex align-items-center IntroduceTitle">
             <h1>Thông tin</h1>

@@ -9,6 +9,12 @@ const UserSlice = createSlice({
             return state;
         },
 
+        fetchOfUserDeleted(state, action) {
+            let data = action.payload;
+            state = data;
+            return state;
+        },
+
         addAccountUser(state, action) {
             state.unshift(action.payload);
         },
@@ -28,5 +34,5 @@ const UserSlice = createSlice({
 });
 
 const { actions, reducer } = UserSlice;
-export const { fetchOfUser, addAccountUser, removeUser, updateUser } = actions;
+export const { fetchOfUser, fetchOfUserDeleted, addAccountUser, removeUser, updateUser } = actions;
 export default reducer;

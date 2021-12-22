@@ -66,7 +66,7 @@ export default function FormForgotPass({ ForgotPass }) {
             <div className="forgot-pass d-flex justify-content-between">
                 <div >{result ? <Result /> : null}</div>
                 <div>
-                    <Link to="/login">Đăng nhập <i class="fal fa-arrow-right"></i></Link>
+                    <Link to="/restore-user">Khôi phục tài khoản <i class="fal fa-arrow-right"></i></Link>
                 </div>
             </div>
         </form>

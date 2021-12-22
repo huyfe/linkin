@@ -164,3 +164,39 @@ section#categoryPage > .container-fluid,
 .icon-star:before {
   content: "\e901";
 }
+#popUp {
+  width: 20%;
+  max-width: 300px;
+  position: fixed;
+  left: 60px;
+  bottom: 100px;
+  min-height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+#popUp .message {
+  max-width: 300px;
+  padding: 20px 30px;
+  color: #22738e;
+  background-color: #d7f2fb;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s;
+  animation: fadeUp 1.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+@keyframes fadeUp {
+  0% {
+    opacity: 0;
+    transform: translateY(80%);
+  }
+  90% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+  }
+}

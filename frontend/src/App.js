@@ -32,8 +32,8 @@ function App() {
             <Router>
                 {/* <Header /> */}
                 {/* Gắn header vào mỗi trang nha! Để trang admin không có header */}
-                {(window.location.pathname !=="/login" && window.location.pathname !=="/register" 
-                && window.location.pathname !=="/forgot-password" && window.location.pathname !=="/reset-password") ? (
+                {(window.location.pathname !== "/login" && window.location.pathname !== "/register"
+                    && window.location.pathname !== "/forgot-password" && window.location.pathname !== "/reset-password") ? (
                     <Header />
                 ) : null}
                 <HomeFeature />
@@ -43,6 +43,7 @@ function App() {
                 <LinkFeature />
                 <AdminFeature />
             </Router>
+            <div id="popUp"></div>
         </div>
     );
 }

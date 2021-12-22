@@ -6,8 +6,8 @@ const groupApi = {
         const url = '/groups';
         return axiosClient.get(url, { params });
     },
-    get(id) {
-        const url = `/groups/${id}`;
+    getGroupBySlug(slug) {
+        const url = `/groups/${slug}`;
         return axiosClient.get(url);
     },
     add(data) {

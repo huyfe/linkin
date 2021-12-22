@@ -1,55 +1,66 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import TimelineGroup from '../TimelineComponent';
 import PropTypes from 'prop-types';
+import { useDispatch, useSelector } from 'react-redux';
 import './style.scss';
 import { Link } from 'react-router-dom';
 import { MDBDropdown, MDBDropdownMenu, MDBDropdownToggle, MDBDropdownItem, MDBDropdownLink } from 'mdb-react-ui-kit';
 import SidebarGroupLinkComponent from '../SidebarGroupLinkComponent';
+import { update } from '../../groupSlice';
+import groupApi from './../../../../api/groupApi';
+import { useParams } from "react-router-dom";
 
-
-
-ItemHeadingComponent.propTypes = {
-    id: PropTypes.number,
-    title: PropTypes.string,
-    desc: PropTypes.string,
-    urlGroup: PropTypes.string,
-    image: PropTypes.string,
-    date: PropTypes.string,
-    public: PropTypes.bool,
-};
-
-// giá trị mặc định cho của props
-ItemHeadingComponent.defaultProps = {
-    members: PropTypes.array
-};
 
 
 function ItemHeadingComponent(props) {
     // đếm numbers member tham gia
-    
-    const numbers = props.members.length;
-    
-    
+    // const numbers = props.members.length;
+
+    //   // dùng để lấy dữ liệu từ state
+    //   const listGroupHeadingData  = useSelector(state => state.group);
+
+
+    const { slug } = useParams();
+    const dispatch = useDispatch();
+
+    const [Groups, setGroups] = useState([]);
+    useEffect(() => {
+        const fetcGroup = async () => {
+            const groupList = await groupApi.getGroupBySlug(slug);
+            console.log(slug);
+            dispatch(update(groupList.data));
+            setGroups(groupList.data);
+        }
+        fetcGroup();
+    }, []);
+
+
     return (
+      
         <div className="group__heading">
             <div className="group__theme ">
-                <Link to={props.urlGroup} title={props.title}>
-                    <img className="" src={props.image} />
+            {Groups?.map(group => (
+                <Link to={`/groups/${group.slug}`} >
+                    <img className="img__thumbail" src={`/groups/${group.image}`} />
                 </Link>
+            ))};
             </div>
+          
             <div className="row ">
                 <div className="timeline__heading col-lg-8 dark">
                     <div className="box__heading">
+                    {Groups?.map(group => (
                         <div className="title ">
-                            <h3 className="title__heading">{props.title}</h3>
+                            <h3 className="title__heading"><Link to={`/groups/${group.slug}`}>{group.title}</Link></h3>
                             <div className="item__heading">
                                 <h4 className="subTitle__heading">
-                                    {/* {props.iconEarth && <span className={"icon " + props.iconEarth}></span>}
-                                    {props.subTitleHeading} */}
-                                    <span className="member__title"> - {props.number}k thành viên</span>
+                                    {/* {group.iconEarth && <span className={"icon " + group.iconEarth}></span>}
+                                    {group.subTitleHeading} */}
+                                    <span className="member__title"> - {`/groups/${group.members}`}k thành viên</span>
                                 </h4>
                             </div>
                         </div>
+                        ))};
                         <div className="search__heading">
                             <form>
                                 <div className="item__search">

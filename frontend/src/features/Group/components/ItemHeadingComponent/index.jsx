@@ -6,20 +6,14 @@ import './style.scss';
 import { Link } from 'react-router-dom';
 import { MDBDropdown, MDBDropdownMenu, MDBDropdownToggle, MDBDropdownItem, MDBDropdownLink } from 'mdb-react-ui-kit';
 import SidebarGroupLinkComponent from '../SidebarGroupLinkComponent';
-import { update } from '../../groupSlice';
+import { showGroupBySlug } from '../../groupSlice';
 import groupApi from './../../../../api/groupApi';
 import { useParams } from "react-router-dom";
 
 
 
 function ItemHeadingComponent(props) {
-    // đếm numbers member tham gia
-    // const numbers = props.members.length;
-
-    //   // dùng để lấy dữ liệu từ state
-    //   const listGroupHeadingData  = useSelector(state => state.group);
-
-
+  
     const { slug } = useParams();
     const dispatch = useDispatch();
     console.log(slug);
@@ -29,35 +23,31 @@ function ItemHeadingComponent(props) {
         const fetcGroup = async () => {
             const groupList = await groupApi.getGroupBySlug(slug);
            
-            dispatch(update(groupList.data));
+            dispatch(showGroupBySlug(groupList.data));
             setGroups(groupList.data);
         }
         fetcGroup();
     }, []);
-    console.log(Groups.image);
+    // console.log(Groups.image);
 
     return (
-      
+        
         <div className="group__heading">
             <div className="group__theme ">
-
-            <Link to={`/groups/${Groups.slug}`} >
                 <img className="img__thumbail" src={Groups.image} />
-            </Link>
-    
             </div>
           
             <div className="row ">
                 <div className="timeline__heading col-lg-8 dark">
                     <div className="box__heading">
                         <div className="title ">
-                            <h3 className="title__heading"><Link to={`/groups/${Groups.slug}`}>{Groups.title}</Link></h3>
+                            <h3 className="title__heading">{Groups.title}</h3>
                             <div className="item__heading">
                                 <h4 className="subTitle__heading">
-                                    {Groups.iconEarth && <span className={"icon " + Groups.iconEarth}></span>}
-                                    {/* {group.subTitleHeading} */}
-                                    <span className="member__title"> - {Groups.members}k thành viên</span>
+                                    <span className="member__title"><span class="icon-earth"></span> {Groups.members?.length} người tham gia</span>   {/* ? khi show dữ liệu */}
                                 </h4>
+                                <label htmlFor="">Giới thiệu</label>
+                                <p className="desc">{Groups.desc}</p>
                             </div>
                         </div>
                         <div className="search__heading">

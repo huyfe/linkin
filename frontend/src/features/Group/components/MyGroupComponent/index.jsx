@@ -27,8 +27,8 @@ function MyGroupComponent(props) {
     fetchGroup();
 
   }, []);
-  // dùng để lấy dữ liệu từ state
-  const listMyGroupData = useSelector(state => state.group);
+  // // dùng để lấy dữ liệu từ state
+  // const listMyGroupData = useSelector(state => state.group);
 
   const groupList = Groupall?.map(group => {
     return (

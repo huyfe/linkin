@@ -13,8 +13,7 @@ $text-gray: #222222;
 
                 img.img__thumbail {
                     width: 100%;
-                    min-height: 200px;
-                    object-fit: cover;
+                    height: 350px;
                 }
             }
 
@@ -22,11 +21,10 @@ $text-gray: #222222;
                 .box__heading {
                     display: flex;
                     justify-content: space-between;
-                    align-items: center;
 
                     .title {
                         margin-top: 15px;
-
+                        max-width: 65%;
                         .title__heading {
                             font-family: 'Roboto', sans-serif;
                             font-style: normal;
@@ -51,6 +49,21 @@ $text-gray: #222222;
                                     margin-right: 10px;
                                 }
                             }
+                            label {
+                                font-size: 18px;
+                                line-height: 20px;
+                                color: #000000;
+                                font-weight: bold;
+                                margin-bottom: 10px;
+                            
+                            }
+                            p {
+                                font-size: 16px;
+                                line-height: 20px;
+                                font-weight: normal;
+                                color: #000000;
+                                max-width: 90%;
+                            }
 
                             .member__title {
                                 font-family: "Roboto", sans-serif;
@@ -66,6 +79,7 @@ $text-gray: #222222;
                     }
 
                     .search__heading {
+                        margin-top: 15px;
                         form {
                             .item__search {
                                 display: flex;

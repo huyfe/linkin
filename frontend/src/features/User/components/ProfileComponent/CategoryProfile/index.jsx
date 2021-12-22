@@ -11,26 +11,26 @@ import './style.scss';
 function CategoryProfile() {
     const { slug } = useParams();
     const dispatch = useDispatch();
-    // const [Categories, setCategories] = useState([])
+    const [Categories, setCategories] = useState([])
 
     useEffect(() => {
         const fetchInformation = async () => {
             const Profileinfo = await ProfileUser(slug);
             dispatch(fetchOfUser(Profileinfo.data.users));
             const categoryList = await categoriesApi.getCatOfUserLimit(Profileinfo.data.users._id);
-            dispatch(fetchCatProfile(categoryList.data));
-            // setCategories(categoryList.data)
+            // dispatch(fetchCatProfile(categoryList.data));
+            setCategories(categoryList.data)
         }
         fetchInformation();
     }, [slug]);
 
-    const categoryListData = useSelector(state => state.cates);
+    // const categoryListData = useSelector(state => state.cates);
 
     return (
         <div className="cateProFile">
             <CategoryTitle />
             <div className="listCategoryProFile">
-                {categoryListData?.map(cates => (
+                {Categories?.map(cates => (
                     <div className="listCategoryProFile__item">
                         <div className="categoryItemProfile">
                             <div className="categoryItemProfile__img">

@@ -30,21 +30,21 @@ function TimelineUserComponent(props) {
         return (
             <TimelinePostUserComponent
             id={post._id}
-            key={post.id}
+            key={post._id}
             imageUser={post.imagex}         
             userLink={post.userLink}
-            nameUser={dataUsers.Fullname}        // check
-
-            datePost={post.createdAt}       // check
+            nameUser={dataUsers.Fullname}           // check
+            public = {props.public}                 // check
+            datePost={post.createdAt}               // check
 
             groupLink={post.groupLink}
 
             imageGroup={post.image}        
             nameGroup={post.nameGroup}
 
-            contentDesc={post.title}        // check 
-            contentLink={post.link}         // check
-            imageLink={post.image}          // check
+            contentDesc={post.title}                // check 
+            contentLink={post.link}                 // check
+            imageLink={post.image}                  // check
             
             like={post.like}
             comment={post.comment}

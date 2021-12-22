@@ -7,6 +7,9 @@ const route = require('./routes/index');
 const cors = require('cors');
 const db = require('./config/db');
 const http = require('http');
+const dotenv = require('dotenv');
+
+dotenv.config();
 
 const socketIO = require("socket.io");
 
@@ -18,7 +21,7 @@ const io = socketIO(server, {
   transports: ['polling'],
   cors: {
     cors: {
-      origin: "http://localhost:4200"
+      origin: "https://linkin-olive.vercel.app/"
     }
   }
 })
@@ -62,7 +65,7 @@ app.use(methodOverride('_method'));
 route(app);
 
 // Event listen server
-const port = 3000;
+const port = process.env.PORT;
 server.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`)
 });

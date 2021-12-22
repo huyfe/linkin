@@ -5,7 +5,7 @@ const dataUsers = JSON.parse(localStorage.getItem('dataUser'))
 let jwtToken = dataUsers?.AccessToken;
 
 const axiosClient = axios.create({
-    baseURL: 'http://localhost:3000',
+    baseURL: 'https://linkin-olive.herokuapp.com/',
     headers: {
         'Content-Type': 'application/json',
         'Authorization': 'Bearer ' + jwtToken

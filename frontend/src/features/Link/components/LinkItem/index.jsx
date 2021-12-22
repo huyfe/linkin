@@ -58,6 +58,7 @@ function LinkItem(props) {
     createdAt: props.createdAt
   };
 
+
   const listCategoriesOfUser = useSelector((state) => state.categoriesUser);
 
   const removeLinkItem = (id) => async (event) => {

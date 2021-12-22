@@ -263,7 +263,7 @@ function ProfileComponent(props) {
                                 AccessToken: dataUsers.AccessToken
                             }
                             localStorage.setItem('dataUser', JSON.stringify(profile2))
-                            window.location.href = `/profile/${dataUsers.Slug}`;
+                            navigate(`/profile/${dataUsers.Slug}`);
                         })
                         .catch(err => {
                             alert("ảnh kích thước quá lớn!")
@@ -351,20 +351,36 @@ function ProfileComponent(props) {
                             <div className="col-12">
                                 <div className="img-profile">
                                     {(dataUsers) ? (
-                                        (Profile.theme) === "anhbia.jpg" ? (
-                                            <img src="/images/Users/anhbia.jpg" alt="" />
+                                        (dataUsers.Slug) !== Profile.slug ? (
+                                            (Profile.theme) === "anhbia.jpg" ? (
+                                                <img src="/images/Users/anhbia.jpg" alt="" />
+                                            ) : (
+                                                <img src={Profile.theme} alt="" />
+                                            )
                                         ) : (
-                                            <img src={Profile.theme} alt="" />
+                                            (dataUsers.Theme) === "anhbia.jpg" ? (
+                                                <img src="/images/Users/anhbia.jpg" alt="" />
+                                            ) : (
+                                                <img src={dataUsers.Theme} alt="" />
+                                            )
                                         )
                                     ) : ("")}
                                     <div className="avatar-name">
                                         <div className="img-title">
                                             <div className="img-edit">
                                                 {(dataUsers) ? (
-                                                    (Profile.image) === "avatar.png" ? (
-                                                        <img src={`/images/Users/${Profile.image}`} alt="" />
+                                                    (dataUsers.Slug) !== Profile.slug ? (
+                                                        (Profile.image) === "avatar.png" ? (
+                                                            <img src={`/images/Users/${Profile.image}`} alt="" />
+                                                        ) : (
+                                                            <img src={Profile.image} alt="" />
+                                                        )
                                                     ) : (
-                                                        <img src={Profile.image} alt="" />
+                                                        (dataUsers.Image) === "anhbia.jpg" ? (
+                                                            <img src="/images/Users/anhbia.jpg" alt="" />
+                                                        ) : (
+                                                            <img src={dataUsers.Image} alt="" />
+                                                        )
                                                     )
                                                 ) : ("")}
                                                 {(dataUsers) ? (
@@ -391,7 +407,6 @@ function ProfileComponent(props) {
                                                         Đang theo dõi
                                                     </MDBBtn>
                                                 )
-
                                             ) : ("")
                                         ) : ("")}
                                     </div>

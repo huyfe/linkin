@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './style.scss';
 
@@ -13,6 +13,13 @@ function Web404Error() {
     const RegisTer = () => {
         window.location.href="/register"
     }
+    useEffect(() => {
+        if(dataUsers){
+            window.location.href="/"
+        }else{
+            window.location.href="/login"
+        }
+    }, [dataUsers])
 
     return (
         <div className="container page404">

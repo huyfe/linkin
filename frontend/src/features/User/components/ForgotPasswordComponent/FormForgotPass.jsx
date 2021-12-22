@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { MDBBtn } from 'mdb-react-ui-kit';
 import emailjs from 'emailjs-com';
 import axios from 'axios';
+import { AxiosUser } from '../../../../api/UserApi';
 
 const Result = () => {
     return (
@@ -21,7 +22,7 @@ export default function FormForgotPass({ ForgotPass }) {
         
         const valuegmail = document.getElementById("email").value;
         console.log(valuegmail);
-        axios.get(`http://localhost:3000/users/email/${valuegmail}`)
+        axios.get(`${AxiosUser()}/users/email/${valuegmail}`)
             .then(res => {
                 setDetails({ 
                     email: valuegmail,

@@ -19,7 +19,7 @@ import MainFollowing from "./MainFollowing";
 import TimelineUserComponent from "../TimelineUserComponent"
 import IntroduceProfile from "./IntroduceProfile";
 import UpLoadLinkComponent from "../../../../components/UploadLinkComponent/index";
-import { ProfileUser } from "../../../../api/UserApi";
+import { AxiosUser, ProfileUser } from "../../../../api/UserApi";
 import { fetchOfUser } from "../../Userslice";
 import FormEditImage from "./FormEditImage";
 import FormEditCoverImage from "./FormEditCoverImage";
@@ -59,7 +59,6 @@ function ProfileComponent(props) {
     useEffect(() => {
         const fetchInformation2 = async () => {
             const Profileinfo2 = await ProfileUser(dataUsers.Slug);
-            dispatch(fetchOfUser(Profileinfo2.data.users));
             setProfile2(Profileinfo2.data.users)
         }
         fetchInformation2();
@@ -86,9 +85,9 @@ function ProfileComponent(props) {
             };
 
             try {
-                axios.patch(`http://localhost:3000/users/edit-infomation-user/` + dataUsers.Id, dataFollow)
+                axios.patch(`${AxiosUser()}/users/edit-infomation-user/` + dataUsers.Id, dataFollow)
                     .then(res => {
-                        axios.patch(`http://localhost:3000/users/edit-infomation-user/` + Profile._id, dataFollower)
+                        axios.patch(`${AxiosUser()}/users/edit-infomation-user/` + Profile._id, dataFollower)
                             .then(res => {
                                 // alert('Theo dõi thành công!');
                                 window.location.reload(false);
@@ -122,9 +121,9 @@ function ProfileComponent(props) {
             };
             console.log(dataFollow);
             try {
-                axios.patch(`http://localhost:3000/users/edit-infomation-user/` + dataUsers.Id, dataFollow)
+                axios.patch(`${AxiosUser()}/users/edit-infomation-user/` + dataUsers.Id, dataFollow)
                     .then(res => {
-                        axios.patch(`http://localhost:3000/users/edit-infomation-user/` + Profile._id, dataFollower)
+                        axios.patch(`${AxiosUser()}/users/edit-infomation-user/` + Profile._id, dataFollower)
                             .then(res => {
                                 // alert('Theo dõi thành công!');
                                 window.location.reload(false);
@@ -162,9 +161,9 @@ function ProfileComponent(props) {
             };
 
             try {
-                axios.patch(`http://localhost:3000/users/edit-infomation-user/` + dataUsers.Id, dataFollow)
+                axios.patch(`${AxiosUser()}/users/edit-infomation-user/` + dataUsers.Id, dataFollow)
                     .then(res => {
-                        axios.patch(`http://localhost:3000/users/edit-infomation-user/` + Profile._id, dataFollower)
+                        axios.patch(`${AxiosUser()}/users/edit-infomation-user/` + Profile._id, dataFollower)
                             .then(res => {
                                 // alert('Hủy theo dõi thành công!');
                                 window.location.reload(false);
@@ -204,7 +203,7 @@ function ProfileComponent(props) {
                     image: e.target.result
                 })
                 try {
-                    axios.patch(`http://localhost:3000/users/edit-infomation-user/` + dataUsers.Id, offff)
+                    axios.patch(`${AxiosUser()}/users/edit-infomation-user/` + dataUsers.Id, offff)
                         .then(res => {
                             alert('Cập nhật ảnh đại diện thành công!');
                             // navigate('/');
@@ -246,7 +245,7 @@ function ProfileComponent(props) {
                     theme: e.target.result
                 })
                 try {
-                    axios.patch(`http://localhost:3000/users/edit-infomation-user/` + dataUsers.Id, offff)
+                    axios.patch(`${AxiosUser()}/users/edit-infomation-user/` + dataUsers.Id, offff)
                         .then(res => {
                             alert('Cập nhật ảnh bìa thành công!');
                             // navigate('/');

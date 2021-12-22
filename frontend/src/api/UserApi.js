@@ -1,5 +1,10 @@
 import axiosClient from "./axiosClient";
 
+export const AxiosUser = () => {
+    const url = "http://localhost:3000";
+    return url;
+}
+
 export const RegisterUser = (data) => {
     const url = '/users/create-user';
     return function (dispatch) {

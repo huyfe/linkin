@@ -3,7 +3,6 @@ import { useDispatch } from 'react-redux';
 import { Link, useParams } from "react-router-dom";
 import categoriesApi from '../../../../../api/categoriesApi';
 import { ProfileUser } from '../../../../../api/UserApi';
-import { fetchCatOfUserLimit } from '../../../../Category/categoriesUserSlice';
 import { fetchOfUser } from '../../../Userslice';
 import CategoryTitle from './CategoryTitle';
 import './style.scss';
@@ -18,7 +17,6 @@ function CategoryProfile() {
             const Profileinfo = await ProfileUser(slug);
             dispatch(fetchOfUser(Profileinfo.data.users));
             const categoryList = await categoriesApi.getCatOfUserLimit(Profileinfo.data.users._id);
-            dispatch(fetchCatOfUserLimit(categoryList.data));
             setCategories(categoryList.data)
         }
         fetchInformation();

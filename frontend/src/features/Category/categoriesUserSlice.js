@@ -9,12 +9,6 @@ const categoriesUserSlice = createSlice({
       return state;
     },
 
-    fetchCatOfUserLimit(state, action) {
-      let data = action.payload;
-      state = data;
-      return state;
-    },
-
     addCatOfUser(state, action) {
       state.unshift(action.payload);
     },
@@ -36,7 +30,6 @@ const categoriesUserSlice = createSlice({
 const { actions, reducer } = categoriesUserSlice;
 export const {
   fetchCatOfUser,
-  fetchCatOfUserLimit,
   addCatOfUser,
   removeCatOfUser,
   updateCatOfUser,

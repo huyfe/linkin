@@ -34,9 +34,9 @@ function TimelineGroup() {
     const link = useSelector(state => state.link);
     const timeline = useSelector(state => state.timeline);
     
-    console.log("Dữ liệu của tất cả bài viết: ", link);
-    console.log("Dữ liệu group detail: ",timeline)
-    console.log(link._id);
+    // console.log("Dữ liệu của tất cả bài viết: ", link);
+    // console.log("Dữ liệu group detail: ",timeline)
+    // console.log(link._id);
     const listPost = timeline.map(post => {
         // Kiểm tra dữ liệu có phải là nhóm hay không
         return (

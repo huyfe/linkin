@@ -31,7 +31,7 @@ function MyGroupComponent(props) {
 
   console.log("Render");
 
-  const groupList = listMyGroupData.map(group => {
+  const groupList = listMyGroupData?.map(group => {
     return (
       <div className="col-lg-6">
         <ItemMyGroupComponent key={group._id} id={group._id} title={group.title} image={group.image} members={group.members} desc={group.desc} urlGroup={group.slug}  date={group.created_date} public={group.public}></ItemMyGroupComponent>

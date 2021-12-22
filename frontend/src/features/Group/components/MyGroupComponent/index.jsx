@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 
 import ItemMyGroupComponent from '../ItemMyGroupComponent/index';
@@ -16,22 +16,21 @@ function MyGroupComponent(props) {
 
   //dùng dispatch 1 action
   const dispatch = useDispatch();
+  const [Groupall, setGroupall] = useState([])
 
   useEffect(() => {
     const fetchGroup = async () => {
       const groupList = await groupApi.getAll();
       dispatch(showGroupBySlug(groupList.data));
+      setGroupall(groupList.data);
     }
     fetchGroup();
 
   }, []);
   // dùng để lấy dữ liệu từ state
   const listMyGroupData = useSelector(state => state.group);
-  console.log(listMyGroupData);
 
-  console.log("Render");
-
-  const groupList = listMyGroupData?.map(group => {
+  const groupList = Groupall?.map(group => {
     return (
       <div className="col-lg-6">
         <ItemMyGroupComponent key={group._id} id={group._id} title={group.title} image={group.image} members={group.members} desc={group.desc} urlGroup={group.slug}  date={group.created_date} public={group.public}></ItemMyGroupComponent>

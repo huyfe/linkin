@@ -3,7 +3,6 @@ import { useDispatch } from 'react-redux';
 import { Link, useParams } from "react-router-dom";
 import categoriesApi from '../../../../../api/categoriesApi';
 import { ProfileUser } from '../../../../../api/UserApi';
-import { fetchCatOfUserLimit } from '../../../../Category/categoriesUserSlice';
 import { fetchOfUser } from '../../../Userslice';
 import CategoryTitle from './CategoryTitle';
 import { fetchCatProfile } from './cateProfileslice';

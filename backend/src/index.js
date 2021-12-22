@@ -21,7 +21,7 @@ const io = socketIO(server, {
   transports: ['polling'],
   cors: {
     cors: {
-      origin: "http://localhost:4200"
+      origin: "https://linkin-olive.vercel.app/"
     }
   }
 })

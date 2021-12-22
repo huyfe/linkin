@@ -11,7 +11,7 @@ import AdminFeature from './features/Admin';
 
 function App() {
     useEffect(() => {
-        const socket = io('ws://localhost:3000');
+        const socket = io('https://linkin-olive.herokuapp.com/');
 
         socket.on('connnection', () => {
             console.log('connected to server');

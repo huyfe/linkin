@@ -86,7 +86,7 @@ function AdminUser(props) {
             role: document.getElementById("role").value
         }
         try {
-            axios.patch(`${AxiosUser()}/users/edit-infomation-user/` + idform, valueform)
+            axios.patch(`${AxiosUser()}users/edit-infomation-user/` + idform, valueform)
                 .then(res => {
                     alert('Cập nhật phân quyền thành công!');
                     // navigate('/');

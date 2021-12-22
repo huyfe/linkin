@@ -5,7 +5,7 @@
   "main": "src/index.js",
   "scripts": {
     "beautiful": "prettier --single-quote --trailing-comma all --write 'src/**/*.{js,json,scss}'",
-    "start": "nodemon --inspect src/index.js",
+    "start": "nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
@@ -27,6 +27,7 @@
     "cookie-parser": "^1.4.5",
     "cors": "^2.8.5",
     "csurf": "^1.11.0",
+    "dotenv": "^10.0.0",
     "ejs": "^3.1.5",
     "express": "^4.17.1",
     "express-handlebars": "^5.2.0",
@@ -45,6 +46,7 @@
     "numeral": "^2.0.6",
     "passport": "^0.4.1",
     "passport-local": "^1.0.0",
+    "nodemon": "^2.0.6",
     "session": "^0.1.0",
     "socket.io": "^4.3.1"
   },

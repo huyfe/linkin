@@ -1,7 +1,7 @@
 import axiosClient from "./axiosClient";
 
 export const AxiosUser = () => {
-    const url = "http://localhost:3000";
+    const url = "https://linkin-olive.herokuapp.com";
     return url;
 }
 

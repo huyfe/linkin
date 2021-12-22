@@ -9,7 +9,7 @@ export const DataLinkin = (props) => {
     //user
     const [adminUser, setadminUser] = useState([])
     useEffect(()=>{
-        axios.get('http://localhost:3000/users')
+        axios.get('https://linkin-olive.herokuapp.com/users')
             .then(res=>{
                 setadminUser(res.data.users)
             })

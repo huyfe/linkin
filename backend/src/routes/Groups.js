@@ -29,4 +29,8 @@ router.delete('/delete-group/:id', groupController.DeleteGroup);
 // Show tất cả group
 router.get('/', groupController.ShowAllGroups);
 
+router.get('/group/limit', groupController.ShowAllGroupslimit);
+
+
+
 module.exports = router;

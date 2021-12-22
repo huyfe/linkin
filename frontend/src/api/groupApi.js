@@ -6,6 +6,10 @@ const groupApi = {
         const url = '/groups';
         return axiosClient.get(url, { params });
     },
+    getAlllimit(params) {
+        const url = '/groups/group/limit';
+        return axiosClient.get(url, { params });
+    },
     getGroupBySlug(slug) {
         const url = `/groups/${slug}`;
         return axiosClient.get(url);

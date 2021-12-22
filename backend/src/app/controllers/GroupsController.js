@@ -22,15 +22,15 @@ module.exports = {
             res.json({ error: err });
         }
     },
-    //Hiện group giới hạn 8
-    // async ShowGrouplimit(req, res) {
-    //     try {
-    //         const group = await Groups.find({ id_user_or_group: req.params.id }).limit(8);
-    //         res.json(group);
-    //     } catch (err) {
-    //         res.json({ error: err });
-    //     }
-    // },
+    //Hiện group giới hạn 5
+    async ShowAllGroupslimit(req, res) {
+        try {
+            const group = await Groups.find({}).limit(5);
+            res.json(group);
+        } catch (err) {
+            res.json({ error: err });
+        }
+    },
     //  //Hiện tất cả nhóm của Group -> [GET]/categories-group/:id
     // async ShowAllByGroup(req, res) {
     //     try {

@@ -46,6 +46,7 @@
     "numeral": "^2.0.6",
     "passport": "^0.4.1",
     "passport-local": "^1.0.0",
+    "nodemon": "^2.0.6",
     "session": "^0.1.0",
     "socket.io": "^4.3.1"
   },

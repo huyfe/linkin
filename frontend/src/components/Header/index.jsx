@@ -26,6 +26,10 @@ export default function Header() {
         }
     };
 
+    const LoginS = () => {
+        window.location.href="/login"
+    }
+
     return (
         <header className="header">
             <nav className="header__menu">
@@ -108,7 +112,7 @@ export default function Header() {
                                                     <span className="icon-earth"></span> Đăng xuất
                                                 </MDBDropdownLink>
                                             ) : (
-                                                <Link to="/login"
+                                                <Link to="#" onClick={LoginS}
                                                     className="dropdown-item linkItem__dropdown--link"
                                                     href="#"
                                                 >

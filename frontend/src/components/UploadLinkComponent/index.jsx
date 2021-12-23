@@ -46,7 +46,7 @@ function UpLoadLinkComponent(props) {
         <div className="button-show-modal">
           <MDBBtn onClick={() => setScrollableModal(!scrollableModal)}>Bạn muốn chia sẻ gì nào?</MDBBtn>
         </div>
-        <ModalUploadLink scrollableModal={scrollableModal} setScrollableModal={setScrollableModal} />
+        <ModalUploadLink scrollableModal={scrollableModal} setScrollableModal={setScrollableModal} id="2" />
 
       </div>
 

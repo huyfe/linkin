@@ -16,7 +16,7 @@ import linkApi from '../../api/linkApi';
 import { useDispatch, useSelector } from 'react-redux';
 import { update } from '../../features/Link/linkSlice';
 
-function ModalUpLoadLink({ scrollableModal, setScrollableModal }) {
+function ModalUpLoadLink({ scrollableModal, setScrollableModal, id }) {
     const dataUser = JSON.parse(localStorage.getItem('dataUser'));
     const user = {
         id: dataUser?.Id,
@@ -175,7 +175,7 @@ function ModalUpLoadLink({ scrollableModal, setScrollableModal }) {
                                 <div className="d-flex align-items-center formAddCategory__upload--btn">
                                     <h3>Chọn hình</h3>
                                     <label
-                                        htmlFor="img-uploadAdd-link"
+                                        htmlFor={"img-uploadlink" + id}
                                         className="d-flex justify-content-center align-items-center"
                                     >
                                         <i className="far fa-plus"></i>
@@ -192,7 +192,7 @@ function ModalUpLoadLink({ scrollableModal, setScrollableModal }) {
                                     // className="d-block"
                                     type="file"
                                     name="image"
-                                    id="img-uploadAdd-link"
+                                    id={"img-uploadlink" + id}
                                     accept=".jpg,.jpeg,.png"
                                     onChange={handleImageUploadChange}
                                 />

@@ -137,7 +137,7 @@ export default function Header() {
                 <LoadingComponent />
 
             </header>
-            <ModalUploadLink scrollableModal={scrollableModal} setScrollableModal={setScrollableModal} />
+            <ModalUploadLink scrollableModal={scrollableModal} setScrollableModal={setScrollableModal} id="1" />
         </>
     );
 }

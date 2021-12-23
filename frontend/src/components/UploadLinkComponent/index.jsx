@@ -41,7 +41,7 @@ function UpLoadLinkComponent(props) {
     <div className="box-upload-link">
       <div className="wrap-upload-link d-flex">
         <div className="avatar">
-          <Link to={props.href}><img className="img-fluid" src={"/images/Users/" + user.avatar} alt="" /></Link>
+          <Link to={props.href}><img className="img-fluid" src={user.avatar} alt="" /></Link>
         </div>
         <div className="button-show-modal">
           <MDBBtn onClick={() => setScrollableModal(!scrollableModal)}>Bạn muốn chia sẻ gì nào?</MDBBtn>

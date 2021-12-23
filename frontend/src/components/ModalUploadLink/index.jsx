@@ -119,7 +119,7 @@ function ModalUpLoadLink({ scrollableModal, setScrollableModal }) {
                     </MDBModalHeader>
                     <div className="user-info mb-15 d-flex">
                         <div className="avatar">
-                            <Link to={"/profile/" + user.slug}><img className="img-fluid" src={"/images/Users/" + user.avatar} alt={user.name} /></Link>
+                            <Link to={"/profile/" + user.slug}><img className="img-fluid" src={user.avatar} alt={user.name} /></Link>
                         </div>
                         <div className="name">
                             <h3>{user.name}</h3>

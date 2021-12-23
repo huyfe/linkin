@@ -7,8 +7,12 @@ import { useDispatch, useSelector } from "react-redux";
 import './style.scss';
 import { update } from "../../../../Link/linkSlice.js";
 import { update as updateLoading } from "../../../../../components/LoadingComponent/loadingSlice.js";
+import ReactDOM from 'react-dom';
+import { updateLinkOfUser } from "../../../../Link/linkSlice.js";
+
 
 TimelinePostUserComponent.propTypes = {
+    id: PropTypes.number,
     imageUser: PropTypes.string,
     userLink: PropTypes.string,
     nameUser: PropTypes.string,
@@ -22,6 +26,7 @@ TimelinePostUserComponent.propTypes = {
     like: PropTypes.number,
     comment: PropTypes.array,
     hour: PropTypes.string,
+    public: PropTypes.bool,
 }
 
 TimelinePostUserComponent.defaultProps = {
@@ -30,7 +35,6 @@ TimelinePostUserComponent.defaultProps = {
 }
 
 function TimelinePostUserComponent(props) {
-    const dispatch = useDispatch();
 
     // Toggle like 
     const [like, setLike] = useState(false);
@@ -52,21 +56,59 @@ function TimelinePostUserComponent(props) {
     const eventDropdown = () => {
         setDropdown(dropdown => !dropdown);
     }
+    // Popup copy succesfully
+    const showPopUpCopied = () => {
+        const mess = <div className="message">Đã sao chép !</div>;
+        ReactDOM.render((mess), document.getElementById("popUp"));
+        setTimeout(() => {
+            ReactDOM.render(null, document.getElementById("popUp"));
+        }, 2000);
+    }
+    // Switch icon public/private
+    const eventIconSwap = () => {
+        if(props.public === true) {
+           return <span className="icon-earth"></span>
+        } else {
+            return <i className="icon-lock"></i>
+        }
+    }
+    
     // Remove post 
-    const removePostItem = (id) => async (event) => {
+    const removeItemOfUser= (id) => async (event) => {
         event.preventDefault();
         dispatch(updateLoading(100));
-        await linkApi.remove(id);
+        const awaitRemove = await linkApi.remove(id);
         dispatch(updateLoading(101));
-
+    
         // Update the links
-        const linkList = await linkApi.getAll({ type: "user", });
+        const linkList = await linkApi.getAll();
         dispatch(update(linkList.data));
     };
+    // Events click pinned
+    const onPinned = async () => {
+        let { data } = await linkApi.updatePinLink(props.id);
+        dispatch(updateLinkOfUser(data));
+        if (!data.pinned) {
+            const mess = <div className="message">Đã bỏ ghim thành công !</div>;
+            ReactDOM.render((mess), document.getElementById("popUp"));
+            setTimeout(() => {
+                ReactDOM.render(null, document.getElementById("popUp"));
+            }, 2000);
+        }
+        else {
+            const mess = <div className="message">Đã ghim thành công !</div>;
+            ReactDOM.render((mess), document.getElementById("popUp"));
+            setTimeout(() => {
+                ReactDOM.render(null, document.getElementById("popUp"));
+            }, 2000);
+        }
+    }
+    const dispatch = useDispatch();
     
     // Format date post
     const datePost = new Date(props.datePost).toLocaleDateString('vi-VN', { day: 'numeric', month: 'long', year: 'numeric' } )
     const [value, setValue] = useState(props.contentLink);
+    
     // User local storage
     const dataUser = localStorage.getItem("dataUser")
     const dataUsers = JSON.parse(dataUser)
@@ -97,7 +139,8 @@ function TimelinePostUserComponent(props) {
                     </div>
                     <div className="d-flex align-items-center">
                         <p className="time-post">
-                            {datePost} <span className="icon-earth"></span>
+                        {/* <span className="icon-earth"></span> */}
+                            {datePost} {}  {eventIconSwap}
                         </p>
                     </div>
                 </div>
@@ -108,7 +151,7 @@ function TimelinePostUserComponent(props) {
                         <div className='icon'></div>
                     </div>
                     <div id="myDropdown" className={dropdown ? "dropdown-content " : "d-none"}>
-                        <button onClick={removePostItem(props.id)}>Xoá bài viết</button>
+                        <button onClick={removeItemOfUser(props.id)}>Xoá bài viết</button>
                         <button >Lưu bài viết</button>
                         <button onClick={eventDropdown}>Huỷ</button>
                     </div>
@@ -126,10 +169,15 @@ function TimelinePostUserComponent(props) {
                         </div>
                         <div className="col-lg-2 icon d-flex justify-content-around btn-function">
                             {/* Copy clipboard */}
-                            <CopyToClipboard text={value} >
-                                <span className="icon-copy"></span>
-                            </CopyToClipboard>
-                            <span className="icon-plus"></span>
+                           
+                            <div onClick={showPopUpCopied}>
+                                <CopyToClipboard text={value}  >
+                                    <span className="icon-copy"></span>
+                                </CopyToClipboard>
+                            </div>
+                            <div onClick={onPinned}>
+                                <span className="icon-plus"></span>
+                            </div>
                         </div>
                     </div>
                 </div>

@@ -15,7 +15,7 @@ const groupApi = {
         return axiosClient.get(url);
     },
     add(data) {
-        const url = '/groups';
+        const url = '/groups/create-group';
         return axiosClient.post(url, { data });
     },
     update(data) {

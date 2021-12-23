@@ -19,10 +19,10 @@ import { update } from '../../features/Link/linkSlice';
 function ModalUpLoadLink({ scrollableModal, setScrollableModal }) {
     const dataUser = JSON.parse(localStorage.getItem('dataUser'));
     const user = {
-        id: dataUser.Id,
-        name: dataUser.Fullname,
-        avatar: dataUser.Image,
-        slug: dataUser.Slug
+        id: dataUser?.Id,
+        name: dataUser?.Fullname,
+        avatar: dataUser?.Image,
+        slug: dataUser?.Slug
     }
 
     const [publicLink, setPublicLink] = useState(false);

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './style.scss';
 
@@ -14,18 +14,19 @@ function Web404Error() {
         window.location.href="/register"
     }
 
+    useEffect(() => {
+        if(dataUsers?.Id){
+            window.location.href="/"
+        }else{
+            window.location.href="/login"
+        }
+    }, [dataUsers?.Id])
+
     return (
         <div className="container page404">
             <div className="row">
                 <div className="col-md-12">
                     <div className="error-template">
-                        <h1>
-                            Oops!</h1>
-                        <h2>
-                            404 Not Found</h2>
-                        <div className="error-details">
-                            Xin lỗi, đã xảy ra lỗi, không tìm thấy trang được yêu cầu!
-                        </div>
                         {(dataUsers) ? (
                             <div className="error-actions">
                                 <Link to="/" className="btn btn-primary btn-lg">

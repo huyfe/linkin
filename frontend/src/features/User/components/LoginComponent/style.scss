@@ -45,7 +45,7 @@ $white: #ffffff;
                     }
                 }
 
-                @media (max-width:900px) {
+                @media (max-width: 900px) {
                     justify-content: center;
                 }
             }
@@ -56,11 +56,11 @@ $white: #ffffff;
             }
         }
 
-        @media (max-width:900px) {
-            .col-4{
+        @media (max-width: 900px) {
+            .col-4 {
                 width: 100% !important;
             }
-            .col-8{
+            .col-8 {
                 width: 100% !important;
             }
         }
@@ -152,14 +152,14 @@ $white: #ffffff;
                         }
                     }
 
-                    @media (max-width:620px) {
+                    @media (max-width: 620px) {
                         align-items: center;
-                        .form-group{
+                        .form-group {
                             width: 100%;
                             margin-right: 0;
                         }
 
-                        button{
+                        button {
                             width: 70%;
                             margin-left: 0;
                         }
@@ -242,12 +242,12 @@ $white: #ffffff;
             }
         }
 
-        @media (max-width:900px) {
+        @media (max-width: 900px) {
             justify-content: center;
         }
     }
 
-    @media (max-width:900px) {
+    @media (max-width: 900px) {
         border-bottom: none;
     }
 }
@@ -262,10 +262,10 @@ $white: #ffffff;
         .many-hands {
             position: absolute;
             background-color: #fdfdfd;
-            width: 100%;
+            width: 50%;
 
             img {
-                width: 75%;
+                width: 100%;
             }
         }
 
